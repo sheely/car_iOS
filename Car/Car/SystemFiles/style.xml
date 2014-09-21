@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--说明 
+   保留字:
+   name:样式属性名称
+   type:类型
+   value:值
+   parent:继承自
+   -->
+<Style>
+    <optionbold>
+        <property name="font"       type="UIFont"   value="FontScaleSmallBold"/>
+        <property name="textColor"  type="UIColor"  value="ColorOption" />
+    </optionbold>
+    
+    
+    
+    
+    
+    <!--重度的字体-->
+    <lablargedark>
+        <property name="font"       type="UIFont"   value="FontScaleLarge"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleDark" />
+    </lablargedark>
+    
+    <lablargedarkbold>
+        <property name="font"       type="UIFont"   value="FontScaleLargeBold"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleDark" />
+    </lablargedarkbold>
+    
+    <labmidbold>
+        <property name="font"       type="UIFont"   value="FontScaleMidBold"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleDark" />
+    </labmidbold>
+
+    <labmiddark>
+        <property name="font"       type="UIFont"   value="FontScaleMid"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleDark" />
+        <property name="highlightedTextColor"  type="UIColor"  value="ColorStyleDark" />
+    </labmiddark >
+    
+
+<btnsubmit parent = "btnstandard">
+    <property name="font"       type="UIFont"   value="FontScaleMid"/>
+    <property name="backgroundImage:forState" type="UIImage.Stretchable" value="btn_bg_submit" externType = "int"  extern = "0"/>
+    <property name="titleColor:forState" type="UIColor" value="ColorStandard" externType = "int"  extern = "0"/>
+    <property name="titleColor:forState" type="UIColor" value="ColorStandard" externType = "int"  extern = "1"/>
+</btnsubmit>
+
+    <labmidorg>
+        <property name="font"       type="UIFont"   value="FontScaleMid"/>
+        <property name="textColor"  type="UIColor"  value="ColorTextOrg" />
+        <property name="highlightedTextColor"  type="UIColor"  value="ColorStyleDark" />
+        
+        
+    </labmidorg >
+    <lablargeorg>
+        <property name="font"       type="UIFont"   value="FontScaleLarge"/>
+        <property name="textColor"  type="UIColor"  value="ColorTextOrg" />
+        <property name="highlightedTextColor"  type="UIColor"  value="ColorStyleDark" />
+        
+        
+    </lablargeorg >
+    <labmiddarknohighlight parent = "labmiddark">
+        <property name="highlightedTextColor"  type="UIColor"  value="ColorStyleDark" />
+    </labmiddarknohighlight>
+    
+    <labmindark>
+        <property name="font"       type="UIFont"   value="FontScaleSmall"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleDark" />
+        <property name="highlightedTextColor"  type="UIColor"  value="ColorStyleDark" />
+    </labmindark>
+      <!--轻便的文本结构-->
+    <labminlight>
+        <property name="font"       type="UIFont"   value="FontScaleSmall"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleLight" />
+    </labminlight>
+    <labmidlight>
+        <property name="font"       type="UIFont"   value="FontScaleMid"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleLight" />
+    </labmidlight>
+    
+    <labmingreen>
+        <property name="font"       type="UIFont"   value="FontScaleSmall"/>
+        <property name="textColor"  type="UIColor"  value="ColorBase" />
+    </labmingreen>
+    
+    <labminmilk>
+        <property name="font"       type="UIFont"   value="FontScaleSmall"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleMilkWhite" />
+    </labminmilk>
+    
+    <labmidmilk>
+        <property name="font"       type="UIFont"   value="FontScaleMid"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleMilkWhite" />
+    </labmidmilk>
+    <lablargemilk>
+        <property name="font"       type="UIFont"   value="FontScaleSmallBold"/>
+        <property name="textColor"  type="UIColor"  value="ColorStyleMilkWhite" />
+    </lablargemilk>
+       <!--标准样式button-->
+    <btnstandard>
+        <property name="font"       type="UIFont"   value="FontScaleSmallBold"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "1"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "0"/>
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="bg_button_standard" externType = "int"  extern = "0"/>
+    </btnstandard>
+    <btnsegmented>
+        <property name="font"       type="UIFont"   value="FontScaleSmallBold"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleWhite" externType = "int"  extern = "0"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "1"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "2"/>
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="bg_button_standard" externType = "int"  extern = "0"/>
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="bg_null" externType = "int"  extern = "1"/>
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="bg_null" externType = "int"  extern = "2"/>
+        
+    </btnsegmented>
+    <btnstandardmid >
+        <property name="font"       type="UIFont"   value="FontScaleMid"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "1"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "0"/>
+        
+    </btnstandardmid>
+    <btndropdownmid parent ="btnstandardmid">
+        <property name="image:forState" type="UIImage" value="select_kuan" externType = "int"  extern = "0"/>
+        
+    </btndropdownmid>
+    
+   
+    <btnstandardmin >
+        <property name="font"       type="UIFont"   value="FontScaleSmall"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "1"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleDark" externType = "int"  extern = "0"/>
+    </btnstandardmin>
+    <btnnavigation >
+        <property name="font"       type="UIFont"   value="FontScaleMid"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleWhite" externType = "int"  extern = "1"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleWhite" externType = "int"  extern = "0"/>
+    </btnnavigation>
+    <btnmilkwhite>
+        <property name="font"       type="UIFont"   value="FontScaleSmall"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleMilkWhite" externType = "int"  extern = "1"/>
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleMilkWhite" externType = "int"  extern = "0"/>
+    </btnmilkwhite>
+
+
+    <btnsubmitgray parent = "btnsubmit">
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="button_gray_mini" externType = "int"  extern = "0"/>
+    </btnsubmitgray>
+    <btnsubmitgreen parent = "btnsubmit">
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="button_green_mini" externType = "int"  extern = "0"/>
+    </btnsubmitgreen>
+    <btnstandardgreen parent = "btnstandard">
+        <property name="titleColor:forState" type="UIColor" value="ColorStyleMilkWhite" externType = "int"  extern = "1"/>
+  <property name="titleColor:forState" type="UIColor" value="ColorStyleMilkWhite" externType = "int"  extern = "0"/>
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="button_green_mini" externType = "int"  extern = "0"/>
+    </btnstandardgreen>
+    <btnsubmitred parent = "btnsubmit">
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="button_red_mini" externType = "int"  extern = "0"/>
+    </btnsubmitred>
+    
+    <!--login-->
+    <lablogintitle parent = "labmiddark">
+        <property name="font"       type="UIFont"   value="FontScaleSupereBold"/>
+        <property name="textColor"  type="UIColor"  value="ColorSelected" />
+        <property name="textAlignment"  type="int"  value="1" />
+    </lablogintitle>
+    <imgbackground>
+        <property name="image" type="UIImage.Stretchable" value="details_kuan.png" externType = "int"  extern = "0"/>
+    </imgbackground>
+    
+    <imgbackground2>
+        <property name="image" type="UIImage.Stretchable" value="avar_kuan_mini.png" externType = "int"  extern = "0"/>
+    </imgbackground2>
+    <!--顶部-->
+  
+</Style>

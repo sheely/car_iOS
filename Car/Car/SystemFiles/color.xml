@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Color>
+    <property name="ColorStyleDark" R="50" G="50" B= "50" A="1"/>
+    <property name="ColorStyleLight" R="148" G="139" B= "126" A="1" />
+    <property name="ColorStyleBigTitle" R="255" G="255" B= "255" A="1" />
+    <property name="ColorStyleMilkWhite" R="250" G="250" B= "250" A="1" />
+    <property name="ColorStyleWhite" R="255" G="255" B= "255" A="1" />
+    <property name="ColorStyleBlack" R="0" G="0" B= "0" A="1" />
+    <property name="ColorStyleCellLightGry" R="0" G="0" B= "0" A="0.3" />
+    <property name="ColorBackGroundCell" R="250" G="250" B= "250" A="0" />
+    <property name="ColorStyleCellSelected" R="0" G="154" B= "156" A="0.3" />
+    <property name="ColorStandard" R="0" G="154" B= "156" A="1" />
+    <property name="ColorBase" R="99" G="168" B= "54" A="1" />
+    <property name="ColorTabSelected" R="178" G="177" B= "172" A="1" />
+    <property name="ColorLoginBackGround" R="240" G="240" B= "240" A="1" />
+    <property name="ColorLightBackGround" R="240" G="240" B= "240" A="1" />
+    <property name="ColorBaseBackGround" R="240" G="240" B= "240" A="1" />
+    <property name="ColorTextOrg" R="243" G="107" B= "33" A="1" />
+    <property name="ColorBackGround" R="242" G="242" B= "242" A="1" />
+    <property name="ColorBackGroundCellHead" R="251" G="244" B= "224" A="1" />
+    <property name="ColorTextGreen" R="34" G="188" B= "143" A="1" />
+    <property name="ColorTextBlue" R="0" G="176" B= "244" A="1" />
+    <property name="ColorTextRed" R="226" G="105" B= "102" A="1" />
+    <property name="ColorLine" R="216" G="216" B= "216" A="1" />
+    
+    
+    <property name="ColorOption" R="81" G="91" B= "109" A="1" />
+</Color>

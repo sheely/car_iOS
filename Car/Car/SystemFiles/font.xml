@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Font>
+    <property name="FontScaleSmall" size = "13"  />
+    <property name="FontScaleMid"   size = "15" />
+    <property name="FontScaleLarge" size = "17" />
+    <property name="FontScaleSmallBold" size = "16" type = "bold"/>
+    <property name="FontScaleMidBold"   size = "18" type = "bold" />
+    <property name="FontScaleLargeBold" size = "20" type = "bold"/>
+    <property name="FontScaleSupereBold" size = "26" type = "bold"/>
+</Font>
+
+ 
