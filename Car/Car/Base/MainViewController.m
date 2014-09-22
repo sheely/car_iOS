@@ -69,8 +69,10 @@
         item.image = [UIImage imageNamed:@"tab_news.png"];
         [listtab addObject:item];
     }
-    
+    [tabbar setSelectedImageTintColor:[SHSkin.instance colorOfStyle:@"ColorNavigation"]];
     tabbar.items = listtab;
+    tabbar.selectedItem = [tabbar.items objectAtIndex:0];
+    [self tabBar:tabbar didSelectItem:tabbar.selectedItem];
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -78,8 +80,8 @@
 - (void)notification:(NSObject*)sender
 {
         [self tabBar:tabbar didSelectItem:[tabbar.items objectAtIndex:0]];
-    //    tabbar.selectedItem = [tabbar.items objectAtIndex:0];
-    //    [self tabBar:tabbar didSelectItem:tabbar.selectedItem];
+        tabbar.selectedItem = [tabbar.items objectAtIndex:0];
+        [self tabBar:tabbar didSelectItem:tabbar.selectedItem];
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,7 +118,8 @@
             
             controller = [[UINavigationController alloc]initWithRootViewController: [[NSClassFromString(module->target) alloc]init]];
             [mDictionary setObject:controller forKey:module->target];
-            [controller.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg.png"] forBarMetrics:UIBarMetricsDefault];
+            //[controller.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg.png"] forBarMetrics:UIBarMetricsDefault];
+            [controller.navigationBar setBarTintColor:[SHSkin.instance colorOfStyle:@"ColorNavigation"]];
             [controller.navigationBar setBarStyle:UIBarStyleBlack];
             //controller.navigationBar.clipsToBounds = YES;
             

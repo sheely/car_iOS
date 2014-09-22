@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-   <module
-   name="login"
-   target="SHLoginViewController"
-   type = "--"
-   icon = "tab_news.png"
-   title = "登录"
-   />
+    <module
+    name="login"
+    target="SHLoginViewController"
+    type = "--"
+    icon = "tab_news.png"
+    title = "登录"
+    />
+    
+    <module
+    name="login"
+    target="SHMainPageViewController"
+    type = "main"
+    icon = "navi_home.png"
+    title = "首页"
+    />
+    
+    <module
+    name="login"
+    target="SHMainPageViewController"
+    type = "main"
+    icon = "navi_order.png"
+    title = "车况档案"
+    />
+    
+    <module
+    name="myinfo"
+    target="SHMainPageViewController"
+    type = "main"
+    icon = "navi_myself.png"
+    title = "我的"
+    />
+    
+    <module
+    name="contact_me"
+    target="SHMainPageViewController"
+    type = "main"
+    icon = "navi_phone.png"
+    title = "联系我们"
+    />
+    
 </root>

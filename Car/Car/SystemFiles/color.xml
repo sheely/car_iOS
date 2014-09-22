@@ -22,7 +22,8 @@
     <property name="ColorTextBlue" R="0" G="176" B= "244" A="1" />
     <property name="ColorTextRed" R="226" G="105" B= "102" A="1" />
     <property name="ColorLine" R="216" G="216" B= "216" A="1" />
-    
-    
+    <property name="ColorNavigation" R="0" G="185" B= "178" A="1" />
+
+
     <property name="ColorOption" R="81" G="91" B= "109" A="1" />
 </Color>
