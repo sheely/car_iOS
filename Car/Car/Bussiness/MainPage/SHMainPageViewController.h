@@ -9,5 +9,10 @@
 #import "SHViewController.h"
 
 @interface SHMainPageViewController : SHViewController
-
+{
+}
+- (IBAction)btnSupportOnTouch:(id)sender;
+- (IBAction)btnRepair:(id)sender;
+- (IBAction)btnInsuranceOnTouch:(id)sender;
+- (IBAction)btnMoreOnTouch:(id)sender;
 @end

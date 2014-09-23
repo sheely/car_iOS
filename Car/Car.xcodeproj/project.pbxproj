@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E3F62AD19D1B794008C8B7B /* ic_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AC19D1B794008C8B7B /* ic_point.png */; };
+		9E3F62AF19D1B97E008C8B7B /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AE19D1B97E008C8B7B /* ic_location.png */; };
+		9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B219D1CBEB008C8B7B /* btnbg.png */; };
+		9E3F62B619D1CC85008C8B7B /* btnbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B419D1CC85008C8B7B /* btnbg@2x.png */; };
+		9E3F62B719D1CC85008C8B7B /* btnbg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B519D1CC85008C8B7B /* btnbg@3x.png */; };
+		9E3F62B919D1D6D1008C8B7B /* ic_cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B819D1D6D1008C8B7B /* ic_cam.png */; };
+		9E3F62BC19D1D726008C8B7B /* ic_cam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62BA19D1D726008C8B7B /* ic_cam@2x.png */; };
+		9E3F62BD19D1D726008C8B7B /* ic_cam@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62BB19D1D726008C8B7B /* ic_cam@3x.png */; };
+		9E3F62C119D1DA65008C8B7B /* ic_sound.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62BE19D1DA64008C8B7B /* ic_sound.png */; };
+		9E3F62C219D1DA65008C8B7B /* ic_sound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62BF19D1DA64008C8B7B /* ic_sound@2x.png */; };
+		9E3F62C319D1DA65008C8B7B /* ic_sound@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62C019D1DA64008C8B7B /* ic_sound@3x.png */; };
 		9EF627E119CEBA4900111E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF627E019CEBA4900111E2F /* main.m */; };
 		9EF627E719CEBA4900111E2F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF627E619CEBA4900111E2F /* ViewController.m */; };
 		9EF627EC19CEBA4900111E2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF627EB19CEBA4900111E2F /* Images.xcassets */; };
@@ -239,6 +250,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E3F62AC19D1B794008C8B7B /* ic_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_point.png; sourceTree = "<group>"; };
+		9E3F62AE19D1B97E008C8B7B /* ic_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_location.png; sourceTree = "<group>"; };
+		9E3F62B219D1CBEB008C8B7B /* btnbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnbg.png; path = Car/Res/btnbg.png; sourceTree = SOURCE_ROOT; };
+		9E3F62B419D1CC85008C8B7B /* btnbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnbg@2x.png"; path = "Car/Res/btnbg@2x.png"; sourceTree = SOURCE_ROOT; };
+		9E3F62B519D1CC85008C8B7B /* btnbg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnbg@3x.png"; path = "Car/Res/btnbg@3x.png"; sourceTree = SOURCE_ROOT; };
+		9E3F62B819D1D6D1008C8B7B /* ic_cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cam.png; sourceTree = "<group>"; };
+		9E3F62BA19D1D726008C8B7B /* ic_cam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cam@2x.png"; sourceTree = "<group>"; };
+		9E3F62BB19D1D726008C8B7B /* ic_cam@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cam@3x.png"; sourceTree = "<group>"; };
+		9E3F62BE19D1DA64008C8B7B /* ic_sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_sound.png; sourceTree = "<group>"; };
+		9E3F62BF19D1DA64008C8B7B /* ic_sound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sound@2x.png"; sourceTree = "<group>"; };
+		9E3F62C019D1DA64008C8B7B /* ic_sound@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sound@3x.png"; sourceTree = "<group>"; };
 		9EF627DB19CEBA4900111E2F /* Car.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Car.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF627DF19CEBA4900111E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF627E019CEBA4900111E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -717,6 +739,9 @@
 		9EF6280A19CEF92A00111E2F /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E3F62B419D1CC85008C8B7B /* btnbg@2x.png */,
+				9E3F62B519D1CC85008C8B7B /* btnbg@3x.png */,
+				9E3F62B219D1CBEB008C8B7B /* btnbg.png */,
 			);
 			path = Res;
 			sourceTree = "<group>";
@@ -1364,6 +1389,14 @@
 		9EF62C8D19CF260B00111E2F /* Requirement */ = {
 			isa = PBXGroup;
 			children = (
+				9E3F62BE19D1DA64008C8B7B /* ic_sound.png */,
+				9E3F62BF19D1DA64008C8B7B /* ic_sound@2x.png */,
+				9E3F62C019D1DA64008C8B7B /* ic_sound@3x.png */,
+				9E3F62BA19D1D726008C8B7B /* ic_cam@2x.png */,
+				9E3F62BB19D1D726008C8B7B /* ic_cam@3x.png */,
+				9E3F62B819D1D6D1008C8B7B /* ic_cam.png */,
+				9E3F62AE19D1B97E008C8B7B /* ic_location.png */,
+				9E3F62AC19D1B794008C8B7B /* ic_point.png */,
 				9EF62C8E19CF263B00111E2F /* SHRequirementViewController.h */,
 				9EF62C8F19CF263B00111E2F /* SHRequirementViewController.m */,
 				9EF62C9019CF263B00111E2F /* SHRequirementViewController.xib */,
@@ -1497,12 +1530,14 @@
 				9EF62CC119D09DE700111E2F /* navi_order@3x.png in Resources */,
 				9EF62C5919CF002400111E2F /* SHTableViewTitleImageCell2.xib in Resources */,
 				9EF62C6A19CF002400111E2F /* status-bar-progress.png in Resources */,
+				9E3F62BD19D1D726008C8B7B /* ic_cam@3x.png in Resources */,
 				9EF62CB419D097DB00111E2F /* subicon_insurance.png in Resources */,
 				9EF62CAB19D097DB00111E2F /* navi_home.png in Resources */,
 				9EF62BE519CF002400111E2F /* SHCalendarViewController.xib in Resources */,
 				9EF62CB919D098DE00111E2F /* Launch Screen.xib in Resources */,
 				9EF62C2619CF002400111E2F /* MBProgressHUD.bundle in Resources */,
 				9EF62C1F19CF002400111E2F /* button_current_bg.png in Resources */,
+				9E3F62C319D1DA65008C8B7B /* ic_sound@3x.png in Resources */,
 				9EF62BF319CF002400111E2F /* DSLCalendar-nextMonth@2x.png in Resources */,
 				9EF62C0319CF002400111E2F /* blueArrow.png in Resources */,
 				9EF62C0519CF002400111E2F /* grayArrow.png in Resources */,
@@ -1516,13 +1551,17 @@
 				9EF62A2919CEF92A00111E2F /* module.xml in Resources */,
 				9EF62BFB19CF002400111E2F /* DSLCalendarDaySelection-middle@2x.png in Resources */,
 				9EF62C0C19CF002400111E2F /* NaviBack.png in Resources */,
+				9E3F62AF19D1B97E008C8B7B /* ic_location.png in Resources */,
 				9EF62C5619CF002400111E2F /* SHTableViewTitleContentCell.xib in Resources */,
 				9EF62BEE19CF002400111E2F /* DSLCalendarMonthSelectorView.xib in Resources */,
 				9EF62C3F19CF002400111E2F /* timeline_image_loading.png in Resources */,
+				9E3F62BC19D1D726008C8B7B /* ic_cam@2x.png in Resources */,
 				9EF62CA919D097DB00111E2F /* icon_mechanic.png in Resources */,
+				9E3F62B719D1CC85008C8B7B /* btnbg@3x.png in Resources */,
 				9EF62C5819CF002400111E2F /* SHTableViewTitleImageCell.xib in Resources */,
 				9EF62BFA19CF002400111E2F /* DSLCalendarDaySelection-middle.png in Resources */,
 				9EF62C0219CF002400111E2F /* blackArrow@2x.png in Resources */,
+				9E3F62B619D1CC85008C8B7B /* btnbg@2x.png in Resources */,
 				9EF62C6719CF002400111E2F /* status-bar-pattern-black@2x.jpg in Resources */,
 				9EF62A2819CEF92A00111E2F /* font.xml in Resources */,
 				9EF62C6119CF002400111E2F /* SHImageViewController.xib in Resources */,
@@ -1535,11 +1574,13 @@
 				9EF62BF419CF002400111E2F /* DSLCalendar-previousMonth.png in Resources */,
 				9EF62CB119D097DB00111E2F /* navi_phone.png in Resources */,
 				9EF62CB219D097DB00111E2F /* search.png in Resources */,
+				9E3F62AD19D1B794008C8B7B /* ic_point.png in Resources */,
 				9EF62BFE19CF002400111E2F /* DSLCalendarDaySelection.png in Resources */,
 				9EF62C8319CF002400111E2F /* NVDebugPanelController.xib in Resources */,
 				9EF62C2419CF002400111E2F /* showview_left_shade.png in Resources */,
 				9EF62CB619D097DB00111E2F /* subicon_repair.png in Resources */,
 				9EF62C4C19CF002400111E2F /* SHNoneViewCell.xib in Resources */,
+				9E3F62C219D1DA65008C8B7B /* ic_sound@2x.png in Resources */,
 				9EF62CC719D09E6000111E2F /* navi_phone@3x.png in Resources */,
 				9EF62CAC19D097DB00111E2F /* navi_myself_pressed.png in Resources */,
 				9EF62CBF19D09DAD00111E2F /* navi_myself@2x.png in Resources */,
@@ -1550,6 +1591,7 @@
 				9EF62C2019CF002400111E2F /* button_item_white_bg.png in Resources */,
 				9EF62C4A19CF002400111E2F /* SHLoadingViewCell.xib in Resources */,
 				9EF62C5019CF002400111E2F /* SHTableViewGeneralCell.xib in Resources */,
+				9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */,
 				9EF62C0419CF002400111E2F /* blueArrow@2x.png in Resources */,
 				9EF62CAE19D097DB00111E2F /* navi_order_pressed.png in Resources */,
 				9EF62BF719CF002400111E2F /* DSLCalendarDayCallout@2x.png in Resources */,
@@ -1570,6 +1612,7 @@
 				9EF62C2919CF002400111E2F /* MJPhotoBrowser.bundle in Resources */,
 				9EF62C2119CF002400111E2F /* navigation_bar_bg.png in Resources */,
 				9EF62CD219D09ED200111E2F /* SHMainPageViewController.xib in Resources */,
+				9E3F62B919D1D6D1008C8B7B /* ic_cam.png in Resources */,
 				9EF62C5219CF002400111E2F /* SHTableViewSelectCell.xib in Resources */,
 				9EF62C7419CF002400111E2F /* chart.html in Resources */,
 				9EF62CB719D097DB00111E2F /* subicon_support.png in Resources */,
@@ -1589,6 +1632,7 @@
 				9EF62C0D19CF002400111E2F /* NaviBack@2x.png in Resources */,
 				9EF62C4219CF002400111E2F /* SHCollectionImagesViewController.xib in Resources */,
 				9EF62C0F19CF002400111E2F /* SHPictureViewController.xib in Resources */,
+				9E3F62C119D1DA65008C8B7B /* ic_sound.png in Resources */,
 				9EF62CBD19D09D3400111E2F /* navi_home@2x.png in Resources */,
 				9EF62C2319CF002400111E2F /* SHNavigationShowViewController.xib in Resources */,
 				9EF62C6B19CF002400111E2F /* status-bar-progress@2x.png in Resources */,
@@ -1906,6 +1950,7 @@
 				9EF6280019CEBA4900111E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9EF6280119CEBA4900111E2F /* Build configuration list for PBXNativeTarget "CarTests" */ = {
 			isa = XCConfigurationList;
@@ -1914,6 +1959,7 @@
 				9EF6280319CEBA4900111E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

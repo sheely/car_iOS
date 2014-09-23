@@ -8,6 +8,10 @@
 
 #import "SHViewController.h"
 
-@interface SHRequirementViewController : SHViewController
-
+@interface SHRequirementViewController : SHViewController<UIActionSheetDelegate>
+{
+    
+    __weak IBOutlet UIButton *btnSubmit;
+}
+- (IBAction)btnPhotoOnTouch:(id)sender;
 @end

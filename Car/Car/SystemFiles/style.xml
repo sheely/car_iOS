@@ -41,7 +41,7 @@
 
 <btnsubmit parent = "btnstandard">
     <property name="font"       type="UIFont"   value="FontScaleMid"/>
-    <property name="backgroundImage:forState" type="UIImage.Stretchable" value="btn_bg_submit" externType = "int"  extern = "0"/>
+    <property name="backgroundImage:forState" type="UIImage.Stretchable" value="btnbg" externType = "int"  extern = "0"/>
     <property name="titleColor:forState" type="UIColor" value="ColorStandard" externType = "int"  extern = "0"/>
     <property name="titleColor:forState" type="UIColor" value="ColorStandard" externType = "int"  extern = "1"/>
 </btnsubmit>
@@ -147,7 +147,8 @@
         <property name="backgroundImage:forState" type="UIImage.Stretchable" value="button_gray_mini" externType = "int"  extern = "0"/>
     </btnsubmitgray>
     <btnsubmitgreen parent = "btnsubmit">
-        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="button_green_mini" externType = "int"  extern = "0"/>
+        <property name="backgroundImage:forState" type="UIImage.Stretchable" value="btnbg" externType = "int"  extern = "0"/>
+        
     </btnsubmitgreen>
     <btnstandardgreen parent = "btnstandard">
         <property name="titleColor:forState" type="UIColor" value="ColorStyleMilkWhite" externType = "int"  extern = "1"/>

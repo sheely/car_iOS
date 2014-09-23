@@ -35,4 +35,31 @@
 }
 */
 
+- (IBAction)btnSupportOnTouch:(id)sender
+{
+    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"保养" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
+}
+
+- (IBAction)btnRepair:(id)sender {
+    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"维修" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
+
+}
+
+- (IBAction)btnInsuranceOnTouch:(id)sender {
+    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"保险" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
+
+}
+
+- (IBAction)btnMoreOnTouch:(id)sender {
+    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"更多" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
+
+}
 @end

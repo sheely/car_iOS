@@ -39,5 +39,12 @@
     icon = "navi_phone.png"
     title = "联系我们"
     />
+    <module
+    name="request"
+    target="SHRequirementViewController"
+    type = "--"
+    icon = "navi_phone.png"
+    title = "提出需求"
+    />
     
 </root>
