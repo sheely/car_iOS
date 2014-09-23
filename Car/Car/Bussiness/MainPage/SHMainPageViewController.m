@@ -62,4 +62,16 @@
     [[UIApplication sharedApplication]open:intent];
 
 }
+
+- (IBAction)btnCleanOnTouch:(id)sender {
+    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"测试" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
+}
+
+- (IBAction)btnCheckOnTouch:(id)sender {
+    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"测试" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
+}
 @end

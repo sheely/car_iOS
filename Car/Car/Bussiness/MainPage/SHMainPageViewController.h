@@ -15,4 +15,6 @@
 - (IBAction)btnRepair:(id)sender;
 - (IBAction)btnInsuranceOnTouch:(id)sender;
 - (IBAction)btnMoreOnTouch:(id)sender;
+- (IBAction)btnCleanOnTouch:(id)sender;
+- (IBAction)btnCheckOnTouch:(id)sender;
 @end
