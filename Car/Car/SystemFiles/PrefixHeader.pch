@@ -14,7 +14,7 @@
 #import "config.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
+#import "BMapKit.h"
 #import "AppDelegate.h"
 
 #endif

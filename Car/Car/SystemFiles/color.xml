@@ -12,9 +12,9 @@
     <property name="ColorStandard" R="50" G="50" B= "50" A="1" />
     <property name="ColorBase" R="99" G="168" B= "54" A="1" />
     <property name="ColorTabSelected" R="178" G="177" B= "172" A="1" />
-    <property name="ColorLoginBackGround" R="240" G="240" B= "240" A="1" />
-    <property name="ColorLightBackGround" R="240" G="240" B= "240" A="1" />
-    <property name="ColorBaseBackGround" R="240" G="240" B= "240" A="1" />
+    <property name="ColorLoginBackGround" R="245" G="245" B= "245" A="1" />
+    <property name="ColorLightBackGround" R="245" G="245" B= "245" A="1" />
+    <property name="ColorBaseBackGround" R="245" G="245" B= "245" A="1" />
     <property name="ColorTextOrg" R="243" G="107" B= "33" A="1" />
     <property name="ColorBackGround" R="242" G="242" B= "242" A="1" />
     <property name="ColorBackGroundCellHead" R="251" G="244" B= "224" A="1" />

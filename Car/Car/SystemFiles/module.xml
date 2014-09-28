@@ -18,7 +18,7 @@
     
     <module
     name="login"
-    target="SHMainPageViewController"
+    target="SHCarInfoViewController"
     type = "main"
     icon = "navi_order.png"
     title = "车况档案"
@@ -26,12 +26,11 @@
     
     <module
     name="myinfo"
-    target="SHMainPageViewController"
+    target="SHMyInfoViewController"
     type = "main"
-    icon = "navi_myself.png"
-    title = "我的"
+    icon = "navi_myself"
+    title = "我的信息"
     />
-    
     <module
     name="contact_me"
     target="SHMainPageViewController"
@@ -46,5 +45,20 @@
     icon = "navi_phone.png"
     title = "提出需求"
     />
+    <module
+    name="shoplist"
+    target="SHShopListViewController"
+    type = "--"
+    icon = "navi_phone.png"
+    title = "提出需求"
+    />
+    <module
+    name="shopinfo"
+    target="SHShopInfoViewController"
+    type = "--"
+    icon = "navi_phone.png"
+    title = "提出需求"
+    />
+    
     
 </root>

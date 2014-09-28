@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="car_item_collect" id="gTV-IL-0wX" customClass="SHCarItemCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="42"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="96" height="42"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_bg@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-mk-37K">
+                        <rect key="frame" x="0.0" y="0.0" width="96" height="42"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="引擎盖内部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-vx-cEx">
+                        <rect key="frame" x="38" y="5" width="50" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmindark"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_icon_battery.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rk6-vJ-P5V">
+                        <rect key="frame" x="8" y="5" width="32" height="32"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_status_fault@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="1xl-sx-C9V">
+                        <rect key="frame" x="76" y="0.0" width="20" height="20"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="imgState" destination="1xl-sx-C9V" id="oqs-0z-9Yr"/>
+                <outlet property="imgView" destination="Rk6-vJ-P5V" id="0TK-Dh-BcM"/>
+                <outlet property="labTitle" destination="2SF-vx-cEx" id="tpA-JK-u58"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="set_bg@3x.png" width="288" height="126"/>
+        <image name="set_icon_battery.png" width="32" height="32"/>
+        <image name="set_status_fault@3x.png" width="60" height="60"/>
+    </resources>
+</document>

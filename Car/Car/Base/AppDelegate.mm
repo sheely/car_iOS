@@ -8,16 +8,44 @@
 
 #import "AppDelegate.h"
 
+
 @implementation AppDelegate
+  CLLocationManager * locationManager;
+BMKMapManager* _mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     [super application:application didFinishLaunchingWithOptions:launchOptions];
-
+    
+  
+    
+    
+    locationManager =[[CLLocationManager alloc] init];
+    
+//    [locationManager requestAlwaysAuthorization];//用这个方法，plist中需要NSLocationAlwaysUsageDescription
+    
+    [locationManager requestWhenInUseAuthorization];//用这个方法，plist里要加字段NSLocationWhenInUseUsageDescription
+    _mapManager = [[BMKMapManager alloc]init];
+    BMKMapView * v = [[BMKMapView alloc]init];
+    BOOL ret = [_mapManager start:@"2GNPcYG9Kqfi3Up0bPGyvftD" generalDelegate:(id<BMKGeneralDelegate>)self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+ 
     return YES;
 }
-							
+- (void)onGetNetworkState:(int)iError
+{
+}
+
+/**
+ *返回授权验证错误
+ *@param iError 错误号 : BMKErrorPermissionCheckFailure 验证失败
+ */
+- (void)onGetPermissionState:(int)iError
+{
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
