@@ -8,6 +8,7 @@
 
 #import "SHShopListViewController.h"
 #import "SHShopListCell.h"
+#import "SHShopPinAnnotationView.h"
 
 @interface SHShopListViewController ()
 
@@ -21,13 +22,21 @@
     self.mapView.delegate = self;
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
-
     [_locService startUserLocationService];
-
     [self startFollowing:nil];
     [self addPointAnnotation];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)loadSkin
+{
+    [super loadSkin];
+    self.btnCheck.layer.masksToBounds = YES;
+    self.btnCheck.layer.cornerRadius = 5;
+    self.btnReserveCheck.layer.masksToBounds = YES;
+    self.btnReserveCheck.layer.cornerRadius = 5;
+}
+
 - (void)addPointAnnotation
 {
     BMKPointAnnotation* pointAnnotation = [[BMKPointAnnotation alloc]init];
@@ -38,7 +47,45 @@
     pointAnnotation.title = @"test";
     pointAnnotation.subtitle = @"此Annotation可拖拽!";
     [_mapView addAnnotation:pointAnnotation];
+    
+    pointAnnotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 39.7151;
+    coor.longitude = 116.4011;
+    pointAnnotation.coordinate = coor;
+    pointAnnotation.title = @"test";
+    pointAnnotation.subtitle = @"此Annotation可拖拽!";
+    [_mapView addAnnotation:pointAnnotation];
+    pointAnnotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 39.7151;
+    coor.longitude = 116.4011;
+    pointAnnotation.coordinate = coor;
+    pointAnnotation.title = @"test";
+    pointAnnotation.subtitle = @"此Annotation可拖拽!";
+    [_mapView addAnnotation:pointAnnotation];
+    
+    pointAnnotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 31.1408;
+    coor.longitude = 121.5709;
+    pointAnnotation.coordinate = coor;
+    pointAnnotation.title = @"test";
+    pointAnnotation.subtitle = @"此Annotation可拖拽!";
+    [_mapView addAnnotation:pointAnnotation];
    
+    pointAnnotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 31.1008;
+    coor.longitude = 121.5209;
+    pointAnnotation.coordinate = coor;
+    pointAnnotation.title = @"test";
+    pointAnnotation.subtitle = @"此Annotation可拖拽!";
+    [_mapView addAnnotation:pointAnnotation];
+   
+    pointAnnotation = [[BMKPointAnnotation alloc]init];
+    coor.latitude = 31.0108;
+    coor.longitude = 121.5109;
+    pointAnnotation.coordinate = coor;
+    pointAnnotation.title = @"test";
+    pointAnnotation.subtitle = @"此Annotation可拖拽!";
+    [_mapView addAnnotation:pointAnnotation];
     
 }
 -(IBAction)startFollowing:(id)sender
@@ -90,10 +137,28 @@
     [self.tableView reloadData];
 }
 
-//- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
-//{
-//    
-//}
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    SHShopPinAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHShopPinAnnotationView" owner:nil options:nil] objectAtIndex:0];
+    newAnnotation.annotation = annotation;
+    [newAnnotation.btnAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    //newAnnotation.reuseIdentifier = AnnotationViewID;
+    NSString *AnnotationViewID = @"renameMark";
+
+//BMKPinAnnotationView *  newAnnotation =    [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
+    newAnnotation.centerOffset = CGPointMake(1000, -100);
+
+    // 设置颜色
+//    ((BMKPinAnnotationView*)newAnnotation).pinColor = BMKPinAnnotationColorPurple;
+    // 从天上掉下效果
+    ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
+    // 设置可拖拽
+    //((BMKPinAnnotationView*)newAnnotation).draggable = YES;
+return newAnnotation;
+
+}
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHShopListCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHShopListCell" owner:nil options:nil] objectAtIndex:0];
@@ -109,6 +174,13 @@
     SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
     [[UIApplication sharedApplication]open:i];
 }
+- (void)btnAction:(UIButton*)sender
+{
+    SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
+    [[UIApplication sharedApplication]open:i];
+}
+
+
 /*
 #pragma mark - Navigation
 
