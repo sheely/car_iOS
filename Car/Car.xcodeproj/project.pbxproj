@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
+		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
 		9E3F62AD19D1B794008C8B7B /* ic_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AC19D1B794008C8B7B /* ic_point.png */; };
 		9E3F62AF19D1B97E008C8B7B /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AE19D1B97E008C8B7B /* ic_location.png */; };
 		9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B219D1CBEB008C8B7B /* btnbg.png */; };
@@ -52,6 +54,10 @@
 		9E5E600319D9CDED00642CED /* icon_set@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5E600119D9CDED00642CED /* icon_set@2x.png */; };
 		9E5E600619D9CE4B00642CED /* icon_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5E600419D9CE4B00642CED /* icon_time.png */; };
 		9E5E600719D9CE4B00642CED /* icon_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5E600519D9CE4B00642CED /* icon_time@2x.png */; };
+		9E5E600A19DB157E00642CED /* icon_list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5E600819DB157E00642CED /* icon_list@3x.png */; };
+		9E5E600B19DB157E00642CED /* icon_map@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5E600919DB157E00642CED /* icon_map@3x.png */; };
+		9E5E601019DB202D00642CED /* SHServiceCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E600E19DB202D00642CED /* SHServiceCenterViewController.m */; };
+		9E5E601119DB202D00642CED /* SHServiceCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E5E600F19DB202D00642CED /* SHServiceCenterViewController.xib */; };
 		9ED5508B19D5D8740046A4C1 /* SHCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */; };
 		9ED5508C19D5D8740046A4C1 /* SHCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ED5508A19D5D8740046A4C1 /* SHCarInfoViewController.xib */; };
 		9ED5509619D5DA910046A4C1 /* bg_dashboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED5508E19D5DA910046A4C1 /* bg_dashboard@2x.png */; };
@@ -96,6 +102,7 @@
 		9ED550E119D6566F0046A4C1 /* lis_icon_report@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED550D919D6566F0046A4C1 /* lis_icon_report@3x.png */; };
 		9ED550E219D6566F0046A4C1 /* lis_icon_status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED550DA19D6566F0046A4C1 /* lis_icon_status@2x.png */; };
 		9ED550E319D6566F0046A4C1 /* lis_icon_status@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED550DB19D6566F0046A4C1 /* lis_icon_status@3x.png */; };
+		9EEA58BC19DB268E006B67AC /* load@568.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEA58BB19DB268E006B67AC /* load@568.png */; };
 		9EF627E119CEBA4900111E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF627E019CEBA4900111E2F /* main.m */; };
 		9EF627E719CEBA4900111E2F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF627E619CEBA4900111E2F /* ViewController.m */; };
 		9EF627EC19CEBA4900111E2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF627EB19CEBA4900111E2F /* Images.xcassets */; };
@@ -328,6 +335,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoginViewController.h; sourceTree = "<group>"; };
+		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
+		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
+		9E1762EB19E1C73C008E3BD9 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		9E3F62AC19D1B794008C8B7B /* ic_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_point.png; sourceTree = "<group>"; };
 		9E3F62AE19D1B97E008C8B7B /* ic_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_location.png; sourceTree = "<group>"; };
 		9E3F62B219D1CBEB008C8B7B /* btnbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnbg.png; path = Car/Res/btnbg.png; sourceTree = SOURCE_ROOT; };
@@ -442,6 +453,11 @@
 		9E5E600119D9CDED00642CED /* icon_set@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set@2x.png"; sourceTree = "<group>"; };
 		9E5E600419D9CE4B00642CED /* icon_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_time.png; sourceTree = "<group>"; };
 		9E5E600519D9CE4B00642CED /* icon_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time@2x.png"; sourceTree = "<group>"; };
+		9E5E600819DB157E00642CED /* icon_list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_list@3x.png"; sourceTree = "<group>"; };
+		9E5E600919DB157E00642CED /* icon_map@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_map@3x.png"; sourceTree = "<group>"; };
+		9E5E600D19DB202D00642CED /* SHServiceCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHServiceCenterViewController.h; sourceTree = "<group>"; };
+		9E5E600E19DB202D00642CED /* SHServiceCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHServiceCenterViewController.m; sourceTree = "<group>"; };
+		9E5E600F19DB202D00642CED /* SHServiceCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHServiceCenterViewController.xib; sourceTree = "<group>"; };
 		9ED5508819D5D8740046A4C1 /* SHCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarInfoViewController.h; sourceTree = "<group>"; };
 		9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarInfoViewController.m; sourceTree = "<group>"; };
 		9ED5508A19D5D8740046A4C1 /* SHCarInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarInfoViewController.xib; sourceTree = "<group>"; };
@@ -489,6 +505,7 @@
 		9ED550D919D6566F0046A4C1 /* lis_icon_report@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lis_icon_report@3x.png"; sourceTree = "<group>"; };
 		9ED550DA19D6566F0046A4C1 /* lis_icon_status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lis_icon_status@2x.png"; sourceTree = "<group>"; };
 		9ED550DB19D6566F0046A4C1 /* lis_icon_status@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lis_icon_status@3x.png"; sourceTree = "<group>"; };
+		9EEA58BB19DB268E006B67AC /* load@568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "load@568.png"; sourceTree = "<group>"; };
 		9EF627DB19CEBA4900111E2F /* Car.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Car.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF627DF19CEBA4900111E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF627E019CEBA4900111E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -915,6 +932,8 @@
 		9E3F62DE19D47B00008C8B7B /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E5E600819DB157E00642CED /* icon_list@3x.png */,
+				9E5E600919DB157E00642CED /* icon_map@3x.png */,
 				9E5E600419D9CE4B00642CED /* icon_time.png */,
 				9E5E600519D9CE4B00642CED /* icon_time@2x.png */,
 				9E5E600019D9CDED00642CED /* icon_set.png */,
@@ -1016,6 +1035,16 @@
 				9E5E5FE619D86BE200642CED /* BMKVersion.h */,
 			);
 			path = inc;
+			sourceTree = "<group>";
+		};
+		9E5E600C19DB201100642CED /* ServiceCenter */ = {
+			isa = PBXGroup;
+			children = (
+				9E5E600D19DB202D00642CED /* SHServiceCenterViewController.h */,
+				9E5E600E19DB202D00642CED /* SHServiceCenterViewController.m */,
+				9E5E600F19DB202D00642CED /* SHServiceCenterViewController.xib */,
+			);
+			path = ServiceCenter;
 			sourceTree = "<group>";
 		};
 		9ED5508719D5D8460046A4C1 /* CarInfo */ = {
@@ -1232,6 +1261,7 @@
 		9EF6296D19CEF92A00111E2F /* SystemFiles */ = {
 			isa = PBXGroup;
 			children = (
+				9E1762EB19E1C73C008E3BD9 /* config.h */,
 				9EF62A3D19CEFB5C00111E2F /* CoreGraphics.framework */,
 				9EF62A3B19CEFB4500111E2F /* Foundation.framework */,
 				9EF62A3919CEFB3600111E2F /* UIKit.framework */,
@@ -1804,6 +1834,7 @@
 		9EF62C8C19CF25C300111E2F /* Bussiness */ = {
 			isa = PBXGroup;
 			children = (
+				9E5E600C19DB201100642CED /* ServiceCenter */,
 				9ED5508719D5D8460046A4C1 /* CarInfo */,
 				9E3F62E819D481B3008C8B7B /* MyInfo */,
 				9E3F62C419D30D13008C8B7B /* Shop */,
@@ -1834,6 +1865,7 @@
 		9EF62C9719D097CC00111E2F /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9EEA58BB19DB268E006B67AC /* load@568.png */,
 				9EF62CD519D0A3F600111E2F /* audi.png */,
 				9EF62CD319D0A1A700111E2F /* banner.png */,
 				9EF62C9819D097DB00111E2F /* icon_carwash.png */,
@@ -1869,6 +1901,9 @@
 				9EF62CCE19D09ED200111E2F /* SHMainPageViewController.h */,
 				9EF62CCF19D09ED200111E2F /* SHMainPageViewController.m */,
 				9EF62CD019D09ED200111E2F /* SHMainPageViewController.xib */,
+				9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */,
+				9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */,
+				9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -1956,8 +1991,10 @@
 			files = (
 				9ED5509719D5DA910046A4C1 /* bg_dashboard@3x.png in Resources */,
 				9ED550DD19D6566F0046A4C1 /* lis_icon_insurance@3x.png in Resources */,
+				9E5E600A19DB157E00642CED /* icon_list@3x.png in Resources */,
 				9EF62CC119D09DE700111E2F /* navi_order@3x.png in Resources */,
 				9EF62C5919CF002400111E2F /* SHTableViewTitleImageCell2.xib in Resources */,
+				9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */,
 				9EF62C6A19CF002400111E2F /* status-bar-progress.png in Resources */,
 				9E3F62BD19D1D726008C8B7B /* ic_cam@3x.png in Resources */,
 				9ED550E219D6566F0046A4C1 /* lis_icon_status@2x.png in Resources */,
@@ -2050,6 +2087,7 @@
 				9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */,
 				9E3F62E219D47EA9008C8B7B /* ic_select.png in Resources */,
 				9EF62C0419CF002400111E2F /* blueArrow@2x.png in Resources */,
+				9E5E600B19DB157E00642CED /* icon_map@3x.png in Resources */,
 				9EF62CAE19D097DB00111E2F /* navi_order_pressed.png in Resources */,
 				9EF62BF719CF002400111E2F /* DSLCalendarDayCallout@2x.png in Resources */,
 				9E3F62F219D483A2008C8B7B /* SHMyBaseInfoCell.xib in Resources */,
@@ -2078,6 +2116,7 @@
 				9EF62C7219CF002400111E2F /* SHTitleContentViewController.xib in Resources */,
 				9ED550A219D5DF170046A4C1 /* SHCarItemCollectionViewCell.xib in Resources */,
 				9E5E5FF419D9AE4100642CED /* star_null@3x.png in Resources */,
+				9E5E601119DB202D00642CED /* SHServiceCenterViewController.xib in Resources */,
 				9EF62CC619D09E6000111E2F /* navi_phone@2x.png in Resources */,
 				9ED550DE19D6566F0046A4C1 /* lis_icon_repair@2x.png in Resources */,
 				9EF62C2919CF002400111E2F /* MJPhotoBrowser.bundle in Resources */,
@@ -2114,6 +2153,7 @@
 				9EF62C0819CF002400111E2F /* whiteArrow@2x.png in Resources */,
 				9EF62C5B19CF002400111E2F /* SHTableViewUnReadNumberCell.xib in Resources */,
 				9ED550BA19D5EAE70046A4C1 /* set_icon_battery@2x.png in Resources */,
+				9EEA58BC19DB268E006B67AC /* load@568.png in Resources */,
 				9E3F62F719D4878A008C8B7B /* SHQuitCell.xib in Resources */,
 				9EF62CAA19D097DB00111E2F /* navi_home_pressed.png in Resources */,
 				9ED5509A19D5DA910046A4C1 /* dashboard_normal@3x.png in Resources */,
@@ -2192,6 +2232,7 @@
 				9EF62C2D19CF002400111E2F /* MJPhotoToolbar.m in Sources */,
 				9EF62C4F19CF002400111E2F /* SHTableViewGeneralCell.m in Sources */,
 				9E3F62D219D33096008C8B7B /* SHShopInfoViewController.m in Sources */,
+				9E5E601019DB202D00642CED /* SHServiceCenterViewController.m in Sources */,
 				9EF62C3219CF002400111E2F /* SDWebImageCompat.m in Sources */,
 				9EF62C3119CF002400111E2F /* SDImageCache.m in Sources */,
 				9EF62C8B19CF03B800111E2F /* NSObjectAddtion.m in Sources */,
@@ -2242,6 +2283,7 @@
 				9EF62C1B19CF002400111E2F /* MMVectorImage.m in Sources */,
 				9EF62C8119CF002400111E2F /* LogCMD.m in Sources */,
 				9EF62BE319CF002400111E2F /* UIButton+Addition.m in Sources */,
+				9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */,
 				9EF62C6D19CF002400111E2F /* WTStatusView.m in Sources */,
 				9EF62C1119CF002400111E2F /* PCLineChartView.m in Sources */,
 				9EF62C6419CF002400111E2F /* JDStatusBarStyle.m in Sources */,
@@ -2369,6 +2411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2391,6 +2434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2406,6 +2450,7 @@
 					"$(PROJECT_DIR)/Car/frame",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

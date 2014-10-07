@@ -42,7 +42,8 @@ void(*impx2)(id,SEL);
     if(clazz != nil){
         Class clacc = NSClassFromString(clazz);
         SEL sel = @selector(__GET_PRE_ACTION_STATE:);
-        [clacc methodForSelector:sel];
+        impx = [clacc methodForSelector:sel];
+        impx2 = [self methodForSelector:aSelector];
         if(impx > 0){
             NSError * error = [[[NSError alloc]init] autorelease];
             BOOL result = (BOOL)impx(clacc,sel,error);
@@ -71,6 +72,7 @@ void(*impx2)(id,SEL);
     [SHIntentManager clear];
     SHJump * jp = [__DIC valueForKey:ns.name];
     [[NSNotificationCenter defaultCenter ]removeObserver:self name:ns.name object:nil];
+    impx2 = [jp->target methodForSelector:jp->selector];
     impx2(jp->target,jp->selector);
     [__DIC removeObjectForKey:ns.name];
 }

@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"养车宝";
+    self.title = @"车宝宝";
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -36,6 +36,12 @@
 */
 
 - (IBAction)btnSupportOnTouch:(id)sender
+{
+    [self performSelector:@selector(notificationSupport:) afterNotification:@"notification_login_successful"];
+  
+}
+
+- (void)notificationSupport:(NSNotification*)n
 {
     SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
     [intent.args setValue:@"保养" forKey:@"title"];
@@ -66,12 +72,15 @@
 - (IBAction)btnCleanOnTouch:(id)sender {
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
     [intent.args setValue:@"测试" forKey:@"title"];
+    [intent.args setValue:@"clean" forKey:@"type"];
+
     [[UIApplication sharedApplication]open:intent];
 }
 
 - (IBAction)btnCheckOnTouch:(id)sender {
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
     [intent.args setValue:@"测试" forKey:@"title"];
+    [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
 }
 @end

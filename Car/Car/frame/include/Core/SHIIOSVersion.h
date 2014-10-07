@@ -10,3 +10,4 @@
 #define iOS6 ([[UIDevice currentDevice].systemVersion doubleValue] >= 6.0)
 #define iOS5 ([[UIDevice currentDevice].systemVersion doubleValue] >= 5.0)
 #define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)

@@ -25,7 +25,40 @@
     [_locService startUserLocationService];
     [self startFollowing:nil];
     [self addPointAnnotation];
+    
+    if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
+        self.tableView.hidden = NO;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_map"] target:self action:@selector(checkListMap)];
+        self.viewMapCollect.hidden = YES;
+        self.viewCheck.hidden = YES;
+    }else{
+        self.tableView.hidden = YES;
+        self.viewCheck.hidden = NO;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_list"] target:self action:@selector(checkListMap)];
+    }
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)checkListMap
+{
+    
+    CGContextRef context=UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+    [UIView commitAnimations];
+    if(!self.tableView.hidden ){
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_list"] target:self action:@selector(checkListMap)];
+    }else{
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_map"] target:self action:@selector(checkListMap)];
+    }
+    
+    
+    self.tableView.hidden = ! self.tableView.hidden;
+    self.viewMapCollect.hidden = ! self.viewMapCollect.hidden;
+    
 }
 
 - (void)loadSkin
@@ -35,6 +68,7 @@
     self.btnCheck.layer.cornerRadius = 5;
     self.btnReserveCheck.layer.masksToBounds = YES;
     self.btnReserveCheck.layer.cornerRadius = 5;
+    self.tableView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)addPointAnnotation
@@ -162,6 +196,8 @@ return newAnnotation;
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHShopListCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHShopListCell" owner:nil options:nil] objectAtIndex:0];
+    cell.backgroundColor= [UIColor whiteColor];
+
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath

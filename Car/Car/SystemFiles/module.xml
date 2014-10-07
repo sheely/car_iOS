@@ -6,10 +6,12 @@
     type = "--"
     icon = "tab_news.png"
     title = "登录"
+    pre_action = "notification_login_successful"
+
     />
     
     <module
-    name="login"
+    name="mainpage"
     target="SHMainPageViewController"
     type = "main"
     icon = "navi_home.png"
@@ -17,13 +19,19 @@
     />
     
     <module
-    name="login"
+    name="carinfo"
     target="SHCarInfoViewController"
     type = "main"
     icon = "navi_order.png"
     title = "车况档案"
     />
-    
+    <module
+    name="dealcenter"
+    target="SHServiceCenterViewController"
+    type = "main"
+    icon = "navi_phone.png"
+    title = "受理中心"
+    />
     <module
     name="myinfo"
     target="SHMyInfoViewController"
@@ -31,13 +39,7 @@
     icon = "navi_myself"
     title = "我的信息"
     />
-    <module
-    name="contact_me"
-    target="SHMainPageViewController"
-    type = "main"
-    icon = "navi_phone.png"
-    title = "联系我们"
-    />
+   
     <module
     name="request"
     target="SHRequirementViewController"
