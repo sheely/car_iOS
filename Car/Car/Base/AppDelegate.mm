@@ -20,12 +20,14 @@ BMKMapManager* _mapManager;
     
   
     
-    
+    if(iOS8){
+        
     locationManager =[[CLLocationManager alloc] init];
     
 //    [locationManager requestAlwaysAuthorization];//用这个方法，plist中需要NSLocationAlwaysUsageDescription
     
-    [locationManager requestWhenInUseAuthorization];//用这个方法，plist里要加字段NSLocationWhenInUseUsageDescription
+    [locationManager requestAlwaysAuthorization];//用这个方法，plist里要加字段NSLocationWhenInUseUsageDescription
+    }
     _mapManager = [[BMKMapManager alloc]init];
     BMKMapView * v = [[BMKMapView alloc]init];
     BOOL ret = [_mapManager start:@"2GNPcYG9Kqfi3Up0bPGyvftD" generalDelegate:(id<BMKGeneralDelegate>)self];

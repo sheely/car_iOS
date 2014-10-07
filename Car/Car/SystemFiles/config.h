@@ -12,7 +12,7 @@
 
 
 //测试站
-#define URL_HEADER @"http://route.9191offer.com:8181"
+#define URL_HEADER @"http://112.124.22.156:8083/chebaobao"
 
 //#define URL_HEADER @"http://192.168.1.141:8181/"
 //正式地址 发布地址
