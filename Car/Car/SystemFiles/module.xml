@@ -62,5 +62,12 @@
     title = "提出需求"
     />
     
+    <module
+    name="mycarlist"
+    target="SHMyCarInfoListViewController"
+    type = "--"
+    icon = "--"
+    title = "我的车辆"
+    />
     
 </root>

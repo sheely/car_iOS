@@ -17,4 +17,5 @@
 - (IBAction)btnMoreOnTouch:(id)sender;
 - (IBAction)btnCleanOnTouch:(id)sender;
 - (IBAction)btnCheckOnTouch:(id)sender;
+- (IBAction)btnCarManageOnTouch:(id)sender;
 @end

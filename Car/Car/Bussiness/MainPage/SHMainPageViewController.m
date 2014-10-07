@@ -37,11 +37,11 @@
 
 - (IBAction)btnSupportOnTouch:(id)sender
 {
-    [self performSelector:@selector(notificationSupport:) afterNotification:@"notification_login_successful"];
+    [self performSelector:@selector(notificationSupport) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
   
 }
 
-- (void)notificationSupport:(NSNotification*)n
+- (void)notificationSupport
 {
     SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
     [intent.args setValue:@"保养" forKey:@"title"];
@@ -82,5 +82,16 @@
     [intent.args setValue:@"测试" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
+}
+
+- (IBAction)btnCarManageOnTouch:(id)sender
+{
+    [self performSelector:@selector(notificationMyCar) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+}
+- (void)notificationMyCar
+{
+    SHIntent * intent = [[SHIntent alloc]init:@"mycarlist" delegate:self containner:self.navigationController];
+    [[UIApplication sharedApplication]open:intent];
+
 }
 @end

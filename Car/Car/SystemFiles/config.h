@@ -19,7 +19,7 @@
 //#define URL_HEADER @ "http://mobile.9191offer.com"
 
 //正式地址 发布地址
-#define BATA_HEADER @ "http://mobile.9191offer.com"
+#define BATA_HEADER @ "http://192.168.10.109:8181"
 
 #define URL_BATA @ "http://192.168.1.200/api"
 

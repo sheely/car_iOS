@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A486FE219E3F24000D4C923 /* SHMyCarInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A486FE019E3F24000D4C923 /* SHMyCarInfoListViewController.m */; };
+		1A486FE319E3F24000D4C923 /* SHMyCarInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FE119E3F24000D4C923 /* SHMyCarInfoListViewController.xib */; };
+		1A486FE719E4045300D4C923 /* SHCarInfoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A486FE619E4045300D4C923 /* SHCarInfoListCell.m */; };
+		1A486FE919E4046400D4C923 /* SHCarInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FE819E4046400D4C923 /* SHCarInfoListCell.xib */; };
+		1A486FEB19E405F900D4C923 /* check_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FEA19E405F900D4C923 /* check_alt.png */; };
+		1A486FEE19E406CE00D4C923 /* ic_default_car.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FED19E406CE00D4C923 /* ic_default_car.png */; };
 		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
 		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
 		9E3F62AD19D1B794008C8B7B /* ic_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AC19D1B794008C8B7B /* ic_point.png */; };
@@ -335,6 +341,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A486FDF19E3F24000D4C923 /* SHMyCarInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMyCarInfoListViewController.h; sourceTree = "<group>"; };
+		1A486FE019E3F24000D4C923 /* SHMyCarInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMyCarInfoListViewController.m; sourceTree = "<group>"; };
+		1A486FE119E3F24000D4C923 /* SHMyCarInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMyCarInfoListViewController.xib; sourceTree = "<group>"; };
+		1A486FE519E4045300D4C923 /* SHCarInfoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarInfoListCell.h; sourceTree = "<group>"; };
+		1A486FE619E4045300D4C923 /* SHCarInfoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarInfoListCell.m; sourceTree = "<group>"; };
+		1A486FE819E4046400D4C923 /* SHCarInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarInfoListCell.xib; sourceTree = "<group>"; };
+		1A486FEA19E405F900D4C923 /* check_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_alt.png; sourceTree = "<group>"; };
+		1A486FED19E406CE00D4C923 /* ic_default_car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_default_car.png; sourceTree = "<group>"; };
 		9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoginViewController.h; sourceTree = "<group>"; };
 		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
 		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
@@ -906,6 +920,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A486FE419E403F500D4C923 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A486FE519E4045300D4C923 /* SHCarInfoListCell.h */,
+				1A486FE619E4045300D4C923 /* SHCarInfoListCell.m */,
+				1A486FE819E4046400D4C923 /* SHCarInfoListCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1A486FEC19E405FC00D4C923 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				1A486FED19E406CE00D4C923 /* ic_default_car.png */,
+				1A486FEA19E405F900D4C923 /* check_alt.png */,
+			);
+			name = Res;
+			sourceTree = "<group>";
+		};
 		9E3F62C419D30D13008C8B7B /* Shop */ = {
 			isa = PBXGroup;
 			children = (
@@ -956,6 +989,8 @@
 		9E3F62E819D481B3008C8B7B /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				1A486FEC19E405FC00D4C923 /* Res */,
+				1A486FE419E403F500D4C923 /* View */,
 				9E3F62E919D481D0008C8B7B /* SHMyInfoViewController.h */,
 				9E3F62EA19D481D0008C8B7B /* SHMyInfoViewController.m */,
 				9E3F62EB19D481D0008C8B7B /* SHMyInfoViewController.xib */,
@@ -965,6 +1000,9 @@
 				9E3F62F319D48781008C8B7B /* SHQuitCell.h */,
 				9E3F62F419D48781008C8B7B /* SHQuitCell.m */,
 				9E3F62F619D4878A008C8B7B /* SHQuitCell.xib */,
+				1A486FDF19E3F24000D4C923 /* SHMyCarInfoListViewController.h */,
+				1A486FE019E3F24000D4C923 /* SHMyCarInfoListViewController.m */,
+				1A486FE119E3F24000D4C923 /* SHMyCarInfoListViewController.xib */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -1261,7 +1299,6 @@
 		9EF6296D19CEF92A00111E2F /* SystemFiles */ = {
 			isa = PBXGroup;
 			children = (
-				9E1762EB19E1C73C008E3BD9 /* config.h */,
 				9EF62A3D19CEFB5C00111E2F /* CoreGraphics.framework */,
 				9EF62A3B19CEFB4500111E2F /* Foundation.framework */,
 				9EF62A3919CEFB3600111E2F /* UIKit.framework */,
@@ -1271,6 +1308,7 @@
 				9EF62A3119CEFB0800111E2F /* libxml2.2.dylib */,
 				9EF62A2F19CEFB0100111E2F /* libsqlite3.0.dylib */,
 				9EF62A2D19CEFACF00111E2F /* CoreFoundation.framework */,
+				9E1762EB19E1C73C008E3BD9 /* config.h */,
 				9EF6296E19CEF92A00111E2F /* color.xml */,
 				9EF6297019CEF92A00111E2F /* font.xml */,
 				9EF6297119CEF92A00111E2F /* module.xml */,
@@ -2132,6 +2170,8 @@
 				9EF62CB719D097DB00111E2F /* subicon_support.png in Resources */,
 				9E5E5FF919D9CCB600642CED /* icon_start@3x.png in Resources */,
 				9EF62A2719CEF92A00111E2F /* color.xml in Resources */,
+				1A486FE319E3F24000D4C923 /* SHMyCarInfoListViewController.xib in Resources */,
+				1A486FEE19E406CE00D4C923 /* ic_default_car.png in Resources */,
 				9EF62BF819CF002400111E2F /* DSLCalendarDaySelection-left.png in Resources */,
 				9EF62BFF19CF002400111E2F /* DSLCalendarDaySelection@2x.png in Resources */,
 				9EF62C6619CF002400111E2F /* status-bar-pattern-black.jpg in Resources */,
@@ -2144,6 +2184,7 @@
 				9EF62C0719CF002400111E2F /* whiteArrow.png in Resources */,
 				9E5E600319D9CDED00642CED /* icon_set@2x.png in Resources */,
 				9EF62BEB19CF002400111E2F /* DSLCalendarDayCalloutView.xib in Resources */,
+				1A486FEB19E405F900D4C923 /* check_alt.png in Resources */,
 				9EF62CB019D097DB00111E2F /* navi_phone_pressed.png in Resources */,
 				9E3F62C919D30D24008C8B7B /* SHShopListViewController.xib in Resources */,
 				9ED550B919D5EAE70046A4C1 /* set_icon_air_filter@3x.png in Resources */,
@@ -2159,6 +2200,7 @@
 				9ED5509A19D5DA910046A4C1 /* dashboard_normal@3x.png in Resources */,
 				9E3F62ED19D481D0008C8B7B /* SHMyInfoViewController.xib in Resources */,
 				9EF62C1D19CF002400111E2F /* SHSelectionViewController.xib in Resources */,
+				1A486FE919E4046400D4C923 /* SHCarInfoListCell.xib in Resources */,
 				9ED550CF19D6562C0046A4C1 /* SHCarInfoReportCell.xib in Resources */,
 				9ED5509619D5DA910046A4C1 /* bg_dashboard@2x.png in Resources */,
 				9EF62C0D19CF002400111E2F /* NaviBack@2x.png in Resources */,
@@ -2203,6 +2245,7 @@
 				9EF6297419CEF92A00111E2F /* AppDelegate.mm in Sources */,
 				9EF62C2E19CF002400111E2F /* MJPhotoView.m in Sources */,
 				9EF62BE419CF002400111E2F /* SHCalendarViewController.m in Sources */,
+				1A486FE719E4045300D4C923 /* SHCarInfoListCell.m in Sources */,
 				9EF62C7C19CF002400111E2F /* DebugTextView.m in Sources */,
 				9EF62C0E19CF002400111E2F /* SHPictureViewController.m in Sources */,
 				9EF62C7F19CF002400111E2F /* HelperCMD.m in Sources */,
@@ -2270,6 +2313,7 @@
 				9EF62C2519CF002400111E2F /* MBProgressHUD+Add.m in Sources */,
 				9EF62C8919CF002400111E2F /* UIViewAddtion.m in Sources */,
 				9EF62C0919CF002400111E2F /* EGORefreshTableHeaderView.m in Sources */,
+				1A486FE219E3F24000D4C923 /* SHMyCarInfoListViewController.m in Sources */,
 				9EF62C5719CF002400111E2F /* SHTableViewTitleImageCell.m in Sources */,
 				9EF62C5519CF002400111E2F /* SHTableViewTitleContentCell.m in Sources */,
 				9EF62CD119D09ED200111E2F /* SHMainPageViewController.m in Sources */,
