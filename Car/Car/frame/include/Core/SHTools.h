@@ -49,5 +49,7 @@
 + (NSData*) decode:(NSString*) string;
 + (NSString *)encodeToPercentEscapeString: (NSString *) input;
 + (NSString *)decodeFromPercentEscapeString: (NSString *) input;
+//判断是否存在文件
++ (BOOL) isFileExist:(NSString *)fileName;
 
 @end

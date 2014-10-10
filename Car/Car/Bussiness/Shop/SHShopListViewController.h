@@ -11,12 +11,11 @@
 
 @interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate>
 {
-    BMKLocationService* _locService;
-
 }
 @property (weak, nonatomic) IBOutlet UIView *viewMapCollect;
 @property (weak, nonatomic) IBOutlet UIView *viewCheck;
 @property (weak, nonatomic) IBOutlet UIButton *btnCheck;
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *btnReserveCheck;
+- (IBAction)btnLocationOnTouch:(id)sender;
 @end

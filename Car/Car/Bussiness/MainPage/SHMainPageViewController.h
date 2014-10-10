@@ -10,6 +10,9 @@
 
 @interface SHMainPageViewController : SHViewController
 {
+    __weak IBOutlet SHImageView *imgBrand;
+    __weak IBOutlet UILabel *labBrand;
+    __weak IBOutlet UILabel *labCardNo;
 }
 - (IBAction)btnSupportOnTouch:(id)sender;
 - (IBAction)btnRepair:(id)sender;

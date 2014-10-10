@@ -44,13 +44,16 @@
 {
     SHEntironment.instance.loginName = self.txtLoginName.text;
     SHEntironment.instance.password = self.txtPassword.text;
+    [self showWaitDialogForNetWork];
     SHPostTaskM * p = [[SHPostTaskM alloc]init];
     p.URL = URL_FOR(@"login.action");
     [p.postArgs setValue:@"x" forKey:@"appuuid"];
     [p start:^(SHTask *t) {
-        
+        [self dismissWaitDialog];
          [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
+
         [t.respinfo show];
     }];
    
@@ -68,6 +71,9 @@
 
 +(BOOL)__GET_PRE_ACTION_STATE:(NSError*)e
 {
+    if(SHEntironment.instance.loginName.length >0 ){
+        return YES;
+    }
     return NO;
 }
 @end

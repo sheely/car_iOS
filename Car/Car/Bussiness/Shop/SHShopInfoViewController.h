@@ -11,5 +11,8 @@
 @interface SHShopInfoViewController : SHTableViewController
 @property (weak, nonatomic) IBOutlet UIImageView *imgHead;
 - (IBAction)btnContact:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *labName;
+@property (weak, nonatomic) IBOutlet UILabel *labAddress;
+@property (weak, nonatomic) IBOutlet UILabel *labScore;
 
 @end

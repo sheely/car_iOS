@@ -12,4 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labNewPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imgHead;
+@property (weak, nonatomic) IBOutlet UILabel *labShopName;
+@property (weak, nonatomic) IBOutlet UILabel *labPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labAddress;
+@property (weak, nonatomic) IBOutlet UILabel *labDistance;
+@property (weak, nonatomic) IBOutlet UILabel *labScore;
 @end

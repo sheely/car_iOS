@@ -36,6 +36,8 @@
 #import "SHMsgManager.h"
 #import "SHMsgM.h"
 #import "SHResMsgM.h"
+#import "SHLocationManager.h"
+#import "SHUserLocation.h"
 
 //#import "wax.h"
 
@@ -48,6 +50,15 @@
 #define CORE_NOTIFICATION_CONFIG_STATUS_CHANGED @"core_notification_config_status_changed"
 //触发重新登录
 #define CORE_NOTIFICATION_LOGIN_RELOGIN @"core_notification_login_relogin"
+
+#define CORE_NOTIFICATION_LOCATION_START @"core_notification_location_start"
+
+#define CORE_NOTIFICATION_LOCATION_STOP @"core_notification_location_stop"
+
+#define CORE_NOTIFICATION_LOCATION_UPDATE_USERLOCATION @"core_notification_update_userlocation"
+
+#define CORE_NOTIFICATION_LOCATION_UPDATE_USERHEAD @"core_notification_update_userhead"
+
 
 //重新登录超时时间
 #define CODE_RELOGIN -5

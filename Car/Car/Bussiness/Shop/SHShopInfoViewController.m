@@ -17,6 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商户详情";
+    
+    [self showWaitDialogForNetWork];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"shopdetail.action");
+    [post.postArgs setValue:[self.intent.args valueForKey:@"shopid"] forKey:@"shopid"];
+    [post start:^(SHTask *t) {
+        NSDictionary * dic = [t.result valueForKey:@"shop"];
+        self.labName.text = [dic valueForKey:@"shopname"];
+        self.labAddress.text = [dic valueForKey:@"shopaddress"];
+        self.labScore.text = [NSString stringWithFormat:@"%@ 分",[[dic valueForKey:@"shopscore"] stringValue]];
+        [self dismissWaitDialog];
+        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
+    }];
+    
     // Do any additional setup after loading the view from its nib.
 }
 

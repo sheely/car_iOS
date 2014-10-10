@@ -69,5 +69,41 @@
     icon = "--"
     title = "我的车辆"
     />
+    <module
+    name="editcarinfo"
+    target="SHEditCarinfoViewViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
+    
+    <module
+    name="categarylist"
+    target="SHCarCategaryViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
+    <module
+    name="subcategarylist"
+    target="SHSubCategaryViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
+    <module
+    name="letterslist"
+    target="SHLertterViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
+    <module
+    name="provincelist"
+    target="SHProvinceViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
     
 </root>

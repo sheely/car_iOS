@@ -7,6 +7,7 @@
 //
 
 #import "SHMsg.h"
+#import "Respinfo.h"
 
 @interface SHResMsgM : SHMsg
 

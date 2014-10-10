@@ -7,6 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHShopInfoViewController">
             <connections>
                 <outlet property="imgHead" destination="iys-Do-TrY" id="8el-te-HA4"/>
+                <outlet property="labAddress" destination="ulO-K6-X4V" id="0mG-fL-wF1"/>
+                <outlet property="labName" destination="DSp-YR-bmu" id="A8i-HL-633"/>
+                <outlet property="labScore" destination="tET-BO-s5f" id="lsS-dv-bF2"/>
                 <outlet property="tableView" destination="bDs-wN-mhO" id="yd1-Zd-6Sy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

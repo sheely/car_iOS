@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -27,7 +26,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_icon_battery.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rk6-vJ-P5V">
                         <rect key="frame" x="8" y="5" width="32" height="32"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_status_fault@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="1xl-sx-C9V">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_status_fault.png" translatesAutoresizingMaskIntoConstraints="NO" id="1xl-sx-C9V">
                         <rect key="frame" x="76" y="0.0" width="20" height="20"/>
                     </imageView>
                 </subviews>
@@ -44,6 +43,6 @@
     <resources>
         <image name="set_bg@3x.png" width="288" height="126"/>
         <image name="set_icon_battery.png" width="32" height="32"/>
-        <image name="set_status_fault@3x.png" width="60" height="60"/>
+        <image name="set_status_fault.png" width="20" height="20"/>
     </resources>
 </document>

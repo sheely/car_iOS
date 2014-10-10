@@ -8,12 +8,13 @@
 
 #import "SHTableViewCell.h"
 #import "SHTableViewGeneralCell.h"
+#import "SHImageView.h"
 
 @interface SHTableViewTitleImageCell : SHTableViewGeneralCell
 {
 
 }
-@property (weak, nonatomic) IBOutlet UIImageView *imgIcon;
+@property (weak, nonatomic) IBOutlet SHImageView *imgIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
 
 @end

@@ -20,6 +20,16 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSDictionary * dic = [[NSUserDefaults standardUserDefaults] valueForKey:@"user_car"];
+    if(dic){
+        labBrand.text = [NSString stringWithFormat:@"%@(%@)",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
+        labCardNo.text =[NSString stringWithFormat:@"%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"carcardno"]];
+        [imgBrand setUrl:[dic valueForKey:@"carlogo"]];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -70,11 +80,20 @@
 }
 
 - (IBAction)btnCleanOnTouch:(id)sender {
-    SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"测试" forKey:@"title"];
-    [intent.args setValue:@"clean" forKey:@"type"];
+     [self performSelector:@selector(notificationCleanCar) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+  }
 
-    [[UIApplication sharedApplication]open:intent];
+- (void)notificationCleanCar
+{
+    if([SHLocationManager.instance userlocation]){
+        SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
+        [intent.args setValue:@"测试" forKey:@"title"];
+        [intent.args setValue:@"clean" forKey:@"type"];
+        
+        [[UIApplication sharedApplication]open:intent];
+    }else{
+        [self showAlertDialog:@"仍在定位，请稍后再试"];
+    }
 }
 
 - (IBAction)btnCheckOnTouch:(id)sender {

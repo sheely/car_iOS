@@ -28,7 +28,7 @@
 
 @property (nonatomic,assign) int keybordheight;
 
-@property (nonatomic,assign) id delegate;
+@property (nonatomic,assign) id<NSObject> delegate;
 
 @property (nonatomic,strong) SHIntent * intent;
 

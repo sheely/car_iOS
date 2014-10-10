@@ -21,5 +21,7 @@
 {
     [super loadSkin];
     self.labContent.userstyle = @"labmiddark";
+    self.imgView.layer.masksToBounds = YES;
+    self.imgView.layer.cornerRadius = 5;
 }
 @end

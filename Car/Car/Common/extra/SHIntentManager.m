@@ -76,8 +76,8 @@ static UINavigationController * __NAVIGATION__;
                     if(!iOS7){
                         __NAVIGATION__.navigationBar.clipsToBounds = YES;
                     }
-                    if([SHSkin.instance colorOfStyle:@"ColorBase"]!= nil && iOS7){
-                        __NAVIGATION__.navigationBar.barTintColor = [SHSkin.instance colorOfStyle:@"ColorBase"];
+                    if([SHSkin.instance colorOfStyle:@"ColorNavigation"]!= nil && iOS7){
+                        __NAVIGATION__.navigationBar.barTintColor = [SHSkin.instance colorOfStyle:@"ColorNavigation"];
                     }
                     [[UIApplication sharedApplication].keyWindow addSubview:__NAVIGATION__.view];
                     __NAVIGATION__.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCancel:self action:@selector(btnCancel:)];

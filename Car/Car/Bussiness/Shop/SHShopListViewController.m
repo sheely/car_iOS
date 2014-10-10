@@ -9,6 +9,7 @@
 #import "SHShopListViewController.h"
 #import "SHShopListCell.h"
 #import "SHShopPinAnnotationView.h"
+#import "SHShopPointAnnotation.h"
 
 @interface SHShopListViewController ()
 
@@ -20,12 +21,8 @@
     [super viewDidLoad];
     self.title = @"商户列表";
     self.mapView.delegate = self;
-    _locService = [[BMKLocationService alloc]init];
-    _locService.delegate = self;
-    [_locService startUserLocationService];
-    [self startFollowing:nil];
-    [self addPointAnnotation];
-    
+   
+    //[self startFollowing:nil];
     if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
         self.tableView.hidden = NO;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_map"] target:self action:@selector(checkListMap)];
@@ -36,8 +33,17 @@
         self.viewCheck.hidden = NO;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_list"] target:self action:@selector(checkListMap)];
     }
+    [self startLocation:nil];
+    [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
+    [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocation:) name:CORE_NOTIFICATION_LOCATION_UPDATE_USERLOCATION object:nil];
     
     // Do any additional setup after loading the view from its nib.
+}
+- (void)updateLocation:(NSNotification*)n
+{
+    [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
 }
 
 - (void)checkListMap
@@ -71,57 +77,6 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)addPointAnnotation
-{
-    BMKPointAnnotation* pointAnnotation = [[BMKPointAnnotation alloc]init];
-    CLLocationCoordinate2D coor;
-    coor.latitude = 39.915;
-    coor.longitude = 116.404;
-    pointAnnotation.coordinate = coor;
-    pointAnnotation.title = @"test";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
-    [_mapView addAnnotation:pointAnnotation];
-    
-    pointAnnotation = [[BMKPointAnnotation alloc]init];
-    coor.latitude = 39.7151;
-    coor.longitude = 116.4011;
-    pointAnnotation.coordinate = coor;
-    pointAnnotation.title = @"test";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
-    [_mapView addAnnotation:pointAnnotation];
-    pointAnnotation = [[BMKPointAnnotation alloc]init];
-    coor.latitude = 39.7151;
-    coor.longitude = 116.4011;
-    pointAnnotation.coordinate = coor;
-    pointAnnotation.title = @"test";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
-    [_mapView addAnnotation:pointAnnotation];
-    
-    pointAnnotation = [[BMKPointAnnotation alloc]init];
-    coor.latitude = 31.1408;
-    coor.longitude = 121.5709;
-    pointAnnotation.coordinate = coor;
-    pointAnnotation.title = @"test";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
-    [_mapView addAnnotation:pointAnnotation];
-   
-    pointAnnotation = [[BMKPointAnnotation alloc]init];
-    coor.latitude = 31.1008;
-    coor.longitude = 121.5209;
-    pointAnnotation.coordinate = coor;
-    pointAnnotation.title = @"test";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
-    [_mapView addAnnotation:pointAnnotation];
-   
-    pointAnnotation = [[BMKPointAnnotation alloc]init];
-    coor.latitude = 31.0108;
-    coor.longitude = 121.5109;
-    pointAnnotation.coordinate = coor;
-    pointAnnotation.title = @"test";
-    pointAnnotation.subtitle = @"此Annotation可拖拽!";
-    [_mapView addAnnotation:pointAnnotation];
-    
-}
 -(IBAction)startFollowing:(id)sender
 {
     NSLog(@"进入跟随态");
@@ -151,36 +106,57 @@
     NSLog(@"heading is %@",userLocation.heading);
 }
 
-/**
- *用户位置更新后，会调用此函数
- *@param userLocation 新的用户位置
- */
-- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
-{
-    //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-    [_mapView updateLocationData:userLocation];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 -(void)loadNext
 {
-    mIsEnd = YES;
-    mList =[ @[@"",@"",@"",@"",@"",@""]mutableCopy ] ;
-    [self.tableView reloadData];
+    
+    SHPostTaskM * task = [[SHPostTaskM alloc]init];
+    task.URL= URL_FOR(@"shopquery.action");
+    [task.postArgs setValue:@"" forKey:@"keyname"];
+    [task.postArgs setValue:[NSNumber numberWithFloat: SHLocationManager.instance.userlocation.location.coordinate.latitude]  forKey:@"lat"];
+    [task.postArgs setValue:[NSNumber numberWithFloat: SHLocationManager.instance.userlocation.location.coordinate.longitude] forKey:@"lgt"];
+    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"pageno"];
+    [task.postArgs setValue:[NSNumber numberWithFloat:20] forKey:@"pagesize"];
+
+    [task start:^(SHTask *t) {
+        mList = [t.result valueForKey:@"shopList"];
+        mIsEnd = YES;
+        
+        for (NSDictionary * m in mList) {
+            SHShopPointAnnotation* pointAnnotation = [[SHShopPointAnnotation alloc]init];
+            CLLocationCoordinate2D coor;
+            coor.latitude = [[[m valueForKey:@"originallatitude"] valueForKey:@"lat"] floatValue];
+            coor.longitude = [[[m valueForKey:@"originallatitude"] valueForKey:@"lgt"] floatValue];
+            pointAnnotation.coordinate = coor;
+            pointAnnotation.title = @"test";
+            pointAnnotation.subtitle = @"此Annotation可拖拽!";
+            pointAnnotation.dic = m;
+            [_mapView addAnnotation:pointAnnotation];
+        }
+        
+        [self.tableView reloadData];
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+    }];
 }
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
+    
+    NSDictionary * dic = ((SHShopPointAnnotation*)annotation).dic;
     SHShopPinAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHShopPinAnnotationView" owner:nil options:nil] objectAtIndex:0];
     newAnnotation.annotation = annotation;
     [newAnnotation.btnAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    
+    newAnnotation.labTitle.text = [dic valueForKey:@"shopname"];
+    newAnnotation.labAddress.text = [dic valueForKey:@"shopaddress"];
     //newAnnotation.reuseIdentifier = AnnotationViewID;
     NSString *AnnotationViewID = @"renameMark";
-
+    
 //BMKPinAnnotationView *  newAnnotation =    [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
     newAnnotation.centerOffset = CGPointMake(1000, -100);
 
@@ -195,7 +171,14 @@ return newAnnotation;
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHShopListCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHShopListCell" owner:nil options:nil] objectAtIndex:0];
+    cell.labShopName.text = [dic valueForKey:@"shopname"];
+    cell.labAddress.text = [dic valueForKey:@"shopaddress"];
+    cell.labDistance.text = [NSString stringWithFormat:@"距离:%@",[dic valueForKey:@"distancefromme"]];
+    cell.labPrice.text = [NSString stringWithFormat:@"普洗:%@元",[dic valueForKey:@"normalwashoriginalprice"]];
+    cell.labNewPrice.text = [NSString stringWithFormat:@"精洗:%@元",[dic valueForKey:@"normalwashdiscountprice"]];
+
     cell.backgroundColor= [UIColor whiteColor];
 
     return cell;
@@ -207,7 +190,9 @@ return newAnnotation;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
+    [i.args setValue:[dic valueForKey:@"shopid"] forKey:@"shopid"];
     [[UIApplication sharedApplication]open:i];
 }
 - (void)btnAction:(UIButton*)sender
@@ -227,4 +212,8 @@ return newAnnotation;
 }
 */
 
+- (IBAction)btnLocationOnTouch:(id)sender {
+    [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
+    [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
+}
 @end

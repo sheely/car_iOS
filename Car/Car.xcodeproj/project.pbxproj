@@ -15,6 +15,27 @@
 		1A486FEE19E406CE00D4C923 /* ic_default_car.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FED19E406CE00D4C923 /* ic_default_car.png */; };
 		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
 		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
+		9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */; };
+		9E1762F819E5B429008E3BD9 /* set_status_fault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762F519E5B429008E3BD9 /* set_status_fault@2x.png */; };
+		9E1762F919E5B429008E3BD9 /* set_status_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762F619E5B429008E3BD9 /* set_status_normal@2x.png */; };
+		9E1762FA19E5B429008E3BD9 /* set_status_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762F719E5B429008E3BD9 /* set_status_warning@2x.png */; };
+		9E1762FF19E5B599008E3BD9 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762FB19E5B599008E3BD9 /* arrow_right@2x.png */; };
+		9E17630019E5B599008E3BD9 /* btn_loctation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762FC19E5B599008E3BD9 /* btn_loctation@2x.png */; };
+		9E17630119E5B599008E3BD9 /* icon_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762FD19E5B599008E3BD9 /* icon_list@2x.png */; };
+		9E17630219E5B599008E3BD9 /* icon_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762FE19E5B599008E3BD9 /* icon_map@2x.png */; };
+		9E3D5A0419E6A4EB00141C9D /* SHEditCarinfoViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */; };
+		9E3D5A0519E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */; };
+		9E3D5A0719E6F9E000141C9D /* img_cardband.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0619E6F9E000141C9D /* img_cardband.png */; };
+		9E3D5A0B19E702C800141C9D /* SHCarCategaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0919E702C800141C9D /* SHCarCategaryViewController.m */; };
+		9E3D5A0C19E702C800141C9D /* SHCarCategaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0A19E702C800141C9D /* SHCarCategaryViewController.xib */; };
+		9E3D5A0F19E70AC800141C9D /* SHCarCategaryCellInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0E19E70AC800141C9D /* SHCarCategaryCellInfoCell.m */; };
+		9E3D5A1119E70AD800141C9D /* SHCarCategaryCellInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1019E70AD800141C9D /* SHCarCategaryCellInfoCell.xib */; };
+		9E3D5A1519E711DC00141C9D /* SHSubCategaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1319E711DC00141C9D /* SHSubCategaryViewController.m */; };
+		9E3D5A1619E711DC00141C9D /* SHSubCategaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1419E711DC00141C9D /* SHSubCategaryViewController.xib */; };
+		9E3D5A1A19E7925500141C9D /* SHProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1819E7925500141C9D /* SHProvinceViewController.m */; };
+		9E3D5A1B19E7925500141C9D /* SHProvinceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1919E7925500141C9D /* SHProvinceViewController.xib */; };
+		9E3D5A1F19E793A800141C9D /* SHLertterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1D19E793A800141C9D /* SHLertterViewController.m */; };
+		9E3D5A2019E793A800141C9D /* SHLertterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A1E19E793A800141C9D /* SHLertterViewController.xib */; };
 		9E3F62AD19D1B794008C8B7B /* ic_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AC19D1B794008C8B7B /* ic_point.png */; };
 		9E3F62AF19D1B97E008C8B7B /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AE19D1B97E008C8B7B /* ic_location.png */; };
 		9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B219D1CBEB008C8B7B /* btnbg.png */; };
@@ -353,6 +374,36 @@
 		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
 		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
 		9E1762EB19E1C73C008E3BD9 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		9E1762EC19E458D9008E3BD9 /* SHSHopPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSHopPointAnnotation.h; sourceTree = "<group>"; };
+		9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSHopPointAnnotation.m; sourceTree = "<group>"; };
+		9E1762F319E59FEA008E3BD9 /* SHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLocationManager.h; sourceTree = "<group>"; };
+		9E1762F419E59FEA008E3BD9 /* SHUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHUserLocation.h; sourceTree = "<group>"; };
+		9E1762F519E5B429008E3BD9 /* set_status_fault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_status_fault@2x.png"; sourceTree = "<group>"; };
+		9E1762F619E5B429008E3BD9 /* set_status_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_status_normal@2x.png"; sourceTree = "<group>"; };
+		9E1762F719E5B429008E3BD9 /* set_status_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_status_warning@2x.png"; sourceTree = "<group>"; };
+		9E1762FB19E5B599008E3BD9 /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
+		9E1762FC19E5B599008E3BD9 /* btn_loctation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_loctation@2x.png"; sourceTree = "<group>"; };
+		9E1762FD19E5B599008E3BD9 /* icon_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_list@2x.png"; sourceTree = "<group>"; };
+		9E1762FE19E5B599008E3BD9 /* icon_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_map@2x.png"; sourceTree = "<group>"; };
+		9E3D5A0119E6A4EA00141C9D /* SHEditCarinfoViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditCarinfoViewViewController.h; sourceTree = "<group>"; };
+		9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEditCarinfoViewViewController.m; sourceTree = "<group>"; };
+		9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditCarinfoViewViewController.xib; sourceTree = "<group>"; };
+		9E3D5A0619E6F9E000141C9D /* img_cardband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_cardband.png; sourceTree = "<group>"; };
+		9E3D5A0819E702C800141C9D /* SHCarCategaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarCategaryViewController.h; sourceTree = "<group>"; };
+		9E3D5A0919E702C800141C9D /* SHCarCategaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarCategaryViewController.m; sourceTree = "<group>"; };
+		9E3D5A0A19E702C800141C9D /* SHCarCategaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarCategaryViewController.xib; sourceTree = "<group>"; };
+		9E3D5A0D19E70AC800141C9D /* SHCarCategaryCellInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarCategaryCellInfoCell.h; sourceTree = "<group>"; };
+		9E3D5A0E19E70AC800141C9D /* SHCarCategaryCellInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarCategaryCellInfoCell.m; sourceTree = "<group>"; };
+		9E3D5A1019E70AD800141C9D /* SHCarCategaryCellInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarCategaryCellInfoCell.xib; sourceTree = "<group>"; };
+		9E3D5A1219E711DC00141C9D /* SHSubCategaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSubCategaryViewController.h; sourceTree = "<group>"; };
+		9E3D5A1319E711DC00141C9D /* SHSubCategaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSubCategaryViewController.m; sourceTree = "<group>"; };
+		9E3D5A1419E711DC00141C9D /* SHSubCategaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSubCategaryViewController.xib; sourceTree = "<group>"; };
+		9E3D5A1719E7925500141C9D /* SHProvinceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHProvinceViewController.h; sourceTree = "<group>"; };
+		9E3D5A1819E7925500141C9D /* SHProvinceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHProvinceViewController.m; sourceTree = "<group>"; };
+		9E3D5A1919E7925500141C9D /* SHProvinceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHProvinceViewController.xib; sourceTree = "<group>"; };
+		9E3D5A1C19E793A800141C9D /* SHLertterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLertterViewController.h; sourceTree = "<group>"; };
+		9E3D5A1D19E793A800141C9D /* SHLertterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLertterViewController.m; sourceTree = "<group>"; };
+		9E3D5A1E19E793A800141C9D /* SHLertterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLertterViewController.xib; sourceTree = "<group>"; };
 		9E3F62AC19D1B794008C8B7B /* ic_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_point.png; sourceTree = "<group>"; };
 		9E3F62AE19D1B97E008C8B7B /* ic_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_location.png; sourceTree = "<group>"; };
 		9E3F62B219D1CBEB008C8B7B /* btnbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnbg.png; path = Car/Res/btnbg.png; sourceTree = SOURCE_ROOT; };
@@ -926,6 +977,9 @@
 				1A486FE519E4045300D4C923 /* SHCarInfoListCell.h */,
 				1A486FE619E4045300D4C923 /* SHCarInfoListCell.m */,
 				1A486FE819E4046400D4C923 /* SHCarInfoListCell.xib */,
+				9E3D5A0D19E70AC800141C9D /* SHCarCategaryCellInfoCell.h */,
+				9E3D5A0E19E70AC800141C9D /* SHCarCategaryCellInfoCell.m */,
+				9E3D5A1019E70AD800141C9D /* SHCarCategaryCellInfoCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -933,6 +987,7 @@
 		1A486FEC19E405FC00D4C923 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E3D5A0619E6F9E000141C9D /* img_cardband.png */,
 				1A486FED19E406CE00D4C923 /* ic_default_car.png */,
 				1A486FEA19E405F900D4C923 /* check_alt.png */,
 			);
@@ -958,6 +1013,8 @@
 				9E5E5FEB19D9A86C00642CED /* SHShopPinAnnotationView.xib */,
 				9E5E5FED19D9A8C500642CED /* SHShopPinAnnotationView.h */,
 				9E5E5FEE19D9A8C500642CED /* SHShopPinAnnotationView.m */,
+				9E1762EC19E458D9008E3BD9 /* SHSHopPointAnnotation.h */,
+				9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -965,6 +1022,10 @@
 		9E3F62DE19D47B00008C8B7B /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E1762FB19E5B599008E3BD9 /* arrow_right@2x.png */,
+				9E1762FC19E5B599008E3BD9 /* btn_loctation@2x.png */,
+				9E1762FD19E5B599008E3BD9 /* icon_list@2x.png */,
+				9E1762FE19E5B599008E3BD9 /* icon_map@2x.png */,
 				9E5E600819DB157E00642CED /* icon_list@3x.png */,
 				9E5E600919DB157E00642CED /* icon_map@3x.png */,
 				9E5E600419D9CE4B00642CED /* icon_time.png */,
@@ -1003,6 +1064,21 @@
 				1A486FDF19E3F24000D4C923 /* SHMyCarInfoListViewController.h */,
 				1A486FE019E3F24000D4C923 /* SHMyCarInfoListViewController.m */,
 				1A486FE119E3F24000D4C923 /* SHMyCarInfoListViewController.xib */,
+				9E3D5A0119E6A4EA00141C9D /* SHEditCarinfoViewViewController.h */,
+				9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */,
+				9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */,
+				9E3D5A0819E702C800141C9D /* SHCarCategaryViewController.h */,
+				9E3D5A0919E702C800141C9D /* SHCarCategaryViewController.m */,
+				9E3D5A0A19E702C800141C9D /* SHCarCategaryViewController.xib */,
+				9E3D5A1219E711DC00141C9D /* SHSubCategaryViewController.h */,
+				9E3D5A1319E711DC00141C9D /* SHSubCategaryViewController.m */,
+				9E3D5A1419E711DC00141C9D /* SHSubCategaryViewController.xib */,
+				9E3D5A1719E7925500141C9D /* SHProvinceViewController.h */,
+				9E3D5A1819E7925500141C9D /* SHProvinceViewController.m */,
+				9E3D5A1919E7925500141C9D /* SHProvinceViewController.xib */,
+				9E3D5A1C19E793A800141C9D /* SHLertterViewController.h */,
+				9E3D5A1D19E793A800141C9D /* SHLertterViewController.m */,
+				9E3D5A1E19E793A800141C9D /* SHLertterViewController.xib */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -1105,6 +1181,9 @@
 		9ED5508D19D5DA5E0046A4C1 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E1762F519E5B429008E3BD9 /* set_status_fault@2x.png */,
+				9E1762F619E5B429008E3BD9 /* set_status_normal@2x.png */,
+				9E1762F719E5B429008E3BD9 /* set_status_warning@2x.png */,
 				9ED550D419D6566F0046A4C1 /* lis_icon_insurance@2x.png */,
 				9ED550D519D6566F0046A4C1 /* lis_icon_insurance@3x.png */,
 				9ED550D619D6566F0046A4C1 /* lis_icon_repair@2x.png */,
@@ -1257,6 +1336,8 @@
 		9EF6294819CEF92A00111E2F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9E1762F319E59FEA008E3BD9 /* SHLocationManager.h */,
+				9E1762F419E59FEA008E3BD9 /* SHUserLocation.h */,
 				9EF6294919CEF92A00111E2F /* Base64.h */,
 				9EF6294A19CEF92A00111E2F /* Core.h */,
 				9EF6294B19CEF92A00111E2F /* FileManager.h */,
@@ -2029,11 +2110,13 @@
 			files = (
 				9ED5509719D5DA910046A4C1 /* bg_dashboard@3x.png in Resources */,
 				9ED550DD19D6566F0046A4C1 /* lis_icon_insurance@3x.png in Resources */,
+				9E17630019E5B599008E3BD9 /* btn_loctation@2x.png in Resources */,
 				9E5E600A19DB157E00642CED /* icon_list@3x.png in Resources */,
 				9EF62CC119D09DE700111E2F /* navi_order@3x.png in Resources */,
 				9EF62C5919CF002400111E2F /* SHTableViewTitleImageCell2.xib in Resources */,
 				9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */,
 				9EF62C6A19CF002400111E2F /* status-bar-progress.png in Resources */,
+				9E3D5A1619E711DC00141C9D /* SHSubCategaryViewController.xib in Resources */,
 				9E3F62BD19D1D726008C8B7B /* ic_cam@3x.png in Resources */,
 				9ED550E219D6566F0046A4C1 /* lis_icon_status@2x.png in Resources */,
 				9EF62CB419D097DB00111E2F /* subicon_insurance.png in Resources */,
@@ -2058,6 +2141,7 @@
 				9EF62C5F19CF002400111E2F /* SHWebViewController.xib in Resources */,
 				9EF62CC319D09E1000111E2F /* navi_order@2x.png in Resources */,
 				9EF62BF619CF002400111E2F /* DSLCalendarDayCallout.png in Resources */,
+				9E3D5A0C19E702C800141C9D /* SHCarCategaryViewController.xib in Resources */,
 				9ED5509C19D5DA910046A4C1 /* label_new@2x.png in Resources */,
 				9EF62CD619D0A3F600111E2F /* audi.png in Resources */,
 				9EF62A2919CEF92A00111E2F /* module.xml in Resources */,
@@ -2115,16 +2199,21 @@
 				9EF62CBF19D09DAD00111E2F /* navi_myself@2x.png in Resources */,
 				9EF62A2A19CEF92A00111E2F /* string.xml in Resources */,
 				9EF62A2B19CEF92A00111E2F /* style.xml in Resources */,
+				9E3D5A0519E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib in Resources */,
 				9EF62C6819CF002400111E2F /* status-bar-pattern-default.jpg in Resources */,
 				9EF62C9219CF263B00111E2F /* SHRequirementViewController.xib in Resources */,
 				9EF62C2019CF002400111E2F /* button_item_white_bg.png in Resources */,
 				9E3F62E119D47EA9008C8B7B /* ic_select_default.png in Resources */,
 				9ED550CA19D5EAE70046A4C1 /* set_status_warning@3x.png in Resources */,
+				9E1762F819E5B429008E3BD9 /* set_status_fault@2x.png in Resources */,
 				9EF62C4A19CF002400111E2F /* SHLoadingViewCell.xib in Resources */,
 				9EF62C5019CF002400111E2F /* SHTableViewGeneralCell.xib in Resources */,
 				9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */,
 				9E3F62E219D47EA9008C8B7B /* ic_select.png in Resources */,
+				9E3D5A2019E793A800141C9D /* SHLertterViewController.xib in Resources */,
+				9E1762F919E5B429008E3BD9 /* set_status_normal@2x.png in Resources */,
 				9EF62C0419CF002400111E2F /* blueArrow@2x.png in Resources */,
+				9E17630219E5B599008E3BD9 /* icon_map@2x.png in Resources */,
 				9E5E600B19DB157E00642CED /* icon_map@3x.png in Resources */,
 				9EF62CAE19D097DB00111E2F /* navi_order_pressed.png in Resources */,
 				9EF62BF719CF002400111E2F /* DSLCalendarDayCallout@2x.png in Resources */,
@@ -2136,6 +2225,7 @@
 				9ED550C619D5EAE70046A4C1 /* set_icon_wiper@2x.png in Resources */,
 				9EF62CA819D097DB00111E2F /* icon_carwash.png in Resources */,
 				9EF62CB319D097DB00111E2F /* settings.png in Resources */,
+				9E3D5A1B19E7925500141C9D /* SHProvinceViewController.xib in Resources */,
 				9EF627EC19CEBA4900111E2F /* Images.xcassets in Resources */,
 				9ED5509B19D5DA910046A4C1 /* dashboard_warning@3x.png in Resources */,
 				9EF62BF519CF002400111E2F /* DSLCalendar-previousMonth@2x.png in Resources */,
@@ -2172,6 +2262,7 @@
 				9EF62A2719CEF92A00111E2F /* color.xml in Resources */,
 				1A486FE319E3F24000D4C923 /* SHMyCarInfoListViewController.xib in Resources */,
 				1A486FEE19E406CE00D4C923 /* ic_default_car.png in Resources */,
+				9E1762FA19E5B429008E3BD9 /* set_status_warning@2x.png in Resources */,
 				9EF62BF819CF002400111E2F /* DSLCalendarDaySelection-left.png in Resources */,
 				9EF62BFF19CF002400111E2F /* DSLCalendarDaySelection@2x.png in Resources */,
 				9EF62C6619CF002400111E2F /* status-bar-pattern-black.jpg in Resources */,
@@ -2179,6 +2270,7 @@
 				9E5E5FFC19D9CCBF00642CED /* icon_set@3x.png in Resources */,
 				9E3F62DB19D4730F008C8B7B /* thumb.jpg in Resources */,
 				9E5E600219D9CDED00642CED /* icon_set.png in Resources */,
+				9E1762FF19E5B599008E3BD9 /* arrow_right@2x.png in Resources */,
 				9ED550C819D5EAE70046A4C1 /* set_status_fault@3x.png in Resources */,
 				9E5E5FF719D9C73100642CED /* btn_loctation@3x.png in Resources */,
 				9EF62C0719CF002400111E2F /* whiteArrow.png in Resources */,
@@ -2188,6 +2280,7 @@
 				9EF62CB019D097DB00111E2F /* navi_phone_pressed.png in Resources */,
 				9E3F62C919D30D24008C8B7B /* SHShopListViewController.xib in Resources */,
 				9ED550B919D5EAE70046A4C1 /* set_icon_air_filter@3x.png in Resources */,
+				9E3D5A0719E6F9E000141C9D /* img_cardband.png in Resources */,
 				9ED550DF19D6566F0046A4C1 /* lis_icon_repair@3x.png in Resources */,
 				9E3F62E719D47FF5008C8B7B /* SHCleanViewCell.xib in Resources */,
 				9EF62CAF19D097DB00111E2F /* navi_order.png in Resources */,
@@ -2196,9 +2289,11 @@
 				9ED550BA19D5EAE70046A4C1 /* set_icon_battery@2x.png in Resources */,
 				9EEA58BC19DB268E006B67AC /* load@568.png in Resources */,
 				9E3F62F719D4878A008C8B7B /* SHQuitCell.xib in Resources */,
+				9E3D5A1119E70AD800141C9D /* SHCarCategaryCellInfoCell.xib in Resources */,
 				9EF62CAA19D097DB00111E2F /* navi_home_pressed.png in Resources */,
 				9ED5509A19D5DA910046A4C1 /* dashboard_normal@3x.png in Resources */,
 				9E3F62ED19D481D0008C8B7B /* SHMyInfoViewController.xib in Resources */,
+				9E17630119E5B599008E3BD9 /* icon_list@2x.png in Resources */,
 				9EF62C1D19CF002400111E2F /* SHSelectionViewController.xib in Resources */,
 				1A486FE919E4046400D4C923 /* SHCarInfoListCell.xib in Resources */,
 				9ED550CF19D6562C0046A4C1 /* SHCarInfoReportCell.xib in Resources */,
@@ -2244,6 +2339,7 @@
 				9EF62C3719CF002400111E2F /* SDWebImageManager.m in Sources */,
 				9EF6297419CEF92A00111E2F /* AppDelegate.mm in Sources */,
 				9EF62C2E19CF002400111E2F /* MJPhotoView.m in Sources */,
+				9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */,
 				9EF62BE419CF002400111E2F /* SHCalendarViewController.m in Sources */,
 				1A486FE719E4045300D4C923 /* SHCarInfoListCell.m in Sources */,
 				9EF62C7C19CF002400111E2F /* DebugTextView.m in Sources */,
@@ -2278,6 +2374,7 @@
 				9E5E601019DB202D00642CED /* SHServiceCenterViewController.m in Sources */,
 				9EF62C3219CF002400111E2F /* SDWebImageCompat.m in Sources */,
 				9EF62C3119CF002400111E2F /* SDImageCache.m in Sources */,
+				9E3D5A0F19E70AC800141C9D /* SHCarCategaryCellInfoCell.m in Sources */,
 				9EF62C8B19CF03B800111E2F /* NSObjectAddtion.m in Sources */,
 				9EF62C8719CF002400111E2F /* SHIntentManager.m in Sources */,
 				9EF62C4119CF002400111E2F /* SHCollectionImagesViewController.m in Sources */,
@@ -2294,6 +2391,7 @@
 				9EF627E119CEBA4900111E2F /* main.m in Sources */,
 				9EF62BF119CF002400111E2F /* DSLCalendarView.m in Sources */,
 				9E3F62E519D47FE1008C8B7B /* SHCleanViewCell.m in Sources */,
+				9E3D5A1F19E793A800141C9D /* SHLertterViewController.m in Sources */,
 				9EF62C1319CF002400111E2F /* MMHud.m in Sources */,
 				9EF62C4919CF002400111E2F /* SHLoadingViewCell.m in Sources */,
 				9E3F62CC19D31B34008C8B7B /* SHShopListCell.m in Sources */,
@@ -2315,7 +2413,9 @@
 				9EF62C0919CF002400111E2F /* EGORefreshTableHeaderView.m in Sources */,
 				1A486FE219E3F24000D4C923 /* SHMyCarInfoListViewController.m in Sources */,
 				9EF62C5719CF002400111E2F /* SHTableViewTitleImageCell.m in Sources */,
+				9E3D5A0B19E702C800141C9D /* SHCarCategaryViewController.m in Sources */,
 				9EF62C5519CF002400111E2F /* SHTableViewTitleContentCell.m in Sources */,
+				9E3D5A1A19E7925500141C9D /* SHProvinceViewController.m in Sources */,
 				9EF62CD119D09ED200111E2F /* SHMainPageViewController.m in Sources */,
 				9EF62C0B19CF002400111E2F /* KxMenu.m in Sources */,
 				9EF62C3619CF002400111E2F /* SDWebImageManager+MJ.m in Sources */,
@@ -2339,6 +2439,7 @@
 				9EF62C6319CF002400111E2F /* JDStatusBarNotification.m in Sources */,
 				9ED5508B19D5D8740046A4C1 /* SHCarInfoViewController.m in Sources */,
 				9EF62C3519CF002400111E2F /* SDWebImageDownloaderOperation.m in Sources */,
+				9E3D5A1519E711DC00141C9D /* SHSubCategaryViewController.m in Sources */,
 				9EF62C2719CF002400111E2F /* MBProgressHUD.m in Sources */,
 				9EF62C3419CF002400111E2F /* SDWebImageDownloader.m in Sources */,
 				9EF62C2C19CF002400111E2F /* MJPhotoProgressView.m in Sources */,
@@ -2353,6 +2454,7 @@
 				9EF62C4319CF002400111E2F /* SHShowTableViewController.m in Sources */,
 				9EF62C2B19CF002400111E2F /* MJPhotoLoadingView.m in Sources */,
 				9EF62C1919CF002400111E2F /* MMProgressHUDWindow.m in Sources */,
+				9E3D5A0419E6A4EB00141C9D /* SHEditCarinfoViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
