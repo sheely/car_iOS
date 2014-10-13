@@ -33,7 +33,7 @@
     post.URL = URL_FOR(@"carcategoryquery.action");
     [post start:^(SHTask *t) {
         mIsEnd = YES;
-        mList = [t.result valueForKey:@"carCategoryList"];
+        mList = [t.result valueForKey:@"carcategorys"];
         [self.tableView reloadData];
         [self dismissWaitDialog];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
@@ -47,8 +47,8 @@
 {
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHCarCategaryCellInfoCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCarCategaryCellInfoCell" owner:nil options:nil]objectAtIndex:0];
-    cell.labTitle.text = [dic valueForKey:@"carCagegoryName"];
-    [cell.imgIcon setUrl:[dic valueForKey:@"carCategoryLogo"]];
+    cell.labTitle.text = [dic valueForKey:@"carcategoryname"];
+    [cell.imgIcon setUrl:[dic valueForKey:@"carcategorylogo"]];
     return cell;
 }
 

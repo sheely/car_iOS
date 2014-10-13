@@ -35,7 +35,7 @@
     post.URL = URL_FOR(@"mycarquery.action");
     [post start:^(SHTask *t) {
         //
-        mList = [t.result valueForKey:@"myCarList"];
+        mList = [t.result valueForKey:@"mycars"];
         mIsEnd = YES;
         [self.tableView reloadData];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
@@ -78,7 +78,7 @@
     SHPostTaskM * p = [[SHPostTaskM alloc]init];
     [self showWaitDialogForNetWork];
     p.URL = URL_FOR(@"mycarmaintanance.action");
-    [p.postArgs setValue:[dic valueForKey:@"carId"] forKey:@"carid"];
+    [p.postArgs setValue:[dic valueForKey:@"carid"] forKey:@"carid"];
     [p.postArgs setValue:[NSNumber numberWithInt:3] forKey:@"optype"];
     [p start:^(SHTask *t) {
         [self dismissWaitDialog];

@@ -70,14 +70,14 @@
 
 - (void)categarySubmit:(NSDictionary*)dic
 {
-    [self.carinfo setValue:[dic valueForKey:@"carCategoryId"] forKey:@"carcategoryid"];
-    [self.btnCategary setTitle:[dic valueForKey:@"carCagegoryName"] forState:UIControlStateNormal];
+    [self.carinfo setValue:[dic valueForKey:@"carcategoryid"] forKey:@"carcategoryid"];
+    [self.btnCategary setTitle:[dic valueForKey:@"carcategoryname"] forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)subCategarySubmit:(NSDictionary*)dic
 {
-    [self.carinfo setValue:[dic valueForKey:@"carSeriesId"] forKey:@"carseriesid"];
-    [self.btnSubCategary setTitle:[dic valueForKey:@"carSeriesName"] forState:UIControlStateNormal];
+    [self.carinfo setValue:[dic valueForKey:@"carseriesidid"] forKey:@"carseriesid"];
+    [self.btnSubCategary setTitle:[dic valueForKey:@"carseriesidname"] forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -17,13 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"用户登录";
-#ifdef DEBUG
+//#ifdef DEBUG
     self.txtLoginName.text = @"18912091298";
     self.txtPassword.text = @"2323";
 
-#else
-    
-#endif
+//#else
+//    
+//#endif
     // Do any additional setup after loading the view from its nib.
 }
 

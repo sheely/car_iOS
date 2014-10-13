@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 
-
 @implementation AppDelegate
   CLLocationManager * locationManager;
 BMKMapManager* _mapManager;
@@ -17,14 +16,12 @@ BMKMapManager* _mapManager;
 {
     // Override point for customization after application launch.
     [super application:application didFinishLaunchingWithOptions:launchOptions];
-    
-  
-    
+    [ShareSDK registerApp:@"api20"];
     if(iOS8){
         
     locationManager =[[CLLocationManager alloc] init];
     
-//    [locationManager requestAlwaysAuthorization];//用这个方法，plist中需要NSLocationAlwaysUsageDescription
+//  [locationManager requestAlwaysAuthorization];//用这个方法，plist中需要NSLocationAlwaysUsageDescription
     
     [locationManager requestAlwaysAuthorization];//用这个方法，plist里要加字段NSLocationWhenInUseUsageDescription
     }

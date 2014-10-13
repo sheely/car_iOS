@@ -24,8 +24,6 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

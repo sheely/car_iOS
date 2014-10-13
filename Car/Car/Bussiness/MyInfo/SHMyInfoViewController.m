@@ -110,6 +110,26 @@
     return nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 1){
+        if(indexPath.row == 0){
+            SHIntent * intent = [[SHIntent alloc]init:@"mycarlist" delegate:self containner:self.navigationController];
+            [[UIApplication sharedApplication]open:intent];
+
+        }
+    }else if (indexPath.section == 2){
+        if(indexPath.row == 2){
+            SHIntent * intent = [[SHIntent alloc]init:@"aboutus" delegate:self containner:self.navigationController];
+            [[UIApplication sharedApplication]open:intent];
+        }else if(indexPath.row == 3){
+            NSString *telUrl = [NSString stringWithFormat:@"telprompt:%@",@"18616378436"];
+            NSURL *url = [[NSURL alloc] initWithString:telUrl];
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
+}
+
 /*
 #pragma mark - Navigation
 

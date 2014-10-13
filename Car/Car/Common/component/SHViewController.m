@@ -36,17 +36,16 @@ typedef NS_ENUM(NSInteger, RMoveDirection) {
     float _RightSCloseDuration;
     UITapGestureRecognizer* _tapGestureRec ;
     UIPanGestureRecognizer* _panGestureRec;
+    UITapGestureRecognizer* _tapBankGestureRec ;
+
 }
 @end
 
 @implementation SHViewController
-
 @synthesize keybordView = _keybordView;
-
 @synthesize keybordheight;
-
 @synthesize delegate;
-
+@synthesize tapGesture;
 @synthesize intent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -117,7 +116,21 @@ typedef NS_ENUM(NSInteger, RMoveDirection) {
         [self.view addGestureRecognizer:_panGestureRec];
         
     }
+  
+
     //NVSkin * skin = [[NVSkin alloc]init];
+}
+
+- (void)setTapGesture:(BOOL)tapGesture_
+{
+    tapGesture = tapGesture_;
+    if(tapGesture_){
+        if(_tapBankGestureRec == nil){
+            _tapBankGestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktheblank)];
+            [self.view addGestureRecognizer:_tapBankGestureRec];
+
+        }
+    }
 }
 
 - (void)moveViewWithGesture:(UIPanGestureRecognizer *)panGes
@@ -350,6 +363,7 @@ typedef NS_ENUM(NSInteger, RMoveDirection) {
 
 - (void)closeSideBar
 {
+    [self clicktheblank];
     if(self.leftViewController != nil || self.rightViewController != nil){
         CGAffineTransform oriT = CGAffineTransformIdentity;
         [UIView animateWithDuration:self.view.transform.tx==_LeftSContentOffset?_LeftSCloseDuration:_RightSCloseDuration
@@ -372,7 +386,10 @@ typedef NS_ENUM(NSInteger, RMoveDirection) {
     }
 }
 
-
+- (void)clicktheblank
+{
+    
+}
 - (void)btnBack:(NSObject*)sender
 {
     [self.navigationController popViewControllerAnimated:YES];

@@ -25,6 +25,7 @@
 
 
 @property (nonatomic,strong) UIView * keybordView;
+@property (nonatomic,assign) BOOL tapGesture;
 
 @property (nonatomic,assign) int keybordheight;
 
@@ -81,5 +82,7 @@
 - (void)closeSideBar;
 
 - (float)leftSContentOffset;
+
+- (void) clicktheblank;
 
 @end

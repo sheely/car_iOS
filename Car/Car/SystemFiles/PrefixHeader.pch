@@ -16,5 +16,6 @@
 #import <Foundation/Foundation.h>
 #import "BMapKit.h"
 #import "AppDelegate.h"
+#import <ShareSDK/ShareSDK.h>
 
 #endif

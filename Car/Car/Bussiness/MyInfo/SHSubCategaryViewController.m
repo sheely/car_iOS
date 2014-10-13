@@ -32,7 +32,7 @@
     [post.postArgs setValue:[self.intent.args valueForKey:@"carcategoryid"] forKey:@"carcategoryid"];
     post.URL = URL_FOR(@"carseriesidquery.action");
     [post start:^(SHTask *t) {
-        mList = [t.result valueForKey:@"seriesList"];
+        mList = [t.result valueForKey:@"carseriesid"];
         mIsEnd = YES;
         [self.tableView reloadData];
         [self dismissWaitDialog];
@@ -47,7 +47,7 @@
 {
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHTableViewGeneralCell * cell = [tableView dequeueReusableGeneralCell];
-    cell.labTitle.text = [dic valueForKey:@"carSeriesName"];
+    cell.labTitle.text = [dic valueForKey:@"carseriesidname"];
     return cell;
 }
 

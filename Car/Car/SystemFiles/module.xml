@@ -105,5 +105,12 @@
     icon = "--"
     title = "添加修改车辆信息"
     />
+    <module
+    name="aboutus"
+    target="SHAboutViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
     
 </root>

@@ -7,11 +7,19 @@
 //
 
 #import "SHViewController.h"
-
-@interface SHRequirementViewController : SHViewController<UIActionSheetDelegate>
+#import "SHPhoto.h"
+@interface SHRequirementViewController : SHViewController<UIActionSheetDelegate,UIPickerViewDataSource>
 {
-    
+    NSArray * mList;
     __weak IBOutlet UIButton *btnSubmit;
+    __weak IBOutlet UIPickerView *pickerView;
+    __weak IBOutlet UIButton *btnCategory;
+    __weak IBOutlet UILabel *labTitle;
+    __weak IBOutlet UIView *viewPhote;
 }
+- (IBAction)btnCategoryOnTouch:(id)sender;
 - (IBAction)btnPhotoOnTouch:(id)sender;
+- (IBAction)btnRecordUpInside:(id)sender;
+- (IBAction)btnTouchOutSide:(id)sender;
+- (IBAction)btnToucDown:(id)sender;
 @end

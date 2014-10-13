@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车宝宝";
+    scrollview.contentSize = CGSizeMake(self.view.frame.size.width * 3, scrollview.frame.size.height);
+//    pagecontrol
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -103,10 +105,17 @@
     [[UIApplication sharedApplication]open:intent];
 }
 
+
 - (IBAction)btnCarManageOnTouch:(id)sender
 {
     [self performSelector:@selector(notificationMyCar) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
 }
+
+- (IBAction)btnTabOnTouch:(id)sender
+{
+    [self showAlertDialog:@""];
+}
+
 - (void)notificationMyCar
 {
     SHIntent * intent = [[SHIntent alloc]init:@"mycarlist" delegate:self containner:self.navigationController];

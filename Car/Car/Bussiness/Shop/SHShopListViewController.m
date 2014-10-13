@@ -123,7 +123,7 @@
     [task.postArgs setValue:[NSNumber numberWithFloat:20] forKey:@"pagesize"];
 
     [task start:^(SHTask *t) {
-        mList = [t.result valueForKey:@"shopList"];
+        mList = [t.result valueForKey:@"nearshops"];
         mIsEnd = YES;
         
         for (NSDictionary * m in mList) {
