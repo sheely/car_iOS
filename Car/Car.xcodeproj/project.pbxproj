@@ -120,6 +120,13 @@
 		9E82BB8919EAEB20007301EA /* SHPhoto.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BB8819EAEB20007301EA /* SHPhoto.xib */; };
 		9E82BB8C19EAEB38007301EA /* SHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82BB8B19EAEB38007301EA /* SHPhoto.m */; };
 		9E82BB8E19EAEBC2007301EA /* ic_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BB8D19EAEBC2007301EA /* ic_delete.png */; };
+		9E82BB9019EC3A45007301EA /* dashboard_warning_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BB8F19EC3A45007301EA /* dashboard_warning_background@3x.png */; };
+		9E82BB9419ED62AC007301EA /* SHViewCheckReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82BB9219ED62AC007301EA /* SHViewCheckReportViewController.m */; };
+		9E82BB9519ED62AC007301EA /* SHViewCheckReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BB9319ED62AC007301EA /* SHViewCheckReportViewController.xib */; };
+		9E82BB9819ED63F1007301EA /* SHCheckItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82BB9719ED63F1007301EA /* SHCheckItemView.m */; };
+		9E82BB9A19ED63FC007301EA /* SHCheckItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BB9919ED63FC007301EA /* SHCheckItemView.xib */; };
+		9E82BB9E19ED7661007301EA /* SHInsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E82BB9C19ED7661007301EA /* SHInsuranceViewController.m */; };
+		9E82BB9F19ED7661007301EA /* SHInsuranceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BB9D19ED7661007301EA /* SHInsuranceViewController.xib */; };
 		9ED5508B19D5D8740046A4C1 /* SHCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */; };
 		9ED5508C19D5D8740046A4C1 /* SHCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ED5508A19D5D8740046A4C1 /* SHCarInfoViewController.xib */; };
 		9ED5509619D5DA910046A4C1 /* bg_dashboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED5508E19D5DA910046A4C1 /* bg_dashboard@2x.png */; };
@@ -602,6 +609,16 @@
 		9E82BB8A19EAEB38007301EA /* SHPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPhoto.h; sourceTree = "<group>"; };
 		9E82BB8B19EAEB38007301EA /* SHPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPhoto.m; sourceTree = "<group>"; };
 		9E82BB8D19EAEBC2007301EA /* ic_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_delete.png; sourceTree = "<group>"; };
+		9E82BB8F19EC3A45007301EA /* dashboard_warning_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_warning_background@3x.png"; sourceTree = "<group>"; };
+		9E82BB9119ED62AC007301EA /* SHViewCheckReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewCheckReportViewController.h; sourceTree = "<group>"; };
+		9E82BB9219ED62AC007301EA /* SHViewCheckReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewCheckReportViewController.m; sourceTree = "<group>"; };
+		9E82BB9319ED62AC007301EA /* SHViewCheckReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHViewCheckReportViewController.xib; sourceTree = "<group>"; };
+		9E82BB9619ED63F1007301EA /* SHCheckItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCheckItemView.h; sourceTree = "<group>"; };
+		9E82BB9719ED63F1007301EA /* SHCheckItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCheckItemView.m; sourceTree = "<group>"; };
+		9E82BB9919ED63FC007301EA /* SHCheckItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCheckItemView.xib; sourceTree = "<group>"; };
+		9E82BB9B19ED7661007301EA /* SHInsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInsuranceViewController.h; sourceTree = "<group>"; };
+		9E82BB9C19ED7661007301EA /* SHInsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInsuranceViewController.m; sourceTree = "<group>"; };
+		9E82BB9D19ED7661007301EA /* SHInsuranceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHInsuranceViewController.xib; sourceTree = "<group>"; };
 		9ED5508819D5D8740046A4C1 /* SHCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarInfoViewController.h; sourceTree = "<group>"; };
 		9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarInfoViewController.m; sourceTree = "<group>"; };
 		9ED5508A19D5D8740046A4C1 /* SHCarInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarInfoViewController.xib; sourceTree = "<group>"; };
@@ -1364,6 +1381,15 @@
 				9ED550CB19D655E50046A4C1 /* SHCarInfoReportCell.h */,
 				9ED550CC19D655E50046A4C1 /* SHCarInfoReportCell.m */,
 				9ED550CE19D6562C0046A4C1 /* SHCarInfoReportCell.xib */,
+				9E82BB9119ED62AC007301EA /* SHViewCheckReportViewController.h */,
+				9E82BB9219ED62AC007301EA /* SHViewCheckReportViewController.m */,
+				9E82BB9319ED62AC007301EA /* SHViewCheckReportViewController.xib */,
+				9E82BB9619ED63F1007301EA /* SHCheckItemView.h */,
+				9E82BB9719ED63F1007301EA /* SHCheckItemView.m */,
+				9E82BB9919ED63FC007301EA /* SHCheckItemView.xib */,
+				9E82BB9B19ED7661007301EA /* SHInsuranceViewController.h */,
+				9E82BB9C19ED7661007301EA /* SHInsuranceViewController.m */,
+				9E82BB9D19ED7661007301EA /* SHInsuranceViewController.xib */,
 			);
 			path = CarInfo;
 			sourceTree = "<group>";
@@ -1371,6 +1397,7 @@
 		9ED5508D19D5DA5E0046A4C1 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E82BB8F19EC3A45007301EA /* dashboard_warning_background@3x.png */,
 				9E1762F519E5B429008E3BD9 /* set_status_fault@2x.png */,
 				9E1762F619E5B429008E3BD9 /* set_status_normal@2x.png */,
 				9E1762F719E5B429008E3BD9 /* set_status_warning@2x.png */,
@@ -2367,6 +2394,7 @@
 				9E3F62BC19D1D726008C8B7B /* ic_cam@2x.png in Resources */,
 				9EF62CA919D097DB00111E2F /* icon_mechanic.png in Resources */,
 				9E3F62B719D1CC85008C8B7B /* btnbg@3x.png in Resources */,
+				9E82BB9A19ED63FC007301EA /* SHCheckItemView.xib in Resources */,
 				9EF62C5819CF002400111E2F /* SHTableViewTitleImageCell.xib in Resources */,
 				9EF62BFA19CF002400111E2F /* DSLCalendarDaySelection-middle.png in Resources */,
 				9EF62C0219CF002400111E2F /* blackArrow@2x.png in Resources */,
@@ -2408,6 +2436,7 @@
 				9EF62CC719D09E6000111E2F /* navi_phone@3x.png in Resources */,
 				9ED550E019D6566F0046A4C1 /* lis_icon_report@2x.png in Resources */,
 				9ED550BB19D5EAE70046A4C1 /* set_icon_battery@3x.png in Resources */,
+				9E82BB9019EC3A45007301EA /* dashboard_warning_background@3x.png in Resources */,
 				9EF62CAC19D097DB00111E2F /* navi_myself_pressed.png in Resources */,
 				9E5E600619D9CE4B00642CED /* icon_time.png in Resources */,
 				9ED550D319D6564B0046A4C1 /* label_new@3x.png in Resources */,
@@ -2441,6 +2470,7 @@
 				9EF62BFD19CF002400111E2F /* DSLCalendarDaySelection-right@2x.png in Resources */,
 				9ED550C619D5EAE70046A4C1 /* set_icon_wiper@2x.png in Resources */,
 				9EF62CA819D097DB00111E2F /* icon_carwash.png in Resources */,
+				9E82BB9F19ED7661007301EA /* SHInsuranceViewController.xib in Resources */,
 				9EF62CB319D097DB00111E2F /* settings.png in Resources */,
 				9E3D5A1B19E7925500141C9D /* SHProvinceViewController.xib in Resources */,
 				9EF627EC19CEBA4900111E2F /* Images.xcassets in Resources */,
@@ -2457,6 +2487,7 @@
 				9ED550DC19D6566F0046A4C1 /* lis_icon_insurance@2x.png in Resources */,
 				9EF62BF219CF002400111E2F /* DSLCalendar-nextMonth.png in Resources */,
 				9ED5509919D5DA910046A4C1 /* dashboard_indicator@3x.png in Resources */,
+				9E82BB9519ED62AC007301EA /* SHViewCheckReportViewController.xib in Resources */,
 				9EF62CAD19D097DB00111E2F /* navi_myself.png in Resources */,
 				9EF62C7219CF002400111E2F /* SHTitleContentViewController.xib in Resources */,
 				9ED550A219D5DF170046A4C1 /* SHCarItemCollectionViewCell.xib in Resources */,
@@ -2591,6 +2622,7 @@
 				9EF62C5319CF002400111E2F /* SHTableViewTitleContentBottomCell.m in Sources */,
 				9EF62C2219CF002400111E2F /* SHNavigationShowViewController.m in Sources */,
 				9EF62BE919CF002400111E2F /* SHDatePopoverController.m in Sources */,
+				9E82BB9419ED62AC007301EA /* SHViewCheckReportViewController.m in Sources */,
 				9EF62C2F19CF002400111E2F /* MKAnnotationView+WebCache.m in Sources */,
 				9EF62BEA19CF002400111E2F /* DSLCalendarDayCalloutView.m in Sources */,
 				9EF62C2D19CF002400111E2F /* MJPhotoToolbar.m in Sources */,
@@ -2623,6 +2655,7 @@
 				9E3F62CC19D31B34008C8B7B /* SHShopListCell.m in Sources */,
 				9EF62C5A19CF002400111E2F /* SHTableViewUnReadNumberCell.m in Sources */,
 				9EF62C8019CF002400111E2F /* IPConfigCMD.m in Sources */,
+				9E82BB9819ED63F1007301EA /* SHCheckItemView.m in Sources */,
 				9EF62C4619CF002400111E2F /* SHTableViewController.m in Sources */,
 				9EF62C4519CF002400111E2F /* SHTableViewCell.m in Sources */,
 				9EF62C1E19CF002400111E2F /* SHImageView.m in Sources */,
@@ -2648,6 +2681,7 @@
 				9EF62C3619CF002400111E2F /* SDWebImageManager+MJ.m in Sources */,
 				9E82BB8C19EAEB38007301EA /* SHPhoto.m in Sources */,
 				9EF62C7519CF002400111E2F /* NSDate+convenience.m in Sources */,
+				9E82BB9E19ED7661007301EA /* SHInsuranceViewController.m in Sources */,
 				9EF62C1C19CF002400111E2F /* SHSelectionViewController.m in Sources */,
 				9EF62BED19CF002400111E2F /* DSLCalendarMonthSelectorView.m in Sources */,
 				9EF62C3019CF002400111E2F /* NSData+GIF.m in Sources */,

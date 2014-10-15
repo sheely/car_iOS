@@ -112,5 +112,26 @@
     icon = "--"
     title = "添加修改车辆信息"
     />
+    <module
+    name="checkreport"
+    target="SHViewCheckReportViewController"
+    type = "--"
+    icon = "--"
+    title = "添加修改车辆信息"
+    />
+    <module
+    name="contentcontainer"
+    target="SHContentViewController"
+    type = "--"
+    icon = "--"
+    title = "内容"
+    />
+    <module
+    name="insurancereport"
+    target="SHInsuranceViewController"
+    type = "--"
+    icon = "--"
+    title = "保险"
+    />
     
 </root>

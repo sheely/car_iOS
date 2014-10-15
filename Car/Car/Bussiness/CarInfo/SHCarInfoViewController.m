@@ -22,8 +22,37 @@
     [self.collectView registerNib: [UINib nibWithNibName:@"SHCarItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"car_item_collect"];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" target:self action:@selector(btnShare:)];
-    
+    self.imgIndicator.layer.anchorPoint = CGPointMake(0.88, 0.5);
+
+    [self performSelector:@selector(drawdashboard) withObject:nil afterDelay:0.5];
     // Do any additional setup after loading the view from its nib.
+}
+
+int sum = 30;
+int cur = 0;
+int order = 0;
+
+- (void)drawdashboard
+{
+    float persent =  255.0/100;
+    float persentg = 173.0/100;
+    float persentb = 163.0/100;
+    float persentIndicator = (3.14 +1.4)/100;
+    self.viewDashBoard.backgroundColor =  [UIColor colorWithRed:(255 - persent*cur )/255.0 green:(persentg*cur )/255.0  blue: (persentb*cur )/255.0 alpha:1];
+    self.labScore.textColor = [UIColor colorWithRed:(255 - persent*cur )/255.0 green:(persentg*cur )/255.0  blue: (persentb*cur )/255.0 alpha:1];
+    self.imgIndicator.transform = CGAffineTransformMakeRotation(persentIndicator* cur - 0.7);
+    self.labScore.text = [NSString stringWithFormat:@"%d分",cur];
+    if(cur < 100 && order == 0){
+        [self performSelector:@selector(drawdashboard) withObject:nil afterDelay:0.008];
+        cur ++ ;
+    }else{
+        order = 1;
+        if(order == 1 && cur > sum){
+            [self performSelector:@selector(drawdashboard) withObject:nil afterDelay:0.008];
+            cur -- ;
+        }
+    }
+    
 }
 
 - (void)btnShare:(NSObject*)object
@@ -103,9 +132,53 @@
         cell.imgView.image = [UIImage imageNamed:@"set_icon_set"];
         cell.imgState.image =  [UIImage imageNamed:@"set_status_normal"];
     }
-        
-    
+    cell.btnItem.tag = indexPath.row;
+    [cell.btnItem addTarget:self action:@selector(btnItemOnTouch:) forControlEvents:UIControlEventTouchUpInside];
+    cell.btnItem.tag = indexPath.row;
     return cell;
+}
+
+- (void)btnItemOnTouch:(UIButton*)button
+{
+    //KxMenu * kx = [[KxMenu alloc]init];
+    KxMenuItem * kxt = [[KxMenuItem alloc]init];
+    kxt.title = @"变更:很完美";
+    kxt.target = self;
+    kxt.action = @selector(kxtOnTouch:);
+    kxt.tag = button.tag;
+    kxt.image = [UIImage imageNamed:@"set_status_normal"];
+    kxt.index = 0;
+    KxMenuItem * kxt2 = [[KxMenuItem alloc]init];
+    kxt2.title = @"变更:已磨损";
+    kxt2.target = self;
+    kxt2.action = @selector(kxtOnTouch:);
+    kxt2.tag = button.tag;
+    kxt2.index = 1;
+    kxt2.image = [UIImage imageNamed:@"set_status_fault"];
+
+    KxMenuItem * kxt3 = [[KxMenuItem alloc]init];
+    kxt3.title = @"变更:已破损";
+    kxt3.target = self;
+    kxt3.action = @selector(kxtOnTouch:);
+    kxt3.tag = button.tag;
+    kxt3.index = 2;
+    kxt3.image = [UIImage imageNamed:@"set_status_warning"];
+
+    KxMenuItem * kxt4 = [[KxMenuItem alloc]init];
+
+    kxt4.title = @"查看检测报告";
+    kxt4.target = self;
+    kxt4.action = @selector(kxtOnTouch:);
+    kxt4.tag = button.tag;
+    kxt4.index = 2;
+    kxt4.image = [UIImage imageNamed:@"lis_icon_report"];
+
+    [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt2,kxt3,kxt4]];
+}
+
+- (void)kxtOnTouch:(KxMenuItem*)item
+{
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,9 +212,32 @@
         cell.labTitle.text = @"车况变化报告";
         cell.labContent.text = @"2015-04-04";
     }
-    
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row == 0){
+        SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
+        [[UIApplication sharedApplication]open:i];
+    }else if (indexPath.row == 1){
+        SHIntent * i = [[SHIntent alloc]init:@"insurancereport" delegate:nil containner:self.navigationController];
+        [[UIApplication sharedApplication]open:i];
+
+    }else if (indexPath.row == 3 ){
+        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
+        [i.args setValue:@"车况变化报告" forKey:@"title"];
+        [i.args setValue:@"您手动将 [刹车片]状态由 \"不正常\"改变为\"完好\"\n您手动将 [反光镜]状态由 \"不正常\"改变为\"完好\"\n您手动将 [胎压]状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n  2014- 10 -15" forKey:@"content"];
+        
+        [[UIApplication sharedApplication]open:i];
+    }else if (indexPath.row == 2 ){
+        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
+        [i.args setValue:@"车况变化报告" forKey:@"title"];
+        [i.args setValue:@"亲爱的客户，您的车辆已经保养维修完毕，本次保养维修，我们帮您\n更换机油滤清器“一个”，价格:“780元”\n更换刹车片“一个”，价格“1290元”\n谢谢您的使用,祝您驾车愉快." forKey:@"content"];
+        
+        [[UIApplication sharedApplication]open:i];
+    }
+    
 }
 
 @end

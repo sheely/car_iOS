@@ -10,5 +10,8 @@
 
 @interface SHCarInfoViewController : SHTableViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectView;
+@property (weak, nonatomic) IBOutlet UIView *viewDashBoard;
+@property (weak, nonatomic) IBOutlet UIImageView *imgIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *labScore;
 
 @end

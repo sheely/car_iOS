@@ -11,6 +11,7 @@
 @interface SHCarItemCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgState;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnItem;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
 @end

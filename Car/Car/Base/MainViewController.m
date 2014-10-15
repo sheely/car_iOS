@@ -92,7 +92,7 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     CGRect rect = self.view.bounds;
-    rect.size.height -= 49;
+    rect.size.height -= 50;
     UINavigationController * controller  ;
     if(item.tag >= list.count){
         NSMutableArray*  kesublist = [[NSMutableArray alloc]init];
@@ -138,7 +138,7 @@
 - (void)KxMenuItemOnTouch:(KxMenuItem*)item
 {
     CGRect rect = self.view.bounds;
-    rect.size.height -= 49;
+    rect.size.height -= 50;
     UINavigationController * controller  ;
     
     SHModule * module = [sublist objectAtIndex:item.tag];

@@ -8,8 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHCarInfoViewController">
             <connections>
                 <outlet property="collectView" destination="Nci-sn-vhp" id="Grg-fS-ReG"/>
+                <outlet property="imgIndicator" destination="kHu-ST-KkH" id="RfF-c0-LnC"/>
+                <outlet property="labScore" destination="hdj-hd-rDj" id="Ha2-hA-DYL"/>
                 <outlet property="tableView" destination="3WM-E5-Qlg" id="dw2-pC-znN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewDashBoard" destination="i8p-JS-J3e" id="izR-9m-JLz"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -63,11 +66,11 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labminlight"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_dashboard.png" id="yfQ-Hc-Yyr">
+                <view contentMode="scaleToFill" id="i8p-JS-J3e">
                     <rect key="frame" x="223" y="11" width="64" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_warning@3x.png" id="uLk-re-8Fv">
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_warning_background@3x.png" id="uLk-re-8Fv">
                     <rect key="frame" x="223" y="11" width="64" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -77,14 +80,18 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_indicator@3x.png" id="kHu-ST-KkH">
-                    <rect key="frame" x="229" y="42" width="30" height="9"/>
+                    <rect key="frame" x="240" y="42" width="30" height="9"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="56分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdj-hd-rDj">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_dashboard.png" id="yfQ-Hc-Yyr">
+                    <rect key="frame" x="223" y="11" width="64" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdj-hd-rDj">
                     <rect key="frame" x="234" y="59" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.97254908084869385" green="0.30980393290519714" blue="0.21568629145622253" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3WM-E5-Qlg">
@@ -106,7 +113,7 @@
         <image name="audi.png" width="147" height="102"/>
         <image name="bg_dashboard.png" width="64" height="64"/>
         <image name="dashboard_indicator@3x.png" width="92" height="28"/>
-        <image name="dashboard_warning@3x.png" width="192" height="192"/>
+        <image name="dashboard_warning_background@3x.png" width="192" height="192"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
