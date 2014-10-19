@@ -9,7 +9,10 @@
 #import "SHServiceCenterViewController.h"
 
 @interface SHServiceCenterViewController ()
-
+{
+    SHOrderListViewController * morderlistviewcontroller;
+    SHRequestListViewController * mrequestlistviewcontroller;
+}
 @end
 
 @implementation SHServiceCenterViewController
@@ -17,7 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"受理中心";
+    self.navigationItem.titleView = self.viewTitle;
+    [self.viewTitle addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:(UIControlEventValueChanged)];
+    mrequestlistviewcontroller = [[SHRequestListViewController alloc]init];
+    mrequestlistviewcontroller.view.frame = self.view.bounds;
+    [self.view addSubview:mrequestlistviewcontroller.view];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)segmentedControlValueChanged:(UISegmentedControl*)controller
+{
+    if(controller.selectedSegmentIndex == 0){
+         [self.view addSubview:mrequestlistviewcontroller.view];
+    }else{
+        if(morderlistviewcontroller == nil){
+            morderlistviewcontroller = [[SHOrderListViewController alloc]init];
+        }
+         [self.view addSubview:morderlistviewcontroller.view];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

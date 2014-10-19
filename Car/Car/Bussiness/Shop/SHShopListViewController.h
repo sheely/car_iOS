@@ -9,13 +9,28 @@
 #import "SHViewController.h"
 #import "BMKMapView.h"
 
-@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate>
+@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate>
 {
 }
+@property (weak, nonatomic) IBOutlet UIView *viewRequest;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBgView;
 @property (weak, nonatomic) IBOutlet UIView *viewMapCollect;
 @property (weak, nonatomic) IBOutlet UIView *viewCheck;
 @property (weak, nonatomic) IBOutlet UIButton *btnCheck;
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *btnReserveCheck;
+@property (weak, nonatomic) IBOutlet UIButton *btnSearchLocation;
+@property (weak, nonatomic) IBOutlet UIButton *btnSound;
+@property (weak, nonatomic) IBOutlet UIView *viewEnsure;
+@property (weak, nonatomic) IBOutlet UIButton *btnEnsure;
+@property (weak, nonatomic) IBOutlet UIView *viewPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
+@property (weak, nonatomic) IBOutlet UILabel *labTest;
+@property (weak, nonatomic) IBOutlet UILabel *labLocation;
 - (IBAction)btnLocationOnTouch:(id)sender;
+- (IBAction)btnRecordUpInside:(id)sender;
+- (IBAction)btnRecordOutSide:(id)sender;
+- (IBAction)btnRecordDown:(id)sender;
+- (IBAction)btnPhotoOnTouch:(id)sender;
+- (IBAction)btnEnsureOnTouch:(id)sender;
 @end

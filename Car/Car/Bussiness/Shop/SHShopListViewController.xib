@@ -8,13 +8,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHShopListViewController">
             <connections>
                 <outlet property="btnCheck" destination="Ete-O2-xl9" id="rkE-QM-vjU"/>
+                <outlet property="btnEnsure" destination="2XU-hD-Jwn" id="zNI-Kb-ZEa"/>
+                <outlet property="btnPlay" destination="dxv-e4-SFF" id="8eB-tV-tcd"/>
                 <outlet property="btnReserveCheck" destination="Czs-Z4-mRQ" id="qDd-s2-YcA"/>
+                <outlet property="btnSearchLocation" destination="fAG-Dt-5hl" id="U8i-j8-uAT"/>
+                <outlet property="btnSound" destination="r6p-wr-6GA" id="Tkk-6n-lzS"/>
+                <outlet property="imgBgView" destination="TDM-0s-KpE" id="Az7-KZ-aA3"/>
+                <outlet property="labLocation" destination="gzV-OY-HZk" id="AJa-1R-WEE"/>
+                <outlet property="labTest" destination="LAl-Rh-GcQ" id="fqo-Iw-y4x"/>
                 <outlet property="mapView" destination="IJZ-gb-WWE" id="gWc-jw-pz6"/>
                 <outlet property="searchDisplayController" destination="avr-n7-AkX" id="dkd-aP-6qi"/>
-                <outlet property="tableView" destination="oza-3P-jUT" id="pcx-uw-Xbb"/>
+                <outlet property="tableView" destination="9sd-J7-3Nw" id="JPC-mM-QVy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCheck" destination="lq1-0F-KZI" id="My5-11-LrZ"/>
+                <outlet property="viewEnsure" destination="b3w-Mg-e7u" id="av8-87-2nn"/>
                 <outlet property="viewMapCollect" destination="qZ7-KB-3bL" id="ab1-gn-lpW"/>
+                <outlet property="viewPhoto" destination="7g0-6C-pOP" id="nrd-pl-boM"/>
+                <outlet property="viewRequest" destination="oyP-Eb-JTs" id="hvZ-EB-Z4q"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -31,8 +41,50 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
+                        <view alpha="0.80000000000000004" contentMode="scaleToFill" id="E2P-uE-uHi">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前位置:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gzV-OY-HZk">
+                                    <rect key="frame" x="8" y="5" width="243" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmiddark"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将以此为中心显示周围的商户" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Te9-Fe-yKt">
+                                    <rect key="frame" x="8" y="25" width="297" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labminlight"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <view alpha="0.5" contentMode="scaleToFill" id="kYs-Xk-Z3z">
+                                    <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fAG-Dt-5hl">
+                                    <rect key="frame" x="243" y="10" width="69" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title="搜索位置">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uju-Hd-eOS">
-                            <rect key="frame" x="269" y="419" width="43" height="43"/>
+                            <rect key="frame" x="269" y="460" width="43" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <state key="normal" image="btn_loctation@3x.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,12 +93,16 @@
                                 <action selector="btnLocationOnTouch:" destination="-1" eventType="touchUpInside" id="UKv-Fl-4ch"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" id="lq1-0F-KZI">
-                            <rect key="frame" x="0.0" y="470" width="320" height="98"/>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_request_bg.png" id="TDM-0s-KpE">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" id="lq1-0F-KZI" userLabel="checkview">
+                            <rect key="frame" x="0.0" y="511" width="320" height="57"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ete-O2-xl9">
-                                    <rect key="frame" x="8" y="50" width="150" height="40"/>
+                                    <rect key="frame" x="8" y="9" width="150" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.0" green="0.7254902124" blue="0.69803923369999998" alpha="1" colorSpace="deviceRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -59,30 +115,12 @@
                                     </state>
                                 </button>
                                 <view contentMode="scaleToFill" id="MDF-jq-xwB">
-                                    <rect key="frame" x="0.0" y="41" width="320" height="1"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_start@3x.png" id="CNh-UM-EYf">
-                                    <rect key="frame" x="8" y="8" width="20" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海浦东新区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g2f-cO-kwF">
-                                    <rect key="frame" x="36" y="10" width="212" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmiddark"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right@3x.png" id="nG2-3L-bXr">
-                                    <rect key="frame" x="300" y="11" width="12" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Czs-Z4-mRQ">
-                                    <rect key="frame" x="163" y="50" width="150" height="40"/>
+                                    <rect key="frame" x="163" y="9" width="150" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.42745098040000001" green="0.79215686269999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -96,27 +134,165 @@
                             </subviews>
                             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
+                        <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" id="oyP-Eb-JTs" userLabel="requestview">
+                            <rect key="frame" x="0.0" y="511" width="319.99999953546336" height="57"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fOw-qI-HPm">
+                                    <rect key="frame" x="8" y="9" width="77" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" image="btn_keyboard.png">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <view contentMode="scaleToFill" id="47o-U2-CqX">
+                                    <rect key="frame" x="0.0" y="0.0" width="319.99999953546336" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r6p-wr-6GA">
+                                    <rect key="frame" x="92.99999953546336" y="9" width="220" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="按住说出您的问题" image="icon_time.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnRecordDown:" destination="-1" eventType="touchDown" id="sVH-4E-jht"/>
+                                        <action selector="btnRecordOutSide:" destination="-1" eventType="touchUpOutside" id="TYO-t1-8SI"/>
+                                        <action selector="btnRecordUpInside:" destination="-1" eventType="touchUpInside" id="3Zm-nb-tJg"/>
+                                    </connections>
+                                </button>
+                                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="oza-3P-jUT">
+                                    <rect key="frame" x="0.0" y="-511" width="319.99999953546336" height="568"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <searchBar key="tableHeaderView" contentMode="redraw" placeholder="请输入商户名" id="VF8-8P-1hz">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="GC4-kH-bzz"/>
+                                        <outlet property="delegate" destination="-1" id="Ewg-Sm-czO"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" id="b3w-Mg-e7u" userLabel="ensureview">
+                            <rect key="frame" x="0.0" y="357" width="320" height="211"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="ta9-0U-PRt">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dxv-e4-SFF">
+                                    <rect key="frame" x="8" y="8" width="304" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.0" green="0.7254902124" blue="0.69803923369999998" alpha="1" colorSpace="deviceRGB"/>
+                                    <inset key="titleEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-240" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="3&quot;" image="icon_play.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cV2-3Y-Snp">
+                                    <rect key="frame" x="8" y="61" width="77" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <state key="normal" image="btn_photo.png">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnPhotoOnTouch:" destination="-1" eventType="touchUpInside" id="gYM-5v-wch"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" id="7g0-6C-pOP">
+                                    <rect key="frame" x="103" y="56" width="182" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择服务类型:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cwe-sf-DAR">
+                                    <rect key="frame" x="8" y="105" width="120" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmiddark"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测试需求1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LAl-Rh-GcQ">
+                                    <rect key="frame" x="8" y="131" width="78" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labminlight"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_alt.png" id="YbT-YZ-dWL">
+                                    <rect key="frame" x="77" y="134" width="15" height="15"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2XU-hD-Jwn">
+                                    <rect key="frame" x="8" y="163" width="304" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="确认发布">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnEnsureOnTouch:" destination="-1" eventType="touchUpInside" id="WhB-c8-QRa"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="oza-3P-jUT">
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="9sd-J7-3Nw">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <searchBar key="tableHeaderView" contentMode="redraw" placeholder="请输入商户名" id="VF8-8P-1hz">
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" placeholder="请输入商户名" id="yBM-KR-eav">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textInputTraits key="textInputTraits"/>
                     </searchBar>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="GC4-kH-bzz"/>
-                        <outlet property="delegate" destination="-1" id="Ewg-Sm-czO"/>
+                        <outlet property="dataSource" destination="-1" id="JaE-Tb-pJD"/>
+                        <outlet property="delegate" destination="-1" id="Mtu-b3-x3Z"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="140" y="154"/>
+            <point key="canvasLocation" x="170" y="157"/>
         </view>
         <searchDisplayController id="avr-n7-AkX">
             <connections>
@@ -128,11 +304,14 @@
         </searchDisplayController>
     </objects>
     <resources>
-        <image name="arrow_right@3x.png" width="36" height="60"/>
+        <image name="btn_keyboard.png" width="230" height="120"/>
         <image name="btn_loctation@3x.png" width="130" height="130"/>
+        <image name="btn_photo.png" width="230" height="120"/>
+        <image name="check_alt.png" width="32" height="32"/>
+        <image name="icon_play.png" width="13" height="18"/>
         <image name="icon_set.png" width="20" height="20"/>
-        <image name="icon_start@3x.png" width="60" height="80"/>
         <image name="icon_time.png" width="20" height="20"/>
+        <image name="img_request_bg.png" width="1242" height="2008"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -142,14 +142,14 @@ int order = 0;
 {
     //KxMenu * kx = [[KxMenu alloc]init];
     KxMenuItem * kxt = [[KxMenuItem alloc]init];
-    kxt.title = @"变更:很完美";
+    kxt.title = @"变更:正常";
     kxt.target = self;
     kxt.action = @selector(kxtOnTouch:);
     kxt.tag = button.tag;
     kxt.image = [UIImage imageNamed:@"set_status_normal"];
     kxt.index = 0;
     KxMenuItem * kxt2 = [[KxMenuItem alloc]init];
-    kxt2.title = @"变更:已磨损";
+    kxt2.title = @"变更:需注意";
     kxt2.target = self;
     kxt2.action = @selector(kxtOnTouch:);
     kxt2.tag = button.tag;
@@ -157,7 +157,7 @@ int order = 0;
     kxt2.image = [UIImage imageNamed:@"set_status_fault"];
 
     KxMenuItem * kxt3 = [[KxMenuItem alloc]init];
-    kxt3.title = @"变更:已破损";
+    kxt3.title = @"变更:有问题";
     kxt3.target = self;
     kxt3.action = @selector(kxtOnTouch:);
     kxt3.tag = button.tag;
@@ -170,7 +170,7 @@ int order = 0;
     kxt4.target = self;
     kxt4.action = @selector(kxtOnTouch:);
     kxt4.tag = button.tag;
-    kxt4.index = 2;
+    kxt4.index = 3;
     kxt4.image = [UIImage imageNamed:@"lis_icon_report"];
 
     [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt2,kxt3,kxt4]];
@@ -178,7 +178,11 @@ int order = 0;
 
 - (void)kxtOnTouch:(KxMenuItem*)item
 {
-    
+    if(item.index == 3){
+        SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
+        [[UIApplication sharedApplication]open:i];
+
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath

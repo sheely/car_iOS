@@ -13,6 +13,8 @@
 {
     __weak IBOutlet UITabBar *tabbar;
     __weak IBOutlet UIView *mark;
+    UINavigationController * curviewcontroller;
+
 }
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item; // called when a new view is selected by the user (but not programatically)
 

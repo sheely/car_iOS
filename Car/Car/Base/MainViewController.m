@@ -159,6 +159,8 @@
     }
     //mNavigationController.tabBarController.translucent = NO;
     controller.view.frame = rect;
+    [curviewcontroller.view removeFromSuperview];
+    curviewcontroller = controller;
     [self.view addSubview:controller.view];
     
 }

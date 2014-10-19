@@ -55,29 +55,51 @@
 
 - (void)notificationSupport
 {
-    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"保养" forKey:@"title"];
+    SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"紧急援助" forKey:@"title"];
+    [intent.args setValue:@"support" forKey:@"type"];
+
     [[UIApplication sharedApplication]open:intent];
 }
 
 - (IBAction)btnRepair:(id)sender {
-    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"维修" forKey:@"title"];
-    [[UIApplication sharedApplication]open:intent];
+
+    [self performSelector:@selector(notificationRepair) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
 
 }
 
-- (IBAction)btnInsuranceOnTouch:(id)sender {
-    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"保险" forKey:@"title"];
-    [[UIApplication sharedApplication]open:intent];
+- (void)notificationRepair{
+    SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"保养" forKey:@"title"];
+    [intent.args setValue:@"repair" forKey:@"type"];
 
+    [[UIApplication sharedApplication]open:intent];
+}
+
+
+- (IBAction)btnInsuranceOnTouch:(id)sender {
+    [self performSelector:@selector(notificationInsurance) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+}
+
+- (void)notificationInsurance
+{
+    SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"保险" forKey:@"title"];
+    [intent.args setValue:@"insurance" forKey:@"type"];
+    [[UIApplication sharedApplication]open:intent];
 }
 
 - (IBAction)btnMoreOnTouch:(id)sender {
-    SHIntent * intent = [[SHIntent alloc]init:@"request" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"更多" forKey:@"title"];
+    [self performSelector:@selector(notificationMore) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+
+}
+
+- (void)notificationMore{
+    SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"consultation" forKey:@"type"];
+    [intent.args setValue:@"咨询" forKey:@"title"];
     [[UIApplication sharedApplication]open:intent];
+    
 
 }
 
@@ -99,10 +121,15 @@
 }
 
 - (IBAction)btnCheckOnTouch:(id)sender {
+     [self performSelector:@selector(notificationCheck) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+   }
+- (void)notificationCheck
+{
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
     [intent.args setValue:@"测试" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
+
 }
 
 
