@@ -54,7 +54,7 @@ CGSize const MMProgressHUDDefaultImageSize = {37.f, 37.f};
 @property (nonatomic, getter = isConfirmed) BOOL confirmed;
 @property (nonatomic, assign) BOOL presentedAnimated;
 
-@end
+@end  
 
 @implementation MMProgressHUD
 

@@ -12,11 +12,13 @@
 #import "SHShopPointAnnotation.h"
 #import "LCVoice.h"
 #import "SHPhoto.h"
+#import "SHSelectLocationAnnotationView.h"
 @interface SHShopListViewController ()
 {
     LCVoice * voice ;
     NSMutableArray * mListPhoto;
     BMKGeoCodeSearch * _searcher;
+    SHShopPointAnnotation* selectLocation;
 }
 @end
 
@@ -67,7 +69,7 @@
     _mapView.showsUserLocation = NO;//先关闭显示的定位图层
     _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
     _mapView.showsUserLocation = YES;//显示定位图层
-    [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
+    [_mapView updateLocationData:(BMKUserLocation*)[SHLocationManager instance].userlocation.source];
     [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocation:) name:CORE_NOTIFICATION_LOCATION_UPDATE_USERLOCATION object:nil];
     mListPhoto = [[NSMutableArray alloc]init];
@@ -88,7 +90,13 @@
     else{
         NSLog(@"反geo检索发送失败");
     }
+    selectLocation = [[SHShopPointAnnotation alloc]init];
 
+    selectLocation.coordinate = _mapView.centerCoordinate;//SHLocationManager.instance.userlocation.location.coordinate;
+    selectLocation.title = @"当前点";
+    selectLocation.subtitle = @"此Annotation可拖拽!";
+    [_mapView addAnnotation:selectLocation];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -107,7 +115,7 @@
 
 - (void)updateLocation:(NSNotification*)n
 {
-    [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
+    [_mapView updateLocationData:(BMKUserLocation*)[SHLocationManager instance].userlocation.source];
 }
 
 - (void)checkListMap
@@ -166,6 +174,10 @@
 
 - (IBAction)btnPhotoOnTouch:(id)sender
 {
+    if(mListPhoto.count > 2){
+        [self showAlertDialog:@"最多上传3张图片."];
+        return;
+    }
     UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"相册", nil];
     [sheet showInView:self.view];
 }
@@ -191,10 +203,7 @@
     // 初始化图片选择控制器
     
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-    if(mListPhoto.count > 2){
-        [self showAlertDialog:@"最多上传3张图片."];
-        return;
-    }
+  
     if(buttonIndex == 2){
         return ;
     }else if(buttonIndex == 0){
@@ -360,29 +369,50 @@
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-    
-    NSDictionary * dic = ((SHShopPointAnnotation*)annotation).dic;
-    SHShopPinAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHShopPinAnnotationView" owner:nil options:nil] objectAtIndex:0];
-    newAnnotation.annotation = annotation;
-    [newAnnotation.btnAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    newAnnotation.labTitle.text = [dic valueForKey:@"shopname"];
-    newAnnotation.labAddress.text = [dic valueForKey:@"shopaddress"];
-    //newAnnotation.reuseIdentifier = AnnotationViewID;
-    NSString *AnnotationViewID = @"renameMark";
-    
-//BMKPinAnnotationView *  newAnnotation =    [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
-    newAnnotation.centerOffset = CGPointMake(1000, -100);
+    if(annotation == selectLocation){
+        
+        SHSelectLocationAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHSelectLocationAnnotationView" owner:nil options:nil] objectAtIndex:0];
+        newAnnotation.annotation = annotation;
+        //newAnnotation.centerOffset = CGPointMake(1000, -1000);
+        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = NO;
 
-    // 设置颜色
-//    ((BMKPinAnnotationView*)newAnnotation).pinColor = BMKPinAnnotationColorPurple;
-    // 从天上掉下效果
-    ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
-    // 设置可拖拽
-    //((BMKPinAnnotationView*)newAnnotation).draggable = YES;
-return newAnnotation;
+        return newAnnotation;
+        
+    }else{
+        NSDictionary * dic = ((SHShopPointAnnotation*)annotation).dic;
+        SHShopPinAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHShopPinAnnotationView" owner:nil options:nil] objectAtIndex:0];
+        newAnnotation.annotation = annotation;
+        [newAnnotation.btnAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        newAnnotation.labTitle.text = [dic valueForKey:@"shopname"];
+        newAnnotation.labAddress.text = [dic valueForKey:@"shopaddress"];
+        //newAnnotation.reuseIdentifier = AnnotationViewID;
+//        NSString *AnnotationViewID = @"renameMark";
+        
+        //BMKPinAnnotationView *  newAnnotation =    [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
+        //newAnnotation.centerOffset = CGPointMake(1000, -100);
+        
+        // 设置颜色
+        //    ((BMKPinAnnotationView*)newAnnotation).pinColor = BMKPinAnnotationColorPurple;
+        // 从天上掉下效果
+        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
+        // 设置可拖拽
+        //((BMKPinAnnotationView*)newAnnotation).draggable = YES;
+        return newAnnotation;
 
+    }
+    
+    
+   
 }
+
+- (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    [mapView removeAnnotation:selectLocation];
+    selectLocation.coordinate = mapView.centerCoordinate;
+    [mapView addAnnotation:selectLocation];
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];

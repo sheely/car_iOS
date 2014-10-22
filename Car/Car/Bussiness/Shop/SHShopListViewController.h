@@ -9,7 +9,7 @@
 #import "SHViewController.h"
 #import "BMKMapView.h"
 
-@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate>
+@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,BMKGeoCodeSearchDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIView *viewRequest;

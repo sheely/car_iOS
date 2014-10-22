@@ -13,6 +13,9 @@
 		1A486FE919E4046400D4C923 /* SHCarInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FE819E4046400D4C923 /* SHCarInfoListCell.xib */; };
 		1A486FEB19E405F900D4C923 /* check_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FEA19E405F900D4C923 /* check_alt.png */; };
 		1A486FEE19E406CE00D4C923 /* ic_default_car.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A486FED19E406CE00D4C923 /* ic_default_car.png */; };
+		1AA1351D19F7E9B3003D983F /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1351C19F7E9B3003D983F /* ic_location.png */; };
+		1AA1352019F7EFFC003D983F /* SHSelectLocationAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1351F19F7EFFC003D983F /* SHSelectLocationAnnotationView.m */; };
+		1AA1352219F7F039003D983F /* SHSelectLocationAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */; };
 		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
 		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
 		9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */; };
@@ -46,7 +49,6 @@
 		9E3D5A3519EA3CD000141C9D /* mic_talk_358x358@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A3019EA3CD000141C9D /* mic_talk_358x358@2x.png */; };
 		9E3D5A3619EA3CD000141C9D /* wave70x117@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A3119EA3CD000141C9D /* wave70x117@2x.png */; };
 		9E3F62AD19D1B794008C8B7B /* ic_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AC19D1B794008C8B7B /* ic_point.png */; };
-		9E3F62AF19D1B97E008C8B7B /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62AE19D1B97E008C8B7B /* ic_location.png */; };
 		9E3F62B319D1CBEB008C8B7B /* btnbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B219D1CBEB008C8B7B /* btnbg.png */; };
 		9E3F62B619D1CC85008C8B7B /* btnbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B419D1CC85008C8B7B /* btnbg@2x.png */; };
 		9E3F62B719D1CC85008C8B7B /* btnbg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62B519D1CC85008C8B7B /* btnbg@3x.png */; };
@@ -430,6 +432,10 @@
 		1A486FE819E4046400D4C923 /* SHCarInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarInfoListCell.xib; sourceTree = "<group>"; };
 		1A486FEA19E405F900D4C923 /* check_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_alt.png; sourceTree = "<group>"; };
 		1A486FED19E406CE00D4C923 /* ic_default_car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_default_car.png; sourceTree = "<group>"; };
+		1AA1351C19F7E9B3003D983F /* ic_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_location.png; sourceTree = "<group>"; };
+		1AA1351E19F7EFFC003D983F /* SHSelectLocationAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSelectLocationAnnotationView.h; sourceTree = "<group>"; };
+		1AA1351F19F7EFFC003D983F /* SHSelectLocationAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSelectLocationAnnotationView.m; sourceTree = "<group>"; };
+		1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSelectLocationAnnotationView.xib; sourceTree = "<group>"; };
 		9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoginViewController.h; sourceTree = "<group>"; };
 		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
 		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
@@ -478,7 +484,6 @@
 		9E3D5A3019EA3CD000141C9D /* mic_talk_358x358@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic_talk_358x358@2x.png"; sourceTree = "<group>"; };
 		9E3D5A3119EA3CD000141C9D /* wave70x117@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wave70x117@2x.png"; sourceTree = "<group>"; };
 		9E3F62AC19D1B794008C8B7B /* ic_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_point.png; sourceTree = "<group>"; };
-		9E3F62AE19D1B97E008C8B7B /* ic_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_location.png; sourceTree = "<group>"; };
 		9E3F62B219D1CBEB008C8B7B /* btnbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnbg.png; path = Car/Res/btnbg.png; sourceTree = SOURCE_ROOT; };
 		9E3F62B419D1CC85008C8B7B /* btnbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnbg@2x.png"; path = "Car/Res/btnbg@2x.png"; sourceTree = SOURCE_ROOT; };
 		9E3F62B519D1CC85008C8B7B /* btnbg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnbg@3x.png"; path = "Car/Res/btnbg@3x.png"; sourceTree = SOURCE_ROOT; };
@@ -1169,6 +1174,9 @@
 				9E5E5FEE19D9A8C500642CED /* SHShopPinAnnotationView.m */,
 				9E1762EC19E458D9008E3BD9 /* SHSHopPointAnnotation.h */,
 				9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */,
+				1AA1351E19F7EFFC003D983F /* SHSelectLocationAnnotationView.h */,
+				1AA1351F19F7EFFC003D983F /* SHSelectLocationAnnotationView.m */,
+				1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -1176,6 +1184,7 @@
 		9E3F62DE19D47B00008C8B7B /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				1AA1351C19F7E9B3003D983F /* ic_location.png */,
 				9E62983919F2C93E0049F5FF /* icon_play@2x.png */,
 				9E62983719F2C8F00049F5FF /* icon_play.png */,
 				9E62983519F2BA2E0049F5FF /* btn_photo.png */,
@@ -2287,7 +2296,6 @@
 				9E3F62BA19D1D726008C8B7B /* ic_cam@2x.png */,
 				9E3F62BB19D1D726008C8B7B /* ic_cam@3x.png */,
 				9E3F62B819D1D6D1008C8B7B /* ic_cam.png */,
-				9E3F62AE19D1B97E008C8B7B /* ic_location.png */,
 				9E3F62AC19D1B794008C8B7B /* ic_point.png */,
 				9EF62C8E19CF263B00111E2F /* SHRequirementViewController.h */,
 				9EF62C8F19CF263B00111E2F /* SHRequirementViewController.m */,
@@ -2475,10 +2483,10 @@
 				9ED550C119D5EAE70046A4C1 /* set_icon_gas@3x.png in Resources */,
 				9E62984F19F2DF010049F5FF /* SHOrderItemCell.xib in Resources */,
 				9EF62C0C19CF002400111E2F /* NaviBack.png in Resources */,
-				9E3F62AF19D1B97E008C8B7B /* ic_location.png in Resources */,
 				9EF62C5619CF002400111E2F /* SHTableViewTitleContentCell.xib in Resources */,
 				9EF62BEE19CF002400111E2F /* DSLCalendarMonthSelectorView.xib in Resources */,
 				9EF62C3F19CF002400111E2F /* timeline_image_loading.png in Resources */,
+				1AA1351D19F7E9B3003D983F /* ic_location.png in Resources */,
 				9E5E5FEA19D86BE200642CED /* mapapi.bundle in Resources */,
 				9E82BBA119EE9845007301EA /* img_price.png in Resources */,
 				9E3F62BC19D1D726008C8B7B /* ic_cam@2x.png in Resources */,
@@ -2587,6 +2595,7 @@
 				9ED550A219D5DF170046A4C1 /* SHCarItemCollectionViewCell.xib in Resources */,
 				9E5E5FF419D9AE4100642CED /* star_null@3x.png in Resources */,
 				9E5E601119DB202D00642CED /* SHServiceCenterViewController.xib in Resources */,
+				1AA1352219F7F039003D983F /* SHSelectLocationAnnotationView.xib in Resources */,
 				9EF62CC619D09E6000111E2F /* navi_phone@2x.png in Resources */,
 				9ED550DE19D6566F0046A4C1 /* lis_icon_repair@2x.png in Resources */,
 				9EF62C2919CF002400111E2F /* MJPhotoBrowser.bundle in Resources */,
@@ -2684,6 +2693,7 @@
 				9EF62C7819CF002400111E2F /* UIView+convenience.m in Sources */,
 				9EF62C9119CF263B00111E2F /* SHRequirementViewController.m in Sources */,
 				9EF62C7A19CF002400111E2F /* Command.m in Sources */,
+				1AA1352019F7EFFC003D983F /* SHSelectLocationAnnotationView.m in Sources */,
 				9EF62C8619CF002400111E2F /* SHAppDelegate.m in Sources */,
 				9EF62C6E19CF002400111E2F /* WTStatusWindow.m in Sources */,
 				9E3D5A2819E99F6B00141C9D /* SHRequestView.m in Sources */,
