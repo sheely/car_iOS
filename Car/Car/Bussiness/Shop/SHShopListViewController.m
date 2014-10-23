@@ -19,6 +19,8 @@
     NSMutableArray * mListPhoto;
     BMKGeoCodeSearch * _searcher;
     SHShopPointAnnotation* selectLocation;
+    NSMutableArray * mListAnimation;
+
 }
 @end
 
@@ -77,27 +79,25 @@
     _searcher.delegate = self;
     
     //发起反向地理编码检索
-    CLLocationCoordinate2D pt = SHLocationManager.instance.userlocation.location.coordinate;
-    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[
-                                                            BMKReverseGeoCodeOption alloc]init];
-    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
-    //[self showWaitDialog:@"正在请求地址信息..." state:@"请稍后..."];
-    BOOL flag = [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
-    //[reverseGeoCodeSearchOption release];
-    if(flag){
-        NSLog(@"反geo检索发送成功");
-    }
-    else{
-        NSLog(@"反geo检索发送失败");
-    }
-    selectLocation = [[SHShopPointAnnotation alloc]init];
-
+       selectLocation = [[SHShopPointAnnotation alloc]init];
     selectLocation.coordinate = _mapView.centerCoordinate;//SHLocationManager.instance.userlocation.location.coordinate;
     selectLocation.title = @"当前点";
     selectLocation.subtitle = @"此Annotation可拖拽!";
     [_mapView addAnnotation:selectLocation];
-    
+    mListAnimation = [[NSMutableArray alloc]init];
+    [self refreshAdress];
+
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)refreshAdress
+{
+    CLLocationCoordinate2D pt = selectLocation.coordinate;
+    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[
+                                                            BMKReverseGeoCodeOption alloc]init];
+    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
+    [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
+
 }
 
 -(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:
@@ -329,14 +329,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)reSet
+{
+    mIsEnd = NO;
+    [mList removeAllObjects];
+    [_mapView removeAnnotations:mListAnimation];
+    [mListAnimation removeAllObjects];
+}
 -(void)loadNext
 {
     
     SHPostTaskM * task = [[SHPostTaskM alloc]init];
     task.URL= URL_FOR(@"shopquery.action");
     [task.postArgs setValue:@"" forKey:@"keyname"];
-    [task.postArgs setValue:[NSNumber numberWithFloat: SHLocationManager.instance.userlocation.location.coordinate.latitude]  forKey:@"lat"];
-    [task.postArgs setValue:[NSNumber numberWithFloat: SHLocationManager.instance.userlocation.location.coordinate.longitude] forKey:@"lgt"];
+    [task.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude]  forKey:@"lat"];
+    [task.postArgs setValue:[NSNumber numberWithFloat: selectLocation.coordinate.longitude] forKey:@"lgt"];
     [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"pageno"];
     [task.postArgs setValue:[NSNumber numberWithFloat:20] forKey:@"pagesize"];
     [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishaswash"];
@@ -359,6 +367,7 @@
             pointAnnotation.subtitle = @"此Annotation可拖拽!";
             pointAnnotation.dic = m;
             [_mapView addAnnotation:pointAnnotation];
+            [mListAnimation addObject:pointAnnotation];
         }
         
         [self.tableView reloadData];
@@ -374,7 +383,7 @@
         SHSelectLocationAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHSelectLocationAnnotationView" owner:nil options:nil] objectAtIndex:0];
         newAnnotation.annotation = annotation;
         //newAnnotation.centerOffset = CGPointMake(1000, -1000);
-        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = NO;
+        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
 
         return newAnnotation;
         
@@ -408,9 +417,13 @@
 
 - (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [mapView removeAnnotation:selectLocation];
-    selectLocation.coordinate = mapView.centerCoordinate;
-    [mapView addAnnotation:selectLocation];
+    [self reSet];
+    [self.tableView reloadData];
+    [_mapView removeAnnotation:selectLocation];
+    selectLocation.coordinate = _mapView.centerCoordinate;
+    [_mapView addAnnotation:selectLocation];
+    [self refreshAdress];
+
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
