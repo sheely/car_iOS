@@ -16,6 +16,8 @@
 		1AA1351D19F7E9B3003D983F /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1351C19F7E9B3003D983F /* ic_location.png */; };
 		1AA1352019F7EFFC003D983F /* SHSelectLocationAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1351F19F7EFFC003D983F /* SHSelectLocationAnnotationView.m */; };
 		1AA1352219F7F039003D983F /* SHSelectLocationAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */; };
+		1AA1352619F93576003D983F /* SHLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1352419F93576003D983F /* SHLocationViewController.m */; };
+		1AA1352719F93576003D983F /* SHLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1352519F93576003D983F /* SHLocationViewController.xib */; };
 		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
 		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
 		9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */; };
@@ -436,6 +438,9 @@
 		1AA1351E19F7EFFC003D983F /* SHSelectLocationAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSelectLocationAnnotationView.h; sourceTree = "<group>"; };
 		1AA1351F19F7EFFC003D983F /* SHSelectLocationAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSelectLocationAnnotationView.m; sourceTree = "<group>"; };
 		1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSelectLocationAnnotationView.xib; sourceTree = "<group>"; };
+		1AA1352319F93576003D983F /* SHLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLocationViewController.h; sourceTree = "<group>"; };
+		1AA1352419F93576003D983F /* SHLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLocationViewController.m; sourceTree = "<group>"; };
+		1AA1352519F93576003D983F /* SHLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLocationViewController.xib; sourceTree = "<group>"; };
 		9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoginViewController.h; sourceTree = "<group>"; };
 		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
 		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
@@ -1177,6 +1182,9 @@
 				1AA1351E19F7EFFC003D983F /* SHSelectLocationAnnotationView.h */,
 				1AA1351F19F7EFFC003D983F /* SHSelectLocationAnnotationView.m */,
 				1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */,
+				1AA1352319F93576003D983F /* SHLocationViewController.h */,
+				1AA1352419F93576003D983F /* SHLocationViewController.m */,
+				1AA1352519F93576003D983F /* SHLocationViewController.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -2483,6 +2491,7 @@
 				9ED550C119D5EAE70046A4C1 /* set_icon_gas@3x.png in Resources */,
 				9E62984F19F2DF010049F5FF /* SHOrderItemCell.xib in Resources */,
 				9EF62C0C19CF002400111E2F /* NaviBack.png in Resources */,
+				1AA1352719F93576003D983F /* SHLocationViewController.xib in Resources */,
 				9EF62C5619CF002400111E2F /* SHTableViewTitleContentCell.xib in Resources */,
 				9EF62BEE19CF002400111E2F /* DSLCalendarMonthSelectorView.xib in Resources */,
 				9EF62C3F19CF002400111E2F /* timeline_image_loading.png in Resources */,
@@ -2768,6 +2777,7 @@
 				9EF62C4519CF002400111E2F /* SHTableViewCell.m in Sources */,
 				9EF62C1E19CF002400111E2F /* SHImageView.m in Sources */,
 				9E3D5A3219EA3CD000141C9D /* LCVoice.m in Sources */,
+				1AA1352619F93576003D983F /* SHLocationViewController.m in Sources */,
 				9EF62C5119CF002400111E2F /* SHTableViewSelectCell.m in Sources */,
 				9EF62C3819CF002400111E2F /* SDWebImagePrefetcher.m in Sources */,
 				9EF62C6519CF002400111E2F /* JDStatusBarView.m in Sources */,

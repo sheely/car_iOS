@@ -332,6 +332,7 @@
 -(void)loadNext
 {
     
+    
     SHPostTaskM * task = [[SHPostTaskM alloc]init];
     task.URL= URL_FOR(@"shopquery.action");
     [task.postArgs setValue:@"" forKey:@"keyname"];
@@ -374,7 +375,7 @@
         SHSelectLocationAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHSelectLocationAnnotationView" owner:nil options:nil] objectAtIndex:0];
         newAnnotation.annotation = annotation;
         //newAnnotation.centerOffset = CGPointMake(1000, -1000);
-        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = NO;
+        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
 
         return newAnnotation;
         
@@ -459,5 +460,10 @@
 - (IBAction)btnLocationOnTouch:(id)sender {
     [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
     [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
+}
+- (IBAction)btnSearchLocationOnTouch:(id)sender
+{
+    SHIntent * intent = [[SHIntent alloc]init:@"locationsearch" delegate:self containner:nil];
+    [[UIApplication sharedApplication]open:intent];
 }
 @end

@@ -33,4 +33,5 @@
 - (IBAction)btnRecordDown:(id)sender;
 - (IBAction)btnPhotoOnTouch:(id)sender;
 - (IBAction)btnEnsureOnTouch:(id)sender;
+- (IBAction)btnSearchLocationOnTouch:(id)sender;
 @end

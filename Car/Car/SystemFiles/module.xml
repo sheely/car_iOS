@@ -133,5 +133,12 @@
     icon = "--"
     title = "保险"
     />
+    <module
+    name="locationsearch"
+    target="SHLocationViewController"
+    type = "--"
+    icon = "--"
+    title = "地址检索"
+    />
     
 </root>
