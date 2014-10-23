@@ -8,6 +8,14 @@
 
 #import "SHViewController.h"
 
+@class SHLocationViewController;
+
+@protocol SHLocationViewControllerDelgate <NSObject>
+
+- (void)locationcontroller:(SHLocationViewController*) controller onSubmit:(BMKPoiInfo*)poi;
+
+@end
+
 @interface SHLocationViewController : SHViewController<BMKPoiSearchDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 

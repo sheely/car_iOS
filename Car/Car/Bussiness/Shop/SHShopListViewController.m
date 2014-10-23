@@ -474,9 +474,19 @@
     [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
     [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
 }
+
 - (IBAction)btnSearchLocationOnTouch:(id)sender
 {
     SHIntent * intent = [[SHIntent alloc]init:@"locationsearch" delegate:self containner:nil];
     [[UIApplication sharedApplication]open:intent];
 }
+
+- (void)locationcontroller:(SHViewController*) controller onSubmit:(BMKPoiInfo*)poi
+{
+    [SHIntentManager clear];\
+    
+    \
+    [self.mapView setCenterCoordinate:poi.pt animated:YES];
+}
+
 @end

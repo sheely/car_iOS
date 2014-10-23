@@ -103,6 +103,14 @@
     [searchBar resignFirstResponder];
 
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BMKPoiInfo * poi = [mList objectAtIndex:indexPath.row];
+    if([self.delegate respondsToSelector:@selector(locationcontroller:onSubmit:)]){
+        [(id<SHLocationViewControllerDelgate>)self.delegate locationcontroller:self onSubmit:poi];
+    }
+}
+
 // called when cancel button pressed
 
 @end
