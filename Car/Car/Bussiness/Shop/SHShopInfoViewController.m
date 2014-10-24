@@ -9,7 +9,9 @@
 #import "SHShopInfoViewController.h"
 
 @interface SHShopInfoViewController ()
-
+{
+    NSDictionary * dic;
+}
 @end
 
 @implementation SHShopInfoViewController
@@ -23,10 +25,31 @@
     post.URL = URL_FOR(@"shopdetail.action");
     [post.postArgs setValue:[self.intent.args valueForKey:@"shopid"] forKey:@"shopid"];
     [post start:^(SHTask *t) {
-        NSDictionary * dic = [t.result valueForKey:@"shop"];
+        dic = (NSDictionary*)t.result;
         self.labName.text = [dic valueForKey:@"shopname"];
         self.labAddress.text = [dic valueForKey:@"shopaddress"];
         self.labScore.text = [NSString stringWithFormat:@"%@ 分",[[dic valueForKey:@"shopscore"] stringValue]];
+        [self.imgHead setUrl:[dic valueForKey:@"shoplogo"]];
+        int score = [[dic valueForKey:@"shopscore"] integerValue];
+        switch (score) {
+           
+            case 5:
+                self.img5.image = [SHSkin.instance image:@"star_selected.png"];
+            case 4:
+                self.img4.image = [SHSkin.instance image:@"star_selected.png"];
+            case 3:
+                self.img3.image = [SHSkin.instance image:@"star_selected.png"];
+            case 2:
+                self.img2.image = [SHSkin.instance image:@"star_selected.png"];
+            case 1:
+                self.img1.image = [SHSkin.instance image:@"star_selected.png"];
+                break;
+                
+            default:
+                break;
+        }
+        
+        
         [self dismissWaitDialog];
         } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
@@ -57,7 +80,7 @@
 */
 
 - (IBAction)btnContact:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18616378436"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%d",[[dic valueForKey:@"shopmobile"] integerValue]]]];
 
 }
 @end

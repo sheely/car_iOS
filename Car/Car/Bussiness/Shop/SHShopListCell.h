@@ -11,7 +11,7 @@
 @interface SHShopListCell : SHTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *labNewPrice;
-@property (weak, nonatomic) IBOutlet UIImageView *imgHead;
+@property (weak, nonatomic) IBOutlet SHImageView *imgHead;
 @property (weak, nonatomic) IBOutlet UILabel *labShopName;
 @property (weak, nonatomic) IBOutlet UILabel *labPrice;
 @property (weak, nonatomic) IBOutlet UILabel *labAddress;

@@ -9,10 +9,15 @@
 #import "SHViewController.h"
 
 @interface SHShopInfoViewController : SHTableViewController
-@property (weak, nonatomic) IBOutlet UIImageView *imgHead;
+@property (weak, nonatomic) IBOutlet SHImageView *imgHead;
 - (IBAction)btnContact:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *labName;
 @property (weak, nonatomic) IBOutlet UILabel *labAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labScore;
+@property (weak, nonatomic) IBOutlet UIImageView *img1;
+@property (weak, nonatomic) IBOutlet UIImageView *img2;
+@property (weak, nonatomic) IBOutlet UIImageView *img3;
+@property (weak, nonatomic) IBOutlet UIImageView *img4;
+@property (weak, nonatomic) IBOutlet UIImageView *img5;
 
 @end

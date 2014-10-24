@@ -13,6 +13,8 @@
 #import "LCVoice.h"
 #import "SHPhoto.h"
 #import "SHSelectLocationAnnotationView.h"
+#import "lame.h"
+
 @interface SHShopListViewController ()
 {
     LCVoice * voice ;
@@ -25,6 +27,7 @@
 @end
 
 @implementation SHShopListViewController
+@synthesize player;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -162,6 +165,18 @@
     [self recordEnd];
 }
 
+- (IBAction)btnPlayOnTouch:(id)sender
+{
+    if([self.player isPlaying]){
+        [self.player pause];
+    }
+    //If the track is not player, play the track and change the play button to "Pause"
+    else{
+        [self.player play];
+    }
+
+}
+
 - (IBAction)btnRecordOutSide:(id)sender
 {
     [self recordCancel];
@@ -194,9 +209,86 @@
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"取消了" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
     [alert show];
 }
+
 -(void) recordStart
 {
     [voice startRecordWithPath:[NSString stringWithFormat:@"%@/Documents/MySound.caf", NSHomeDirectory()]];
+
+}
+-(void) recordEnd
+{
+    [voice stopRecordWithCompletionBlock:^{
+        
+        if (((int)voice.recordTime) > 1) {
+//                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"\nrecord finish ! \npath:%@ \nduration:%f",voice.recordPath,voice.recordTime] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+//                        [alert show];
+            [self audio_PCMtoMP3];
+            [self showEnSureView];
+        }else{
+            [self showAlertDialog:@"录音时间太短"];
+        }
+        
+    }];
+}
+
+- (void)audio_PCMtoMP3
+{
+    NSString *cafFilePath = voice.recordPath;
+    
+    NSString *mp3FilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/downloadFile.mp3"];
+    
+    
+    NSFileManager* fileManager=[NSFileManager defaultManager];
+    if([fileManager removeItemAtPath:mp3FilePath error:nil]){
+        NSLog(@"删除");
+    }
+    
+    @try {
+        int read, write;
+        
+        FILE *pcm = fopen([cafFilePath cStringUsingEncoding:1], "rb");  //source 被转换的音频文件位置
+        fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
+        FILE *mp3 = fopen([mp3FilePath cStringUsingEncoding:1], "wb");  //output 输出生成的Mp3文件位置
+        
+        const int PCM_SIZE = 8192;
+        const int MP3_SIZE = 8192;
+        short int pcm_buffer[PCM_SIZE*2];
+        unsigned char mp3_buffer[MP3_SIZE];
+        
+        lame_t lame = lame_init();
+        lame_set_in_samplerate(lame, 44100.0);
+        lame_set_VBR(lame, vbr_default);
+        lame_init_params(lame);
+        
+        do {
+            read = fread(pcm_buffer, 2*sizeof(short int), PCM_SIZE, pcm);
+            if (read == 0)
+                write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
+            else
+                write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
+            
+            fwrite(mp3_buffer, write, 1, mp3);
+            
+        } while (read != 0);
+        
+        lame_close(lame);
+        fclose(mp3);
+        fclose(pcm);
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",[exception description]);
+    }
+    @finally {
+        NSError *playerError;
+        AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:mp3FilePath] error:&playerError];
+        self.player = audioPlayer;
+        player.volume = 1.0f;
+        if (player == nil){
+            NSLog(@"ERror creating player: %@", [playerError description]);
+        }
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategorySoloAmbient error: nil];
+        player.delegate = self;
+    }
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     // 判断有摄像头，并且支持拍照功能
@@ -274,22 +366,6 @@
         self.navigationController.view.frame = f;
     }];
 }
-
--(void) recordEnd
-{
-    [voice stopRecordWithCompletionBlock:^{
-        
-        if (((int)voice.recordTime) > 1) {
-//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"\nrecord finish ! \npath:%@ \nduration:%f",voice.recordPath,voice.recordTime] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//            [alert show];
-            
-            [self showEnSureView];
-        }else{
-            [self showAlertDialog:@"录音时间太短"];
-        }
-        
-    }];
-}
 - (void)showEnSureView
 {
     self.viewEnsure.hidden = NO;
@@ -358,7 +434,8 @@
         mList = [t.result valueForKey:@"nearshops"];
         mIsEnd = YES;
         
-        for (NSDictionary * m in mList) {
+        for (int i = 0 ;i <mList.count; i++) {
+            NSDictionary * m  =  [mList objectAtIndex:i];
             SHShopPointAnnotation* pointAnnotation = [[SHShopPointAnnotation alloc]init];
             CLLocationCoordinate2D coor;
             coor.latitude = [[[m valueForKey:@"originallatitude"] valueForKey:@"lat"] floatValue];
@@ -366,7 +443,7 @@
             pointAnnotation.coordinate = coor;
             pointAnnotation.title = @"test";
             pointAnnotation.subtitle = @"此Annotation可拖拽!";
-            pointAnnotation.dic = m;
+            pointAnnotation.tag = i;
             [_mapView addAnnotation:pointAnnotation];
             [mListAnimation addObject:pointAnnotation];
         }
@@ -384,36 +461,52 @@
         SHSelectLocationAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHSelectLocationAnnotationView" owner:nil options:nil] objectAtIndex:0];
         newAnnotation.annotation = annotation;
         //newAnnotation.centerOffset = CGPointMake(1000, -1000);
-        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
+        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = NO;
 
         return newAnnotation;
         
     }else{
-        NSDictionary * dic = ((SHShopPointAnnotation*)annotation).dic;
+        NSDictionary * dic = [mList objectAtIndex:((SHShopPointAnnotation*)annotation).tag];
         SHShopPinAnnotationView* newAnnotation = [[[NSBundle mainBundle]loadNibNamed:@"SHShopPinAnnotationView" owner:nil options:nil] objectAtIndex:0];
         newAnnotation.annotation = annotation;
         [newAnnotation.btnAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-        
+        newAnnotation.btnAction.tag =((SHShopPointAnnotation*)annotation).tag;
         newAnnotation.labTitle.text = [dic valueForKey:@"shopname"];
         newAnnotation.labAddress.text = [dic valueForKey:@"shopaddress"];
+        
+        
+        int score = [[dic valueForKey:@"shopscore"] integerValue];
+        switch (score) {
+                
+            case 5:
+                newAnnotation.img5.image = [SHSkin.instance image:@"star_selected.png"];
+            case 4:
+                newAnnotation.img4.image = [SHSkin.instance image:@"star_selected.png"];
+            case 3:
+                newAnnotation.img3.image = [SHSkin.instance image:@"star_selected.png"];
+            case 2:
+                newAnnotation.img2.image = [SHSkin.instance image:@"star_selected.png"];
+            case 1:
+                newAnnotation.img1.image = [SHSkin.instance image:@"star_selected.png"];
+                break;
+                
+            default:
+                break;
+        }
         //newAnnotation.reuseIdentifier = AnnotationViewID;
 //        NSString *AnnotationViewID = @"renameMark";
-        
         //BMKPinAnnotationView *  newAnnotation =    [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
         //newAnnotation.centerOffset = CGPointMake(1000, -100);
         
         // 设置颜色
         //    ((BMKPinAnnotationView*)newAnnotation).pinColor = BMKPinAnnotationColorPurple;
         // 从天上掉下效果
-        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = YES;
+        ((BMKPinAnnotationView*)newAnnotation).animatesDrop = NO;
         // 设置可拖拽
         //((BMKPinAnnotationView*)newAnnotation).draggable = YES;
         return newAnnotation;
 
     }
-    
-    
-   
 }
 
 - (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -424,18 +517,20 @@
     selectLocation.coordinate = _mapView.centerCoordinate;
     [_mapView addAnnotation:selectLocation];
     [self refreshAdress];
-
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHShopListCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHShopListCell" owner:nil options:nil] objectAtIndex:0];
+    [cell.imgHead setUrl:[dic valueForKey:@"shoplogo"]];
     cell.labShopName.text = [dic valueForKey:@"shopname"];
     cell.labAddress.text = [dic valueForKey:@"shopaddress"];
-    cell.labDistance.text = [NSString stringWithFormat:@"距离:%@",[dic valueForKey:@"distancefromme"]];
+    cell.labDistance.text = [NSString stringWithFormat:@"%@",[dic valueForKey:@"distancefromme"]];
+    cell.labScore.text = [NSString stringWithFormat:@"%@分", [dic valueForKey:@"shopscore"]];
     cell.labPrice.text = [NSString stringWithFormat:@"普洗:%@元",[dic valueForKey:@"normalwashoriginalprice"]];
     cell.labNewPrice.text = [NSString stringWithFormat:@"精洗:%@元",[dic valueForKey:@"normalwashdiscountprice"]];
+    
 
     cell.backgroundColor= [UIColor whiteColor];
 
@@ -455,10 +550,10 @@
 }
 - (void)btnAction:(UIButton*)sender
 {
+    NSDictionary * dic = [mList objectAtIndex:sender.tag];
     SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
-    [[UIApplication sharedApplication]open:i];
-}
-
+    [i.args setValue:[dic valueForKey:@"shopid"] forKey:@"shopid"];
+    [[UIApplication sharedApplication]open:i];}
 
 /*
 #pragma mark - Navigation
@@ -483,9 +578,7 @@
 
 - (void)locationcontroller:(SHViewController*) controller onSubmit:(BMKPoiInfo*)poi
 {
-    [SHIntentManager clear];\
-    
-    \
+    [SHIntentManager clear];
     [self.mapView setCenterCoordinate:poi.pt animated:YES];
 }
 

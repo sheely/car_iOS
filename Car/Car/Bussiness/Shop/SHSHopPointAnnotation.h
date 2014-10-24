@@ -9,6 +9,5 @@
 #import "BMKPointAnnotation.h"
 
 @interface SHShopPointAnnotation : BMKPointAnnotation
-@property(nonatomic,strong) NSDictionary * dic;
-
+@property (nonatomic,assign) int tag;
 @end

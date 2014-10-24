@@ -10,5 +10,5 @@
 
 @interface SHMyBaseInfoCell : SHTableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgHead;
+@property (weak, nonatomic) IBOutlet SHImageView *imgHead;
 @end

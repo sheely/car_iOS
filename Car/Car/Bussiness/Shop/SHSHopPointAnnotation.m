@@ -9,5 +9,5 @@
 #import "SHShopPointAnnotation.h"
 
 @implementation SHShopPointAnnotation
-@synthesize dic;
+@synthesize tag;
 @end

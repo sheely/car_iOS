@@ -8,6 +8,7 @@
 
 #import "SHViewController.h"
 #import "BMKMapView.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,BMKGeoCodeSearchDelegate>
 {
@@ -27,8 +28,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property (weak, nonatomic) IBOutlet UILabel *labTest;
 @property (weak, nonatomic) IBOutlet UILabel *labLocation;
+@property (nonatomic , retain) AVAudioPlayer *player;
+
 - (IBAction)btnLocationOnTouch:(id)sender;
 - (IBAction)btnRecordUpInside:(id)sender;
+- (IBAction)btnPlayOnTouch:(id)sender;
 - (IBAction)btnRecordOutSide:(id)sender;
 - (IBAction)btnRecordDown:(id)sender;
 - (IBAction)btnPhotoOnTouch:(id)sender;

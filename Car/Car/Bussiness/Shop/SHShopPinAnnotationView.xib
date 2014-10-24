@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -32,19 +33,23 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_selected@3x.png" id="7cL-Dd-Icq">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_null.png" id="7cL-Dd-Icq" userLabel="star_selected.png">
                     <rect key="frame" x="42" y="40" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_selected@3x.png" id="cZC-nx-Vyb">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_null.png" id="Mkl-4V-3bP">
+                    <rect key="frame" x="60" y="40" width="12" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_null.png" id="cZC-nx-Vyb">
                     <rect key="frame" x="78" y="40" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_selected@3x.png" id="Cl1-Ib-2Ie">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_null.png" id="Cl1-Ib-2Ie">
                     <rect key="frame" x="96" y="40" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_null@3x.png" id="irW-cm-MQv">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_null.png" id="irW-cm-MQv">
                     <rect key="frame" x="114" y="40" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -55,15 +60,16 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_selected@3x.png" id="Mkl-4V-3bP">
-                    <rect key="frame" x="60" y="40" width="12" height="12"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btnAction" destination="58p-qP-Uah" id="FJT-bj-UH9"/>
+                <outlet property="img1" destination="7cL-Dd-Icq" id="ZPN-9G-aeg"/>
+                <outlet property="img2" destination="Mkl-4V-3bP" id="s3i-lo-GZ2"/>
+                <outlet property="img3" destination="cZC-nx-Vyb" id="oYy-yd-g5K"/>
+                <outlet property="img4" destination="Cl1-Ib-2Ie" id="NLB-0y-onv"/>
+                <outlet property="img5" destination="irW-cm-MQv" id="V3Y-y3-sMp"/>
                 <outlet property="imgView" destination="kfZ-AI-jBa" id="iWr-FJ-lYH"/>
                 <outlet property="labAddress" destination="YRV-Id-JUb" id="YhT-4u-5P7"/>
                 <outlet property="labTitle" destination="IQc-xG-WPq" id="cvx-jB-1Bg"/>
@@ -73,8 +79,7 @@
     </objects>
     <resources>
         <image name="popup_bg@3x.png" width="390" height="200"/>
-        <image name="star_null@3x.png" width="36" height="36"/>
-        <image name="star_selected@3x.png" width="36" height="36"/>
+        <image name="star_null.png" width="36" height="36"/>
         <image name="thumb.jpg" width="640" height="400"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
