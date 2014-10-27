@@ -84,6 +84,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHCleanViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCleanViewCell" owner:nil options:nil]objectAtIndex:0];
+    cell.dicInfo = dic;
     return cell;
 }
 

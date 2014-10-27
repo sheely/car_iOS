@@ -9,5 +9,6 @@
 #import "SHTableViewCell.h"
 
 @interface SHCleanViewCell : SHTableViewCell
-
+@property (strong,nonatomic) NSDictionary * dicInfo;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @end
