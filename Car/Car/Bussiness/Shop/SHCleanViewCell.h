@@ -9,5 +9,6 @@
 #import "SHTableViewCell.h"
 
 @interface SHCleanViewCell : SHTableViewCell
+@property (weak, nonatomic) IBOutlet UIView *viewSpecial;
 
 @end

@@ -107,6 +107,9 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="viewSpecial" destination="ZG1-cZ-vdm" id="epm-wm-Yvn"/>
+            </connections>
             <point key="canvasLocation" x="290" y="226"/>
         </tableViewCell>
     </objects>
