@@ -7,6 +7,7 @@
 //
 
 #import "SHShopInfoViewController.h"
+#import "SHCleanViewCell.h"
 
 @interface SHShopInfoViewController ()
 {
@@ -60,6 +61,7 @@
 
 - (void)loadSkin
 {
+    [super loadSkin];
     self.imgHead.layer.masksToBounds = YES;
     self.imgHead.layer.cornerRadius = 5;
 }
@@ -78,6 +80,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SHCleanViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCleanViewCell" owner:nil options:nil]objectAtIndex:0];
+    return cell;
+}
 
 - (IBAction)btnContact:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%d",[[dic valueForKey:@"shopmobile"] integerValue]]]];

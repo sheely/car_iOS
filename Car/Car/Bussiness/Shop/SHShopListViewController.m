@@ -438,8 +438,8 @@
             NSDictionary * m  =  [mList objectAtIndex:i];
             SHShopPointAnnotation* pointAnnotation = [[SHShopPointAnnotation alloc]init];
             CLLocationCoordinate2D coor;
-            coor.latitude = [[[m valueForKey:@"originallatitude"] valueForKey:@"lat"] floatValue];
-            coor.longitude = [[[m valueForKey:@"originallatitude"] valueForKey:@"lgt"] floatValue];
+            coor.latitude = [[[m valueForKey:@"baidulatitude"] valueForKey:@"lat"] floatValue];
+            coor.longitude = [[[m valueForKey:@"baidulatitude"] valueForKey:@"lgt"] floatValue];
             pointAnnotation.coordinate = coor;
             pointAnnotation.title = @"test";
             pointAnnotation.subtitle = @"此Annotation可拖拽!";
@@ -473,7 +473,7 @@
         newAnnotation.btnAction.tag =((SHShopPointAnnotation*)annotation).tag;
         newAnnotation.labTitle.text = [dic valueForKey:@"shopname"];
         newAnnotation.labAddress.text = [dic valueForKey:@"shopaddress"];
-        
+        [newAnnotation.imgView setUrl:[dic valueForKey:@"shoplogo"]];
         
         int score = [[dic valueForKey:@"shopscore"] integerValue];
         switch (score) {

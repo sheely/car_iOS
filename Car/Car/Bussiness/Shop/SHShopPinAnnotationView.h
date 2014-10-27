@@ -9,7 +9,7 @@
 #import "SHTableViewCell.h"
 
 @interface SHShopPinAnnotationView : BMKPinAnnotationView
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet SHImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIButton *btnAction;
 @property (weak, nonatomic) IBOutlet UILabel *labAddress;
 

@@ -70,7 +70,6 @@
 		9E3F62DD19D47AEE008C8B7B /* ic_start_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62DC19D47AEE008C8B7B /* ic_start_full.png */; };
 		9E3F62E119D47EA9008C8B7B /* ic_select_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62DF19D47EA9008C8B7B /* ic_select_default.png */; };
 		9E3F62E219D47EA9008C8B7B /* ic_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62E019D47EA9008C8B7B /* ic_select.png */; };
-		9E3F62E519D47FE1008C8B7B /* SHCleanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3F62E419D47FE1008C8B7B /* SHCleanViewCell.m */; };
 		9E3F62E719D47FF5008C8B7B /* SHCleanViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62E619D47FF5008C8B7B /* SHCleanViewCell.xib */; };
 		9E3F62EC19D481D0008C8B7B /* SHMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3F62EA19D481D0008C8B7B /* SHMyInfoViewController.m */; };
 		9E3F62ED19D481D0008C8B7B /* SHMyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F62EB19D481D0008C8B7B /* SHMyInfoViewController.xib */; };
@@ -113,6 +112,8 @@
 		9E7C1B3919FAAB5A0080D4F3 /* star_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7C1B3719FAAB5A0080D4F3 /* star_selected.png */; };
 		9E7C1B3D19FACB180080D4F3 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7C1B3C19FACB180080D4F3 /* libmp3lame.a */; };
 		9E7C1B3F19FACB5B0080D4F3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7C1B3E19FACB5B0080D4F3 /* AVFoundation.framework */; };
+		9E7C1B4119FDCB280080D4F3 /* uncheck_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7C1B4019FDCB280080D4F3 /* uncheck_alt.png */; };
+		9E7C1B4419FDCC690080D4F3 /* SHCleanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C1B4319FDCC690080D4F3 /* SHCleanViewCell.m */; };
 		9E82BB6C19EA9230007301EA /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82BB4C19EA9230007301EA /* QQConnection.framework */; };
 		9E82BB6D19EA9230007301EA /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82BB4D19EA9230007301EA /* QZoneConnection.framework */; };
 		9E82BB6E19EA9230007301EA /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82BB4E19EA9230007301EA /* SinaWeiboConnection.framework */; };
@@ -513,8 +514,6 @@
 		9E3F62DC19D47AEE008C8B7B /* ic_start_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_start_full.png; sourceTree = "<group>"; };
 		9E3F62DF19D47EA9008C8B7B /* ic_select_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_select_default.png; sourceTree = "<group>"; };
 		9E3F62E019D47EA9008C8B7B /* ic_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_select.png; sourceTree = "<group>"; };
-		9E3F62E319D47FE1008C8B7B /* SHCleanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCleanViewCell.h; sourceTree = "<group>"; };
-		9E3F62E419D47FE1008C8B7B /* SHCleanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCleanViewCell.m; sourceTree = "<group>"; };
 		9E3F62E619D47FF5008C8B7B /* SHCleanViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCleanViewCell.xib; sourceTree = "<group>"; };
 		9E3F62E919D481D0008C8B7B /* SHMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMyInfoViewController.h; sourceTree = "<group>"; };
 		9E3F62EA19D481D0008C8B7B /* SHMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMyInfoViewController.m; sourceTree = "<group>"; };
@@ -626,6 +625,9 @@
 		9E7C1B3B19FACB180080D4F3 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		9E7C1B3C19FACB180080D4F3 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		9E7C1B3E19FACB5B0080D4F3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9E7C1B4019FDCB280080D4F3 /* uncheck_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheck_alt.png; path = Car/Bussiness/MyInfo/uncheck_alt.png; sourceTree = SOURCE_ROOT; };
+		9E7C1B4219FDCC690080D4F3 /* SHCleanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCleanViewCell.h; sourceTree = "<group>"; };
+		9E7C1B4319FDCC690080D4F3 /* SHCleanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCleanViewCell.m; sourceTree = "<group>"; };
 		9E82BB4C19EA9230007301EA /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
 		9E82BB4D19EA9230007301EA /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
 		9E82BB4E19EA9230007301EA /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
@@ -1178,9 +1180,6 @@
 				9E3F62CF19D33096008C8B7B /* SHShopInfoViewController.h */,
 				9E3F62D019D33096008C8B7B /* SHShopInfoViewController.m */,
 				9E3F62D119D33096008C8B7B /* SHShopInfoViewController.xib */,
-				9E3F62E319D47FE1008C8B7B /* SHCleanViewCell.h */,
-				9E3F62E419D47FE1008C8B7B /* SHCleanViewCell.m */,
-				9E3F62E619D47FF5008C8B7B /* SHCleanViewCell.xib */,
 				9E5E5FEB19D9A86C00642CED /* SHShopPinAnnotationView.xib */,
 				9E5E5FED19D9A8C500642CED /* SHShopPinAnnotationView.h */,
 				9E5E5FEE19D9A8C500642CED /* SHShopPinAnnotationView.m */,
@@ -1192,6 +1191,9 @@
 				1AA1352319F93576003D983F /* SHLocationViewController.h */,
 				1AA1352419F93576003D983F /* SHLocationViewController.m */,
 				1AA1352519F93576003D983F /* SHLocationViewController.xib */,
+				9E3F62E619D47FF5008C8B7B /* SHCleanViewCell.xib */,
+				9E7C1B4219FDCC690080D4F3 /* SHCleanViewCell.h */,
+				9E7C1B4319FDCC690080D4F3 /* SHCleanViewCell.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -1199,6 +1201,7 @@
 		9E3F62DE19D47B00008C8B7B /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E7C1B4019FDCB280080D4F3 /* uncheck_alt.png */,
 				9E7C1B3619FAAB5A0080D4F3 /* star_null.png */,
 				9E7C1B3719FAAB5A0080D4F3 /* star_selected.png */,
 				1AA1351C19F7E9B3003D983F /* ic_location.png */,
@@ -2640,6 +2643,7 @@
 				9EF62CB719D097DB00111E2F /* subicon_support.png in Resources */,
 				9E5E5FF919D9CCB600642CED /* icon_start@3x.png in Resources */,
 				9EF62A2719CEF92A00111E2F /* color.xml in Resources */,
+				9E7C1B4119FDCB280080D4F3 /* uncheck_alt.png in Resources */,
 				1A486FE319E3F24000D4C923 /* SHMyCarInfoListViewController.xib in Resources */,
 				1A486FEE19E406CE00D4C923 /* ic_default_car.png in Resources */,
 				9E1762FA19E5B429008E3BD9 /* set_status_warning@2x.png in Resources */,
@@ -2728,6 +2732,7 @@
 				9EF6297419CEF92A00111E2F /* AppDelegate.mm in Sources */,
 				9EF62C2E19CF002400111E2F /* MJPhotoView.m in Sources */,
 				9E3D5A2419E9960700141C9D /* SHAboutViewController.m in Sources */,
+				9E7C1B4419FDCC690080D4F3 /* SHCleanViewCell.m in Sources */,
 				9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */,
 				9EF62BE419CF002400111E2F /* SHCalendarViewController.m in Sources */,
 				1A486FE719E4045300D4C923 /* SHCarInfoListCell.m in Sources */,
@@ -2783,7 +2788,6 @@
 				9EF627E119CEBA4900111E2F /* main.m in Sources */,
 				9EF62BF119CF002400111E2F /* DSLCalendarView.m in Sources */,
 				9E3D5A3319EA3CD000141C9D /* LCVoiceHud.m in Sources */,
-				9E3F62E519D47FE1008C8B7B /* SHCleanViewCell.m in Sources */,
 				9E3D5A1F19E793A800141C9D /* SHLertterViewController.m in Sources */,
 				9EF62C1319CF002400111E2F /* MMHud.m in Sources */,
 				9EF62C4919CF002400111E2F /* SHLoadingViewCell.m in Sources */,

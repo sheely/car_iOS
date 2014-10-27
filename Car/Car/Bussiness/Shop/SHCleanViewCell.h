@@ -2,7 +2,7 @@
 //  SHCleanViewCell.h
 //  Car
 //
-//  Created by sheely.paean.Nightshade on 9/26/14.
+//  Created by sheely.paean.Nightshade on 10/27/14.
 //  Copyright (c) 2014 sheely.paean.coretest. All rights reserved.
 //
 
