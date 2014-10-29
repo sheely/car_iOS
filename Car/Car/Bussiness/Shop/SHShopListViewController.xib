@@ -15,11 +15,11 @@
                 <outlet property="btnSound" destination="r6p-wr-6GA" id="Tkk-6n-lzS"/>
                 <outlet property="imgBgView" destination="TDM-0s-KpE" id="Az7-KZ-aA3"/>
                 <outlet property="labLocation" destination="gzV-OY-HZk" id="AJa-1R-WEE"/>
-                <outlet property="labTest" destination="LAl-Rh-GcQ" id="fqo-Iw-y4x"/>
                 <outlet property="mapView" destination="IJZ-gb-WWE" id="gWc-jw-pz6"/>
                 <outlet property="searchDisplayController" destination="avr-n7-AkX" id="dkd-aP-6qi"/>
                 <outlet property="tableView" destination="9sd-J7-3Nw" id="JPC-mM-QVy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewCategory" destination="Z9M-Ss-3FU" id="b32-U5-TfL"/>
                 <outlet property="viewCheck" destination="lq1-0F-KZI" id="My5-11-LrZ"/>
                 <outlet property="viewEnsure" destination="b3w-Mg-e7u" id="av8-87-2nn"/>
                 <outlet property="viewMapCollect" destination="qZ7-KB-3bL" id="ab1-gn-lpW"/>
@@ -193,8 +193,8 @@
                             </subviews>
                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" id="b3w-Mg-e7u" userLabel="ensureview">
-                            <rect key="frame" x="0.0" y="357" width="320" height="211"/>
+                        <view hidden="YES" contentMode="scaleToFill" id="b3w-Mg-e7u" userLabel="ensure_view">
+                            <rect key="frame" x="0.0" y="400" width="320" height="170"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="ta9-0U-PRt">
@@ -216,7 +216,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cV2-3Y-Snp">
-                                    <rect key="frame" x="8" y="61" width="77" height="40"/>
+                                    <rect key="frame" x="8" y="58" width="77" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -232,36 +232,17 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" id="7g0-6C-pOP">
-                                    <rect key="frame" x="103" y="56" width="182" height="50"/>
+                                    <rect key="frame" x="103" y="53" width="182" height="50"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择服务类型:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cwe-sf-DAR">
-                                    <rect key="frame" x="8" y="105" width="120" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmiddark"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测试需求1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LAl-Rh-GcQ">
-                                    <rect key="frame" x="8" y="131" width="78" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labminlight"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_alt.png" id="YbT-YZ-dWL">
-                                    <rect key="frame" x="77" y="134" width="15" height="15"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                </imageView>
+                                <view autoresizesSubviews="NO" contentMode="scaleToFill" id="Z9M-Ss-3FU">
+                                    <rect key="frame" x="0.0" y="110" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2XU-hD-Jwn">
-                                    <rect key="frame" x="8" y="163" width="304" height="40"/>
+                                    <rect key="frame" x="8" y="122" width="304" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -313,7 +294,6 @@
         <image name="btn_keyboard.png" width="230" height="120"/>
         <image name="btn_loctation@3x.png" width="130" height="130"/>
         <image name="btn_photo.png" width="230" height="120"/>
-        <image name="check_alt.png" width="32" height="32"/>
         <image name="icon_play.png" width="13" height="18"/>
         <image name="icon_set.png" width="20" height="20"/>
         <image name="icon_time.png" width="20" height="20"/>

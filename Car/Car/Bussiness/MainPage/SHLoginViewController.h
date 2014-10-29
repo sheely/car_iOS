@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCode;
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
+- (IBAction)btnCodeOnTouch:(id)sender;
 
 @end

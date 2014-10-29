@@ -26,9 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnEnsure;
 @property (weak, nonatomic) IBOutlet UIView *viewPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
-@property (weak, nonatomic) IBOutlet UILabel *labTest;
 @property (weak, nonatomic) IBOutlet UILabel *labLocation;
 @property (nonatomic , retain) AVAudioPlayer *player;
+@property (weak, nonatomic) IBOutlet UIView *viewCategory;
 
 - (IBAction)btnLocationOnTouch:(id)sender;
 - (IBAction)btnRecordUpInside:(id)sender;

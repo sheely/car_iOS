@@ -9,7 +9,10 @@
 #import "SHLoginViewController.h"
 
 @interface SHLoginViewController ()
-
+{
+    NSTimer * timer;
+    int  count ;
+}
 @end
 
 @implementation SHLoginViewController
@@ -20,7 +23,7 @@
 //#ifdef DEBUG
     self.txtLoginName.text = @"18912091298";
     self.txtPassword.text = @"2323";
-
+    timer =  [NSTimer timerWithTimeInterval:            1 target:self selector:@selector(timerUp:) userInfo:nil repeats:YES];
 //#else
 //    
 //#endif
@@ -75,5 +78,36 @@
         return YES;
     }
     return NO;
+}
+
+
+- (void) timerUp:(NSTimer*)t
+{
+    if(count == 0){
+        count = 5;
+    }
+    [self.btnCode setTitle:[NSString stringWithFormat:@"[%d]秒后可以重试",count] forState:UIControlStateNormal];
+    count --;
+    if(count == 0){
+        [timer invalidate];
+        [self.btnCode setTitle:[NSString stringWithFormat:@"获取验证码"] forState:UIControlStateNormal];
+
+    }
+}
+
+- (IBAction)btnCodeOnTouch:(id)sender {
+    SHEntironment.instance.loginName = self.txtLoginName.text;
+    SHEntironment.instance.password = @"";
+    SHPostTaskM * p = [[SHPostTaskM alloc]init];
+    p.URL = URL_FOR(@"smssend.action");
+    [p start:^(SHTask *t) {
+        [self showAlertDialog:@"验证码已发送"];
+        [timer fire];
+    } taskWillTry:^(SHTask *t) {
+        ;
+    } taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+    }];
+    
 }
 @end

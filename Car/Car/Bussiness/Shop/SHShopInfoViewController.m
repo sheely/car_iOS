@@ -20,7 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商户详情";
-    
+    [self request];
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)request
+{
     [self showWaitDialogForNetWork];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"shopdetail.action");
@@ -33,7 +38,7 @@
         [self.imgHead setUrl:[dic valueForKey:@"shoplogo"]];
         int score = [[dic valueForKey:@"shopscore"] integerValue];
         switch (score) {
-           
+                
             case 5:
                 self.img5.image = [SHSkin.instance image:@"star_selected.png"];
             case 4:
@@ -52,11 +57,10 @@
         
         
         [self dismissWaitDialog];
-        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self.tableView reloadData];
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
     }];
-    
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)loadSkin
@@ -81,14 +85,117 @@
 }
 */
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 240;
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHCleanViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCleanViewCell" owner:nil options:nil]objectAtIndex:0];
+    cell.dicInfo = dic;
+    [cell.btnSubmit addTarget:self action:@selector(btnSubmit:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
+- (void)btnSubmit:(UIButton *)b
+{
+    [self showAlertDialog:@"请在与商家的交易结束付款。\n现在确认付款么?" button:@"确定" otherButton:@"取消"];
+}
+
+- (void)alertViewEnSureOnClick
+{
+    NSString *appScheme = @"car";
+    NSString* orderInfo = [self getOrderInfo:0];
+    NSString* signedStr = [self doRsa:orderInfo];
+    NSLog(@"%@",signedStr);
+    NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                             orderInfo, signedStr, @"RSA"];
+    [AlixLibService payOrder:orderString AndScheme:appScheme seletor: @selector(paymentResult:)
+                      target:self];
+}
+
+-(void)paymentResult:(NSString *)resultd
+{
+    //结果处理
+#if ! __has_feature(objc_arc)
+    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
+#else
+    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+#endif
+    if (result){
+        if (result.statusCode == 9000){
+            /*
+             *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+             */
+            
+            //交易成功
+            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
+            id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+            if ([verifier verifyString:result.resultString withSign:result.signString]){
+                //验证签名成功，交易结果无篡改
+                [self showAlertDialog:@"支付成功."];
+                [self request];
+            }
+        }
+        else{
+            //交易失败
+            [self showAlertDialog:@"交易失败."];
+        }
+    }
+    else{
+        //失败
+        [self showAlertDialog:@"交易失败."];
+
+    }
+    
+}
 - (IBAction)btnContact:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%d",[[dic valueForKey:@"shopmobile"] integerValue]]]];
 
 }
+
+-(NSString*)getOrderInfo:(NSInteger)index
+{
+    /*
+     *点击获取prodcut实例并初始化订单信息
+     */
+    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    order.partner = PartnerID;
+    order.seller = SellerID;
+    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.productName = @"洗车"; //商品标题
+    order.productDescription = @"志跃精洗"; //商品描述
+    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
+    order.notifyURL =  @"http://www.baidu.com"; //回调URL
+    
+    return [order description];
+}
+
+- (NSString *)generateTradeNO
+{
+    const int N = 15;
+    
+    NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *result = [[NSMutableString alloc] init] ;
+    srand(time(0));
+    for (int i = 0; i < N; i++)
+    {
+        unsigned index = rand() % [sourceString length];
+        NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
+        [result appendString:s];
+    }
+    return result;
+}
+
+-(NSString*)doRsa:(NSString*)orderInfo
+{
+    id<DataSigner> signer;
+    signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderInfo];
+    return signedString;
+}
+
 @end

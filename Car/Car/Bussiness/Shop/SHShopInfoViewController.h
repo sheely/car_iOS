@@ -7,6 +7,12 @@
 //
 
 #import "SHViewController.h"
+#import "AlixLibService.h"
+#import "AlixPayOrder.h"
+#import "AlixPayResult.h"
+#import "PartnerConfig.h"
+#import "DataSigner.h"
+#import "DataVerifier.h"
 
 @interface SHShopInfoViewController : SHTableViewController
 @property (weak, nonatomic) IBOutlet SHImageView *imgHead;

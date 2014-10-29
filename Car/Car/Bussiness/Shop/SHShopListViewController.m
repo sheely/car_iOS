@@ -14,6 +14,7 @@
 #import "SHPhoto.h"
 #import "SHSelectLocationAnnotationView.h"
 #import "lame.h"
+#import "SHCategoryView.h"
 
 @interface SHShopListViewController ()
 {
@@ -22,6 +23,12 @@
     BMKGeoCodeSearch * _searcher;
     SHShopPointAnnotation* selectLocation;
     NSMutableArray * mListAnimation;
+    NSArray *mCategroy;
+    int type;
+    NSDictionary * mDicCategorySelected;
+    NSString *cafFilePath;
+    
+    NSString *mp3FilePath;
 
 }
 @end
@@ -31,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    type = -1;
     self.tableView.frame = self.view.bounds;
     self.title = @"商户列表";
     self.mapView.delegate = self;
@@ -51,15 +59,16 @@
         self.viewCheck.hidden = YES;
         self.imgBgView.hidden = NO;
         self.viewRequest.hidden = NO;
-        self.labTest.text = @"汽车美容";
+        type = 2;
+
     }else {
         if([[self.intent.args valueForKey:@"type"]isEqualToString:@"repair"]){
-            self.labTest.text = @"钣金维修";
+            type = 1;
         }else if([[self.intent.args valueForKey:@"type"]isEqualToString:@"support"]){
-            self.labTest.text = @"拖车服务";
+            type = 0;
+
         }
         else if([[self.intent.args valueForKey:@"type"]isEqualToString:@"Insurance"]){
-            self.labTest.text = @"汽车保险";
         }
         
         self.tableView.hidden = YES;
@@ -68,6 +77,35 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_list"] target:self action:@selector(checkListMap)];
 
     }
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"maintainanceinit.action");
+    if(type > -1){
+        [post.postArgs setValue:[NSNumber numberWithInt:type] forKey:@"requesttype"];
+        [post start:^(SHTask *t) {
+            mCategroy = [t.result valueForKey:@"servicecategorys"];
+            int ys = mCategroy.count/3 +( mCategroy.count%3 > 0 ?1:0);
+            for (int i = 0; i< mCategroy.count; i++) {
+                NSDictionary  * dic = [mCategroy objectAtIndex:i];
+                int y = i/3;
+                SHCategoryView * view = [[[NSBundle mainBundle]loadNibNamed:@"SHCategoryView" owner:nil options:nil] objectAtIndex:0];
+                view.frame = CGRectMake(10+i*100 - y* 300, 40*y, 100.5, 40.5);
+                [self.viewCategory insertSubview:view atIndex:self.viewCategory.subviews.count];
+                view.tag = i;
+                if(i == 0){
+                    view.selected = YES;
+                    mDicCategorySelected = dic;
+                }
+            }
+            CGRect frame = self.viewEnsure.frame;
+            frame.origin.y -= 40 * ys;
+            frame.size.height += 40 * ys;
+            self.viewEnsure.frame = frame;
+            
+        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+            
+        }];
+    }
+    
     if([self.intent.args valueForKey:@"title"]){
         self.title = [self.intent.args valueForKey:@"title"];
     }
@@ -89,7 +127,7 @@
     [_mapView addAnnotation:selectLocation];
     mListAnimation = [[NSMutableArray alloc]init];
     [self refreshAdress];
-
+  
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -199,7 +237,26 @@
 
 - (IBAction)btnEnsureOnTouch:(id)sender
 {
-    [self showAlertDialog:@"需求发布成功!"];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"maintainance.action");
+    [post.postArgs setValue:@"" forKey:@"problemdesc"];
+    [post.postArgs setValue:self.labLocation.text forKey:@"location"];
+    NSMutableArray * base64phote = [[NSMutableArray alloc]init];
+    for (UIImage * img  in mListPhoto) {
+        [base64phote addObject:[Base64 encode:UIImagePNGRepresentation(img) ]];
+    }
+    
+    [post.postArgs setValue:[[NSArray alloc]init] forKey:@"uploadedpicture"];
+    [post.postArgs setValue:[Base64 encode:[NSData dataWithContentsOfFile:mp3FilePath]] forKey:@"sound"];
+    [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude] forKey:@"lat"];
+    [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.longitude]forKey:@"lgt"];
+    [post.postArgs setValue:[mDicCategorySelected valueForKey:@"servicecategoryid"] forKey:@"servicecategoryid"];
+    [post start:^(SHTask *t) {
+        [self showAlertDialog:@"需求发布成功!"];
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+    }];
+    
     [self closeEnSureView];
 }
 
@@ -233,11 +290,10 @@
 
 - (void)audio_PCMtoMP3
 {
-    NSString *cafFilePath = voice.recordPath;
     
-    NSString *mp3FilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/downloadFile.mp3"];
-    
-    
+    cafFilePath = voice.recordPath;
+    mp3FilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/downloadFile.mp3"];
+
     NSFileManager* fileManager=[NSFileManager defaultManager];
     if([fileManager removeItemAtPath:mp3FilePath error:nil]){
         NSLog(@"删除");
