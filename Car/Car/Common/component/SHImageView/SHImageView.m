@@ -70,7 +70,7 @@
         NSDictionary * result = (NSDictionary*)task.result;
         NSString * base64 =[result valueForKey:@"image"];
         //[base64 cStringUsingEncoding:NSASCIIStringEncoding];
-        NSData * data = [Base64 decode:base64];
+        NSData * data = [SHBase64 decode:base64];
         self.mark = [result valueForKey:@"description"];
         self.image = [[UIImage alloc]initWithData:data];
         if (self.delegate && [self.delegate respondsToSelector:@selector(imageViewDidLoadFinished:)]) {

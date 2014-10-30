@@ -237,24 +237,35 @@
 
 - (IBAction)btnEnsureOnTouch:(id)sender
 {
+    [self showWaitDialogForNetWork];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"maintainance.action");
     [post.postArgs setValue:@"" forKey:@"problemdesc"];
     [post.postArgs setValue:self.labLocation.text forKey:@"location"];
-    NSMutableArray * base64phote = [[NSMutableArray alloc]init];
-    for (UIImage * img  in mListPhoto) {
-        [base64phote addObject:[Base64 encode:UIImagePNGRepresentation(img) ]];
+    if(mListPhoto.count > 0){
+        NSMutableArray * base64phote = [[NSMutableArray alloc]init];
+        for (UIImage * img  in mListPhoto) {
+            [base64phote addObject:[SHBase64 encode:UIImagePNGRepresentation(img) ]];
+        }
+        [post.postArgs setValue:base64phote forKey:@"uploadedpicture"];
+    }else{
+        [post.postArgs setValue:[[NSArray alloc]init] forKey:@"uploadedpicture"];
     }
-    
-    [post.postArgs setValue:[[NSArray alloc]init] forKey:@"uploadedpicture"];
-    [post.postArgs setValue:[Base64 encode:[NSData dataWithContentsOfFile:mp3FilePath]] forKey:@"sound"];
+    if(mp3FilePath.length > 0){
+    [post.postArgs setValue:[SHBase64 encode:[NSData dataWithContentsOfFile:mp3FilePath]] forKey:@"sound"];
+    }else{
+        [post.postArgs setValue:[SHBase64 encode:[[NSData alloc] init]] forKey:@"sound"];
+
+    }
     [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude] forKey:@"lat"];
     [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.longitude]forKey:@"lgt"];
     [post.postArgs setValue:[mDicCategorySelected valueForKey:@"servicecategoryid"] forKey:@"servicecategoryid"];
     [post start:^(SHTask *t) {
         [self showAlertDialog:@"需求发布成功!"];
+        [self dismissWaitDialog];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [t.respinfo show];
+        [self dismissWaitDialog];
     }];
     
     [self closeEnSureView];

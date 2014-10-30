@@ -12,7 +12,7 @@
 #import "SHEntironment.h"
 #import "SHTask.h"
 #import "SHIIOSVersion.h"
-#import "Base64.h"
+#import "SHBase64.h"
 #import "SHVersion.h"
 #import "SHCrashManager.h"
 #import "SHConfigManager.h"

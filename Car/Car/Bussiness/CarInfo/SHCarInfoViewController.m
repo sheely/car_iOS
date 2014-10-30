@@ -25,12 +25,43 @@
     self.imgIndicator.layer.anchorPoint = CGPointMake(0.88, 0.5);
 
     [self performSelector:@selector(drawdashboard) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(viewAnimation) withObject:nil afterDelay:0.5];
     // Do any additional setup after loading the view from its nib.
 }
 
 int sum = 30;
 int cur = 0;
 int order = 0;
+
+- (void)viewAnimation
+{
+    [UIView animateWithDuration:2 animations:^{
+        CGRect frame = self.viewOil.frame;
+        frame.origin.x += 50;
+        frame.origin.y += 50;
+        self.viewOil.frame = frame;
+        self.viewOil.alpha = 1;
+        
+        frame = self.viewPower.frame;
+        frame.origin.x -= 50;
+        frame.origin.y -= 50;
+        self.viewPower.frame = frame;
+        self.viewPower.alpha = 1;
+
+        frame = self.viewSafety.frame;
+        frame.origin.x += 50;
+        frame.origin.y -= 50;
+        self.viewSafety.frame = frame;
+        self.viewSafety.alpha = 1;
+
+        frame = self.viewCarControl.frame;
+        frame.origin.x -= 50;
+        frame.origin.y += 50;
+        self.viewCarControl.frame = frame;
+        self.viewCarControl.alpha = 1;
+
+} completion:nil];
+}
 
 - (void)drawdashboard
 {
@@ -244,4 +275,11 @@ int order = 0;
     
 }
 
+- (IBAction)btnOilOnTouch:(id)sender {
+    [UIView animateWithDuration:1 animations:^{
+        self.view4Itmes.alpha = 0;
+        self.collectView.alpha = 1;
+    } completion:nil];
+
+}
 @end

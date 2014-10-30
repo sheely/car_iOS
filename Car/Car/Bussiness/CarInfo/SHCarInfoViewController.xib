@@ -12,7 +12,12 @@
                 <outlet property="labScore" destination="hdj-hd-rDj" id="Ha2-hA-DYL"/>
                 <outlet property="tableView" destination="3WM-E5-Qlg" id="dw2-pC-znN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view4Itmes" destination="5NI-2m-eVd" id="Fnb-7i-EuY"/>
+                <outlet property="viewCarControl" destination="7ZV-KT-LhD" id="Rgu-tp-LcW"/>
                 <outlet property="viewDashBoard" destination="i8p-JS-J3e" id="izR-9m-JLz"/>
+                <outlet property="viewOil" destination="WsL-qS-dGP" id="rUU-mr-wEk"/>
+                <outlet property="viewPower" destination="Boe-Af-Sjw" id="2S2-ph-2Ud"/>
+                <outlet property="viewSafety" destination="YOs-eK-ELr" id="MUP-1O-YTI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,7 +29,7 @@
                     <rect key="frame" x="0.0" y="88" width="320" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="none" id="Nci-sn-vhp">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" indicatorStyle="black" dataMode="none" id="Nci-sn-vhp">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                             <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -47,8 +52,8 @@
                                     <rect key="frame" x="55" y="67" width="210" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </imageView>
-                                <view contentMode="scaleToFill" id="7ZV-KT-LhD">
-                                    <rect key="frame" x="32" y="162" width="95" height="57"/>
+                                <view alpha="0.0" contentMode="scaleToFill" id="7ZV-KT-LhD">
+                                    <rect key="frame" x="82" y="112" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sCu-76-SrM">
@@ -57,6 +62,9 @@
                                             <state key="normal" image="popup_bg.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnOilOnTouch:" destination="-1" eventType="touchUpInside" id="BOO-mt-zJd"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_controller.png" id="WGz-8Y-5Fm">
                                             <rect key="frame" x="17" y="8" width="24" height="24"/>
@@ -83,8 +91,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" id="Boe-Af-Sjw">
-                                    <rect key="frame" x="19" y="5" width="95" height="57"/>
+                                <view alpha="0.0" contentMode="scaleToFill" id="Boe-Af-Sjw">
+                                    <rect key="frame" x="69" y="55" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="V5b-Ti-YLe">
@@ -93,6 +101,9 @@
                                             <state key="normal" image="popup_bg.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnOilOnTouch:" destination="-1" eventType="touchUpInside" id="AYf-TL-Dad"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_power.png" id="cvq-3h-CCB">
                                             <rect key="frame" x="13" y="8" width="24" height="24"/>
@@ -119,8 +130,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" id="YOs-eK-ELr">
-                                    <rect key="frame" x="217" y="12" width="95" height="57"/>
+                                <view alpha="0.0" contentMode="scaleToFill" id="YOs-eK-ELr">
+                                    <rect key="frame" x="167" y="62" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cZi-7t-G3v">
@@ -155,8 +166,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <view contentMode="scaleToFill" id="WsL-qS-dGP">
-                                    <rect key="frame" x="191" y="153" width="95" height="57"/>
+                                <view alpha="0.0" contentMode="scaleToFill" id="WsL-qS-dGP">
+                                    <rect key="frame" x="141" y="103" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ogo-oE-4KS">
@@ -165,6 +176,9 @@
                                             <state key="normal" image="popup_bg.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnOilOnTouch:" destination="-1" eventType="touchUpInside" id="LsY-KC-7Ui"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressbar_round_full.png" id="c6n-5U-QCA">
                                             <rect key="frame" x="7" y="8" width="36" height="36"/>
