@@ -20,13 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"用户登录";
-//#ifdef DEBUG
-    self.txtLoginName.text = @"18912091298";
-    self.txtPassword.text = @"2323";
-    timer =  [NSTimer timerWithTimeInterval:            1 target:self selector:@selector(timerUp:) userInfo:nil repeats:YES];
-//#else
-//    
-//#endif
+    self.txtLoginName.text = [[[NSUserDefaults standardUserDefaults] valueForKey:@"STORE_USER_INFO"] valueForKey:@"username"];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -54,6 +48,11 @@
     [p start:^(SHTask *t) {
         [self dismissWaitDialog];
          [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];
+        NSMutableDictionary * dic = [[NSMutableDictionary alloc]init ];
+        [dic setValue:self.txtLoginName.text forKey:@"username"];
+        [dic setValue:self.txtPassword.text forKey:@"password"];
+        [[NSUserDefaults standardUserDefaults] setObject:dic forKey:STORE_USER_INFO];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
 
@@ -85,29 +84,36 @@
 {
     if(count == 0){
         count = 5;
+        self.btnCode.enabled = NO;
     }
     [self.btnCode setTitle:[NSString stringWithFormat:@"[%d]秒后可以重试",count] forState:UIControlStateNormal];
     count --;
     if(count == 0){
+        self.btnCode.enabled = YES;
         [timer invalidate];
         [self.btnCode setTitle:[NSString stringWithFormat:@"获取验证码"] forState:UIControlStateNormal];
-
+        
     }
 }
 
 - (IBAction)btnCodeOnTouch:(id)sender {
-    SHEntironment.instance.loginName = self.txtLoginName.text;
-    SHEntironment.instance.password = @"";
-    SHPostTaskM * p = [[SHPostTaskM alloc]init];
-    p.URL = URL_FOR(@"smssend.action");
-    [p start:^(SHTask *t) {
-        [self showAlertDialog:@"验证码已发送"];
-        [timer fire];
-    } taskWillTry:^(SHTask *t) {
-        ;
-    } taskDidFailed:^(SHTask *t) {
-        [t.respinfo show];
-    }];
-    
+    if(self.txtLoginName.text.length == 0){
+        [self showAlertDialog:@"手机号码不可为空"];
+    }else{
+        SHEntironment.instance.loginName = self.txtLoginName.text;
+        SHEntironment.instance.password = @"";
+        SHPostTaskM * p = [[SHPostTaskM alloc]init];
+        p.URL = URL_FOR(@"smssend.action");
+        [p start:^(SHTask *t) {
+            [self showAlertDialog:@"验证码已发送"];
+            [timer invalidate];
+            timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(timerUp:) userInfo:nil repeats:YES];
+        } taskWillTry:^(SHTask *t) {
+            ;
+        } taskDidFailed:^(SHTask *t) {
+            [t.respinfo show];
+        }];
+        
+    }
 }
 @end

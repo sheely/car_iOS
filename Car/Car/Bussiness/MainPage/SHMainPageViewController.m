@@ -30,6 +30,11 @@
         labCardNo.text =[NSString stringWithFormat:@"%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"carcardno"]];
         [imgBrand setUrl:[dic valueForKey:@"carlogo"]];
     }
+    NSDictionary * dicuser = [[NSUserDefaults standardUserDefaults] valueForKey: STORE_USER_INFO];
+    if(dicuser){
+        SHEntironment.instance.loginName = [dicuser valueForKey:@"username"];
+        SHEntironment.instance.password = [dicuser valueForKey:@"password"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
