@@ -18,6 +18,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self showWaitDialogForNetWork];
+    
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"ordersquery.action");
+    [post.postArgs setValue:[NSNumber numberWithInt:99] forKey:@"ordertype"];
+    [post.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"pageno"];
+    [post.postArgs setValue:[NSNumber numberWithFloat:20] forKey:@"pagesize"];
+    [post start:^(SHTask *t) {
+        ;
+        [self dismissWaitDialog];
+    } taskWillTry:nil
+  taskDidFailed:^(SHTask *t) {
+      [self dismissWaitDialog];
+
+  }];
     // Do any additional setup after loading the view from its nib.
 }
 

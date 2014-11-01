@@ -51,7 +51,7 @@
         NSMutableDictionary * dic = [[NSMutableDictionary alloc]init ];
         [dic setValue:self.txtLoginName.text forKey:@"username"];
         [dic setValue:self.txtPassword.text forKey:@"password"];
-        [[NSUserDefaults standardUserDefaults] setObject:dic forKey:STORE_USER_INFO];
+        [[NSUserDefaults standardUserDefaults] setObject:dic  forKey:STORE_USER_INFO];
         [[NSUserDefaults standardUserDefaults] synchronize];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
@@ -73,7 +73,7 @@
 
 +(BOOL)__GET_PRE_ACTION_STATE:(NSError*)e
 {
-    if(SHEntironment.instance.loginName.length >0 ){
+    if(SHEntironment.instance.loginName.length >0 && SHEntironment.instance.password.length > 0 ){
         return YES;
     }
     return NO;

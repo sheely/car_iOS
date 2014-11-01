@@ -60,6 +60,9 @@
 		9E21773E1A00F3710017F710 /* progressbar_round_full_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E21772E1A00F3710017F710 /* progressbar_round_full_bg@3x.png */; };
 		9E21773F1A00F3710017F710 /* progressbar_round_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E21772F1A00F3710017F710 /* progressbar_round_full@2x.png */; };
 		9E2177401A00F3710017F710 /* progressbar_round_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2177301A00F3710017F710 /* progressbar_round_full@3x.png */; };
+		9E325DEA1A04DFB100A35554 /* banner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE71A04DFB100A35554 /* banner1.png */; };
+		9E325DEB1A04DFB100A35554 /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE81A04DFB100A35554 /* banner2.png */; };
+		9E325DEC1A04DFB100A35554 /* banner3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE91A04DFB100A35554 /* banner3.png */; };
 		9E3D5A0419E6A4EB00141C9D /* SHEditCarinfoViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */; };
 		9E3D5A0519E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */; };
 		9E3D5A0719E6F9E000141C9D /* img_cardband.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0619E6F9E000141C9D /* img_cardband.png */; };
@@ -446,7 +449,6 @@
 		9EF62CC719D09E6000111E2F /* navi_phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF62CC519D09E6000111E2F /* navi_phone@3x.png */; };
 		9EF62CD119D09ED200111E2F /* SHMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF62CCF19D09ED200111E2F /* SHMainPageViewController.m */; };
 		9EF62CD219D09ED200111E2F /* SHMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF62CD019D09ED200111E2F /* SHMainPageViewController.xib */; };
-		9EF62CD419D0A1A700111E2F /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF62CD319D0A1A700111E2F /* banner.png */; };
 		9EF62CD619D0A3F600111E2F /* audi.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF62CD519D0A3F600111E2F /* audi.png */; };
 /* End PBXBuildFile section */
 
@@ -537,6 +539,9 @@
 		9E21772E1A00F3710017F710 /* progressbar_round_full_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressbar_round_full_bg@3x.png"; sourceTree = "<group>"; };
 		9E21772F1A00F3710017F710 /* progressbar_round_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressbar_round_full@2x.png"; sourceTree = "<group>"; };
 		9E2177301A00F3710017F710 /* progressbar_round_full@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressbar_round_full@3x.png"; sourceTree = "<group>"; };
+		9E325DE71A04DFB100A35554 /* banner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner1.png; sourceTree = "<group>"; };
+		9E325DE81A04DFB100A35554 /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
+		9E325DE91A04DFB100A35554 /* banner3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner3.png; sourceTree = "<group>"; };
 		9E3D5A0119E6A4EA00141C9D /* SHEditCarinfoViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditCarinfoViewViewController.h; sourceTree = "<group>"; };
 		9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEditCarinfoViewViewController.m; sourceTree = "<group>"; };
 		9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditCarinfoViewViewController.xib; sourceTree = "<group>"; };
@@ -1170,7 +1175,6 @@
 		9EF62CCE19D09ED200111E2F /* SHMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMainPageViewController.h; sourceTree = "<group>"; };
 		9EF62CCF19D09ED200111E2F /* SHMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMainPageViewController.m; sourceTree = "<group>"; };
 		9EF62CD019D09ED200111E2F /* SHMainPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMainPageViewController.xib; sourceTree = "<group>"; };
-		9EF62CD319D0A1A700111E2F /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		9EF62CD519D0A3F600111E2F /* audi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audi.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2492,9 +2496,11 @@
 		9EF62C9719D097CC00111E2F /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E325DE71A04DFB100A35554 /* banner1.png */,
+				9E325DE81A04DFB100A35554 /* banner2.png */,
+				9E325DE91A04DFB100A35554 /* banner3.png */,
 				9E82BB8519EAE51E007301EA /* splash.png */,
 				9EF62CD519D0A3F600111E2F /* audi.png */,
-				9EF62CD319D0A1A700111E2F /* banner.png */,
 				9EF62C9819D097DB00111E2F /* icon_carwash.png */,
 				9EF62C9919D097DB00111E2F /* icon_mechanic.png */,
 				9EF62C9A19D097DB00111E2F /* navi_home_pressed.png */,
@@ -2650,7 +2656,6 @@
 				9E62983619F2BA2E0049F5FF /* btn_photo.png in Resources */,
 				9ED550E319D6566F0046A4C1 /* lis_icon_status@3x.png in Resources */,
 				9EF62C0519CF002400111E2F /* grayArrow.png in Resources */,
-				9EF62CD419D0A1A700111E2F /* banner.png in Resources */,
 				9E3D5A3619EA3CD000141C9D /* wave70x117@2x.png in Resources */,
 				9E62984C19F2DB4C0049F5FF /* icon_repair@2x.png in Resources */,
 				9EF62C6919CF002400111E2F /* status-bar-pattern-default@2x.jpg in Resources */,
@@ -2699,6 +2704,7 @@
 				9EF62C6119CF002400111E2F /* SHImageViewController.xib in Resources */,
 				9EF62C0119CF002400111E2F /* blackArrow.png in Resources */,
 				9ED550C319D5EAE70046A4C1 /* set_icon_light@3x.png in Resources */,
+				9E325DEB1A04DFB100A35554 /* banner2.png in Resources */,
 				9EF62C0619CF002400111E2F /* grayArrow@2x.png in Resources */,
 				9E2177321A00F3710017F710 /* bg_car@3x.png in Resources */,
 				9EF62C4719CF002400111E2F /* ic_re_error.png in Resources */,
@@ -2799,6 +2805,7 @@
 				9E21773F1A00F3710017F710 /* progressbar_round_full@2x.png in Resources */,
 				9ED550BC19D5EAE70046A4C1 /* set_icon_breaking@2x.png in Resources */,
 				9ED550C019D5EAE70046A4C1 /* set_icon_gas@2x.png in Resources */,
+				9E325DEA1A04DFB100A35554 /* banner1.png in Resources */,
 				9EF62C2119CF002400111E2F /* navigation_bar_bg.png in Resources */,
 				9E3F62CE19D31B48008C8B7B /* SHShopListCell.xib in Resources */,
 				9EF62CD219D09ED200111E2F /* SHMainPageViewController.xib in Resources */,
@@ -2823,6 +2830,7 @@
 				9E2177351A00F3710017F710 /* icon_oil@2x.png in Resources */,
 				9E5E5FFC19D9CCBF00642CED /* icon_set@3x.png in Resources */,
 				9E3F62DB19D4730F008C8B7B /* thumb.jpg in Resources */,
+				9E325DEC1A04DFB100A35554 /* banner3.png in Resources */,
 				9E5E600219D9CDED00642CED /* icon_set.png in Resources */,
 				9E1762FF19E5B599008E3BD9 /* arrow_right@2x.png in Resources */,
 				9ED550C819D5EAE70046A4C1 /* set_status_fault@3x.png in Resources */,

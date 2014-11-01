@@ -103,11 +103,23 @@
         }else if (indexPath.row == 4){
             SHQuitCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHQuitCell" owner:nil options:nil]objectAtIndex:0];
             cell.backgroundColor = [UIColor whiteColor];
-
+            [cell.btnQuit addTarget:self action:@selector(btnQuit:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
-        }    }
+        }
+    }
     
     return nil;
+}
+
+- (void)btnQuit:(NSObject*)b
+{
+    SHEntironment.instance.password = @"";
+    [self performSelector:@selector(reLogin) afterNotification:@"notification_login_successful"];
+}
+
+- (void)reLogin
+{
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
