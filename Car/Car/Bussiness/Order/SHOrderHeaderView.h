@@ -9,5 +9,9 @@
 #import "SHTableViewCell.h"
 
 @interface SHOrderHeaderView : SHView
+@property (weak, nonatomic) IBOutlet SHImageView *imgHead;
+@property (weak, nonatomic) IBOutlet UILabel *labTitle;
+@property (weak, nonatomic) IBOutlet UILabel *labCarId;
+@property (weak, nonatomic) IBOutlet UILabel *labTimer;
 
 @end

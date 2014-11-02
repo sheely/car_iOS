@@ -10,5 +10,10 @@
 
 @interface SHOrderItemCell : SHTableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UILabel *labShopName;
+@property (weak, nonatomic) IBOutlet SHImageView *imgView;
+@property (weak, nonatomic) IBOutlet UILabel *labPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labOrPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labState;
+@property (weak, nonatomic) IBOutlet UIButton *btnPay;
 @end

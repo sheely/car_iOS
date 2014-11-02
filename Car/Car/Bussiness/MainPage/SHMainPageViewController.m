@@ -9,7 +9,11 @@
 #import "SHMainPageViewController.h"
 
 @interface SHMainPageViewController ()
-
+{
+    NSTimer * timer;
+    int index;
+    int direct;
+}
 @end
 
 @implementation SHMainPageViewController
@@ -18,8 +22,26 @@
     [super viewDidLoad];
     self.title = @"车宝宝";
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width * 3, scrollview.frame.size.height);
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(btnChanged:) userInfo:nil repeats:YES];
+    
 //    pagecontrol
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)btnChanged:(NSObject*)nssender
+{
+    if(direct){
+        index--;
+    }else{
+        index++;
+    }
+    if(index == 2){
+        direct = 1;
+    }else if (index==0){
+        direct = 0;
+    }
+    [scrollview setContentOffset:CGPointMake(index*self.view.frame.size.width, 0) animated:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

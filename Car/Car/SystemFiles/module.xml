@@ -139,6 +139,12 @@
     type = "--"
     icon = "--"
     title = "地址检索"
+    /> <module
+    name="titlecontent"
+    target="SHContentViewController"
+    type = "--"
+    icon = "--"
+    title = "文本内容呈现器"
     />
     
 </root>

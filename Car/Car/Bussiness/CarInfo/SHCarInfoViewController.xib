@@ -8,7 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHCarInfoViewController">
             <connections>
                 <outlet property="collectView" destination="Nci-sn-vhp" id="Grg-fS-ReG"/>
+                <outlet property="imgCar" destination="9Tn-ka-hpG" id="eWU-3z-FvO"/>
                 <outlet property="imgIndicator" destination="kHu-ST-KkH" id="RfF-c0-LnC"/>
+                <outlet property="imgView" destination="DgY-gk-YVo" id="gNZ-tw-NcN"/>
                 <outlet property="labScore" destination="hdj-hd-rDj" id="Ha2-hA-DYL"/>
                 <outlet property="tableView" destination="3WM-E5-Qlg" id="dw2-pC-znN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,37 +31,41 @@
                     <rect key="frame" x="0.0" y="88" width="320" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" indicatorStyle="black" dataMode="none" id="Nci-sn-vhp">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
-                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="2XE-v3-Obg">
-                                <size key="itemSize" width="96" height="42"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="KHs-ad-y47"/>
-                                <outlet property="delegate" destination="-1" id="Mqg-4L-5G6"/>
-                            </connections>
-                        </collectionView>
                         <view contentMode="scaleToFill" id="5NI-2m-eVd">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_carresearch.png" id="DgY-gk-YVo">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="none" id="Nci-sn-vhp">
+                                    <rect key="frame" x="0.0" y="60" width="320" height="161"/>
+                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="2XE-v3-Obg">
+                                        <size key="itemSize" width="96" height="42"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="KHs-ad-y47"/>
+                                        <outlet property="delegate" destination="-1" id="Mqg-4L-5G6"/>
+                                    </connections>
+                                </collectionView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_car.png" id="9Tn-ka-hpG">
                                     <rect key="frame" x="55" y="67" width="210" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </imageView>
                                 <view alpha="0.0" contentMode="scaleToFill" id="7ZV-KT-LhD">
-                                    <rect key="frame" x="82" y="112" width="95" height="57"/>
+                                    <rect key="frame" x="69" y="112" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sCu-76-SrM">
                                             <rect key="frame" x="0.0" y="-1" width="95" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="popup_bg.png">
+                                            <state key="normal" image="bg_popup.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -92,13 +98,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view alpha="0.0" contentMode="scaleToFill" id="Boe-Af-Sjw">
-                                    <rect key="frame" x="69" y="55" width="95" height="57"/>
+                                    <rect key="frame" x="69" y="59" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="V5b-Ti-YLe">
                                             <rect key="frame" x="0.0" y="0.0" width="95" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="popup_bg.png">
+                                            <state key="normal" image="bg_popup.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -106,22 +112,22 @@
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_power.png" id="cvq-3h-CCB">
-                                            <rect key="frame" x="13" y="8" width="24" height="24"/>
+                                            <rect key="frame" x="13" y="12" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="动力性" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="16L-bt-bJH">
-                                            <rect key="frame" x="4" y="25" width="42" height="21"/>
+                                            <rect key="frame" x="4" y="29" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressbar_round_full.png" id="WcV-37-cbn">
-                                            <rect key="frame" x="52" y="8" width="36" height="36"/>
+                                            <rect key="frame" x="52" y="13" width="36" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ogU-GE-DIL">
-                                            <rect key="frame" x="49" y="16" width="42" height="21"/>
+                                            <rect key="frame" x="49" y="20" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -131,33 +137,36 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view alpha="0.0" contentMode="scaleToFill" id="YOs-eK-ELr">
-                                    <rect key="frame" x="167" y="62" width="95" height="57"/>
+                                    <rect key="frame" x="167" y="59" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cZi-7t-G3v">
                                             <rect key="frame" x="0.0" y="0.0" width="95" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="popup_bg.png">
+                                            <state key="normal" image="bg_popup.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnOilOnTouch:" destination="-1" eventType="touchUpInside" id="bjJ-qR-PmD"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全性" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rjY-4T-k6q">
-                                            <rect key="frame" x="49" y="21" width="42" height="24"/>
+                                            <rect key="frame" x="49" y="23" width="42" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_safety.png" id="7tW-Yk-4h9">
-                                            <rect key="frame" x="58" y="5" width="24" height="24"/>
+                                            <rect key="frame" x="58" y="7" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressbar_round_full.png" id="woC-Z3-y5k">
-                                            <rect key="frame" x="7" y="8" width="36" height="36"/>
+                                            <rect key="frame" x="7" y="10" width="36" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iPZ-yM-Ua5">
-                                            <rect key="frame" x="4" y="15" width="42" height="21"/>
+                                            <rect key="frame" x="4" y="17" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -167,13 +176,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <view alpha="0.0" contentMode="scaleToFill" id="WsL-qS-dGP">
-                                    <rect key="frame" x="141" y="103" width="95" height="57"/>
+                                    <rect key="frame" x="167" y="112" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ogo-oE-4KS">
                                             <rect key="frame" x="0.0" y="0.0" width="95" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="popup_bg.png">
+                                            <state key="normal" image="bg_popup.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -181,22 +190,22 @@
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressbar_round_full.png" id="c6n-5U-QCA">
-                                            <rect key="frame" x="7" y="8" width="36" height="36"/>
+                                            <rect key="frame" x="7" y="10" width="36" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_oil.png" id="Vrt-mX-Msz">
-                                            <rect key="frame" x="57" y="10" width="24" height="24"/>
+                                            <rect key="frame" x="57" y="12" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经济性" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6iJ-cH-v4Z">
-                                            <rect key="frame" x="48" y="27" width="42" height="21"/>
+                                            <rect key="frame" x="48" y="29" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HI6-NM-ajP">
-                                            <rect key="frame" x="4" y="15" width="42" height="21"/>
+                                            <rect key="frame" x="4" y="17" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,7 +215,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="deviceRGB"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="deviceRGB"/>
@@ -286,14 +295,15 @@
     <resources>
         <image name="audi.png" width="147" height="102"/>
         <image name="bg_car.png" width="210" height="85"/>
+        <image name="bg_carresearch.png" width="320" height="210"/>
         <image name="bg_dashboard.png" width="64" height="64"/>
+        <image name="bg_popup.png" width="95" height="51"/>
         <image name="dashboard_indicator@3x.png" width="92" height="28"/>
         <image name="dashboard_warning_background@3x.png" width="192" height="192"/>
         <image name="icon_controller.png" width="24" height="24"/>
         <image name="icon_oil.png" width="24" height="24"/>
         <image name="icon_power.png" width="24" height="24"/>
         <image name="icon_safety.png" width="24" height="24"/>
-        <image name="popup_bg.png" width="95" height="57"/>
         <image name="progressbar_round_full.png" width="36" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

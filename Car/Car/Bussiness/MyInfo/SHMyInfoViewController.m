@@ -8,9 +8,12 @@
 
 #import "SHMyInfoViewController.h"
 #import "SHQuitCell.h"
+#import "SHMyBaseInfoCell.h"
 
 @interface SHMyInfoViewController ()
-
+{
+    NSDictionary * dic ;
+}
 @end
 
 @implementation SHMyInfoViewController
@@ -18,9 +21,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的信息";
+    [self request];
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)request
+{
+    [self showWaitDialogForNetWork];
+    SHPostTaskM *post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"meinfoquery.action");
+    [post start:^(SHTask *t) {
+        dic = t.result;
+        [self.tableView reloadData];
+        [self dismissWaitDialog];
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -58,8 +75,11 @@
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
-        UITableViewCell* cell = [[[NSBundle mainBundle]loadNibNamed:@"SHMyBaseInfoCell" owner:nil options:nil]objectAtIndex:0];
+        SHMyBaseInfoCell* cell = [[[NSBundle mainBundle]loadNibNamed:@"SHMyBaseInfoCell" owner:nil options:nil]objectAtIndex:0];
         cell.backgroundColor = [UIColor whiteColor];
+        cell.labPhone.text = [NSString stringWithFormat:@"手机号码:%@", [[dic valueForKey:@"myusername"] length] == 0 ? @"":[dic valueForKey:@"myusername"]];
+        cell.txtFieldName.text = [dic valueForKey:@"mynickname"];
+        [cell.imgHead setUrl:[dic valueForKey:@"myheadicon"]];
         return cell;
     }else if (indexPath.section == 1){
         if(indexPath.row == 0){
@@ -119,7 +139,7 @@
 
 - (void)reLogin
 {
-    
+    [self request];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,10 +152,12 @@
         }
     }else if (indexPath.section == 2){
         if(indexPath.row == 2){
-            SHIntent * intent = [[SHIntent alloc]init:@"aboutus" delegate:self containner:self.navigationController];
+            SHIntent * intent = [[SHIntent alloc]init:@"titlecontent" delegate:self containner:self.navigationController];
+            [intent.args setValue:@"关于我们" forKey:@"title"];
+            [intent.args setValue:[dic valueForKey:@"aboutus"] forKey:@"content"];
             [[UIApplication sharedApplication]open:intent];
         }else if(indexPath.row == 3){
-            NSString *telUrl = [NSString stringWithFormat:@"telprompt:%@",@"18616378436"];
+            NSString *telUrl = [NSString stringWithFormat:@"telprompt:%@",[dic valueForKey:@"clienthotline"]];
             NSURL *url = [[NSURL alloc] initWithString:telUrl];
             [[UIApplication sharedApplication] openURL:url];
         }

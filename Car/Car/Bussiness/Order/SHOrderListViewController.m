@@ -11,7 +11,9 @@
 #import "SHOrderItemCell.h"
 
 @interface SHOrderListViewController ()
-
+{
+    NSArray * mList;
+}
 @end
 
 @implementation SHOrderListViewController
@@ -26,7 +28,8 @@
     [post.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"pageno"];
     [post.postArgs setValue:[NSNumber numberWithFloat:20] forKey:@"pagesize"];
     [post start:^(SHTask *t) {
-        ;
+        mList = [t.result valueForKey:@"orders"];
+        [self.tableView reloadData];
         [self dismissWaitDialog];
     } taskWillTry:nil
   taskDidFailed:^(SHTask *t) {
@@ -43,22 +46,27 @@
 
 - (int)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return mList.count;
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 55;
 }
 
 - (int) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 1;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dic = [mList objectAtIndex:indexPath.section];
     SHOrderItemCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHOrderItemCell" owner:nil options:nil] objectAtIndex:0];
+    cell.labPrice.text = [NSString stringWithFormat:@"%g元",[[dic valueForKey:@"ordermoney"]floatValue]];
+    cell.labShopName.text = [dic valueForKey:@"shopname"];
+    cell.labOrPrice.text= [NSString stringWithFormat:@"%g元",[[dic valueForKey:@"orginalprice"]floatValue]];
+    [cell.imgView setUrl:[dic valueForKey:@"shoplogo"]];
     cell.backgroundColor = [UIColor whiteColor];
 
     return cell;
@@ -70,8 +78,11 @@
 }
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSDictionary * dic = [mList objectAtIndex:section];
     SHOrderHeaderView * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHOrderHeaderView" owner:nil options:nil] objectAtIndex:0];
     cell.backgroundColor = [UIColor whiteColor];
+    [cell.imgHead setUrl:[dic valueForKey:@"servicecategorylogo"]];
+    cell.labTitle.text = [dic valueForKey:@"servicecategoryname"];
     return cell;
 }
 

@@ -9,5 +9,6 @@
 #import "SHTableViewController.h"
 
 @interface SHMyInfoViewController : SHViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

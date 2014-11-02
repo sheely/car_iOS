@@ -11,7 +11,10 @@
 #import "SHCarInfoReportCell.h"
 
 @interface SHCarInfoViewController ()
-
+{
+    CGRect orFrame;
+    UIView * viewOrCategory;
+}
 @end
 
 @implementation SHCarInfoViewController
@@ -35,32 +38,39 @@ int order = 0;
 
 - (void)viewAnimation
 {
-    [UIView animateWithDuration:2 animations:^{
+    [UIView animateWithDuration:1 delay:0.4 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.viewOil.frame;
-        frame.origin.x += 50;
-        frame.origin.y += 50;
+        frame.origin.x += 40;
+        frame.origin.y += 40;
         self.viewOil.frame = frame;
         self.viewOil.alpha = 1;
-        
-        frame = self.viewPower.frame;
-        frame.origin.x -= 50;
-        frame.origin.y -= 50;
+    } completion:nil];
+    
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect frame = self.viewPower.frame;
+        frame.origin.x -= 40;
+        frame.origin.y -= 40;
         self.viewPower.frame = frame;
         self.viewPower.alpha = 1;
-
-        frame = self.viewSafety.frame;
-        frame.origin.x += 50;
-        frame.origin.y -= 50;
+    } completion:nil];
+     
+    
+    [UIView animateWithDuration:1 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect frame = self.viewSafety.frame;
+        frame.origin.x += 40;
+        frame.origin.y -= 40;
         self.viewSafety.frame = frame;
         self.viewSafety.alpha = 1;
-
-        frame = self.viewCarControl.frame;
-        frame.origin.x -= 50;
-        frame.origin.y += 50;
+    } completion:nil];
+    
+    [UIView animateWithDuration:1 delay:0.6 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect frame =  self.viewCarControl.frame;
+        frame.origin.x -= 40;
+        frame.origin.y += 40;
         self.viewCarControl.frame = frame;
         self.viewCarControl.alpha = 1;
+    } completion:nil];
 
-} completion:nil];
 }
 
 - (void)drawdashboard
@@ -275,11 +285,40 @@ int order = 0;
     
 }
 
-- (IBAction)btnOilOnTouch:(id)sender {
-    [UIView animateWithDuration:1 animations:^{
-        self.view4Itmes.alpha = 0;
-        self.collectView.alpha = 1;
-    } completion:nil];
+- (IBAction)btnOilOnTouch:(UIButton*)sender {
+    if(viewOrCategory == nil){
+        viewOrCategory = sender.superview;
+        orFrame = viewOrCategory.frame;
+        
+        [UIView animateWithDuration:1 animations:^{
+            self.collectView.alpha = 1;
+            self.viewCarControl.alpha = 0;
+            self.viewPower.alpha = 0;
+            self.viewSafety.alpha = 0;
+            self.viewOil.alpha = 0;
+            viewOrCategory.alpha = 1;
+            self.imgCar.alpha = 0;
+            self.imgView.alpha = 0 ;
+            CGRect  frame  = viewOrCategory.frame;
+            frame.origin.y = 0;
+            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
+            viewOrCategory.frame = frame;
+        } completion:nil];
+    }else{
+        [UIView animateWithDuration:1 animations:^{
+            viewOrCategory.frame = orFrame;
+            self.collectView.alpha = 0;
+            self.viewCarControl.alpha = 1;
+            self.viewPower.alpha = 1;
+            self.viewSafety.alpha = 1;
+            self.viewOil.alpha = 1;
+            self.imgCar.alpha = 1;
+            self.imgView.alpha = 1 ;
+        } completion:^(BOOL f){
+            viewOrCategory = nil;
+            f = YES;
+        }];
 
+    }
 }
 @end

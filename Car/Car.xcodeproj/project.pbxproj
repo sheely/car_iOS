@@ -63,6 +63,9 @@
 		9E325DEA1A04DFB100A35554 /* banner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE71A04DFB100A35554 /* banner1.png */; };
 		9E325DEB1A04DFB100A35554 /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE81A04DFB100A35554 /* banner2.png */; };
 		9E325DEC1A04DFB100A35554 /* banner3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE91A04DFB100A35554 /* banner3.png */; };
+		9E325DF01A054A2900A35554 /* bg_carresearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DEF1A054A2900A35554 /* bg_carresearch@2x.png */; };
+		9E325DF31A054B3000A35554 /* bg_popup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DF11A054B3000A35554 /* bg_popup@2x.png */; };
+		9E325DF41A054B3000A35554 /* bg_popup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DF21A054B3000A35554 /* bg_popup@3x.png */; };
 		9E3D5A0419E6A4EB00141C9D /* SHEditCarinfoViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */; };
 		9E3D5A0519E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */; };
 		9E3D5A0719E6F9E000141C9D /* img_cardband.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D5A0619E6F9E000141C9D /* img_cardband.png */; };
@@ -542,6 +545,9 @@
 		9E325DE71A04DFB100A35554 /* banner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner1.png; sourceTree = "<group>"; };
 		9E325DE81A04DFB100A35554 /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
 		9E325DE91A04DFB100A35554 /* banner3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner3.png; sourceTree = "<group>"; };
+		9E325DEF1A054A2900A35554 /* bg_carresearch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_carresearch@2x.png"; sourceTree = "<group>"; };
+		9E325DF11A054B3000A35554 /* bg_popup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_popup@2x.png"; sourceTree = "<group>"; };
+		9E325DF21A054B3000A35554 /* bg_popup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_popup@3x.png"; sourceTree = "<group>"; };
 		9E3D5A0119E6A4EA00141C9D /* SHEditCarinfoViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditCarinfoViewViewController.h; sourceTree = "<group>"; };
 		9E3D5A0219E6A4EA00141C9D /* SHEditCarinfoViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEditCarinfoViewViewController.m; sourceTree = "<group>"; };
 		9E3D5A0319E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditCarinfoViewViewController.xib; sourceTree = "<group>"; };
@@ -1652,6 +1658,9 @@
 		9ED5508D19D5DA5E0046A4C1 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E325DF11A054B3000A35554 /* bg_popup@2x.png */,
+				9E325DF21A054B3000A35554 /* bg_popup@3x.png */,
+				9E325DEF1A054A2900A35554 /* bg_carresearch@2x.png */,
 				9E2177211A00F3710017F710 /* bg_car@2x.png */,
 				9E2177221A00F3710017F710 /* bg_car@3x.png */,
 				9E2177231A00F3710017F710 /* icon_controller@2x.png */,
@@ -2707,6 +2716,7 @@
 				9E325DEB1A04DFB100A35554 /* banner2.png in Resources */,
 				9EF62C0619CF002400111E2F /* grayArrow@2x.png in Resources */,
 				9E2177321A00F3710017F710 /* bg_car@3x.png in Resources */,
+				9E325DF31A054B3000A35554 /* bg_popup@2x.png in Resources */,
 				9EF62C4719CF002400111E2F /* ic_re_error.png in Resources */,
 				9E82BBAC19F0229C007301EA /* SHOrderListViewController.xib in Resources */,
 				9EF62C4019CF002400111E2F /* timeline_image_loading@2x.png in Resources */,
@@ -2816,6 +2826,7 @@
 				9EF62C5219CF002400111E2F /* SHTableViewSelectCell.xib in Resources */,
 				9EF62C7419CF002400111E2F /* chart.html in Resources */,
 				9E62984A19F2DB4C0049F5FF /* icon_carwashing@2x.png in Resources */,
+				9E325DF41A054B3000A35554 /* bg_popup@3x.png in Resources */,
 				9EF62CB719D097DB00111E2F /* subicon_support.png in Resources */,
 				9E5E5FF919D9CCB600642CED /* icon_start@3x.png in Resources */,
 				9EF62A2719CEF92A00111E2F /* color.xml in Resources */,
@@ -2837,6 +2848,7 @@
 				9E5E5FF719D9C73100642CED /* btn_loctation@3x.png in Resources */,
 				9EF62C0719CF002400111E2F /* whiteArrow.png in Resources */,
 				9E5E600319D9CDED00642CED /* icon_set@2x.png in Resources */,
+				9E325DF01A054A2900A35554 /* bg_carresearch@2x.png in Resources */,
 				9EF62BEB19CF002400111E2F /* DSLCalendarDayCalloutView.xib in Resources */,
 				9E82BB7C19EA9230007301EA /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				1A486FEB19E405F900D4C923 /* check_alt.png in Resources */,

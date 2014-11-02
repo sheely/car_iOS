@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIView *viewSafety;
 @property (weak, nonatomic) IBOutlet UIView *viewOil;
 @property (weak, nonatomic) IBOutlet UIView *view4Itmes;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UIImageView *imgCar;
 
 @property (weak, nonatomic) IBOutlet UIView *viewPower;
 - (IBAction)btnOilOnTouch:(id)sender;

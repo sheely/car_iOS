@@ -23,6 +23,8 @@
     [super loadSkin];
     self.imgView.layer.cornerRadius = 5;
     self.imgView.layer.masksToBounds = YES;
+    self.btnPay.layer.cornerRadius = 5;
+    self.btnPay.layer.masksToBounds = YES;
 }
 
 @end

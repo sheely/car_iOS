@@ -27,7 +27,6 @@
     int type;
     NSDictionary * mDicCategorySelected;
     NSString *cafFilePath;
-    
     NSString *mp3FilePath;
 
 }
@@ -89,7 +88,10 @@
                 int y = i/3;
                 SHCategoryView * view = [[[NSBundle mainBundle]loadNibNamed:@"SHCategoryView" owner:nil options:nil] objectAtIndex:0];
                 view.frame = CGRectMake(10+i*100 - y* 300, 40*y, 100.5, 40.5);
-                [self.viewCategory insertSubview:view atIndex:self.viewCategory.subviews.count];
+                [view.btnTitle setTitle:[dic valueForKey:@"servicecategoryname"] forState:UIControlStateNormal];
+                [view.btnTitle addTarget:self action:@selector(btnCategoryOnTouch:) forControlEvents:UIControlEventTouchUpInside];
+                view.btnTitle.tag = i;
+                [self.viewCategory insertSubview:view atIndex:0];
                 view.tag = i;
                 if(i == 0){
                     view.selected = YES;
@@ -129,6 +131,15 @@
     [self refreshAdress];
   
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)btnCategoryOnTouch:(UIButton*)sender
+{
+    for (SHCategoryView * v in self.viewCategory.subviews) {
+        v.selected = NO;
+    }
+    ((SHCategoryView*)sender.superview).selected = YES;
+    mDicCategorySelected = [mCategroy objectAtIndex:sender.tag];
 }
 
 - (void)refreshAdress
@@ -196,8 +207,23 @@
     self.btnPlay.layer.masksToBounds = YES;
     self.btnPlay.layer.cornerRadius = 5;
     self.tableView.backgroundColor = [UIColor blackColor];
-}
+    self.txtField.layer.borderColor = [UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1].CGColor;
+    self.txtField.layer.borderWidth = 0.5;
+    self.txtField.layer.cornerRadius = 5;
+    self.btnTxt.layer.borderColor = [UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1].CGColor;
+    self.btnTxt.layer.borderWidth = 0.5;
+    self.btnTxt.layer.cornerRadius = 5;
 
+    self.keybordView = nil;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField              // called when 'return' key pressed. return NO to ignore.
+{
+    [self.txtField resignFirstResponder];
+    if(textField == self.txtField){
+        [self showEnSureView];
+    }
+    return YES;
+}
 - (IBAction)btnRecordUpInside:(id)sender
 {
     [self recordEnd];
@@ -240,7 +266,7 @@
     [self showWaitDialogForNetWork];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"maintainance.action");
-    [post.postArgs setValue:@"" forKey:@"problemdesc"];
+    [post.postArgs setValue:self.txtField.text forKey:@"problemdesc"];
     [post.postArgs setValue:self.labLocation.text forKey:@"location"];
     if(mListPhoto.count > 0){
         NSMutableArray * base64phote = [[NSMutableArray alloc]init];
@@ -268,6 +294,11 @@
         [self dismissWaitDialog];
     }];
     
+    [self closeEnSureView];
+}
+
+- (IBAction)btnTxtOnTouch:(id)sender
+{
     [self closeEnSureView];
 }
 
@@ -437,6 +468,8 @@
 {
     self.viewEnsure.hidden = NO;
     self.viewEnsure.alpha = 0;
+    self.btnTxt.hidden = self.txtField.hidden;
+    [self.btnTxt setTitle:self.txtField.text forState:UIControlStateNormal];
     CGRect frame = self.viewEnsure.frame;
     frame.origin.y = self.view.frame.size.height;
     self.viewEnsure.frame  = frame;
@@ -631,6 +664,28 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)btnKeybord:(id)sender {
+    if(self.txtField.hidden ){
+        self.keybordView = self.viewRequest;
+        self.keybordheight = 200;
+        self.txtField.hidden = NO;
+        self.txtField.alpha = 0;
+        [self.txtField becomeFirstResponder];
+        [UIView animateWithDuration:0.5 animations:^{
+              self.txtField.alpha = 1;
+        } completion:nil];
+    }else{
+      
+        [self.txtField resignFirstResponder];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.txtField.alpha = 0;
+        } completion:^(BOOL finished){self.txtField.hidden = YES;finished = YES;  self.keybordView = nil;}];
+
+    }
+    
+    
+}
 
 - (IBAction)btnLocationOnTouch:(id)sender {
     [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
