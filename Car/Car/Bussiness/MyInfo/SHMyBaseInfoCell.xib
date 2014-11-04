@@ -13,16 +13,16 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pQj-9D-Z41" id="YxJ-Aw-HMg">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sheely" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nN8-n5-lhu">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="---" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nN8-n5-lhu">
                         <rect key="frame" x="66" y="9" width="240" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     </textField>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="thumb.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lcL-qt-Nu7" customClass="SHImageView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_default_car.png" translatesAutoresizingMaskIntoConstraints="NO" id="lcL-qt-Nu7" customClass="SHImageView">
                         <rect key="frame" x="8" y="15" width="50" height="50"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="手机号码:18616378436" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af9-gJ-V80">
-                        <rect key="frame" x="66" y="47" width="178" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="---" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af9-gJ-V80">
+                        <rect key="frame" x="66" y="48" width="240" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -30,17 +30,24 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labminlight"/>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gG-mw-dFR">
+                        <rect key="frame" x="8" y="16" width="50" height="50"/>
+                        <state key="normal" title="-">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnImage" destination="2gG-mw-dFR" id="yfP-gK-cUz"/>
                 <outlet property="imgHead" destination="lcL-qt-Nu7" id="lKa-LE-yCd"/>
                 <outlet property="labPhone" destination="af9-gJ-V80" id="5hR-VT-UXl"/>
                 <outlet property="txtFieldName" destination="nN8-n5-lhu" id="eXx-XE-DQE"/>
             </connections>
-            <point key="canvasLocation" x="266" y="428"/>
+            <point key="canvasLocation" x="266" y="425"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="thumb.jpg" width="640" height="400"/>
+        <image name="ic_default_car.png" width="128" height="128"/>
     </resources>
 </document>

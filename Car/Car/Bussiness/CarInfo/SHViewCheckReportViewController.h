@@ -9,5 +9,6 @@
 #import "SHViewController.h"
 
 @interface SHViewCheckReportViewController : SHTableViewController
+@property (weak, nonatomic) IBOutlet UILabel *labSummer;
 
 @end

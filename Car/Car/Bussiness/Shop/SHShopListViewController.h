@@ -27,11 +27,12 @@
 @property (weak, nonatomic) IBOutlet UIView *viewPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property (weak, nonatomic) IBOutlet UILabel *labLocation;
-@property (nonatomic , retain) AVAudioPlayer *player;
 @property (weak, nonatomic) IBOutlet UIView *viewCategory;
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
-- (IBAction)btnKeybord:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnTxt;
+@property (nonatomic , retain) AVAudioPlayer *player;
 
+- (IBAction)btnKeybord:(id)sender;
 - (IBAction)btnLocationOnTouch:(id)sender;
 - (IBAction)btnRecordUpInside:(id)sender;
 - (IBAction)btnPlayOnTouch:(id)sender;
@@ -40,6 +41,5 @@
 - (IBAction)btnPhotoOnTouch:(id)sender;
 - (IBAction)btnEnsureOnTouch:(id)sender;
 - (IBAction)btnTxtOnTouch:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *btnTxt;
 - (IBAction)btnSearchLocationOnTouch:(id)sender;
 @end

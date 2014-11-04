@@ -40,16 +40,16 @@ int order = 0;
 {
     [UIView animateWithDuration:1 delay:0.4 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.viewOil.frame;
-        frame.origin.x += 40;
-        frame.origin.y += 40;
+        frame.origin.x += 55;
+        frame.origin.y += 55;
         self.viewOil.frame = frame;
         self.viewOil.alpha = 1;
     } completion:nil];
     
     [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.viewPower.frame;
-        frame.origin.x -= 40;
-        frame.origin.y -= 40;
+        frame.origin.x -= 55;
+        frame.origin.y -= 55;
         self.viewPower.frame = frame;
         self.viewPower.alpha = 1;
     } completion:nil];
@@ -57,16 +57,16 @@ int order = 0;
     
     [UIView animateWithDuration:1 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.viewSafety.frame;
-        frame.origin.x += 40;
-        frame.origin.y -= 40;
+        frame.origin.x += 55;
+        frame.origin.y -= 55;
         self.viewSafety.frame = frame;
         self.viewSafety.alpha = 1;
     } completion:nil];
     
     [UIView animateWithDuration:1 delay:0.6 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame =  self.viewCarControl.frame;
-        frame.origin.x -= 40;
-        frame.origin.y += 40;
+        frame.origin.x -= 55;
+        frame.origin.y += 55;
         self.viewCarControl.frame = frame;
         self.viewCarControl.alpha = 1;
     } completion:nil];
@@ -127,12 +127,6 @@ int order = 0;
                             }];
 }
 
-- (void)loadNext
-{
-    mIsEnd = YES;
-    mList = @[@"",@"",@"",@""];
-    [self.tableView reloadData];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -234,31 +228,17 @@ int order = 0;
 - (void)loadSkin
 {
     [super loadSkin];
+    self.btnCheck.layer.cornerRadius = 3;
+    self.btnCheck.layer.masksToBounds = YES;
+    self.btnCarState.layer.cornerRadius = 3;
+    self.btnCarState.layer.masksToBounds = YES;
+    self.btnNotification.layer.cornerRadius = 3;
+    self.btnNotification.layer.masksToBounds = YES;
+    self.btnRepair.layer.cornerRadius = 3;
+    self.btnRepair.layer.masksToBounds = YES;
   
 }
-- (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SHCarInfoReportCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCarInfoReportCell" owner:nil options:nil]objectAtIndex:0];
-    if(indexPath.row == 0){
-        cell.imgState.hidden = NO;
-        cell.imgIcon.image = [UIImage imageNamed:@"lis_icon_report"];
-        cell.labTitle.text = @"车辆检测报告";
-        cell.labContent.text = @"2015-04-04";
-    }else if (indexPath.row == 1){
-        cell.imgIcon.image = [UIImage imageNamed:@"lis_icon_insurance"];
-        cell.labTitle.text = @"保险即将到期";
-        cell.labContent.text = @"2015-04-04";
-    }else if (indexPath.row == 2){
-        cell.imgIcon.image = [UIImage imageNamed:@"lis_icon_repair"];
-        cell.labTitle.text = @"车辆维修报告";
-        cell.labContent.text = @"2015-04-04";
-    }else if (indexPath.row == 3){
-        cell.imgIcon.image = [UIImage imageNamed:@"lis_icon_status"];
-        cell.labTitle.text = @"车况变化报告";
-        cell.labContent.text = @"2015-04-04";
-    }
-    return cell;
-}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -298,7 +278,6 @@ int order = 0;
             self.viewOil.alpha = 0;
             viewOrCategory.alpha = 1;
             self.imgCar.alpha = 0;
-            self.imgView.alpha = 0 ;
             CGRect  frame  = viewOrCategory.frame;
             frame.origin.y = 0;
             frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
@@ -313,12 +292,16 @@ int order = 0;
             self.viewSafety.alpha = 1;
             self.viewOil.alpha = 1;
             self.imgCar.alpha = 1;
-            self.imgView.alpha = 1 ;
         } completion:^(BOOL f){
             viewOrCategory = nil;
             f = YES;
         }];
 
     }
+}
+- (IBAction)btnCheckOnTouch:(id)sender
+{
+    SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
+    [[UIApplication sharedApplication]open:i];
 }
 @end

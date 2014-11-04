@@ -209,14 +209,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2.png" id="T7q-k4-ZWr">
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner1.png" id="T7q-k4-ZWr">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="4EA-22-UtN" appends="YES" id="7zp-Ek-9eP"/>
                             </connections>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner1.png" id="inO-Au-rd3">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2.png" id="inO-Au-rd3">
                             <rect key="frame" x="320" y="0.0" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>

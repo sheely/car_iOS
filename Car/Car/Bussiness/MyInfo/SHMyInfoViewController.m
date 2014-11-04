@@ -10,7 +10,7 @@
 #import "SHQuitCell.h"
 #import "SHMyBaseInfoCell.h"
 
-@interface SHMyInfoViewController ()
+@interface SHMyInfoViewController ()<UITextFieldDelegate>
 {
     NSDictionary * dic ;
 }
@@ -35,24 +35,27 @@
         [self.tableView reloadData];
         [self dismissWaitDialog];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
         [self dismissWaitDialog];
     }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (int )numberOfSectionsInTableView:(UITableView *)tableView
+
+- (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
 }
 
--(float) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 10;
 }
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 ||( indexPath.section == 2 && indexPath.row == 4)) {
         return 80;
@@ -72,6 +75,89 @@
     return 0;
 }
 
+- (void)btnImage:(UIButton*)b
+{
+    UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"相册", nil];
+    [sheet showInView:self.view];
+
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    CGRect f = self.navigationController.view.frame;
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        self.navigationController.view.frame = f;
+    }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self showWaitDialogForNetWork];
+    UIImage * img = [info valueForKey:@"UIImagePickerControllerEditedImage"];
+    if(img){
+        //[self addPhoto:img];
+        SHPostTaskM *post = [[SHPostTaskM alloc]init];
+        post.URL = URL_FOR(@"meinfomodify.action");
+        [post.postArgs setValue:[SHBase64 encode:UIImagePNGRepresentation(img) ] forKey:@"myheadicon"];
+        [post.postArgs setValue: [dic valueForKey:@"mynickname"] forKey:@"mynickname"];
+
+        [post start:^(SHTask *t) {
+            [self request];
+            [self dismissWaitDialog];
+        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+            [t.respinfo show];
+            [self dismissWaitDialog];
+        }];
+
+    }
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField             // called when 'return' key pressed. return NO to ignore.
+{
+    [self showWaitDialogForNetWork];
+    if(textField.text.length > 0){
+        SHPostTaskM *post = [[SHPostTaskM alloc]init];
+        post.URL = URL_FOR(@"meinfomodify.action");
+        [post.postArgs setValue:@""  forKey:@"myheadicon"];
+        [post.postArgs setValue: textField.text forKey:@"mynickname"];
+        [post start:^(SHTask *t) {
+            [self request];
+            [self dismissWaitDialog];
+        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+            [t.respinfo show];
+            [self dismissWaitDialog];
+        }];
+
+    }else{
+        textField.text = [dic valueForKey:@"mynickname"];
+    }
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // 判断有摄像头，并且支持拍照功能
+    // 初始化图片选择控制器
+    
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    if(buttonIndex == 2){
+        return ;
+    }else if(buttonIndex == 0){
+        [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
+        [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
+    }else{
+        [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
+        
+    }
+    
+    [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
+    [controller setDelegate:self];// 设置代理
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
+    
+}
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
@@ -79,7 +165,9 @@
         cell.backgroundColor = [UIColor whiteColor];
         cell.labPhone.text = [NSString stringWithFormat:@"手机号码:%@", [[dic valueForKey:@"myusername"] length] == 0 ? @"":[dic valueForKey:@"myusername"]];
         cell.txtFieldName.text = [dic valueForKey:@"mynickname"];
+        cell.txtFieldName.delegate = self;
         [cell.imgHead setUrl:[dic valueForKey:@"myheadicon"]];
+        [cell.btnImage addTarget:self action:@selector(btnImage:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }else if (indexPath.section == 1){
         if(indexPath.row == 0){

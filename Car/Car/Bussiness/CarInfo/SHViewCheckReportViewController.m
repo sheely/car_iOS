@@ -23,8 +23,24 @@
 
 - (void)loadNext
 {
-    mIsEnd = YES;
-    mList = @[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""];
+    [self showWaitDialogForNetWork];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"checkreportquery.action");
+    [post.postArgs setValue:@"dsfsdfsdsfd" forKey:@"reportid"];
+    [post.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"reporttype"];
+    [post start:^(SHTask *t) {
+        mIsEnd = YES;
+        mList = [t.result valueForKey:@"deviceentities"];
+        self.labSummer.text = [t.result valueForKey:@"summaryinformation"];
+        [self dismissWaitDialog];
+        [self.tableView reloadData];
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+        [self dismissWaitDialog];
+        
+    }];
+    
+    
     [self.tableView reloadData];
 }
 
@@ -34,7 +50,21 @@
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHCheckItemView * view = [[[NSBundle mainBundle]loadNibNamed:@"SHCheckItemView" owner:nil options:nil] objectAtIndex:0];
+    view.labTitle.text = [dic valueForKey:@"devicename"];
+    view.labContent.text = [dic valueForKey:@"expertanswer"];
+    if([[dic valueForKey:@"uploadpicture"] length]>0){
+        [view.imgPhoto setUrl:[dic valueForKey:@"uploadpicture"]];
+    }
+    if([[dic valueForKey:@"devicestatus"] intValue ] == 0){
+        view.imgState.image = [SHSkin.instance image:@"set_status_normal.png"];
+    }else if([[dic valueForKey:@"devicestatus"] intValue] == 1){
+        view.imgState.image = [SHSkin.instance image:@"set_status_fault.png"];
+    }else {
+        view.imgState.image = [SHSkin.instance image:@"set_status_warning.png"];
+    }
+    [view.imgIcon setUrl:[dic valueForKey:@"deviceslogo"]];
     return view;
 }
 

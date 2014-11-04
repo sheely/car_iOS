@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldName;
 @property (weak, nonatomic) IBOutlet UILabel *labPhone;
 @property (weak, nonatomic) IBOutlet SHImageView *imgHead;
+@property (weak, nonatomic) IBOutlet UIButton *btnImage;
 @end

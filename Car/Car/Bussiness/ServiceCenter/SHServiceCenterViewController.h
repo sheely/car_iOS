@@ -8,7 +8,7 @@
 
 #import "SHViewController.h"
 #import "SHOrderListViewController.h"
-#import "SHRequestListViewController.h"
+#import "SHChatListViewController.h"
 
 @interface SHServiceCenterViewController : SHViewController
 @property (strong, nonatomic) IBOutlet UISegmentedControl *viewTitle;

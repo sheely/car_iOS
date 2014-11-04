@@ -11,7 +11,7 @@
 @interface SHServiceCenterViewController ()
 {
     SHOrderListViewController * morderlistviewcontroller;
-    SHRequestListViewController * mrequestlistviewcontroller;
+    SHChatListViewController * mrequestlistviewcontroller;
 }
 @end
 
@@ -22,7 +22,7 @@
     self.title = @"受理中心";
     self.navigationItem.titleView = self.viewTitle;
     [self.viewTitle addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:(UIControlEventValueChanged)];
-    mrequestlistviewcontroller = [[SHRequestListViewController alloc]init];
+    mrequestlistviewcontroller = [[SHChatListViewController alloc]init];
     mrequestlistviewcontroller.view.frame = self.view.bounds;
     [self.view addSubview:mrequestlistviewcontroller.view];
     // Do any additional setup after loading the view from its nib.

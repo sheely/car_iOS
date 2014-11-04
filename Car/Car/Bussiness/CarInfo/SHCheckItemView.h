@@ -9,9 +9,11 @@
 #import "SHView.h"
 
 @interface SHCheckItemView : SHTableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imgPhoto;
+@property (weak, nonatomic) IBOutlet SHImageView *imgPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *labContent;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *imgIcon;
+@property (weak, nonatomic) IBOutlet SHImageView *imgIcon;
+@property (weak, nonatomic) IBOutlet UILabel *labReason;
+@property (weak, nonatomic) IBOutlet UIImageView *imgState;
 
 @end

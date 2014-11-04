@@ -8,7 +8,7 @@
 
 #import "SHTableViewController.h"
 
-@interface SHMyInfoViewController : SHViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SHMyInfoViewController : SHViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
