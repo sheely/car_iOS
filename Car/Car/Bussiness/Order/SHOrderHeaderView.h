@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labCarId;
 @property (weak, nonatomic) IBOutlet UILabel *labTimer;
+@property (weak, nonatomic) IBOutlet UILabel *labState;
 
 @end

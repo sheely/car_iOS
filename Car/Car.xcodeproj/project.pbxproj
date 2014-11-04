@@ -2527,7 +2527,6 @@
 				9E2EB8B31A08A93F00770A42 /* SHCommentsDetailViewController.h */,
 				9E2EB8B41A08A93F00770A42 /* SHCommentsDetailViewController.m */,
 				9E2EB8B51A08A93F00770A42 /* SHCommentsDetailViewController.xib */,
-				9E3D5A2B19EA3CD000141C9D /* LCVoice.h */,
 				9E2EB8A11A08A62C00770A42 /* SHChatDetailViewController.h */,
 				9E2EB8A21A08A62C00770A42 /* SHChatDetailViewController.m */,
 				9E2EB8A31A08A62C00770A42 /* SHChatDetailViewController.xib */,
@@ -2539,6 +2538,7 @@
 				9E2EB8A91A08A62C00770A42 /* SHChatListViewController.h */,
 				9E2EB8AA1A08A62C00770A42 /* SHChatListViewController.m */,
 				9E2EB8AB1A08A62C00770A42 /* SHChatListViewController.xib */,
+				9E3D5A2B19EA3CD000141C9D /* LCVoice.h */,
 				9E3D5A2C19EA3CD000141C9D /* LCVoice.m */,
 				9E3D5A2D19EA3CD000141C9D /* LCVoiceHud.h */,
 				9E3D5A2E19EA3CD000141C9D /* LCVoiceHud.m */,
@@ -2586,6 +2586,7 @@
 			);
 			path = Res;
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		9EF62CC819D09EA600111E2F /* MainPage */ = {
 			isa = PBXGroup;

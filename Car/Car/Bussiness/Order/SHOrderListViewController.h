@@ -7,7 +7,12 @@
 //
 
 #import "SHTableViewController.h"
-
+#import "AlixLibService.h"
+#import "AlixPayOrder.h"
+#import "AlixPayResult.h"
+#import "PartnerConfig.h"
+#import "DataSigner.h"
+#import "DataVerifier.h"
 @interface SHOrderListViewController : SHViewController<UITableViewDataSource,UITableViewDelegate>
 {
 }

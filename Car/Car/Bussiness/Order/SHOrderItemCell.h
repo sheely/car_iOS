@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *labOrPrice;
 @property (weak, nonatomic) IBOutlet UILabel *labState;
 @property (weak, nonatomic) IBOutlet UIButton *btnPay;
+@property (strong,nonatomic) NSIndexPath * index;
 @end

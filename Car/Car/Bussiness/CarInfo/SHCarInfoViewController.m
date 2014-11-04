@@ -302,6 +302,8 @@ int order = 0;
 - (IBAction)btnCheckOnTouch:(id)sender
 {
     SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
+    [i.args setValue:@"dsfsdfsdsfd" forKey:@"reportid"];
+
     [[UIApplication sharedApplication]open:i];
 }
 @end
