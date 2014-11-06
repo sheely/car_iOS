@@ -7,11 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHCarInfoViewController">
             <connections>
+                <outlet property="btnBack" destination="K8B-QC-eXu" id="tXg-b1-dQG"/>
                 <outlet property="btnCarState" destination="aHE-kL-Adc" id="uMP-CZ-SSe"/>
                 <outlet property="btnCheck" destination="bVR-Yj-8WE" id="6qr-jS-dr1"/>
                 <outlet property="btnNotification" destination="Kkp-OA-8dQ" id="qmV-Wu-n5p"/>
                 <outlet property="btnRepair" destination="pK2-dr-yIf" id="Nd2-uJ-1Yw"/>
                 <outlet property="collectView" destination="Nci-sn-vhp" id="Grg-fS-ReG"/>
+                <outlet property="imgBgBlue" destination="nNX-Pp-aFS" id="73r-Bb-rr6"/>
                 <outlet property="imgCar" destination="9Tn-ka-hpG" id="eWU-3z-FvO"/>
                 <outlet property="imgIndicator" destination="kHu-ST-KkH" id="RfF-c0-LnC"/>
                 <outlet property="labScore" destination="hdj-hd-rDj" id="Ha2-hA-DYL"/>
@@ -84,15 +86,31 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="5NI-2m-eVd">
-                    <rect key="frame" x="0.0" y="90" width="320" height="287"/>
+                    <rect key="frame" x="0.0" y="82" width="320" height="295"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K8B-QC-eXu">
+                            <rect key="frame" x="238" y="12" width="74" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="返回" backgroundImage="bg_pop_button.png">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnBackOnTouch:" destination="-1" eventType="touchUpInside" id="fEC-ie-fpH"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_carresearch.png" id="nNX-Pp-aFS">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="295"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_car.png" id="9Tn-ka-hpG">
-                            <rect key="frame" x="55" y="101" width="210" height="85"/>
+                            <rect key="frame" x="55" y="109" width="210" height="85"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view alpha="0.0" contentMode="scaleToFill" id="7ZV-KT-LhD">
-                            <rect key="frame" x="64" y="145" width="95" height="57"/>
+                            <rect key="frame" x="64" y="153" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sCu-76-SrM">
@@ -131,7 +149,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view alpha="0.0" contentMode="scaleToFill" id="Boe-Af-Sjw">
-                            <rect key="frame" x="64" y="93" width="95" height="57"/>
+                            <rect key="frame" x="64" y="101" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="V5b-Ti-YLe">
@@ -170,7 +188,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view alpha="0.0" contentMode="scaleToFill" id="YOs-eK-ELr">
-                            <rect key="frame" x="162" y="93" width="95" height="57"/>
+                            <rect key="frame" x="162" y="101" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cZi-7t-G3v">
@@ -209,7 +227,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view alpha="0.0" contentMode="scaleToFill" id="WsL-qS-dGP">
-                            <rect key="frame" x="162" y="145" width="95" height="57"/>
+                            <rect key="frame" x="162" y="153" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ogo-oE-4KS">
@@ -248,14 +266,14 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="none" id="Nci-sn-vhp">
-                            <rect key="frame" x="0.0" y="60" width="320" height="227"/>
+                            <rect key="frame" x="0.0" y="70" width="320" height="225"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="2XE-v3-Obg">
                                 <size key="itemSize" width="96" height="42"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <inset key="sectionInset" minX="10" minY="12" maxX="10" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="KHs-ad-y47"/>
@@ -334,7 +352,9 @@
     <resources>
         <image name="audi.png" width="147" height="102"/>
         <image name="bg_car.png" width="210" height="85"/>
+        <image name="bg_carresearch.png" width="320" height="210"/>
         <image name="bg_dashboard.png" width="64" height="64"/>
+        <image name="bg_pop_button.png" width="285" height="153"/>
         <image name="bg_popup.png" width="95" height="51"/>
         <image name="dashboard_indicator@3x.png" width="92" height="28"/>
         <image name="dashboard_warning_background@3x.png" width="192" height="192"/>

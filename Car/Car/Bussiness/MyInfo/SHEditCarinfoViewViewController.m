@@ -17,11 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if([self.intent.args valueForKey:@"carid"] == nil){
+    if([self.intent.args valueForKey:@"carinfo"] == nil){
         self.title = @"添加车辆";
         self.carinfo = [[NSMutableDictionary alloc]init];
     }else {
         self.title = @"修改车辆";
+        self.carinfo = [self.intent.args valueForKey:@"carinfo"];
+        [self.btnCategary setTitle:[self.carinfo  valueForKey:@"carcategoryname"] forState:UIControlStateNormal];
+        [self.btnLetters setTitle:[self.carinfo valueForKey:@"alphabetname"] forState:UIControlStateNormal];
+        [self.btnProvince setTitle:[self.carinfo valueForKey:@"provincename"] forState:UIControlStateNormal];
+        self.txtField.text =  [self.carinfo valueForKey:@"carcardno"];
+        [self.btnSubCategary setTitle:[self.carinfo valueForKey:@"carseriesname"] forState:UIControlStateNormal];
+
     }
     // Do any additional setup after loading the view from its nib.
 }
@@ -112,10 +119,9 @@
     [self showWaitDialogForNetWork];
     p.URL = URL_FOR(@"mycarmaintanance.action");
     [p.postArgs setValuesForKeysWithDictionary:self.carinfo];
-    if([[self.carinfo valueForKey:@"carId"] length] > 0)
-    {
+    if([[self.carinfo valueForKey:@"carid"] length] > 0){
         [p.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"optype"];
-        [p.postArgs setValue:[self.carinfo valueForKey:@"carId"] forKey:@"carid"];
+        [p.postArgs setValue:[self.carinfo valueForKey:@"carid"] forKey:@"carid"];
     }else{
         [p.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"optype"];
         [p.postArgs setValue:@"" forKey:@"carid"];

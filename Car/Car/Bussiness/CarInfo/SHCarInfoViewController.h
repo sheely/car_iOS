@@ -25,5 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnNotification;
 @property (weak, nonatomic) IBOutlet UIButton *btnRepair;
 @property (weak, nonatomic) IBOutlet UIButton *btnCarState;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBgBlue;
+- (IBAction)btnBackOnTouch:(id)sender;
 - (IBAction)btnCheckOnTouch:(id)sender;
 @end

@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的车辆";
+    //self.tableView.editing = YES; [self.tableView setEditing:YES animated:YES];
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:nil title:@"添加" target:self action:@selector(btnAdd:)];
     // Do any additional setup after loading the view from its nib.
 }
@@ -54,7 +56,24 @@
 {
     return  60;
 }
+- (UITableViewCellEditingStyle)tableView: (UITableView *)tableView editingStyleForRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath :(NSIndexPath *)indexPath
+{
+    NSDictionary * dic = [mList objectAtIndex:indexPath.row];
+    SHIntent* i = [[SHIntent alloc]init:@"editcarinfo"delegate:self containner:self.navigationController];
+    [i.args setValue:dic forKey:@"carinfo" ];
+    [[UIApplication sharedApplication]open:i];
+
+}
+
+- (NSString *)tableView :(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"编辑";
+}
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];

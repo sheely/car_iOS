@@ -14,6 +14,7 @@
 {
     CGRect orFrame;
     UIView * viewOrCategory;
+    UIButton * lastTouchButton;
 }
 @end
 
@@ -236,7 +237,10 @@ int order = 0;
     self.btnNotification.layer.masksToBounds = YES;
     self.btnRepair.layer.cornerRadius = 3;
     self.btnRepair.layer.masksToBounds = YES;
-  
+    self.collectView.layer.borderWidth = 0.5;
+    self.collectView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.view4Itmes.layer.borderWidth = 0.5;
+    self.view4Itmes.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 
@@ -279,13 +283,18 @@ int order = 0;
             viewOrCategory.alpha = 1;
             self.imgCar.alpha = 0;
             CGRect  frame  = viewOrCategory.frame;
-            frame.origin.y = 0;
-            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
+            frame.origin.y = 5;
+            frame.origin.x = 14;
             viewOrCategory.frame = frame;
-        } completion:nil];
+            self.imgBgBlue.alpha = 0;
+        } completion:^(BOOL flag){
+            self.imgBgBlue.hidden = YES;
+        }];
     }else{
+        self.imgBgBlue.hidden = NO;
         [UIView animateWithDuration:1 animations:^{
             viewOrCategory.frame = orFrame;
+            self.imgBgBlue.alpha = 1;
             self.collectView.alpha = 0;
             self.viewCarControl.alpha = 1;
             self.viewPower.alpha = 1;
@@ -299,6 +308,9 @@ int order = 0;
 
     }
 }
+- (IBAction)btnBackOnTouch:(id)sender {
+}
+
 - (IBAction)btnCheckOnTouch:(id)sender
 {
     SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];

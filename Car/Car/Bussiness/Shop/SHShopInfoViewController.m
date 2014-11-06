@@ -169,7 +169,7 @@
     order.productName = @"洗车"; //商品标题
     order.productDescription = @"志跃精洗"; //商品描述
     order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
-    order.notifyURL =  @"http://www.baidu.com"; //回调URL
+    order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
     
     return [order description];
 }
