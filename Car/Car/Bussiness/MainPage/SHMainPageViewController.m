@@ -7,6 +7,7 @@
 //
 
 #import "SHMainPageViewController.h"
+#import "SHChatListHelper.h"
 
 @interface SHMainPageViewController ()
 {
@@ -23,9 +24,42 @@
     self.title = @"车宝宝";
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width * 3, scrollview.frame.size.height);
     timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(btnChanged:) userInfo:nil repeats:YES];
-    
+    NSDictionary * dicuser = [[NSUserDefaults standardUserDefaults] valueForKey: STORE_USER_INFO];
+    if(dicuser){
+        SHEntironment.instance.loginName = [dicuser valueForKey:@"username"];
+        SHEntironment.instance.password = [dicuser valueForKey:@"password"];
+    }
+    [self requestChatList];
 //    pagecontrol
     // Do any additional setup after loading the view from its nib.
+}
+- (void)requestChatList
+{
+    //[self showWaitDialogForNetWork];
+    SHPostTaskM * task = [[SHPostTaskM alloc]init];
+    task.URL= URL_FOR(@"acceptquestionlist.action");
+    [task.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"pageno"];
+    [task.postArgs setValue:[NSNumber numberWithInt:20] forKey:@"pagesize"];
+    [task start:^(SHTask *t) {
+        NSArray * mList = [t.result valueForKey:@"questions"];
+        for (NSDictionary * dic  in mList) {
+            SHChatItem * item = [[SHChatItem alloc]init];
+            item.problemdesc = [dic valueForKey:@"problemdesc"];
+            item.asktime = [dic valueForKey:@"asktime"];
+            item.uploadpicture = [dic valueForKey:@"uploadpicture"];
+            item.latestmessage = [dic valueForKey:@"latestmessage"];
+            item.problemdesc = [dic valueForKey:@"problemdesc"];
+            item.questionid = [dic valueForKey:@"questionid"];
+            [SHChatListHelper.instance addItem:item];
+        }
+        [SHChatListHelper.instance notice];
+        [self dismissWaitDialog];
+        
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+        [self dismissWaitDialog];
+    }];
+
 }
 
 - (void)btnChanged:(NSObject*)nssender
@@ -52,11 +86,7 @@
         labCardNo.text =[NSString stringWithFormat:@"%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"carcardno"]];
         [imgBrand setUrl:[dic valueForKey:@"carlogo"]];
     }
-    NSDictionary * dicuser = [[NSUserDefaults standardUserDefaults] valueForKey: STORE_USER_INFO];
-    if(dicuser){
-        SHEntironment.instance.loginName = [dicuser valueForKey:@"username"];
-        SHEntironment.instance.password = [dicuser valueForKey:@"password"];
-    }
+   
 }
 
 - (void)didReceiveMemoryWarning {

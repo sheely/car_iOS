@@ -38,20 +38,10 @@
 
 - (void)loadNext
 {
-    [self showWaitDialogForNetWork];
-    SHPostTaskM * task = [[SHPostTaskM alloc]init];
-    task.URL= URL_FOR(@"acceptquestionlist.action");
-    [task.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"pageno"];
-    [task.postArgs setValue:[NSNumber numberWithInt:20] forKey:@"pagesize"];
-    [task start:^(SHTask *t) {
-        [self dismissWaitDialog];
-
-    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
-        [t.respinfo show];
-        [self dismissWaitDialog];
-    }];
+    mIsEnd = YES;
+      mList = [[[SHChatListHelper instance]list] mutableCopy];
+    [self.tableView reloadData];
 }
-
 - (void)notification:(NSNotification*)n
 {
     mList = [[[SHChatListHelper instance]list] mutableCopy];
@@ -71,10 +61,10 @@
 {
     SHChatItem * item = [mList objectAtIndex:indexPath.row];
     SHChatListViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHChatListViewCell" owner:nil options:nil] objectAtIndex:0];
-    cell.labTitle.text = item.username;
-    cell.labContent.text = item.date;
-    [cell.imgTitle setUrl:item.headicon];
-    cell.labBottom.text = item.content;
+    cell.labTitle.text = item.problemdesc;
+    cell.labContent.text = item.asktime;
+    [cell.imgTitle setUrl:item.uploadpicture];
+    cell.labBottom.text = item.latestmessage;
     cell.imgNew.hidden = !item.isNew;
     return cell;
 }
@@ -83,10 +73,10 @@
 {
     SHIntent * intent = [[SHIntent alloc]init:@"chatdetail" delegate:nil containner:self.navigationController];
     SHChatItem * item = [mList objectAtIndex:indexPath.row];
-    [[SHChatListHelper instance]cleanNewFlag:item.userid];
-    [intent.args setValue:item.userid forKey:@"friendId"];
-    [intent.args setValue:item.username forKey:@"friendName"];
-    [intent.args setValue:item.headicon forKey:@"friendHeadicon"];
+//    [[SHChatListHelper instance]cleanNewFlag:item.userid];
+//    [intent.args setValue:item.userid forKey:@"friendId"];
+//    [intent.args setValue:item.username forKey:@"friendName"];
+//    [intent.args setValue:item.headicon forKey:@"friendHeadicon"];
 
     [[UIApplication sharedApplication]open:intent];
 }

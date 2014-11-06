@@ -41,7 +41,7 @@ static SHChatListHelper * _instance;
 - (void)cleanNewFlag:(NSString*)name
 {
     for (SHChatItem * item2 in mList) {
-        if([item2.userid isEqualToString:name]){
+        if([item2.questionid isEqualToString:name]){
             item2.isNew = NO;
             break;
         }
@@ -50,7 +50,7 @@ static SHChatListHelper * _instance;
 }
 - (void) notice
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@""/*NOTIFICATION_CHATITEMLIST_CHANGED*/ object:mList];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHATITEMLIST_CHANGED object:mList];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (void)  removeAll
@@ -64,7 +64,7 @@ static SHChatListHelper * _instance;
     @synchronized(mList){
         BOOL b = NO;
         for (SHChatItem * item2 in mList) {
-            if([item2.userid isEqualToString:item.userid]){
+            if([item2.questionid isEqualToString:item.questionid]){
                 [mList removeObject:item2];
                 [mList insertObject:item atIndex:0];
                 b = YES;

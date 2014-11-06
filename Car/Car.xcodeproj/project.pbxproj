@@ -202,6 +202,14 @@
 		9E82BBAC19F0229C007301EA /* SHOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BBAA19F0229C007301EA /* SHOrderListViewController.xib */; };
 		9E82BBAE19F28C10007301EA /* img_request_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BBAD19F28C10007301EA /* img_request_bg.png */; };
 		9E82BBB019F2A4D7007301EA /* btn_keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BBAF19F2A4D7007301EA /* btn_keyboard.png */; };
+		9E947E781A0A6C2600D076B8 /* icon_set_report@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */; };
+		9E947E791A0A6C2600D076B8 /* icon_set_repair@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E711A0A6C2600D076B8 /* icon_set_repair@3x.png */; };
+		9E947E7A1A0A6C2600D076B8 /* icon_set_insurance@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E721A0A6C2600D076B8 /* icon_set_insurance@3x.png */; };
+		9E947E7B1A0A6C2600D076B8 /* icon_set_carstatus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E731A0A6C2600D076B8 /* icon_set_carstatus@3x.png */; };
+		9E947E7C1A0A6C2600D076B8 /* icon_set_carstatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E741A0A6C2600D076B8 /* icon_set_carstatus@2x.png */; };
+		9E947E7D1A0A6C2600D076B8 /* icon_set_insurance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E751A0A6C2600D076B8 /* icon_set_insurance@2x.png */; };
+		9E947E7E1A0A6C2600D076B8 /* icon_set_repair@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E761A0A6C2600D076B8 /* icon_set_repair@2x.png */; };
+		9E947E7F1A0A6C2600D076B8 /* icon_set_report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E771A0A6C2600D076B8 /* icon_set_report@2x.png */; };
 		9ED5508B19D5D8740046A4C1 /* SHCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */; };
 		9ED5508C19D5D8740046A4C1 /* SHCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ED5508A19D5D8740046A4C1 /* SHCarInfoViewController.xib */; };
 		9ED5509619D5DA910046A4C1 /* bg_dashboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED5508E19D5DA910046A4C1 /* bg_dashboard@2x.png */; };
@@ -794,6 +802,14 @@
 		9E82BBAA19F0229C007301EA /* SHOrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOrderListViewController.xib; sourceTree = "<group>"; };
 		9E82BBAD19F28C10007301EA /* img_request_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_request_bg.png; sourceTree = "<group>"; };
 		9E82BBAF19F2A4D7007301EA /* btn_keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_keyboard.png; sourceTree = "<group>"; };
+		9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_report@3x.png"; sourceTree = "<group>"; };
+		9E947E711A0A6C2600D076B8 /* icon_set_repair@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_repair@3x.png"; sourceTree = "<group>"; };
+		9E947E721A0A6C2600D076B8 /* icon_set_insurance@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_insurance@3x.png"; sourceTree = "<group>"; };
+		9E947E731A0A6C2600D076B8 /* icon_set_carstatus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_carstatus@3x.png"; sourceTree = "<group>"; };
+		9E947E741A0A6C2600D076B8 /* icon_set_carstatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_carstatus@2x.png"; sourceTree = "<group>"; };
+		9E947E751A0A6C2600D076B8 /* icon_set_insurance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_insurance@2x.png"; sourceTree = "<group>"; };
+		9E947E761A0A6C2600D076B8 /* icon_set_repair@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_repair@2x.png"; sourceTree = "<group>"; };
+		9E947E771A0A6C2600D076B8 /* icon_set_report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_report@2x.png"; sourceTree = "<group>"; };
 		9ED5508819D5D8740046A4C1 /* SHCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarInfoViewController.h; sourceTree = "<group>"; };
 		9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarInfoViewController.m; sourceTree = "<group>"; };
 		9ED5508A19D5D8740046A4C1 /* SHCarInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarInfoViewController.xib; sourceTree = "<group>"; };
@@ -1699,6 +1715,14 @@
 		9ED5508D19D5DA5E0046A4C1 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */,
+				9E947E711A0A6C2600D076B8 /* icon_set_repair@3x.png */,
+				9E947E721A0A6C2600D076B8 /* icon_set_insurance@3x.png */,
+				9E947E731A0A6C2600D076B8 /* icon_set_carstatus@3x.png */,
+				9E947E741A0A6C2600D076B8 /* icon_set_carstatus@2x.png */,
+				9E947E751A0A6C2600D076B8 /* icon_set_insurance@2x.png */,
+				9E947E761A0A6C2600D076B8 /* icon_set_repair@2x.png */,
+				9E947E771A0A6C2600D076B8 /* icon_set_report@2x.png */,
 				9E325DF11A054B3000A35554 /* bg_popup@2x.png */,
 				9E325DF21A054B3000A35554 /* bg_popup@3x.png */,
 				9E325DEF1A054A2900A35554 /* bg_carresearch@2x.png */,
@@ -2693,11 +2717,13 @@
 				9EF62C5919CF002400111E2F /* SHTableViewTitleImageCell2.xib in Resources */,
 				9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */,
 				9E62983E19F2D6FF0049F5FF /* bottom_bg_paper@2x.png in Resources */,
+				9E947E7B1A0A6C2600D076B8 /* icon_set_carstatus@3x.png in Resources */,
 				9EF62C6A19CF002400111E2F /* status-bar-progress.png in Resources */,
 				9E3D5A1619E711DC00141C9D /* SHSubCategaryViewController.xib in Resources */,
 				9E3F62BD19D1D726008C8B7B /* ic_cam@3x.png in Resources */,
 				9ED550E219D6566F0046A4C1 /* lis_icon_status@2x.png in Resources */,
 				9EF62CB419D097DB00111E2F /* subicon_insurance.png in Resources */,
+				9E947E781A0A6C2600D076B8 /* icon_set_report@3x.png in Resources */,
 				9ED550D219D6564B0046A4C1 /* label_new@2x.png in Resources */,
 				9ED550E119D6566F0046A4C1 /* lis_icon_report@3x.png in Resources */,
 				9EF62CAB19D097DB00111E2F /* navi_home.png in Resources */,
@@ -2760,6 +2786,7 @@
 				9E82BB7819EA9230007301EA /* WeiboSDK.bundle in Resources */,
 				9E2EB8B21A08A62C00770A42 /* SHChatListViewController.xib in Resources */,
 				9EF62A2819CEF92A00111E2F /* font.xml in Resources */,
+				9E947E7A1A0A6C2600D076B8 /* icon_set_insurance@3x.png in Resources */,
 				9E2EB8BC1A08A9BD00770A42 /* SHChatUnitViewCell.xib in Resources */,
 				9ED5509819D5DA910046A4C1 /* dashboard_fault@3x.png in Resources */,
 				9E5E5FFF19D9CD2A00642CED /* arrow_right@3x.png in Resources */,
@@ -2788,6 +2815,7 @@
 				9EF62C2419CF002400111E2F /* showview_left_shade.png in Resources */,
 				9EF62CB619D097DB00111E2F /* subicon_repair.png in Resources */,
 				9ED550C419D5EAE70046A4C1 /* set_icon_set@2x.png in Resources */,
+				9E947E7F1A0A6C2600D076B8 /* icon_set_report@2x.png in Resources */,
 				9ED550B819D5EAE70046A4C1 /* set_icon_air_filter@2x.png in Resources */,
 				9EF62C4C19CF002400111E2F /* SHNoneViewCell.xib in Resources */,
 				9E3F62C219D1DA65008C8B7B /* ic_sound@2x.png in Resources */,
@@ -2802,8 +2830,10 @@
 				9EF62CBF19D09DAD00111E2F /* navi_myself@2x.png in Resources */,
 				9EF62A2A19CEF92A00111E2F /* string.xml in Resources */,
 				9EF62A2B19CEF92A00111E2F /* style.xml in Resources */,
+				9E947E7D1A0A6C2600D076B8 /* icon_set_insurance@2x.png in Resources */,
 				9E3D5A0519E6A4EB00141C9D /* SHEditCarinfoViewViewController.xib in Resources */,
 				9EF62C6819CF002400111E2F /* status-bar-pattern-default.jpg in Resources */,
+				9E947E7E1A0A6C2600D076B8 /* icon_set_repair@2x.png in Resources */,
 				9EF62C9219CF263B00111E2F /* SHRequirementViewController.xib in Resources */,
 				9EF62C2019CF002400111E2F /* button_item_white_bg.png in Resources */,
 				9E3F62E119D47EA9008C8B7B /* ic_select_default.png in Resources */,
@@ -2833,6 +2863,7 @@
 				9E3F62DD19D47AEE008C8B7B /* ic_start_full.png in Resources */,
 				9E5E5FFD19D9CCBF00642CED /* icon_time@3x.png in Resources */,
 				9EF62BFD19CF002400111E2F /* DSLCalendarDaySelection-right@2x.png in Resources */,
+				9E947E791A0A6C2600D076B8 /* icon_set_repair@3x.png in Resources */,
 				9ED550C619D5EAE70046A4C1 /* set_icon_wiper@2x.png in Resources */,
 				9EF62CA819D097DB00111E2F /* icon_carwash.png in Resources */,
 				9E82BB9F19ED7661007301EA /* SHInsuranceViewController.xib in Resources */,
@@ -2882,6 +2913,7 @@
 				9EF62C7419CF002400111E2F /* chart.html in Resources */,
 				9E62984A19F2DB4C0049F5FF /* icon_carwashing@2x.png in Resources */,
 				9E325DF41A054B3000A35554 /* bg_popup@3x.png in Resources */,
+				9E947E7C1A0A6C2600D076B8 /* icon_set_carstatus@2x.png in Resources */,
 				9EF62CB719D097DB00111E2F /* subicon_support.png in Resources */,
 				9E5E5FF919D9CCB600642CED /* icon_start@3x.png in Resources */,
 				9EF62A2719CEF92A00111E2F /* color.xml in Resources */,

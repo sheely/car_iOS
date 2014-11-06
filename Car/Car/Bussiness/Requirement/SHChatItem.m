@@ -9,21 +9,26 @@
 #import "SHChatItem.h"
 
 @implementation SHChatItem
-@synthesize headicon;
-@synthesize userid;
-@synthesize username;
-@synthesize content;
-@synthesize date;
+@synthesize servicecategoryid;
+@synthesize asktime;
+@synthesize latestmessage;
+@synthesize servicecategoryname;
+@synthesize uploadpicture;
 @synthesize isNew;
+@synthesize questionid;
+@synthesize problemdesc;
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-        self.headicon = [aDecoder decodeObjectForKey:@"headicon"];
-        self.userid = [aDecoder decodeObjectForKey:@"userid"];
-        self.username = [aDecoder decodeObjectForKey:@"username"];
-        self.content = [aDecoder decodeObjectForKey:@"content"];
-        self.date = [aDecoder decodeObjectForKey:@"date"];
+        
+        self.problemdesc = [aDecoder decodeObjectForKey:@"problemdesc"];
+        self.servicecategoryid = [aDecoder decodeObjectForKey:@"servicecategoryid"];
+        self.questionid = [aDecoder decodeObjectForKey:@"questionid"];
+        self.asktime = [aDecoder decodeObjectForKey:@"asktime"];
+        self.latestmessage = [aDecoder decodeObjectForKey:@"latestmessage"];
+        self.servicecategoryname = [aDecoder decodeObjectForKey:@"servicecategoryname"];
+        self.uploadpicture = [aDecoder decodeObjectForKey:@"uploadpicture"];
         self.isNew = [[aDecoder decodeObjectForKey:@"isNew"] boolValue];
     }
     return  self;
@@ -31,11 +36,13 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:headicon forKey:@"headicon"];
-    [aCoder encodeObject:userid forKey:@"userid"];
-    [aCoder encodeObject:username forKey:@"username"];
-    [aCoder encodeObject:content forKey:@"content"];
-    [aCoder encodeObject:date forKey:@"date"];
+    [aCoder encodeObject:problemdesc forKey:@"problemdesc"];
+    [aCoder encodeObject:questionid forKey:@"questionid"];
+    [aCoder encodeObject:servicecategoryid forKey:@"servicecategoryid"];
+    [aCoder encodeObject:asktime forKey:@"asktime"];
+    [aCoder encodeObject:latestmessage forKey:@"latestmessage"];
+    [aCoder encodeObject:servicecategoryname forKey:@"servicecategoryname"];
+    [aCoder encodeObject:uploadpicture  forKey:@"uploadpicture"];
     [aCoder encodeObject:[NSNumber numberWithBool:isNew] forKey:@"isNew"];
     
 }

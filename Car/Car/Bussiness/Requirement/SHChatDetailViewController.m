@@ -151,11 +151,11 @@
     [dic setValue:[NSNumber numberWithInt:1] forKey:@"issendbyme"];
     
     SHChatItem * item = [[SHChatItem alloc]init] ;
-    item.userid = friendId;
-    item.content = [NSString stringWithFormat:@"⬆︎%@",[dic valueForKey:@"chatcontent"]];
-    item.date = [dic valueForKey:@"sendtime"];
-    item.headicon = headicon;
-    item.username = friendname;
+//    item.userid = friendId;
+//    item.content = [NSString stringWithFormat:@"⬆︎%@",[dic valueForKey:@"chatcontent"]];
+//    item.date = [dic valueForKey:@"sendtime"];
+//    item.headicon = headicon;
+//    item.username = friendname;
     item.isNew = NO;
     [[SHChatListHelper instance] addItem: item];
     [[SHChatListHelper instance] notice];
