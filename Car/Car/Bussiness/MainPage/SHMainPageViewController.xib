@@ -209,21 +209,36 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner1.png" id="T7q-k4-ZWr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Ys-m2-B81">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="banner1.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
-                                <outletCollection property="gestureRecognizers" destination="4EA-22-UtN" appends="YES" id="7zp-Ek-9eP"/>
+                                <action selector="btn1OnTouch:" destination="-1" eventType="touchUpInside" id="esJ-xA-VL3"/>
                             </connections>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2.png" id="inO-Au-rd3">
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xeh-tW-qrP">
                             <rect key="frame" x="320" y="0.0" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner3.png" highlighted="YES" id="iQO-w3-Idn">
+                            <state key="normal" backgroundImage="banner2.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btn2OnTouch:" destination="-1" eventType="touchUpInside" id="xPZ-rt-bE0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PHz-5D-GPf">
                             <rect key="frame" x="640" y="0.0" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <state key="normal" backgroundImage="banner3.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btn3OnTouch:" destination="-1" eventType="touchUpInside" id="idq-mB-Ktr"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </scrollView>
             </subviews>

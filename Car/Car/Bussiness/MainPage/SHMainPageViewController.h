@@ -24,4 +24,7 @@
 - (IBAction)btnCheckOnTouch:(id)sender;
 - (IBAction)btnCarManageOnTouch:(id)sender;
 - (IBAction)btnTabOnTouch:(id)sender;
+- (IBAction)btn3OnTouch:(id)sender;
+- (IBAction)btn2OnTouch:(id)sender;
+- (IBAction)btn1OnTouch:(id)sender;
 @end

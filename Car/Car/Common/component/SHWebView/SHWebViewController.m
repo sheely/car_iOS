@@ -29,6 +29,9 @@
     if([self.intent.args valueForKey:@"url"]){
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.intent.args valueForKeyPath:@"url"]]]];
     }
+    if([self.intent.args valueForKey:@"title"]){
+        self.title  = [self.intent.args valueForKey:@"title"];
+    }
     self.webView.scalesPageToFit = YES;
     // Do any additional setup after loading the view from its nib.
 }

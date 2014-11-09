@@ -19,6 +19,13 @@
     return self;
 }
 
+- (void)loadSkin
+{
+    [super loadSkin];
+    self.imgPhoto.layer.cornerRadius = 5;
+    self.imgPhoto.layer.masksToBounds = YES;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

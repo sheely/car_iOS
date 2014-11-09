@@ -13,8 +13,9 @@
 @interface SHCarInfoViewController ()
 {
     CGRect orFrame;
-    UIView * viewOrCategory;
+    //UIView * viewOrCategory;
     UIButton * lastTouchButton;
+    
 }
 @end
 
@@ -270,10 +271,10 @@ int order = 0;
 }
 
 - (IBAction)btnOilOnTouch:(UIButton*)sender {
-    if(viewOrCategory == nil){
-        viewOrCategory = sender.superview;
+    if(lastTouchButton == nil){
+        UIView *viewOrCategory = sender.superview;
         orFrame = viewOrCategory.frame;
-        
+        lastTouchButton = sender;
         [UIView animateWithDuration:1 animations:^{
             self.collectView.alpha = 1;
             self.viewCarControl.alpha = 0;
@@ -282,6 +283,7 @@ int order = 0;
             self.viewOil.alpha = 0;
             viewOrCategory.alpha = 1;
             self.imgCar.alpha = 0;
+            [sender setImage:nil forState:UIControlStateNormal];
             CGRect  frame  = viewOrCategory.frame;
             frame.origin.y = 5;
             frame.origin.x = 14;
@@ -293,7 +295,8 @@ int order = 0;
     }else{
         self.imgBgBlue.hidden = NO;
         [UIView animateWithDuration:1 animations:^{
-            viewOrCategory.frame = orFrame;
+            lastTouchButton.superview.frame = orFrame;
+            [lastTouchButton setImage:[UIImage imageNamed:@"bg_popup.png"] forState:UIControlStateNormal];
             self.imgBgBlue.alpha = 1;
             self.collectView.alpha = 0;
             self.viewCarControl.alpha = 1;
@@ -302,13 +305,16 @@ int order = 0;
             self.viewOil.alpha = 1;
             self.imgCar.alpha = 1;
         } completion:^(BOOL f){
-            viewOrCategory = nil;
+            lastTouchButton = nil;
             f = YES;
         }];
 
     }
 }
 - (IBAction)btnBackOnTouch:(id)sender {
+    if(lastTouchButton != nil){
+        [self btnOilOnTouch:lastTouchButton];
+    }
 }
 
 - (IBAction)btnCheckOnTouch:(id)sender

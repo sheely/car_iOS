@@ -139,12 +139,28 @@
     type = "--"
     icon = "--"
     title = "地址检索"
-    /> <module
+    />
+    <module
     name="titlecontent"
     target="SHContentViewController"
     type = "--"
     icon = "--"
     title = "文本内容呈现器"
     />
-    
+    <module
+    name="chatdetail"
+    target="SHChatDetailViewController"
+    type = "--"
+    icon = "--"
+    title = "聊天"
+    />
+    <module
+    name="webview"
+    target="SHWebViewController"
+    type = "--"
+    icon = "--"
+    title = "浏览器"
+    />
+
+
 </root>

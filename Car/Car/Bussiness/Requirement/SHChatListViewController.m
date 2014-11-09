@@ -31,7 +31,6 @@
     self.title = @"受理中心";
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[SHSkin.instance image:@"navi_search_nest"] target:self action:@selector(btnSearch:)];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:) name:NOTIFICATION_CHATITEMLIST_CHANGED object:nil];
     // Do any additional setup after loading the view from its nib.
 }
@@ -71,13 +70,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SHIntent * intent = [[SHIntent alloc]init:@"chatdetail" delegate:nil containner:self.navigationController];
+    SHIntent * intent = [[SHIntent alloc]init:@"chatdetail" delegate:nil containner:self.nav];
     SHChatItem * item = [mList objectAtIndex:indexPath.row];
-//    [[SHChatListHelper instance]cleanNewFlag:item.userid];
-//    [intent.args setValue:item.userid forKey:@"friendId"];
-//    [intent.args setValue:item.username forKey:@"friendName"];
-//    [intent.args setValue:item.headicon forKey:@"friendHeadicon"];
-
+    //    [[SHChatListHelper instance]cleanNewFlag:item.userid];
+    //    [intent.args setValue:item.userid forKey:@"friendId"];
+    //    [intent.args setValue:item.username forKey:@"friendName"];
+    //    [intent.args setValue:item.headicon forKey:@"friendHeadicon"];
+    
     [[UIApplication sharedApplication]open:intent];
 }
 

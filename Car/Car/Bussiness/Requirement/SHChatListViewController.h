@@ -10,5 +10,5 @@
 //#import "SHChatSearchViewController.h"
 
 @interface SHChatListViewController : SHTableViewController
-
+@property (nonatomic,strong) UINavigationController * nav;
 @end

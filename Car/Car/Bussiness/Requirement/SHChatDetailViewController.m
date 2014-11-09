@@ -9,6 +9,7 @@
 #import "SHChatDetailViewController.h"
 #import "SHChatUnitViewCell.h"
 #import "SHChatListHelper.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface SHChatDetailViewController ()
 {
@@ -31,13 +32,12 @@
     [self showWaitDialogForNetWork];
     
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
-    post.URL = URL_FOR(@"miQueryChatHistory.do");
-    [post.postArgs setValue:[self.intent.args valueForKey:@"friendId"]forKey:@"anotheruserid"];
-    [post.postArgs setValue:[SHEntironment.instance loginName] forKey:@"myuserid"];
+    post.URL = URL_FOR(@"acceptquestiondetail.action");
+    [post.postArgs setValue:@"4028478148f8feca0148f91292030002" forKey:@"questionid"];
     
     [post start:^(SHTask * t) {
         mIsEnd  = YES;
-        mList = [[t.result valueForKey:@"historymessages"] mutableCopy];
+        mList = [[t.result valueForKey:@"leavemessages"] mutableCopy];
         if(mList == nil){
             mList = [[NSMutableArray alloc]init];
         }
@@ -57,10 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    friendId = [self.intent.args valueForKey:@"friendId"];
-    friendname = [self.intent.args valueForKey:@"friendName"];
-    headicon = [self.intent.args valueForKey:@"friendHeadicon"];
+
     self.title = [NSString stringWithFormat:@"与\"%@\"聊天",friendname];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(message:) name:NOTIFICATION_MESSAGE object:nil];
     //[self loadNext];
@@ -95,8 +92,16 @@
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize size = [[[mList objectAtIndex:indexPath.row] valueForKey:@"chatcontent"] sizeWithFont:[SHSkin.instance fontOfStyle:@"FontScaleMid"] constrainedToSize:CGSizeMake(183, 99999) lineBreakMode:NSLineBreakByTruncatingTail];
-    return  60 - 18 + size.height;
+    NSDictionary * dic = [mList objectAtIndex:indexPath.row] ;
+    
+    if([[dic valueForKey:@"leavemessagetype"] intValue] == 1){
+        return 170;
+    }else if([[dic valueForKey:@"leavemessagetype"] intValue] == 2){
+        return 60;
+    }else{
+        CGSize size = [[dic valueForKey:@"leavemessagecontent"] sizeWithFont:[SHSkin.instance fontOfStyle:@"FontScaleMid"] constrainedToSize:CGSizeMake(183, 99999) lineBreakMode:NSLineBreakByTruncatingTail];
+        return  60 - 18 + size.height;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,9 +131,20 @@
     }else{
         cell = [[[NSBundle mainBundle]loadNibNamed:@"SHChatUnitViewCell" owner:nil options:nil] objectAtIndex:0];
     }
-    cell.labTxt.text = [dic valueForKey:@"chatcontent"];
+    if([[dic valueForKey:@"leavemessagetype"] intValue] == 2){
+        cell.viewplayer.hidden = NO;
+        [cell.viewplayer setUrl:[dic valueForKey:@"leavemessagecontent"]];
+
+    }
+    if([[dic valueForKey:@"leavemessagetype"] intValue] == 1){
+        [cell.imgPhoto setUrl:[dic valueForKey:@"leavemessagecontent"]];
+        cell.imgPhoto.hidden = NO;
+    }else{
+        cell.labTxt.text = [dic valueForKey:@"leavemessagecontent"];
+
+    }
     [cell.imgIcon setUrl:[dic valueForKey:@"senderheadicon"]];
-    cell.labTimer.text = [[dic valueForKey:@"sendtime"] substringWithRange:NSMakeRange(11,5)];
+    cell.labTimer.text = [[dic valueForKey:@"leavemessagetime"] substringWithRange:NSMakeRange(11,5)];
     return cell;
 }
 
@@ -137,6 +153,7 @@
     if (self.txtBox.text.length == 0) {
         return;
     }
+    
     [self showWaitDialogForNetWork];
     NSString * msg = self.txtBox.text;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

@@ -24,6 +24,7 @@
     [self.viewTitle addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:(UIControlEventValueChanged)];
     mrequestlistviewcontroller = [[SHChatListViewController alloc]init];
     mrequestlistviewcontroller.view.frame = self.view.bounds;
+    mrequestlistviewcontroller.nav = self.navigationController;
     [self.view addSubview:mrequestlistviewcontroller.view];
     // Do any additional setup after loading the view from its nib.
 }

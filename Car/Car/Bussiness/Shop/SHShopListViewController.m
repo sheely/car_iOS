@@ -231,14 +231,14 @@
 
 - (IBAction)btnPlayOnTouch:(id)sender
 {
-    if([self.player isPlaying]){
-        [self.player pause];
+    if(player.isPlaying){
+        [self.btnPlay setImage: [UIImage imageNamed:@"icon_play_com.png" ] forState:UIControlStateNormal];
+        
+        [player stop];
+    }else{
+        [self.btnPlay setImage: [UIImage imageNamed:@"icon_stop_com.png" ] forState:UIControlStateNormal];
+        [player play];
     }
-    //If the track is not player, play the track and change the play button to "Pause"
-    else{
-        [self.player play];
-    }
-
 }
 
 - (IBAction)btnRecordOutSide:(id)sender
@@ -686,6 +686,13 @@
     
     
 }
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [self.btnPlay setImage: [UIImage imageNamed:@"icon_play_com.png" ] forState:UIControlStateNormal];
+}
+
+
 
 - (IBAction)btnLocationOnTouch:(id)sender {
     [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];

@@ -23,7 +23,7 @@
     [super viewDidLoad];
     self.title = @"车宝宝";
     scrollview.contentSize = CGSizeMake(self.view.frame.size.width * 3, scrollview.frame.size.height);
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(btnChanged:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(btnChanged:) userInfo:nil repeats:YES];
     NSDictionary * dicuser = [[NSUserDefaults standardUserDefaults] valueForKey: STORE_USER_INFO];
     if(dicuser){
         SHEntironment.instance.loginName = [dicuser valueForKey:@"username"];
@@ -197,7 +197,24 @@
 
 - (IBAction)btnTabOnTouch:(id)sender
 {
-    [self showAlertDialog:@""];
+ //   [self showAlertDialog:@""];
+}
+
+- (IBAction)btn3OnTouch:(id)sender {
+    [self performSelector:@selector(notificationMore) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+
+}
+
+- (IBAction)btn2OnTouch:(id)sender {
+    [self performSelector:@selector(notificationCheck) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+
+}
+
+- (IBAction)btn1OnTouch:(id)sender {
+    SHIntent * intent  = [[SHIntent alloc ]init:@"webview" delegate:nil containner:self.navigationController];
+    [intent.args setValue:@"http://www.baidu.com" forKey:@"url"];
+    [intent.args setValue:@"洗车卷抽奖" forKey:@"title"];
+    [[UIApplication sharedApplication]open:intent];
 }
 
 - (void)notificationMyCar
