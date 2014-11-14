@@ -88,6 +88,22 @@
     }else{
         @try{
             self.image = [[UIImage alloc]initWithData:(NSData *)task.result];
+            if(self.isAutoAdapter){
+                if(self.image.size.width && self.image.size.height){
+                    if(self.frame.size.width < self.frame.size.height ) {
+                        float scale = self.image.size.width/ self.image.size.height;
+                        CGRect frame = self.frame;
+                        frame.size.height = self.frame.size.width/scale;
+                        self.frame = frame;
+                    }else{
+                        float scale = self.image.size.width/ self.image.size.height;
+                        CGRect frame = self.frame;
+                        frame.size.width = self.frame.size.height*scale;
+                        self.frame = frame;
+                    }
+                }
+                
+            }
             if (self.delegate && [self.delegate respondsToSelector:@selector(imageViewDidLoadFinished:)]) {
                 [self.delegate imageViewDidLoadFinished:self];
             }

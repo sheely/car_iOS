@@ -16,7 +16,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_bg@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-mk-37K">
                         <rect key="frame" x="0.0" y="0.0" width="96" height="42"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="引擎盖内部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-vx-cEx">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-vx-cEx">
                         <rect key="frame" x="38" y="5" width="50" height="32"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
@@ -24,7 +24,7 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmindark"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_icon_battery.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rk6-vJ-P5V">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rk6-vJ-P5V" customClass="SHImageView">
                         <rect key="frame" x="8" y="5" width="32" height="32"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="set_status_fault.png" translatesAutoresizingMaskIntoConstraints="NO" id="1xl-sx-C9V">
@@ -50,7 +50,6 @@
     </objects>
     <resources>
         <image name="set_bg@3x.png" width="288" height="126"/>
-        <image name="set_icon_battery.png" width="32" height="32"/>
         <image name="set_status_fault.png" width="20" height="20"/>
     </resources>
 </document>

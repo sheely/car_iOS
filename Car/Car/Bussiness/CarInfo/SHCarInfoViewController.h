@@ -17,16 +17,29 @@
 @property (weak, nonatomic) IBOutlet UIView *viewSafety;
 @property (weak, nonatomic) IBOutlet UIView *viewOil;
 @property (weak, nonatomic) IBOutlet UIView *view4Itmes;
-@property (weak, nonatomic) IBOutlet UIImageView *imgCar;
+@property (weak, nonatomic) IBOutlet UILabel *labState1;
+@property (weak, nonatomic) IBOutlet UIImageView *btnGesture;
+@property (strong, nonatomic) IBOutlet UIView *viewNeedCheck;
 
 @property (weak, nonatomic) IBOutlet UIView *viewPower;
+@property (weak, nonatomic) IBOutlet UIButton *btnPower;
 - (IBAction)btnOilOnTouch:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *btnCheck;
+@property (weak, nonatomic) IBOutlet UIButton *btnCheckReport;
 @property (weak, nonatomic) IBOutlet UIButton *btnNotification;
 @property (weak, nonatomic) IBOutlet UIButton *btnRepair;
 @property (weak, nonatomic) IBOutlet UIButton *btnCarState;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBgBlue;
+@property (weak, nonatomic) IBOutlet SHImageView *imgCarLogo;
+@property (weak, nonatomic) IBOutlet UIImageView *imgCar;
+@property (weak, nonatomic) IBOutlet UILabel *labBand;
+@property (weak, nonatomic) IBOutlet UILabel *labCarId;
+@property (weak, nonatomic) IBOutlet UILabel *labState2;
+@property (weak, nonatomic) IBOutlet UILabel *labState4;
+@property (weak, nonatomic) IBOutlet UILabel *labState3;
+@property (weak, nonatomic) IBOutlet UIButton *btnCheck;
 - (IBAction)btnBackOnTouch:(id)sender;
 - (IBAction)btnCheckOnTouch:(id)sender;
+- (IBAction)btnCheckReportOnTouch:(id)sender;
+- (IBAction)btnContinueDemoOnTouch:(id)sender;
 @end

@@ -9,7 +9,12 @@
 #import "SHCleanViewCell.h"
 
 @implementation SHCleanViewCell
+{
+    float gouponPrice;
+    
+}
 @synthesize  dicInfo = _dicInfo;
+@synthesize gouponId;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -32,6 +37,17 @@
         self.labSpecialDiscount.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"specialwashdiscountprice"] intValue]];
         self.labSpecialOriginal.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"specialwashoriginalprice"] intValue]];
     }
+    NSArray * array = [_dicInfo valueForKey:@"mywashtickets"];
+    for (int i = 0; i<array.count; i++) {
+        NSDictionary * dic = [array objectAtIndex:i];
+        if([[dic valueForKey:@"washtickettype"] integerValue] == 0){
+            self.viewCoupon.hidden = NO;
+            self.labCoupon.text = [NSString stringWithFormat:@"%d元优惠劵",[[dic valueForKey:@"washticketmoney"]integerValue ]];
+                gouponPrice = [[dic valueForKey:@"washticketmoney"]floatValue ];
+            self.gouponId = [dic valueForKey:@"washticketid"];
+            break;
+        }
+    }
     self.labNormalDiscount.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"normalwashdiscountprice"] intValue]];
     self.labNormalOriginal.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]];
     [self caculater];
@@ -53,8 +69,16 @@
 - (void)caculater
 {
     if(self.btnNormal.selected == YES){
-        int price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]-[[_dicInfo valueForKey:@"normalwashdiscountprice"] intValue];
-        [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%d元",price] forState:UIControlStateNormal];
+        
+        if(self.btnExtra.selected){
+            int price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]- gouponPrice;
+            [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%d元",price] forState:UIControlStateNormal];
+        }else{
+            int price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]-[[_dicInfo valueForKey:@"normalwashdiscountprice"] intValue];
+            [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%d元",price] forState:UIControlStateNormal];
+        }
+
+       
         
     }else if (self.btnSpecial.selected){
         int price =  [[_dicInfo valueForKey:@"specialwashoriginalprice"] intValue]-[[_dicInfo valueForKey:@"specialwashdiscountprice"] intValue];
@@ -68,6 +92,7 @@
         [self showAlertDialog:@"精洗不能使用优惠券"];
     }else{
         self.btnExtra.selected = !self.btnExtra.selected;
+        
     }
     [self caculater];
 }

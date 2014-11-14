@@ -39,6 +39,7 @@
         [self dismissWaitDialog];
         [self.tableView reloadData];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        mIsEnd = YES;
         [t.respinfo show];
         [self dismissWaitDialog];
         

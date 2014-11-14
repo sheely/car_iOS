@@ -82,6 +82,12 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.btnPay.tag = indexPath.row;
     cell.index = indexPath;
+    if([[dic_n valueForKey:@"isneedpay"] integerValue] == 1 && [[dic_n valueForKey:@"ispayed"] integerValue]== 0 ){
+        cell.btnPay.hidden = NO;
+
+    }else if([[dic_n valueForKey:@"isneedpay"] integerValue] == 0 && [[dic_n valueForKey:@"ispayed"] integerValue]==1 ){
+        cell.btnPay.hidden = YES;
+    }
     [cell.btnPay addTarget:self action:@selector(btnPay:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
@@ -95,11 +101,11 @@
         AlixPayOrder *order = [[AlixPayOrder alloc] init];
         order.partner = PartnerID;
         order.seller = SellerID;
-        order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+        order.tradeNO = [dic valueForKey:@"orderid"]; //订单ID（由商家自行制定）
         order.productName = [NSString stringWithFormat:@"%@-%@",[dic_n valueForKey:@"shopname"],@"服务费"]; ; //商品标题
         order.productDescription = [NSString stringWithFormat:@"%@-%@",[dic_n valueForKey:@"shopname"],@"服务费"]; //商品描述
-        order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
-        order.notifyURL =  @"http://www.baidu.com"; //回调URL
+        order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+        order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
 
         NSString* orderInfo = [order description];
         NSString* signedStr = [self doRsa:orderInfo];
@@ -123,31 +129,13 @@
     [cell.imgHead setUrl:[dic valueForKey:@"servicecategorylogo"]];
     cell.labTitle.text = [dic valueForKey:@"servicecategoryname"];
     cell.labCarId.text = [dic valueForKey:@"carno"];
-    cell.labState.text = @"待付款";
+    cell.labState.text = [dic valueForKey:@"orderstatus_cn"];
     return cell;
 }
 
 - (float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 10;
-}
-
-
-
-
-- (NSString *)generateTradeNO
-{
-    const int N = 15;
-    
-    NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *result = [[NSMutableString alloc] init] ;
-    srand(time(0));
-    for (int i = 0; i < N; i++){
-        unsigned index = rand() % [sourceString length];
-        NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
-        [result appendString:s];
-    }
-    return result;
 }
 
 -(NSString*)doRsa:(NSString*)orderInfo

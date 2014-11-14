@@ -12,6 +12,7 @@
 @interface SHShopInfoViewController ()
 {
     NSDictionary * dic;
+    NSString * orderId;
 }
 @end
 
@@ -100,13 +101,57 @@
 
 - (void)btnSubmit:(UIButton *)b
 {
-    [self showAlertDialog:@"请在与商家的交易结束付款。\n现在确认付款么?" button:@"确定" otherButton:@"取消"];
+
+    [self showWaitDialog:@"正在创建订单..." state:@"请稍候"];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"washordercreate.action");
+    SHCleanViewCell * cell = (SHCleanViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    [post.postArgs setValue:[self.intent.args valueForKey:@"shopid"] forKey:@"shopid"];
+    if(cell.btnNormal.selected){
+        [post.postArgs setValue:[NSNumber numberWithInt:0 ] forKey:@"washtype"];
+    }else{
+        [post.postArgs setValue:[NSNumber numberWithInt:1 ] forKey:@"washtype"];
+    }
+    if(cell.btnExtra.selected){
+        [post.postArgs setValue:cell.gouponId forKey:@"ticketid"];
+
+    }else{
+        [post.postArgs setValue:@"" forKey:@"ticketid"];
+
+    }
+    
+    
+    
+    [post start:^(SHTask *t) {
+        if([t.result valueForKey:@"orderid"]){
+            orderId = [t.result valueForKey:@"orderid"];
+            [self showAlertDialog:[NSString stringWithFormat: @"请在与商家的交易结束付款。\n现在确认付款［%d］元?",[[t.result valueForKey:@"finalprice"] integerValue]] button:@"确定" otherButton:@"取消"];
+        }
+        
+        [self dismissWaitDialog];
+
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
+    }];
+
 }
 
 - (void)alertViewEnSureOnClick
 {
     NSString *appScheme = @"car";
-    NSString* orderInfo = [self getOrderInfo:0];
+    
+    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    order.partner = PartnerID;
+    order.seller = SellerID;
+    order.tradeNO =  orderId ; //订单ID（由商家自行制定）
+    order.productName = @"洗车"; //商品标题
+    order.productDescription = [NSString stringWithFormat:@"%@-服务费",[dic valueForKey:@"shopname"]]; //商品描述
+    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
+    order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
+    
+    NSString* orderInfo = [order description];
+    
     NSString* signedStr = [self doRsa:orderInfo];
     NSLog(@"%@",signedStr);
     NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
@@ -157,22 +202,6 @@
 
 }
 
--(NSString*)getOrderInfo:(NSInteger)index
-{
-    /*
-     *点击获取prodcut实例并初始化订单信息
-     */
-    AlixPayOrder *order = [[AlixPayOrder alloc] init];
-    order.partner = PartnerID;
-    order.seller = SellerID;
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
-    order.productName = @"洗车"; //商品标题
-    order.productDescription = @"志跃精洗"; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
-    order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
-    
-    return [order description];
-}
 
 - (NSString *)generateTradeNO
 {

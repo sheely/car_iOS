@@ -33,7 +33,8 @@
     
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"acceptquestiondetail.action");
-    [post.postArgs setValue:@"4028478148f8feca0148f91292030002" forKey:@"questionid"];
+    questionid = [self.intent.args valueForKey:@"questionid"];
+    [post.postArgs setValue:questionid forKey:@"questionid"];
     
     [post start:^(SHTask * t) {
         mIsEnd  = YES;
@@ -54,11 +55,17 @@
     
 }
 
+- (void)loadSkin
+{
+    self.btnSender.layer.cornerRadius = 5;
+    self.btnSender.layer.masksToBounds  = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    self.title = [NSString stringWithFormat:@"与\"%@\"聊天",friendname];
+    self.title = [NSString stringWithFormat:@"与\"%@\"聊天",@"专家"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(message:) name:NOTIFICATION_MESSAGE object:nil];
     //[self loadNext];
     // Do any additional setup after loading the view from its nib.
@@ -69,7 +76,7 @@
     BOOL b = false;
     [self checkBottom];
     for (NSDictionary * dic  in n.object) {
-        if([[dic valueForKey:@"senderuserid"]isEqualToString:friendId ] == YES){
+        if([[dic valueForKey:@"senderuserid"]isEqualToString:questionid ] == YES){
             [mList addObject:dic];
             b = YES;
         }
@@ -160,13 +167,12 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *destDateString = [dateFormatter stringFromDate:[NSDate date]];
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
-    [dic setValue:[SHEntironment instance].loginName forKey:@"senderuserid"];
-    [dic setValue:@"" forKey:@"senderheadicon"];
-    [dic setValue:@"" forKey:@"senderusername"];
-    [dic setValue:msg forKey:@"chatcontent"];
-    [dic setValue:destDateString forKey:@"sendtime"];
+    [dic setValue:[NSNumber numberWithInt:0] forKey:@"leavemessagetype"];
+
+    [dic setValue:msg forKey:@"leavemessagecontent"];
+    [dic setValue:destDateString forKey:@"leavemessagetime"];
     [dic setValue:[NSNumber numberWithInt:1] forKey:@"issendbyme"];
-    
+    [dic setValue:@"" forKey:@"senderheadicon"];
     SHChatItem * item = [[SHChatItem alloc]init] ;
 //    item.userid = friendId;
 //    item.content = [NSString stringWithFormat:@"⬆︎%@",[dic valueForKey:@"chatcontent"]];
@@ -180,11 +186,12 @@
     
     [self showWaitDialogForNetWork];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
-    [post.postArgs setValue:msg forKey:@"chatcontent"];
-    [post.postArgs setValue:[SHEntironment instance].loginName  forKey:@"senderuserid"];
-    [post.postArgs setValue:friendId  forKey:@"receiveruserid"];
+    [post.postArgs setValue:msg forKey:@"sendcontent"];
+    [post.postArgs setValue:questionid  forKey:@"orderid"];
+    [post.postArgs setValue:[NSNumber numberWithInt:0]  forKey:@"messagetype"];
+    [post.postArgs setValue:[NSNumber numberWithInt:0]  forKey:@"leavemessagetype"];
 
-    post.URL = URL_FOR(@"miSendMessage.do");
+    post.URL = URL_FOR(@"maintaincecommentadd.action");
     [post start:^(SHTask *t) {
         [self dismissWaitDialog];
         [mList addObject:dic];

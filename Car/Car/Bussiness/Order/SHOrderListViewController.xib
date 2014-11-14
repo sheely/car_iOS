@@ -18,7 +18,7 @@
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" id="hye-HO-ocr">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e4c-EX-ZJD">
                             <rect key="frame" x="140" y="23" width="39" height="21"/>

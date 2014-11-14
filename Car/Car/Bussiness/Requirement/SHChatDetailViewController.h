@@ -11,7 +11,7 @@
 
 @interface SHChatDetailViewController : SHCommentsDetailViewController
 {
-    NSString * friendId ;
+    NSString * questionid ;
     NSString * headicon ;
     NSString * friendname ;
 }

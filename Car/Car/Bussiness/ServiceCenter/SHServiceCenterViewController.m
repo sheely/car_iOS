@@ -32,12 +32,13 @@
 - (void)segmentedControlValueChanged:(UISegmentedControl*)controller
 {
     if(controller.selectedSegmentIndex == 0){
-         [self.view addSubview:mrequestlistviewcontroller.view];
+        [self.view addSubview:mrequestlistviewcontroller.view];
     }else{
         if(morderlistviewcontroller == nil){
             morderlistviewcontroller = [[SHOrderListViewController alloc]init];
+            morderlistviewcontroller.view.frame = self.view.bounds;
         }
-         [self.view addSubview:morderlistviewcontroller.view];
+        [self.view addSubview:morderlistviewcontroller.view];
     }
 }
 

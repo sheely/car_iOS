@@ -20,8 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnNormal;
 @property (weak, nonatomic) IBOutlet UIButton *btnSpecial;
 @property (assign,nonatomic) float summer;
+@property (strong,nonatomic) NSString* gouponId;
+@property (weak, nonatomic) IBOutlet UILabel *labCoupon;
 - (IBAction)btnNormalOnTouch:(id)sender;
 - (IBAction)btnSpecialOnTouch:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnExtra;
 - (IBAction)btnExtraOnTouch:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *viewCoupon;
 @end

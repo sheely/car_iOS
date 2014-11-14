@@ -15,6 +15,8 @@
     CGRect orFrame;
     //UIView * viewOrCategory;
     UIButton * lastTouchButton;
+    NSArray * mCurrentCategory;
+    NSArray * mListFourCategory;
     
 }
 @end
@@ -28,13 +30,142 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" target:self action:@selector(btnShare:)];
     self.imgIndicator.layer.anchorPoint = CGPointMake(0.88, 0.5);
+    NSDictionary * dic = [[NSUserDefaults standardUserDefaults] valueForKey:@"user_car"];
+    if(dic){
+        self.labBand.text = [NSString stringWithFormat:@"%@-%@",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
+        self.labCarId.text =[NSString stringWithFormat:@"%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"carcardno"]];
+         self.imgCarLogo.isAutoAdapter = YES;
+        [self.imgCarLogo setUrl:[dic valueForKey:@"carlogo"]];
+    }
 
-    [self performSelector:@selector(drawdashboard) withObject:nil afterDelay:0.5];
-    [self performSelector:@selector(viewAnimation) withObject:nil afterDelay:0.5];
+  
+    [self showWaitDialogForNetWork];
+    SHPostTaskM * p = [[SHPostTaskM alloc]init ];
+    p.URL= URL_FOR(@"dashboard.action");
+    [p start:^(SHTask *t) {
+        [self dismissWaitDialog];
+
+        if([t.result valueForKey:@"activitedcar"]){
+            NSDictionary* dic = [t.result valueForKey:@"activitedcar"];
+            self.labBand.text = [NSString stringWithFormat:@"%@-%@",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
+            self.imgCarLogo.isAutoAdapter = YES;
+            [self.imgCarLogo setUrl:[dic valueForKey:@"carlogo"]];
+            self.labCarId.text = [NSString stringWithFormat:@"%@%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"alphabetname"],[dic valueForKey:@"carcardno"]];
+            sum = [[t.result valueForKey:@"totalscore"] intValue];
+            [self performSelector:@selector(drawdashboard) withObject:nil afterDelay:0.5];
+            [self performSelector:@selector(viewAnimation) withObject:nil afterDelay:0.5];
+            mListFourCategory = [t.result valueForKey:@"fourcategory"];
+            self.labState1.text = [[mListFourCategory objectAtIndex:0] valueForKey:@"healthstatus"];
+            self.labState2.text = [[mListFourCategory objectAtIndex:1] valueForKey:@"healthstatus"];
+            self.labState3.text = [[mListFourCategory objectAtIndex:2] valueForKey:@"healthstatus"];
+            self.labState4.text = [[mListFourCategory objectAtIndex:3] valueForKey:@"healthstatus"];
+            self.viewNeedCheck.alpha = 0;
+            
+            [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.viewNeedCheck.alpha = 1;
+                self.viewNeedCheck.frame = [UIApplication sharedApplication].keyWindow.bounds;
+                [[UIApplication sharedApplication].keyWindow addSubview:self.viewNeedCheck];
+            } completion:^(BOOL finished) {
+                
+            }
+            ];
+            
+        }
+    } taskWillTry:nil
+taskDidFailed:^(SHTask *t) {
+    [t.respinfo show];
+    [self dismissWaitDialog];
+    
+}];
     // Do any additional setup after loading the view from its nib.
 }
 
-int sum = 30;
+- (void) demo
+{
+    self.btnGesture.hidden = NO;
+    self.btnGesture.alpha = 0;
+    [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.btnGesture.alpha = 1;
+
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.btnGesture.alpha = 0;
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.btnGesture.alpha = 1;
+                
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    CGRect frame = self.btnGesture.frame;
+                    frame.origin.x = self.viewPower.frame.origin.x + 10;
+                    frame.origin.y = self.viewPower.frame.origin.y + 10;
+                    self.btnGesture.frame = frame;
+                    
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                        self.btnGesture.alpha = 0;
+                        
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                            self.btnGesture.alpha = 1;
+                            
+                        } completion:^(BOOL finished) {
+                            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                self.btnGesture.alpha = 0;
+                                
+                            } completion:^(BOOL finished) {
+                                [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                    self.btnGesture.alpha = 1;
+                                    
+                                } completion:^(BOOL finished) {
+                                    [self btnOilOnTouch:self.btnPower];
+                                    [UIView animateWithDuration:0.5 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                        CGRect frame = self.btnGesture.frame;
+                                        frame.origin.x = self.btnBack.frame.origin.x + 10;
+                                        frame.origin.y = self.btnBack.frame.origin.y + 10;
+                                        self.btnGesture.frame = frame;
+                                        
+                                    } completion:^(BOOL finished) {
+                                        
+                                        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                            self.btnGesture.alpha = 0;
+                                            
+                                        } completion:^(BOOL finished) {
+                                            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                                self.btnGesture.alpha = 1;
+                                                
+                                            } completion:^(BOOL finished) {
+                                                [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                                    self.btnGesture.alpha = 0;
+                                                    
+                                                } completion:^(BOOL finished) {
+                                                    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                                        self.btnGesture.alpha = 1;
+                                                        
+                                                    } completion:^(BOOL finished) {
+                                                        [self btnBackOnTouch:self.btnBack];
+                                                        self.btnGesture.hidden = YES;
+                                                    }];
+                                                }];
+                                            }];
+                                        }];
+
+                                    }];
+                                    
+                                }];
+                            }];
+                        }];
+                    }];
+                }];
+            }];
+        }];
+
+    }];
+    
+}
+
+int sum = 0;
 int cur = 0;
 int order = 0;
 
@@ -146,7 +277,7 @@ int order = 0;
 */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 14;
+    return mCurrentCategory.count;
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -156,18 +287,19 @@ int order = 0;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SHCarItemCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"car_item_collect" forIndexPath:indexPath];
-    if(indexPath.row == 0){
-        cell.labTitle.text = @"刹车片";
-        cell.imgView.image = [UIImage imageNamed:@"set_icon_breaking"];
-        cell.imgState.image =  [UIImage imageNamed:@"set_status_warning"];
-    }else if (indexPath.row == 1){
-        cell.labTitle.text = @"机油";
-        cell.imgView.image = [UIImage imageNamed:@"set_icon_gas"];
-        cell.imgState.image =  [UIImage imageNamed:@"set_status_fault"];
-    }else{
-        cell.labTitle.text = @"变速箱";
-        cell.imgView.image = [UIImage imageNamed:@"set_icon_set"];
+    NSDictionary * dic = [mCurrentCategory objectAtIndex:indexPath.row];
+    
+    cell.labTitle.text = [dic valueForKey:@"devicename"];
+    [cell.imgView setUrl:[dic valueForKey:@"deviceslogo"]];
+    if([[dic valueForKey:@"devicestatus"]integerValue] == 0){
         cell.imgState.image =  [UIImage imageNamed:@"set_status_normal"];
+        
+    }else  if([[dic valueForKey:@"devicestatus"]integerValue] == 1){
+        cell.imgState.image =  [UIImage imageNamed:@"set_status_fault"];
+        
+    }else  if([[dic valueForKey:@"devicestatus"]integerValue] == 2){
+        cell.imgState.image =  [UIImage imageNamed:@"set_status_warning"];
+        
     }
     cell.btnItem.tag = indexPath.row;
     [cell.btnItem addTarget:self action:@selector(btnItemOnTouch:) forControlEvents:UIControlEventTouchUpInside];
@@ -185,37 +317,21 @@ int order = 0;
     kxt.tag = button.tag;
     kxt.image = [UIImage imageNamed:@"set_status_normal"];
     kxt.index = 0;
-    KxMenuItem * kxt2 = [[KxMenuItem alloc]init];
-    kxt2.title = @"变更:需注意";
-    kxt2.target = self;
-    kxt2.action = @selector(kxtOnTouch:);
-    kxt2.tag = button.tag;
-    kxt2.index = 1;
-    kxt2.image = [UIImage imageNamed:@"set_status_fault"];
-
-    KxMenuItem * kxt3 = [[KxMenuItem alloc]init];
-    kxt3.title = @"变更:有问题";
-    kxt3.target = self;
-    kxt3.action = @selector(kxtOnTouch:);
-    kxt3.tag = button.tag;
-    kxt3.index = 2;
-    kxt3.image = [UIImage imageNamed:@"set_status_warning"];
-
     KxMenuItem * kxt4 = [[KxMenuItem alloc]init];
 
     kxt4.title = @"查看检测报告";
     kxt4.target = self;
     kxt4.action = @selector(kxtOnTouch:);
     kxt4.tag = button.tag;
-    kxt4.index = 3;
+    kxt4.index = 1;
     kxt4.image = [UIImage imageNamed:@"lis_icon_report"];
 
-    [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt2,kxt3,kxt4]];
+    [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt4]];
 }
 
 - (void)kxtOnTouch:(KxMenuItem*)item
 {
-    if(item.index == 3){
+    if(item.index == 1){
         SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
         [[UIApplication sharedApplication]open:i];
 
@@ -230,8 +346,6 @@ int order = 0;
 - (void)loadSkin
 {
     [super loadSkin];
-    self.btnCheck.layer.cornerRadius = 3;
-    self.btnCheck.layer.masksToBounds = YES;
     self.btnCarState.layer.cornerRadius = 3;
     self.btnCarState.layer.masksToBounds = YES;
     self.btnNotification.layer.cornerRadius = 3;
@@ -272,6 +386,8 @@ int order = 0;
 
 - (IBAction)btnOilOnTouch:(UIButton*)sender {
     if(lastTouchButton == nil){
+        mCurrentCategory = [[mListFourCategory objectAtIndex:sender.tag] valueForKey:@"deviceentities"];
+        [self.collectView reloadData];
         UIView *viewOrCategory = sender.superview;
         orFrame = viewOrCategory.frame;
         lastTouchButton = sender;
@@ -319,9 +435,33 @@ int order = 0;
 
 - (IBAction)btnCheckOnTouch:(id)sender
 {
+    [UIView animateWithDuration:1 animations:^{
+        self.viewNeedCheck.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.viewNeedCheck removeFromSuperview];
+    }];
+    SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
+    [intent.args setValue:@"一键检测" forKey:@"title"];
+    [intent.args setValue:@"check" forKey:@"type"];
+    [[UIApplication sharedApplication]open:intent];
+
+
+}
+
+- (IBAction)btnCheckReportOnTouch:(id)sender
+{
     SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
     [i.args setValue:@"dsfsdfsdsfd" forKey:@"reportid"];
 
     [[UIApplication sharedApplication]open:i];
+}
+
+- (IBAction)btnContinueDemoOnTouch:(id)sender {
+    [UIView animateWithDuration:1 animations:^{
+        self.viewNeedCheck.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.viewNeedCheck removeFromSuperview];
+        [self demo];
+    }];
 }
 @end

@@ -22,6 +22,8 @@
     UIActivityIndicatorView * mIndicatorview ;
 }
 @property (nonatomic,strong) SHTask* urlTask;
+
+@property (nonatomic,assign) BOOL isAutoAdapter;
 @property (nonatomic,assign) id<SHImageViewDelegate> delegate;
 @property (nonatomic,copy) NSString * mark;
 

@@ -9,18 +9,29 @@
             <connections>
                 <outlet property="btnBack" destination="K8B-QC-eXu" id="tXg-b1-dQG"/>
                 <outlet property="btnCarState" destination="aHE-kL-Adc" id="uMP-CZ-SSe"/>
-                <outlet property="btnCheck" destination="bVR-Yj-8WE" id="6qr-jS-dr1"/>
+                <outlet property="btnCheck" destination="lbw-F7-vzT" id="GvB-tu-5xo"/>
+                <outlet property="btnCheckReport" destination="bVR-Yj-8WE" id="nNe-FG-rpK"/>
+                <outlet property="btnGesture" destination="IN3-ZG-sf9" id="1ZD-I7-NAQ"/>
                 <outlet property="btnNotification" destination="Kkp-OA-8dQ" id="qmV-Wu-n5p"/>
+                <outlet property="btnPower" destination="V5b-Ti-YLe" id="67B-Eu-SoM"/>
                 <outlet property="btnRepair" destination="pK2-dr-yIf" id="Nd2-uJ-1Yw"/>
-                <outlet property="collectView" destination="Nci-sn-vhp" id="Grg-fS-ReG"/>
+                <outlet property="collectView" destination="g9w-Si-Tc6" id="0I5-1e-Ozj"/>
                 <outlet property="imgBgBlue" destination="nNX-Pp-aFS" id="73r-Bb-rr6"/>
-                <outlet property="imgCar" destination="9Tn-ka-hpG" id="eWU-3z-FvO"/>
+                <outlet property="imgCar" destination="9Tn-ka-hpG" id="Dtn-Sv-ZM3"/>
+                <outlet property="imgCarLogo" destination="FqQ-jI-pUf" id="0qg-r5-2QX"/>
                 <outlet property="imgIndicator" destination="kHu-ST-KkH" id="RfF-c0-LnC"/>
+                <outlet property="labBand" destination="922-QX-LBb" id="hfX-Xc-K8j"/>
+                <outlet property="labCarId" destination="2Ro-SZ-D4b" id="zwg-UZ-M8H"/>
                 <outlet property="labScore" destination="hdj-hd-rDj" id="Ha2-hA-DYL"/>
+                <outlet property="labState1" destination="ogU-GE-DIL" id="NKX-uq-Ox1"/>
+                <outlet property="labState2" destination="iPZ-yM-Ua5" id="1HP-yi-hKS"/>
+                <outlet property="labState3" destination="HI6-NM-ajP" id="8UK-rc-xDt"/>
+                <outlet property="labState4" destination="6FK-Ct-FA8" id="P38-D8-n7D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view4Itmes" destination="5NI-2m-eVd" id="Fnb-7i-EuY"/>
                 <outlet property="viewCarControl" destination="7ZV-KT-LhD" id="Rgu-tp-LcW"/>
                 <outlet property="viewDashBoard" destination="i8p-JS-J3e" id="izR-9m-JLz"/>
+                <outlet property="viewNeedCheck" destination="eHT-qT-djn" id="VCA-h8-MKt"/>
                 <outlet property="viewOil" destination="WsL-qS-dGP" id="rUU-mr-wEk"/>
                 <outlet property="viewPower" destination="Boe-Af-Sjw" id="2S2-ph-2Ud"/>
                 <outlet property="viewSafety" destination="YOs-eK-ELr" id="MUP-1O-YTI"/>
@@ -35,12 +46,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audi.png" id="FqQ-jI-pUf">
-                            <rect key="frame" x="14" y="13" width="86" height="60"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_default_car.png" id="FqQ-jI-pUf" customClass="SHImageView">
+                            <rect key="frame" x="14" y="8" width="86" height="67"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奥迪汽车" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="922-QX-LBb">
-                            <rect key="frame" x="108" y="16" width="68" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="922-QX-LBb">
+                            <rect key="frame" x="108" y="16" width="107" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,8 +60,8 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmiddark"/>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苏D12345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Ro-SZ-D4b">
-                            <rect key="frame" x="108" y="47" width="77" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Ro-SZ-D4b">
+                            <rect key="frame" x="108" y="47" width="107" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -109,45 +120,6 @@
                             <rect key="frame" x="55" y="109" width="210" height="85"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <view alpha="0.0" contentMode="scaleToFill" id="7ZV-KT-LhD">
-                            <rect key="frame" x="64" y="153" width="95" height="57"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sCu-76-SrM">
-                                    <rect key="frame" x="0.0" y="-1" width="95" height="57"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="bg_popup.png">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="btnOilOnTouch:" destination="-1" eventType="touchUpInside" id="BOO-mt-zJd"/>
-                                    </connections>
-                                </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_controller.png" id="WGz-8Y-5Fm">
-                                    <rect key="frame" x="17" y="10" width="24" height="24"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="操控性" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dBc-bp-QxS">
-                                    <rect key="frame" x="8" y="27" width="42" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressbar_round_full.png" id="wF0-xn-mox">
-                                    <rect key="frame" x="52" y="9" width="36" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6FK-Ct-FA8">
-                                    <rect key="frame" x="49" y="16" width="42" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <view alpha="0.0" contentMode="scaleToFill" id="Boe-Af-Sjw">
                             <rect key="frame" x="64" y="101" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -191,7 +163,7 @@
                             <rect key="frame" x="162" y="101" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cZi-7t-G3v">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cZi-7t-G3v">
                                     <rect key="frame" x="0.0" y="0.0" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="bg_popup.png">
@@ -230,7 +202,7 @@
                             <rect key="frame" x="162" y="153" width="95" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ogo-oE-4KS">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ogo-oE-4KS">
                                     <rect key="frame" x="0.0" y="0.0" width="95" height="57"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="bg_popup.png">
@@ -265,21 +237,64 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="none" id="Nci-sn-vhp">
+                        <view alpha="0.0" contentMode="scaleToFill" id="7ZV-KT-LhD">
+                            <rect key="frame" x="64" y="153" width="95" height="57"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sCu-76-SrM">
+                                    <rect key="frame" x="0.0" y="0.0" width="95" height="57"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="bg_popup.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnOilOnTouch:" destination="-1" eventType="touchUpInside" id="BOO-mt-zJd"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_controller.png" id="WGz-8Y-5Fm">
+                                    <rect key="frame" x="17" y="10" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="操控性" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dBc-bp-QxS">
+                                    <rect key="frame" x="8" y="27" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressbar_round_full.png" id="wF0-xn-mox">
+                                    <rect key="frame" x="52" y="9" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6FK-Ct-FA8">
+                                    <rect key="frame" x="49" y="16" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="none" id="g9w-Si-Tc6">
                             <rect key="frame" x="0.0" y="74" width="320" height="221"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="2XE-v3-Obg">
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="mbl-1V-cdc">
                                 <size key="itemSize" width="96" height="42"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="10" minY="8" maxX="10" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="KHs-ad-y47"/>
-                                <outlet property="delegate" destination="-1" id="Mqg-4L-5G6"/>
+                                <outlet property="dataSource" destination="-1" id="L9y-ms-vhE"/>
+                                <outlet property="delegate" destination="-1" id="4HY-cd-w5u"/>
                             </connections>
                         </collectionView>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_hand_cursor.png" id="IN3-ZG-sf9">
+                            <rect key="frame" x="135" y="147" width="50" height="75"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -337,7 +352,7 @@
                                 <color key="titleShadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </state>
                             <connections>
-                                <action selector="btnCheckOnTouch:" destination="-1" eventType="touchUpInside" id="tsk-Kn-GYO"/>
+                                <action selector="btnCheckReportOnTouch:" destination="-1" eventType="touchUpInside" id="JEj-Rm-bR5"/>
                             </connections>
                         </button>
                     </subviews>
@@ -348,16 +363,53 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="146" y="224"/>
         </view>
+        <view contentMode="scaleToFill" id="eHT-qT-djn">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_check.png" id="Syq-fl-7b0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-F7-vzT">
+                    <rect key="frame" x="42" y="464" width="111" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnCheckOnTouch:" destination="-1" eventType="touchUpInside" id="FhM-FR-Q0Q"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6xZ-8B-tWz">
+                    <rect key="frame" x="169" y="464" width="114" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnContinueDemoOnTouch:" destination="-1" eventType="touchUpInside" id="gh2-mj-SmL"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="507" y="224"/>
+        </view>
     </objects>
     <resources>
-        <image name="audi.png" width="147" height="102"/>
         <image name="bg_car.png" width="210" height="85"/>
         <image name="bg_carresearch.png" width="320" height="210"/>
+        <image name="bg_check.png" width="640" height="1000"/>
         <image name="bg_dashboard.png" width="64" height="64"/>
         <image name="bg_pop_button.png" width="285" height="153"/>
         <image name="bg_popup.png" width="95" height="51"/>
         <image name="dashboard_indicator@3x.png" width="92" height="28"/>
         <image name="dashboard_warning_background@3x.png" width="192" height="192"/>
+        <image name="ic_default_car.png" width="128" height="128"/>
+        <image name="ic_hand_cursor.png" width="200" height="300"/>
         <image name="icon_controller.png" width="24" height="24"/>
         <image name="icon_oil.png" width="24" height="24"/>
         <image name="icon_power.png" width="24" height="24"/>

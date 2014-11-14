@@ -183,7 +183,7 @@
 - (void)notificationCheck
 {
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"测试" forKey:@"title"];
+    [intent.args setValue:@"一键检测" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
 
@@ -212,7 +212,7 @@
 
 - (IBAction)btn1OnTouch:(id)sender {
     SHIntent * intent  = [[SHIntent alloc ]init:@"webview" delegate:nil containner:self.navigationController];
-    [intent.args setValue:@"http://www.baidu.com" forKey:@"url"];
+    [intent.args setValue:URL_FOR(@"guaguale/index.html") forKey:@"url"];
     [intent.args setValue:@"洗车卷抽奖" forKey:@"title"];
     [[UIApplication sharedApplication]open:intent];
 }

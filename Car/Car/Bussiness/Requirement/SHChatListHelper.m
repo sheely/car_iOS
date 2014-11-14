@@ -14,8 +14,8 @@ static SHChatListHelper * _instance;
 - (id) init
 {
     if(self = [super init]){
-        NSData * data = [[NSUserDefaults standardUserDefaults] valueForKey:@"SHChatListHelper"];
-        mList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//        NSData * data = [[NSUserDefaults standardUserDefaults] valueForKey:@"SHChatListHelper"];
+//        mList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         
         if(mList == nil){
             mList = [[NSMutableArray alloc]init];
@@ -75,8 +75,8 @@ static SHChatListHelper * _instance;
             [mList addObject:item];
         }
     }
-    NSData *studentData = [NSKeyedArchiver archivedDataWithRootObject:mList];
-    [[NSUserDefaults standardUserDefaults] setObject: studentData forKey:@"SHChatListHelper"];
+//    NSData *studentData = [NSKeyedArchiver archivedDataWithRootObject:mList];
+//    [[NSUserDefaults standardUserDefaults] setObject: studentData forKey:@"SHChatListHelper"];
 
 }
 @end

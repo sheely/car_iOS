@@ -28,7 +28,7 @@
     NSDictionary * mDicCategorySelected;
     NSString *cafFilePath;
     NSString *mp3FilePath;
-
+    SHCalendarViewController * calendarcontroller;
 }
 @end
 
@@ -466,6 +466,7 @@
 }
 - (void)showEnSureView
 {
+    self.btnPlay.titleLabel.text = [NSString stringWithFormat:@"%d\"",(int)voice.recordTime] ;
     self.viewEnsure.hidden = NO;
     self.viewEnsure.alpha = 0;
     self.btnTxt.hidden = self.txtField.hidden;
@@ -665,6 +666,52 @@
 }
 */
 
+- (IBAction)btnCheckOnTouch:(id)sender {
+    [self showWaitDialog:@"正在下单" state:@"请稍后..."];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"checkordercreate.action");
+    
+    [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertyp"];
+    [post.postArgs  setValue:@"" forKey:@"ticketid"];
+    [post.postArgs  setValue:@"" forKey:@"reserverdatetime"];
+    
+    [post start:^(SHTask *t) {
+             [self dismissWaitDialog];
+    } taskWillTry:nil
+    taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+      [self dismissWaitDialog];
+    }];
+}
+
+- (IBAction)btnAppointmentOnTouch:(id)sender
+
+{
+    
+    calendarcontroller  = [[SHCalendarViewController alloc]init];
+    calendarcontroller.delegate = self;
+    [calendarcontroller show];
+}
+-(void)calendarViewController:(SHCalendarViewController *)controller dateEnsure:(NSDate *)date
+{
+    [calendarcontroller close];
+    [self showWaitDialog:@"正在下单" state:@"请稍后..."];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"checkordercreate.action");
+    
+    [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertyp"];
+    [post.postArgs  setValue:@"" forKey:@"ticketid"];
+    [post.postArgs  setValue:@"" forKey:@"reserverdatetime"];
+    
+    [post start:^(SHTask *t) {
+        [self dismissWaitDialog];
+    } taskWillTry:nil
+  taskDidFailed:^(SHTask *t) {
+      [t.respinfo show];
+      [self dismissWaitDialog];
+  }];
+
+}
 - (IBAction)btnKeybord:(id)sender {
     if(self.txtField.hidden ){
         self.keybordView = self.viewRequest;
@@ -710,5 +757,6 @@
     [SHIntentManager clear];
     [self.mapView setCenterCoordinate:poi.pt animated:YES];
 }
+
 
 @end

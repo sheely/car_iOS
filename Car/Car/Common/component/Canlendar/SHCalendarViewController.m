@@ -25,6 +25,12 @@
 
 - (void)loadSkin
 {
+    [super loadSkin];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.btnCancel.layer.cornerRadius = 5;
+    self.btnCancel.layer.masksToBounds = YES;
+    self.btnEnsure.layer.cornerRadius = 5;
+    self.btnEnsure.layer.masksToBounds = YES;
 }
 
 - (void)viewDidLoad
@@ -50,7 +56,9 @@
 }
 - (void)show
 {
-    [[[UIApplication sharedApplication] keyWindow] addSubview:self.view];
+    [UIView animateWithDuration:1 animations:^{
+        [[[UIApplication sharedApplication] keyWindow] addSubview:self.view];
+    }];
 }
 
 - (void)close
@@ -61,5 +69,17 @@
 - (IBAction)btnOnTouch:(id)sender
 {
     [self close];
+}
+
+- (IBAction)btnCancelOnTouch:(id)sender {
+    [self close];
+
+}
+
+- (IBAction)btnEnsureOnTouch:(id)sender {
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(calendarViewController:dateEnsure:)]){
+        [self.delegate calendarViewController:self dateEnsure:canlendarView.selectedDate];
+    }
+
 }
 @end

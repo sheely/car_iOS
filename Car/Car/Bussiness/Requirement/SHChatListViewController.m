@@ -61,17 +61,34 @@
     SHChatItem * item = [mList objectAtIndex:indexPath.row];
     SHChatListViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHChatListViewCell" owner:nil options:nil] objectAtIndex:0];
     cell.labTitle.text = item.problemdesc;
-    cell.labContent.text = item.asktime;
+    
+    
+    
+    if(item.asktime.length > 0){
+        NSDate * date = [self dateFromString:item.asktime];
+        if([[date addDay:1] earlierDate:[NSDate date]]){
+            cell.labContent.text = [item.asktime substringWithRange:NSMakeRange(11,5)];
+        }else{
+            cell.labContent.text = [item.asktime substringWithRange:NSMakeRange(0,10)];
+        }
+    }
+    
     [cell.imgTitle setUrl:item.uploadpicture];
     cell.labBottom.text = item.latestmessage;
     cell.imgNew.hidden = !item.isNew;
     return cell;
 }
-
+- (NSDate *)dateFromString:(NSString *)dateString{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+    NSDate *destDate= [dateFormatter dateFromString:dateString];
+    return destDate;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SHIntent * intent = [[SHIntent alloc]init:@"chatdetail" delegate:nil containner:self.nav];
     SHChatItem * item = [mList objectAtIndex:indexPath.row];
+    [intent.args setValue:item.questionid forKey:@"questionid"];
     //    [[SHChatListHelper instance]cleanNewFlag:item.userid];
     //    [intent.args setValue:item.userid forKey:@"friendId"];
     //    [intent.args setValue:item.username forKey:@"friendName"];

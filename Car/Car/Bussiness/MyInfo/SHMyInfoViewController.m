@@ -237,6 +237,9 @@
             SHIntent * intent = [[SHIntent alloc]init:@"mycarlist" delegate:self containner:self.navigationController];
             [[UIApplication sharedApplication]open:intent];
 
+        }else{
+            SHIntent * intent = [[SHIntent alloc]init:@"goupon" delegate:self containner:self.navigationController];
+            [[UIApplication sharedApplication]open:intent];
         }
     }else if (indexPath.section == 2){
         if(indexPath.row == 2){

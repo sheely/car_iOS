@@ -161,6 +161,13 @@
     icon = "--"
     title = "浏览器"
     />
+    <module
+    name="goupon"
+    target="SHGouponViewController"
+    type = "--"
+    icon = "--"
+    title = "浏览器"
+    />
 
 
 </root>

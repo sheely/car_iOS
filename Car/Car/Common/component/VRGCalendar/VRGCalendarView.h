@@ -11,9 +11,9 @@
 #import "UIColor+expanded.h"
 
 #define kVRGCalendarViewTopBarHeight 60
-#define kVRGCalendarViewWidth 320
+//#define kVRGCalendarViewWidth 320
 
-#define kVRGCalendarViewDayWidth 44
+//#define kVRGCalendarViewDayWidth 44
 #define kVRGCalendarViewDayHeight 38
 
 @protocol VRGCalendarViewDelegate;
@@ -34,7 +34,8 @@
     NSArray *markedDates;
     NSArray *markedColors;
 }
-
+@property (nonatomic,assign) int kVRGCalendarViewWidth;
+@property (nonatomic,assign) int kVRGCalendarViewDayWidth;
 @property (nonatomic, retain) id <VRGCalendarViewDelegate> delegate;
 @property (nonatomic, retain) NSDate *currentMonth;
 @property (nonatomic, retain) UILabel *labelCurrentMonth;
