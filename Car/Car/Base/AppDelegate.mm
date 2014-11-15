@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "BNaviSoundManager.h"
 @implementation AppDelegate
   CLLocationManager * locationManager;
 BMKMapManager* _mapManager;
@@ -32,6 +32,12 @@ BMKMapManager* _mapManager;
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    // 初始化导航SDK引擎
+    [BNCoreServices_Instance initServices:@"2GNPcYG9Kqfi3Up0bPGyvftD"];
+    
+    //开启引擎，传入默认的TTS类
+    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
+    
     [SHLocationManager.instance startUserLocationService];
 
     return YES;

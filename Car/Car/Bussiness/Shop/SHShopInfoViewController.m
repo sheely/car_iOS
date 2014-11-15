@@ -227,4 +227,10 @@
     return signedString;
 }
 
+- (IBAction)btnLineOnTouch:(id)sender
+{
+    SHIntent * intent = [[SHIntent alloc]init:@"line" delegate:nil containner:self.navigationController];
+    [intent.args setValue:dic forKey:@"poi"];
+    [[UIApplication sharedApplication]open:intent];
+}
 @end

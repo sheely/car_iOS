@@ -168,6 +168,13 @@
     icon = "--"
     title = "浏览器"
     />
+    <module
+    name="line"
+    target="SHLineViewController"
+    type = "--"
+    icon = "--"
+    title = "线路"
+    />
 
 
 </root>

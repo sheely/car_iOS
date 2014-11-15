@@ -26,4 +26,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img4;
 @property (weak, nonatomic) IBOutlet UIImageView *img5;
 
+- (IBAction)btnLineOnTouch:(id)sender;
 @end

@@ -9,5 +9,13 @@
 #import "SHViewController.h"
 
 @interface SHGouponViewController : SHViewController
+@property (weak, nonatomic) IBOutlet UILabel *labCleanStart;
+@property (weak, nonatomic) IBOutlet UILabel *labCleanEnd;
 
+@property (weak, nonatomic) IBOutlet UILabel *labCleanPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labCleanDes;
+@property (weak, nonatomic) IBOutlet UILabel *labCheckPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labCheckDec;
+@property (weak, nonatomic) IBOutlet UILabel *labCheckStart;
+@property (weak, nonatomic) IBOutlet UILabel *labCheckEnd;
 @end

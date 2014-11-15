@@ -52,12 +52,15 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G2b-BB-2hg">
                     <rect key="frame" x="262" y="50" width="50" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="导航">
+                    <state key="normal" title="线路">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="btnsubmitgreen"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btnLineOnTouch:" destination="-1" eventType="touchUpInside" id="sgD-6X-0Cr"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rAG-2O-Mww">
                     <rect key="frame" x="11" y="90" width="140" height="30"/>

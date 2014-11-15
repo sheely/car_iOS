@@ -39,8 +39,7 @@
     _searcher =[[BMKPoiSearch alloc]init];
     _searcher.delegate = self;
     //发起检索
-
-}
+   }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
