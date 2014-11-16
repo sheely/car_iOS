@@ -122,8 +122,8 @@
         //起点 传入的是原始的经纬度坐标，若使用的是百度地图坐标，可以使用BNTools类进行坐标转化
         BNRoutePlanNode *startNode = [[BNRoutePlanNode alloc] init];
         startNode.pos = [[BNPosition alloc] init];
-        startNode.pos.x = start.pt.latitude;
-        startNode.pos.y = start.pt.longitude;
+        startNode.pos.x = start.pt.longitude;
+        startNode.pos.y = start.pt.latitude;
         startNode.pos.eType = BNCoordinate_BaiduMapSDK;
         [nodesArray addObject:startNode];
         
@@ -131,8 +131,8 @@
              //终点
         BNRoutePlanNode *endNode = [[BNRoutePlanNode alloc] init];
         endNode.pos = [[BNPosition alloc] init];
-        endNode.pos.x = end.pt.latitude;
-        endNode.pos.y = end.pt.longitude;
+        endNode.pos.x = end.pt.longitude;
+        endNode.pos.y = end.pt.latitude;
         endNode.pos.eType = BNCoordinate_BaiduMapSDK;
         [nodesArray addObject:endNode];
         
@@ -378,8 +378,8 @@
 {
     _mapView.delegate = nil ;
     _searcher.delegate = nil;
-    [BNCoreServices_RoutePlan startNaviRoutePlan:BNRoutePlanMode_Recommend naviNodes:nil time:nil delegete:nil userInfo:nil];
-    [BNCoreServices_UI showNaviUI:BN_NaviTypeReal delegete:nil isNeedLandscape:NO];
+//    [BNCoreServices_RoutePlan startNaviRoutePlan:BNRoutePlanMode_Recommend naviNodes:nil time:nil delegete:nil userInfo:nil];
+ //   [BNCoreServices_UI showNaviUI:BN_NaviTypeReal delegete:nil isNeedLandscape:NO];
 
 }
 - (void)didReceiveMemoryWarning {
