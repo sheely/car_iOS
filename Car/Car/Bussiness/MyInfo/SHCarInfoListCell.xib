@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPG-d3-Pdp">
-                        <rect key="frame" x="69" y="12" width="54" height="40"/>
+                        <rect key="frame" x="69" y="8" width="54" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -23,7 +23,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxK-9v-QWH">
-                        <rect key="frame" x="117" y="12" width="155" height="40"/>
+                        <rect key="frame" x="117" y="8" width="155" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,15 +37,25 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="check_alt.png" translatesAutoresizingMaskIntoConstraints="NO" id="rDP-Xl-0tc" customClass="SHImageView">
                         <rect key="frame" x="280" y="12" width="40" height="40"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-dz-HKn">
+                        <rect key="frame" x="69" y="30" width="177" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="userstyle" value="labmiddark"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgState" destination="rDP-Xl-0tc" id="tOR-Fm-7zK"/>
                 <outlet property="imgView" destination="faK-dx-tQg" id="bZx-XI-hLm"/>
+                <outlet property="labBotton" destination="SGn-dz-HKn" id="2FX-dx-vnI"/>
                 <outlet property="labContent" destination="cxK-9v-QWH" id="ah1-u9-CDf"/>
                 <outlet property="labTitle" destination="qPG-d3-Pdp" id="al5-kT-ANp"/>
             </connections>
-            <point key="canvasLocation" x="496" y="253"/>
+            <point key="canvasLocation" x="496" y="252"/>
         </tableViewCell>
     </objects>
     <resources>

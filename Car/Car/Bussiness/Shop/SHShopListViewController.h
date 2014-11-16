@@ -9,7 +9,12 @@
 #import "SHViewController.h"
 #import "BMKMapView.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "AlixLibService.h"
+#import "AlixPayOrder.h"
+#import "AlixPayResult.h"
+#import "PartnerConfig.h"
+#import "DataSigner.h"
+#import "DataVerifier.h"
 @interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,UITextFieldDelegate, BMKGeoCodeSearchDelegate>
 {
 }

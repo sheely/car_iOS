@@ -44,9 +44,6 @@
         [self dismissWaitDialog];
         
     }];
-    
-    
-    [self.tableView reloadData];
 }
 
 - (float)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath

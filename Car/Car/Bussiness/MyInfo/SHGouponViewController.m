@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的优惠券";
-    
+    [self showWaitDialogForNetWork];
     SHPostTaskM * p  = [[SHPostTaskM alloc]init];
     p.URL= URL_FOR(@"mywashticketsquery.action");
     [p.postArgs setValue:[NSNumber numberWithInt:99] forKey:@"tickettype"];
@@ -37,10 +37,16 @@
                 self.labCheckEnd.text = [[dic valueForKey:@"washticketendtime"] substringToIndex:10];
             }
         }
-    } taskWillTry:nil
+        [self dismissWaitDialog];
+
+    }
+ taskWillTry:nil
     taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
+
         [t.respinfo show];
     }];
+
     // Do any additional setup after loading the view from its nib.
 }
 

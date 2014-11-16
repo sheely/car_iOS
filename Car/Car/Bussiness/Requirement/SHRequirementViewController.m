@@ -195,9 +195,12 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     CGRect f = self.navigationController.view.frame;
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        self.navigationController.view.frame = f;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            self.navigationController.view.frame = f;
+        }];
     }];
+   
 }
 
 - (IBAction)btnCategoryOnTouch:(id)sender

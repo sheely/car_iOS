@@ -11,5 +11,6 @@
 @interface SHCarInfoListCell : SHTableViewTitleContentCell
 @property (weak, nonatomic) IBOutlet SHImageView *imgView;
 @property (weak, nonatomic) IBOutlet SHImageView *imgState;
+@property (weak, nonatomic) IBOutlet UILabel *labBotton;
 
 @end

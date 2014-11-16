@@ -110,8 +110,13 @@
         }];
 
     }
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
+    CGRect f = self.navigationController.view.frame;
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            self.navigationController.view.frame = f;
+            
+        }];
+    }];
     
 }
 

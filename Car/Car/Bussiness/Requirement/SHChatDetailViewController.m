@@ -140,17 +140,20 @@
     }
     if([[dic valueForKey:@"leavemessagetype"] intValue] == 2){
         cell.viewplayer.hidden = NO;
+        cell.labTxt.hidden = YES;
         [cell.viewplayer setUrl:[dic valueForKey:@"leavemessagecontent"]];
 
     }
     if([[dic valueForKey:@"leavemessagetype"] intValue] == 1){
         [cell.imgPhoto setUrl:[dic valueForKey:@"leavemessagecontent"]];
         cell.imgPhoto.hidden = NO;
+        cell.labTxt.hidden = YES;
+
     }else{
         cell.labTxt.text = [dic valueForKey:@"leavemessagecontent"];
 
     }
-    [cell.imgIcon setUrl:[dic valueForKey:@"senderheadicon"]];
+    [cell.imgIcon setUrl:[dic valueForKey:@"headurl"]];
     cell.labTimer.text = [[dic valueForKey:@"leavemessagetime"] substringWithRange:NSMakeRange(11,5)];
     return cell;
 }

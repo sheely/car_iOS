@@ -50,8 +50,8 @@
                             <rect key="frame" x="14" y="8" width="86" height="67"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="922-QX-LBb">
-                            <rect key="frame" x="108" y="16" width="107" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="922-QX-LBb">
+                            <rect key="frame" x="98" y="16" width="117" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -61,7 +61,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Ro-SZ-D4b">
-                            <rect key="frame" x="108" y="47" width="107" height="21"/>
+                            <rect key="frame" x="98" y="47" width="117" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -74,11 +74,11 @@
                             <rect key="frame" x="223" y="11" width="64" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_warning_background@3x.png" id="uLk-re-8Fv">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_warning_background.png" id="uLk-re-8Fv">
                             <rect key="frame" x="223" y="11" width="64" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_indicator@3x.png" id="kHu-ST-KkH">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_indicator.png" id="kHu-ST-KkH">
                             <rect key="frame" x="240" y="42" width="30" height="9"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -406,8 +406,8 @@
         <image name="bg_dashboard.png" width="64" height="64"/>
         <image name="bg_pop_button.png" width="285" height="153"/>
         <image name="bg_popup.png" width="95" height="51"/>
-        <image name="dashboard_indicator@3x.png" width="92" height="28"/>
-        <image name="dashboard_warning_background@3x.png" width="192" height="192"/>
+        <image name="dashboard_indicator.png" width="92" height="28"/>
+        <image name="dashboard_warning_background.png" width="128" height="128"/>
         <image name="ic_default_car.png" width="128" height="128"/>
         <image name="ic_hand_cursor.png" width="200" height="300"/>
         <image name="icon_controller.png" width="24" height="24"/>

@@ -81,6 +81,7 @@
     cell.labTitle.text = [dic valueForKey:@"carcategoryname"];
     cell.labContent.text = [dic valueForKey:@"carseriesname"];
     [cell.imgView setUrl:[dic valueForKey:@"carlogo"]];
+    cell.labBotton.text = [NSString stringWithFormat:@"%@%@ %@",[dic valueForKey:@"provincename"],[dic valueForKey:@"alphabetname"],[dic valueForKey:@"carcardno"]];
     if([[dic valueForKey:@"isactivited"] intValue]){
         cell.imgState.hidden = NO;
         [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"user_car"];

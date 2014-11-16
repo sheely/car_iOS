@@ -29,6 +29,8 @@
         SHEntironment.instance.loginName = [dicuser valueForKey:@"username"];
         SHEntironment.instance.password = [dicuser valueForKey:@"password"];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestChatList) name:NOTIFICATION_UPDATE_REQUIRE object:nil];
     [self requestChatList];
 //    pagecontrol
     // Do any additional setup after loading the view from its nib.
@@ -36,30 +38,33 @@
 - (void)requestChatList
 {
     //[self showWaitDialogForNetWork];
-    SHPostTaskM * task = [[SHPostTaskM alloc]init];
-    task.URL= URL_FOR(@"acceptquestionlist.action");
-    [task.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"pageno"];
-    [task.postArgs setValue:[NSNumber numberWithInt:20] forKey:@"pagesize"];
-    [task start:^(SHTask *t) {
-        NSArray * mList = [t.result valueForKey:@"questions"];
-        for (NSDictionary * dic  in mList) {
-            SHChatItem * item = [[SHChatItem alloc]init];
-            item.problemdesc = [dic valueForKey:@"problemdesc"];
-            item.asktime = [dic valueForKey:@"asktime"];
-            item.uploadpicture = [dic valueForKey:@"uploadpicture"];
-            item.latestmessage = [dic valueForKey:@"latestmessage"];
-            item.problemdesc = [dic valueForKey:@"problemdesc"];
-            item.questionid = [dic valueForKey:@"questionid"];
-            [SHChatListHelper.instance addItem:item];
-        }
-        [SHChatListHelper.instance notice];
-        [self dismissWaitDialog];
-        
-    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
-        [t.respinfo show];
-        [self dismissWaitDialog];
-    }];
+    if(SHEntironment.instance.loginName.length > 0){
+        SHPostTaskM * task = [[SHPostTaskM alloc]init];
+        task.URL= URL_FOR(@"acceptquestionlist.action");
+        [task.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"pageno"];
+        [task.postArgs setValue:[NSNumber numberWithInt:20] forKey:@"pagesize"];
+        [task start:^(SHTask *t) {
+            NSArray * mList = [t.result valueForKey:@"questions"];
+            for (NSDictionary * dic  in mList) {
+                SHChatItem * item = [[SHChatItem alloc]init];
+                item.problemdesc = [dic valueForKey:@"problemdesc"];
+                item.asktime = [dic valueForKey:@"asktime"];
+                item.uploadpicture = [dic valueForKey:@"uploadpicture"];
+                item.latestmessage = [dic valueForKey:@"latestmessage"];
+                item.problemdesc = [dic valueForKey:@"problemdesc"];
+                item.questionid = [dic valueForKey:@"questionid"];
+                [SHChatListHelper.instance addItem:item];
+            }
+            [SHChatListHelper.instance notice];
+            [self dismissWaitDialog];
+            
+        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+            [t.respinfo show];
+            [self dismissWaitDialog];
+        }];
 
+    }
+   
 }
 
 - (void)btnChanged:(NSObject*)nssender
@@ -83,7 +88,7 @@
     NSDictionary * dic = [[NSUserDefaults standardUserDefaults] valueForKey:@"user_car"];
     if(dic){
         labBrand.text = [NSString stringWithFormat:@"%@(%@)",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
-        labCardNo.text =[NSString stringWithFormat:@"%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"carcardno"]];
+        labCardNo.text =[NSString stringWithFormat:@"%@%@ %@",[dic valueForKey:@"provincename"],[dic valueForKey:@"alphabetname"],[dic valueForKey:@"carcardno"]];
         [imgBrand setUrl:[dic valueForKey:@"carlogo"]];
     }
    

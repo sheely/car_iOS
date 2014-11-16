@@ -29,6 +29,8 @@
     NSString *cafFilePath;
     NSString *mp3FilePath;
     SHCalendarViewController * calendarcontroller;
+    CGRect orgFrame ;
+
 }
 @end
 
@@ -67,7 +69,8 @@
             type = 0;
 
         }
-        else if([[self.intent.args valueForKey:@"type"]isEqualToString:@"Insurance"]){
+        else if([[self.intent.args valueForKey:@"type"]isEqualToString:@"insurance"]){
+            type = 4;
         }
         
         self.tableView.hidden = YES;
@@ -129,7 +132,7 @@
     [_mapView addAnnotation:selectLocation];
     mListAnimation = [[NSMutableArray alloc]init];
     [self refreshAdress];
-  
+    orgFrame =  self.navigationController.view.frame;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -287,8 +290,15 @@
     [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.longitude]forKey:@"lgt"];
     [post.postArgs setValue:[mDicCategorySelected valueForKey:@"servicecategoryid"] forKey:@"servicecategoryid"];
     [post start:^(SHTask *t) {
+        self.txtField.text = @"";
+        [mListPhoto removeAllObjects];
+        for (UIView* v in self.viewPhoto.subviews) {
+            [v removeFromSuperview];
+        }
+        mp3FilePath = @"";
         [self showAlertDialog:@"需求发布成功!"];
         [self dismissWaitDialog];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_REQUIRE object:nil];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [t.respinfo show];
         [self dismissWaitDialog];
@@ -409,16 +419,6 @@
     [self.navigationController presentViewController:controller animated:YES completion:nil];
     
 }
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage * img = [info valueForKey:@"UIImagePickerControllerEditedImage"];
-    if(img){
-        [self addPhoto:img];
-    }
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
-    
-}
 
 - (void)addPhoto:(UIImage*)img
 {
@@ -459,11 +459,26 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    CGRect f = self.navigationController.view.frame;
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        self.navigationController.view.frame = f;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.navigationController.view.frame = orgFrame;
+        }];
     }];
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage * img = [info valueForKey:@"UIImagePickerControllerEditedImage"];
+    if(img){
+        [self addPhoto:img];
+    }
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            self.navigationController.view.frame = orgFrame;
+        }];
+    }];
+}
+
 - (void)showEnSureView
 {
     self.btnPlay.titleLabel.text = [NSString stringWithFormat:@"%d\"",(int)voice.recordTime] ;
@@ -480,6 +495,7 @@
         self.viewEnsure.frame  = frame;
     }];
 }
+
 - (void)closeEnSureView
 {
     self.viewEnsure.hidden = NO;
@@ -665,25 +681,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)btnCheckOnTouch:(id)sender {
-    [self showWaitDialog:@"正在下单" state:@"请稍后..."];
-    SHPostTaskM * post = [[SHPostTaskM alloc]init];
-    post.URL = URL_FOR(@"checkordercreate.action");
-    
-    [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertyp"];
-    [post.postArgs  setValue:@"" forKey:@"ticketid"];
-    [post.postArgs  setValue:@"" forKey:@"reserverdatetime"];
-    
-    [post start:^(SHTask *t) {
-             [self dismissWaitDialog];
-    } taskWillTry:nil
-    taskDidFailed:^(SHTask *t) {
-        [t.respinfo show];
-      [self dismissWaitDialog];
-    }];
-}
-
 - (IBAction)btnAppointmentOnTouch:(id)sender
 
 {
@@ -692,27 +689,104 @@
     calendarcontroller.delegate = self;
     [calendarcontroller show];
 }
--(void)calendarViewController:(SHCalendarViewController *)controller dateEnsure:(NSDate *)date
+
+- (IBAction)btnCheckOnTouch:(id)sender {
+    [self pay:@""];
+}
+
+- (void)pay:(NSString*) date
 {
-    [calendarcontroller close];
     [self showWaitDialog:@"正在下单" state:@"请稍后..."];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"checkordercreate.action");
     
-    [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertyp"];
+    [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertype"];
     [post.postArgs  setValue:@"" forKey:@"ticketid"];
-    [post.postArgs  setValue:@"" forKey:@"reserverdatetime"];
+    [post.postArgs  setValue:date forKey:@"reserverdatetime"];
     
     [post start:^(SHTask *t) {
+  
         [self dismissWaitDialog];
+        NSString *appScheme = @"car";
+        //[[t.result valueForKey:@"finalprice"] floatValue]
+        AlixPayOrder *order = [[AlixPayOrder alloc] init];
+        order.partner = PartnerID;
+        order.seller = SellerID;
+        order.tradeNO = [t.result valueForKey:@"orderid"] ; //订单ID（由商家自行制定）
+        order.productName = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; ; //商品标题
+        order.productDescription = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; //商品描述
+        order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+        order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
+        
+        NSString* orderInfo = [order description];
+        NSString* signedStr = [self doRsa:orderInfo];
+        NSLog(@"%@",signedStr);
+        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                                 orderInfo, signedStr, @"RSA"];
+        [AlixLibService payOrder:orderString AndScheme:appScheme seletor: @selector(paymentResult:)
+                          target:self];
+        
     } taskWillTry:nil
   taskDidFailed:^(SHTask *t) {
       [t.respinfo show];
       [self dismissWaitDialog];
   }];
 
+    
+    
 }
-- (IBAction)btnKeybord:(id)sender {
+
+-(NSString*)doRsa:(NSString*)orderInfo
+{
+    id<DataSigner> signer;
+    signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderInfo];
+    return signedString;
+}
+
+-(void)paymentResult:(NSString *)resultd
+{
+    //结果处理
+#if ! __has_feature(objc_arc)
+    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
+#else
+    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+#endif
+    if (result){
+        if (result.statusCode == 9000){
+            /*
+             *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+             */
+            
+            //交易成功
+            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
+            id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+            if ([verifier verifyString:result.resultString withSign:result.signString]){
+                //验证签名成功，交易结果无篡改
+                [self showAlertDialog:@"支付成功."];
+            }
+        }
+        else{
+            //交易失败
+            [self showAlertDialog:@"交易失败."];
+        }
+    }
+    else{
+        //失败
+        [self showAlertDialog:@"交易失败."];
+        
+    }
+    
+}
+
+-(void)calendarViewController:(SHCalendarViewController *)controller dateEnsure:(NSDate *)date
+{
+    [calendarcontroller close];
+    [self pay:[date descriptionWithLocale: [ [ NSLocale alloc ] initWithLocaleIdentifier : @"zh_CN" ]]];
+}
+- (IBAction)btnKeybord:(UIButton*)sender {
     if(self.txtField.hidden ){
         self.keybordView = self.viewRequest;
         self.keybordheight = 200;
@@ -720,13 +794,17 @@
         self.txtField.alpha = 0;
         [self.txtField becomeFirstResponder];
         [UIView animateWithDuration:0.5 animations:^{
+            [sender setImage:[UIImage imageNamed:@"btn_mic.png"] forState:UIControlStateNormal];
+
               self.txtField.alpha = 1;
         } completion:nil];
     }else{
       
         [self.txtField resignFirstResponder];
+
         [UIView animateWithDuration:0.5 animations:^{
             self.txtField.alpha = 0;
+            [sender setImage:[UIImage imageNamed:@"btn_keyboard.png"] forState:UIControlStateNormal];
         } completion:^(BOOL finished){self.txtField.hidden = YES;finished = YES;  self.keybordView = nil;}];
 
     }

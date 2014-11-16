@@ -61,9 +61,6 @@
     SHChatItem * item = [mList objectAtIndex:indexPath.row];
     SHChatListViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHChatListViewCell" owner:nil options:nil] objectAtIndex:0];
     cell.labTitle.text = item.problemdesc;
-    
-    
-    
     if(item.asktime.length > 0){
         NSDate * date = [self dateFromString:item.asktime];
         if([[date addDay:1] earlierDate:[NSDate date]]){

@@ -33,7 +33,7 @@
 - (void)setUrl:(NSString *)url_
 {
     SHHttpTask* taskDefaultImag= [[SHHttpTask alloc]init];
-    taskDefaultImag.URL = @"http://www.isheely.com/abs/a.mp3";
+    taskDefaultImag.URL = url_;
     taskDefaultImag.cachetype = CacheTypeTimes;
     self.urlTask = taskDefaultImag;
     self.urlTask.delegate = self;

@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(request) name:NOTIFICATION_UPDATE_ORDER object:nil];
     [self request];
        // Do any additional setup after loading the view from its nib.
 }

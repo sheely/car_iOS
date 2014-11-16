@@ -75,6 +75,10 @@
 #define NOTIFICATION_LOCATION_CITY @"notification_location_city"
 #define NOTIFICATION_VIDEO_UPLOADER_SUCCESSFUL @"notification_video_uploader_successful"
 
+#define NOTIFICATION_UPDATE_ORDER @"notification_update_order"
+
+#define NOTIFICATION_UPDATE_REQUIRE @"notification_update_require"
+
 #define NOTIFICATION_JOBLIST_STORE_CHANGE @"notification_joblist_store_change"
 //#define NOTIFICATION_LOGIN_SUCCESS @"notification_login_success"
 

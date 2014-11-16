@@ -17,7 +17,7 @@
     UIButton * lastTouchButton;
     NSArray * mCurrentCategory;
     NSArray * mListFourCategory;
-    
+    NSDictionary * mDic;
 }
 @end
 
@@ -44,7 +44,7 @@
     p.URL= URL_FOR(@"dashboard.action");
     [p start:^(SHTask *t) {
         [self dismissWaitDialog];
-
+        mDic =(NSDictionary*) t.result;
         if([t.result valueForKey:@"activitedcar"]){
             NSDictionary* dic = [t.result valueForKey:@"activitedcar"];
             self.labBand.text = [NSString stringWithFormat:@"%@-%@",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
@@ -228,16 +228,33 @@ int order = 0;
     }
     
 }
-
+-(UIImage*)screenShot{
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 480), YES, 2);
+    
+    //设置截屏大小
+    
+    [[self.view layer] renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    CGImageRef imageRef = viewImage.CGImage;
+    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width,100);//这里可以设置想要截图的区域
+    
+    CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, rect);
+    UIImage *sendImage = [[UIImage alloc] initWithCGImage:imageRefRect];
+    return viewImage;
+    //以下为图片保存代码
+    
+}
 - (void)btnShare:(NSObject*)object
 {
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
-    
     //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-                                       defaultContent:@"默认分享内容，没内容时显示"
-                                                image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
+    id<ISSContent> publishContent = [ShareSDK content:@"我的车辆"
+                                       defaultContent:@"分享到我的车况信息"
+                                                image:[ShareSDK pngImageWithImage:[self screenShot]]
+                                                title:@"车况信息"
                                                   url:@"http://www.sharesdk.cn"
                                           description:@"这是一条测试信息"
                                             mediaType:SSPublishContentMediaTypeNews];
@@ -444,16 +461,22 @@ int order = 0;
     [intent.args setValue:@"一键检测" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
-
-
 }
 
 - (IBAction)btnCheckReportOnTouch:(id)sender
 {
-    SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
-    [i.args setValue:@"dsfsdfsdsfd" forKey:@"reportid"];
+    SHIntent * intent = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
+    NSArray * array = [mDic valueForKey:@"reports"];
+    for (int i = 0 ; i< array.count; i++) {
+        NSDictionary * dic = [array objectAtIndex:i];
+        if([[dic valueForKey:@"reportid"]  integerValue] == 0){
+            [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
+            [[UIApplication sharedApplication]open:intent];
+            return;
+        }
+    }
+    [self showAlertDialog:@"暂无车辆检测报告"];
 
-    [[UIApplication sharedApplication]open:i];
 }
 
 - (IBAction)btnContinueDemoOnTouch:(id)sender {
@@ -464,4 +487,7 @@ int order = 0;
         [self demo];
     }];
 }
+
+
+
 @end

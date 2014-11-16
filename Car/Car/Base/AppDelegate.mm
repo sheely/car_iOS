@@ -42,6 +42,20 @@ BMKMapManager* _mapManager;
 
     return YES;
 }
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if([url description].length > 14 && [[[url description] substringToIndex:14] isEqualToString:@"car://safepay"]){
+    [self performSelector:@selector(refreshOrder)withObject:nil afterDelay:5];
+    }
+    return YES;
+}
+
+- (void)refreshOrder
+{
+      [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_ORDER object:nil];
+}
+
 - (void)onGetNetworkState:(int)iError
 {
 }
