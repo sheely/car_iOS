@@ -40,6 +40,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCheck;
 - (IBAction)btnBackOnTouch:(id)sender;
 - (IBAction)btnCheckOnTouch:(id)sender;
+- (IBAction)btnRepairOnTouch:(id)sender;
 - (IBAction)btnCheckReportOnTouch:(id)sender;
 - (IBAction)btnContinueDemoOnTouch:(id)sender;
+- (IBAction)btnNodificationOnTouch:(id)sender;
+- (IBAction)btnCarStateOnTouch:(id)sender;
 @end

@@ -45,8 +45,8 @@ BMKMapManager* _mapManager;
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if([url description].length > 14 && [[[url description] substringToIndex:14] isEqualToString:@"car://safepay"]){
-    [self performSelector:@selector(refreshOrder)withObject:nil afterDelay:5];
+    if([url description].length > 14 && [[[url description] substringToIndex:14] isEqualToString:@"car://safepay/"]){
+        [self performSelector:@selector(refreshOrder)withObject:nil afterDelay:5];
     }
     return YES;
 }

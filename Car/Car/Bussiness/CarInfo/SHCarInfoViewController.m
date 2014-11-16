@@ -352,6 +352,8 @@ int order = 0;
         SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
         [[UIApplication sharedApplication]open:i];
 
+    }else{
+        [self showAlertDialog:@"演示数据,不可修改"];
     }
 }
 
@@ -376,30 +378,30 @@ int order = 0;
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(indexPath.row == 0){
-        SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
-        [[UIApplication sharedApplication]open:i];
-    }else if (indexPath.row == 1){
-        SHIntent * i = [[SHIntent alloc]init:@"insurancereport" delegate:nil containner:self.navigationController];
-        [[UIApplication sharedApplication]open:i];
-
-    }else if (indexPath.row == 3 ){
-        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
-        [i.args setValue:@"车况变化报告" forKey:@"title"];
-        [i.args setValue:@"您手动将 [刹车片]状态由 \"不正常\"改变为\"完好\"\n您手动将 [反光镜]状态由 \"不正常\"改变为\"完好\"\n您手动将 [胎压]状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n  2014- 10 -15" forKey:@"content"];
-        
-        [[UIApplication sharedApplication]open:i];
-    }else if (indexPath.row == 2 ){
-        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
-        [i.args setValue:@"车况变化报告" forKey:@"title"];
-        [i.args setValue:@"亲爱的客户，您的车辆已经保养维修完毕，本次保养维修，我们帮您\n更换机油滤清器“一个”，价格:“780元”\n更换刹车片“一个”，价格“1290元”\n谢谢您的使用,祝您驾车愉快." forKey:@"content"];
-        
-        [[UIApplication sharedApplication]open:i];
-    }
-    
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if(indexPath.row == 0){
+//        SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
+//        [[UIApplication sharedApplication]open:i];
+//    }else if (indexPath.row == 1){
+//        SHIntent * i = [[SHIntent alloc]init:@"insurancereport" delegate:nil containner:self.navigationController];
+//        [[UIApplication sharedApplication]open:i];
+//
+//    }else if (indexPath.row == 3 ){
+//        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
+//        [i.args setValue:@"车况变化报告" forKey:@"title"];
+//        [i.args setValue:@"您手动将 [刹车片]状态由 \"不正常\"改变为\"完好\"\n您手动将 [反光镜]状态由 \"不正常\"改变为\"完好\"\n您手动将 [胎压]状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n  2014- 10 -15" forKey:@"content"];
+//        
+//        [[UIApplication sharedApplication]open:i];
+//    }else if (indexPath.row == 2 ){
+//        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
+//        [i.args setValue:@"车况变化报告" forKey:@"title"];
+//        [i.args setValue:@"亲爱的客户，您的车辆已经保养维修完毕，本次保养维修，我们帮您\n更换机油滤清器“一个”，价格:“780元”\n更换刹车片“一个”，价格“1290元”\n谢谢您的使用,祝您驾车愉快." forKey:@"content"];
+//        
+//        [[UIApplication sharedApplication]open:i];
+//    }
+//    
+//}
 
 - (IBAction)btnOilOnTouch:(UIButton*)sender {
     if(lastTouchButton == nil){
@@ -463,6 +465,7 @@ int order = 0;
     [[UIApplication sharedApplication]open:intent];
 }
 
+
 - (IBAction)btnCheckReportOnTouch:(id)sender
 {
     SHIntent * intent = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
@@ -488,6 +491,20 @@ int order = 0;
     }];
 }
 
+- (IBAction)btnNodificationOnTouch:(id)sender {
+    [self showAlertDialog:@"演示数据，暂无该报告"];
+
+}
+
+- (IBAction)btnCarStateOnTouch:(id)sender {
+    [self showAlertDialog:@"演示数据，暂无该报告"];
+
+}
+
+- (IBAction)btnRepairOnTouch:(id)sender {
+    [self showAlertDialog:@"演示数据，暂无该报告"];
+
+}
 
 
 @end

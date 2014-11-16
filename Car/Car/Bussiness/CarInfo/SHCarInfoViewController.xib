@@ -311,6 +311,9 @@
                                 <color key="titleColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </state>
+                            <connections>
+                                <action selector="btnRepairOnTouch:" destination="-1" eventType="touchUpInside" id="VAs-s5-RhR"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aHE-kL-Adc">
                             <rect key="frame" x="160" y="79" width="160" height="79"/>
@@ -321,6 +324,9 @@
                                 <color key="titleColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </state>
+                            <connections>
+                                <action selector="btnCarStateOnTouch:" destination="-1" eventType="touchUpInside" id="Wrc-zs-Bxq"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kkp-OA-8dQ">
                             <rect key="frame" x="160" y="0.0" width="160" height="79"/>
@@ -331,6 +337,9 @@
                                 <color key="titleColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </state>
+                            <connections>
+                                <action selector="btnNodificationOnTouch:" destination="-1" eventType="touchUpInside" id="WBS-E3-EmI"/>
+                            </connections>
                         </button>
                         <view alpha="0.29999999999999999" contentMode="scaleToFill" id="Kqs-Ih-I5K">
                             <rect key="frame" x="0.0" y="79" width="320" height="1"/>
@@ -407,7 +416,7 @@
         <image name="bg_pop_button.png" width="285" height="153"/>
         <image name="bg_popup.png" width="95" height="51"/>
         <image name="dashboard_indicator.png" width="92" height="28"/>
-        <image name="dashboard_warning_background.png" width="128" height="128"/>
+        <image name="dashboard_warning_background.png" width="192" height="192"/>
         <image name="ic_default_car.png" width="128" height="128"/>
         <image name="ic_hand_cursor.png" width="200" height="300"/>
         <image name="icon_controller.png" width="24" height="24"/>
