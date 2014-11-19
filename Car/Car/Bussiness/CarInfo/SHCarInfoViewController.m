@@ -351,12 +351,23 @@ int order = 0;
     if(item.index == 1){
         SHIntent * i = [[SHIntent alloc]init:@"checkreport" delegate:nil containner:self.navigationController];
         [[UIApplication sharedApplication]open:i];
-
+        
     }else{
-        [self showAlertDialog:@"演示数据,不可修改"];
+        //        [self showAlertDialog:@"演示数据,不可修改"];
+        NSDictionary * dic = [mCurrentCategory objectAtIndex:item.tag];
+        SHPostTaskM * post = [[SHPostTaskM alloc]init];
+        post.URL= URL_FOR(@"manualmodifydevice.action");
+        [post.postArgs setValue:[[ mDic valueForKey:@"activitedcar"]valueForKey:@"carid"] forKey:@"carid"];
+        [post.postArgs setValue:[dic valueForKey:@"deviceid"] forKey:@"deviceid"];
+        [post.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"devicestatus"];
+        [post start:^(SHTask *t) {
+            [t.respinfo show];
+
+        } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+            [t.respinfo show];
+        }];
     }
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 70;
@@ -371,6 +382,8 @@ int order = 0;
     self.btnNotification.layer.masksToBounds = YES;
     self.btnRepair.layer.cornerRadius = 3;
     self.btnRepair.layer.masksToBounds = YES;
+    self.imgCarLogo.layer.cornerRadius = 5;
+    self.imgCarLogo.layer.masksToBounds = YES;
     self.collectView.layer.borderWidth = 0.5;
     self.collectView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.view4Itmes.layer.borderWidth = 0.5;
@@ -472,7 +485,7 @@ int order = 0;
     NSArray * array = [mDic valueForKey:@"reports"];
     for (int i = 0 ; i< array.count; i++) {
         NSDictionary * dic = [array objectAtIndex:i];
-        if([[dic valueForKey:@"reportid"]  integerValue] == 0){
+        if([[dic valueForKey:@"reporttype"]  integerValue] == 0){
             [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
             [[UIApplication sharedApplication]open:intent];
             return;
@@ -497,13 +510,24 @@ int order = 0;
 }
 
 - (IBAction)btnCarStateOnTouch:(id)sender {
+    
+    
     [self showAlertDialog:@"演示数据，暂无该报告"];
 
 }
 
 - (IBAction)btnRepairOnTouch:(id)sender {
-    [self showAlertDialog:@"演示数据，暂无该报告"];
-
+    SHIntent * intent = [[SHIntent alloc]init:@"repair_report" delegate:nil containner:self.navigationController];
+    NSArray * array = [mDic valueForKey:@"reports"];
+    for (int i = 0 ; i< array.count; i++) {
+        NSDictionary * dic = [array objectAtIndex:i];
+        if([[dic valueForKey:@"reporttype"]  integerValue] == 1){
+            [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
+            [[UIApplication sharedApplication]open:intent];
+            return;
+        }
+    }
+    [self showAlertDialog:@"暂无车辆检测报告"];
 }
 
 

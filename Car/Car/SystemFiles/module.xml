@@ -175,6 +175,14 @@
     icon = "--"
     title = "线路"
     />
+    <module
+    name="repair_report"
+    target="SHRepairReportViewController"
+    type = "--"
+    icon = "--"
+    title = "线路"
+    />
+
 
 
 </root>

@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewCategory;
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
 @property (weak, nonatomic) IBOutlet UIButton *btnTxt;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic , retain) AVAudioPlayer *player;
 - (IBAction)btnCheckOnTouch:(id)sender;
 - (IBAction)btnAppointmentOnTouch:(id)sender;

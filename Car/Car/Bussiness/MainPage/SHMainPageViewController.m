@@ -112,7 +112,6 @@
 - (IBAction)btnSupportOnTouch:(id)sender
 {
     [self performSelector:@selector(notificationSupport) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
-  
 }
 
 - (void)notificationSupport
@@ -120,21 +119,17 @@
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
     [intent.args setValue:@"紧急援助" forKey:@"title"];
     [intent.args setValue:@"support" forKey:@"type"];
-
     [[UIApplication sharedApplication]open:intent];
 }
 
 - (IBAction)btnRepair:(id)sender {
-
     [self performSelector:@selector(notificationRepair) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
-
 }
 
 - (void)notificationRepair{
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
     [intent.args setValue:@"保养" forKey:@"title"];
     [intent.args setValue:@"repair" forKey:@"type"];
-
     [[UIApplication sharedApplication]open:intent];
 }
 
@@ -153,7 +148,6 @@
 
 - (IBAction)btnMoreOnTouch:(id)sender {
     [self performSelector:@selector(notificationMore) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
-
 }
 
 - (void)notificationMore{
@@ -161,8 +155,6 @@
     [intent.args setValue:@"consultation" forKey:@"type"];
     [intent.args setValue:@"咨询" forKey:@"title"];
     [[UIApplication sharedApplication]open:intent];
-    
-
 }
 
 - (IBAction)btnCleanOnTouch:(id)sender {
@@ -173,7 +165,7 @@
 {
     if([SHLocationManager.instance userlocation]){
         SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-        [intent.args setValue:@"测试" forKey:@"title"];
+        [intent.args setValue:@"洗车" forKey:@"title"];
         [intent.args setValue:@"clean" forKey:@"type"];
         
         [[UIApplication sharedApplication]open:intent];
@@ -216,12 +208,17 @@
 }
 
 - (IBAction)btn1OnTouch:(id)sender {
+       [self performSelector:@selector(notificationHtml) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+  }
+
+- (void)notificationHtml
+{
     SHIntent * intent  = [[SHIntent alloc ]init:@"webview" delegate:nil containner:self.navigationController];
     [intent.args setValue:URL_FOR(@"guaguale/index.html") forKey:@"url"];
     [intent.args setValue:@"洗车卷抽奖" forKey:@"title"];
     [[UIApplication sharedApplication]open:intent];
-}
 
+}
 - (void)notificationMyCar
 {
     SHIntent * intent = [[SHIntent alloc]init:@"mycarlist" delegate:self containner:self.navigationController];

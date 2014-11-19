@@ -10,6 +10,7 @@
 
 @interface SHCategoryView : SHView
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgSelected;
 @property (nonatomic,assign)BOOL selected;
 @property (weak, nonatomic) IBOutlet UIButton *btnTitle;
 @end

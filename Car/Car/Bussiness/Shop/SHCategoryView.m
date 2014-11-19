@@ -33,8 +33,12 @@
     if(_selected){
         self.layer.borderColor = [SHSkin.instance colorOfStyle:@"ColorNavigation"].CGColor;
         [self.superview addSubview:self];
+        self.imgSelected.hidden = NO;
+        
     }else{
         self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        self.imgSelected.hidden = YES;
+
     }
 }
 

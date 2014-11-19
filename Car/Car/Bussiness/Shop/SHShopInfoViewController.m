@@ -126,7 +126,7 @@
     [post start:^(SHTask *t) {
         if([t.result valueForKey:@"orderid"]){
             orderId = [t.result valueForKey:@"orderid"];
-            [self showAlertDialog:[NSString stringWithFormat: @"请在与商家的交易结束付款。\n现在确认付款［%d］元?",[[t.result valueForKey:@"finalprice"] integerValue]] button:@"确定" otherButton:@"取消"];
+            [self showAlertDialog:[NSString stringWithFormat: @"请在与商家的交易结束付款。\n现在确认付款［%g］元?",[[t.result valueForKey:@"finalprice"] floatValue]] button:@"确定" otherButton:@"取消"];
         }
         
         [self dismissWaitDialog];

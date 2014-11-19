@@ -26,6 +26,7 @@
     [self showWaitDialogForNetWork];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"checkreportquery.action");
+    [post.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"reporttype"];
     if([self.intent.args valueForKey:@"reportid"]){
         [post.postArgs setValue:[self.intent.args valueForKey:@"reportid"] forKey:@"reportid"];
     }else{

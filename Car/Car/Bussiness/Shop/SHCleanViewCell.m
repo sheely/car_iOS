@@ -34,22 +34,22 @@
     _dicInfo = dicInfo_;
     if([[_dicInfo valueForKey:@"ishasspecialwash"] integerValue]==1){
         self.viewSpecial.hidden = NO;
-        self.labSpecialDiscount.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"specialwashdiscountprice"] intValue]];
-        self.labSpecialOriginal.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"specialwashoriginalprice"] intValue]];
+        self.labSpecialDiscount.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"specialwashdiscountprice"] floatValue]];
+        self.labSpecialOriginal.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"specialwashoriginalprice"] floatValue]];
     }
     NSArray * array = [_dicInfo valueForKey:@"mywashtickets"];
     for (int i = 0; i<array.count; i++) {
         NSDictionary * dic = [array objectAtIndex:i];
         if([[dic valueForKey:@"washtickettype"] integerValue] == 0){
             self.viewCoupon.hidden = NO;
-            self.labCoupon.text = [NSString stringWithFormat:@"%d元优惠劵",[[dic valueForKey:@"washticketmoney"]integerValue ]];
+            self.labCoupon.text = [NSString stringWithFormat:@"%g元优惠劵",[[dic valueForKey:@"washticketmoney"]floatValue ]];
                 gouponPrice = [[dic valueForKey:@"washticketmoney"]floatValue ];
             self.gouponId = [dic valueForKey:@"washticketid"];
             break;
         }
     }
-    self.labNormalDiscount.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"normalwashdiscountprice"] intValue]];
-    self.labNormalOriginal.text = [NSString stringWithFormat:@"%d元",[[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]];
+    self.labNormalDiscount.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"normalwashdiscountprice"] floatValue]];
+    self.labNormalOriginal.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"normalwashoriginalprice"] floatValue]];
     [self caculater];
 
 }
@@ -71,18 +71,18 @@
     if(self.btnNormal.selected == YES){
         
         if(self.btnExtra.selected){
-            int price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]- gouponPrice;
-            [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%d元",price] forState:UIControlStateNormal];
+            float price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] floatValue]- gouponPrice;
+            [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%g元",price] forState:UIControlStateNormal];
         }else{
-            int price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] intValue]-[[_dicInfo valueForKey:@"normalwashdiscountprice"] intValue];
-            [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%d元",price] forState:UIControlStateNormal];
+            float price =  [[_dicInfo valueForKey:@"normalwashoriginalprice"] floatValue]-[[_dicInfo valueForKey:@"normalwashdiscountprice"] floatValue];
+            [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%g元",price] forState:UIControlStateNormal];
         }
 
        
         
     }else if (self.btnSpecial.selected){
-        int price =  [[_dicInfo valueForKey:@"specialwashoriginalprice"] intValue]-[[_dicInfo valueForKey:@"specialwashdiscountprice"] intValue];
-        [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%d元",price] forState:UIControlStateNormal];
+        float price =  [[_dicInfo valueForKey:@"specialwashoriginalprice"] intValue]-[[_dicInfo valueForKey:@"specialwashdiscountprice"] floatValue];
+        [self.btnSubmit setTitle:[NSString stringWithFormat:@"服务完成,在线支付立减%g元",price] forState:UIControlStateNormal];
     }
     
 }

@@ -17,6 +17,7 @@
                 <outlet property="imgBgView" destination="TDM-0s-KpE" id="Az7-KZ-aA3"/>
                 <outlet property="labLocation" destination="gzV-OY-HZk" id="AJa-1R-WEE"/>
                 <outlet property="mapView" destination="IJZ-gb-WWE" id="gWc-jw-pz6"/>
+                <outlet property="searchBar" destination="yBM-KR-eav" id="cLq-Fw-reL"/>
                 <outlet property="searchDisplayController" destination="avr-n7-AkX" id="dkd-aP-6qi"/>
                 <outlet property="tableView" destination="9sd-J7-3Nw" id="JPC-mM-QVy"/>
                 <outlet property="txtField" destination="6aM-di-jOi" id="C2G-HY-bvO"/>

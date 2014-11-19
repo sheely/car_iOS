@@ -16,7 +16,7 @@
 #import "lame.h"
 #import "SHCategoryView.h"
 
-@interface SHShopListViewController ()
+@interface SHShopListViewController ()<UIActionSheetDelegate,UIAlertViewDelegate>
 {
     LCVoice * voice ;
     NSMutableArray * mListPhoto;
@@ -30,7 +30,11 @@
     NSString *mp3FilePath;
     SHCalendarViewController * calendarcontroller;
     CGRect orgFrame ;
-
+    NSDictionary * checkticket;
+    NSString * appointmentDate;
+    NSString * washticketid;
+    float finalprice;
+    NSString * checkorderid;
 }
 @end
 
@@ -55,6 +59,21 @@
         self.tableView.hidden = YES;
         self.viewCheck.hidden = NO;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_list"] target:self action:@selector(checkListMap)];
+        
+        SHPostTaskM * p  = [[SHPostTaskM alloc]init];
+        p.URL= URL_FOR(@"mywashticketsquery.action");
+        [p.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"tickettype"];
+        [p.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"isonlyexpired"];
+        [p start:^(SHTask *t) {
+            NSArray * array = [t.result valueForKey:@"mywashtickets"];
+            if(array.count > 0 ){
+                checkticket = [array objectAtIndex:0];
+            }
+        }
+     taskWillTry:nil
+   taskDidFailed:^(SHTask *t) {
+       [self dismissWaitDialog];
+   }];
     }else if ([[self.intent.args valueForKey:@"type"] isEqualToString:@"consultation"]){
         self.tableView.hidden = YES;
         self.viewCheck.hidden = YES;
@@ -84,16 +103,25 @@
     if(type > -1){
         [post.postArgs setValue:[NSNumber numberWithInt:type] forKey:@"requesttype"];
         [post start:^(SHTask *t) {
+            int count = 3;
+            
+            if([[self.intent.args valueForKey:@"type"]isEqualToString:@"support"]){
+                count = 2;
+            }
+            int width = (self.view.frame.size.width - 20);
+            int perwidth = width/count;
             mCategroy = [t.result valueForKey:@"servicecategorys"];
-            int ys = mCategroy.count/3 +( mCategroy.count%3 > 0 ?1:0);
+            int ys = mCategroy.count/count +( mCategroy.count%count > 0 ?1:0);
             for (int i = 0; i< mCategroy.count; i++) {
                 NSDictionary  * dic = [mCategroy objectAtIndex:i];
-                int y = i/3;
+                int y = i/count;
                 SHCategoryView * view = [[[NSBundle mainBundle]loadNibNamed:@"SHCategoryView" owner:nil options:nil] objectAtIndex:0];
-                view.frame = CGRectMake(10+i*100 - y* 300, 40*y, 100.5, 40.5);
+                view.frame = CGRectMake(10+i*perwidth - y* width, 40*y, perwidth+0.5, 40.5);
                 [view.btnTitle setTitle:[dic valueForKey:@"servicecategoryname"] forState:UIControlStateNormal];
+                view.btnTitle.titleLabel.textAlignment = NSTextAlignmentCenter;
                 [view.btnTitle addTarget:self action:@selector(btnCategoryOnTouch:) forControlEvents:UIControlEventTouchUpInside];
                 view.btnTitle.tag = i;
+                
                 [self.viewCategory insertSubview:view atIndex:0];
                 view.tag = i;
                 if(i == 0){
@@ -236,7 +264,6 @@
 {
     if(player.isPlaying){
         [self.btnPlay setImage: [UIImage imageNamed:@"icon_play_com.png" ] forState:UIControlStateNormal];
-        
         [player stop];
     }else{
         [self.btnPlay setImage: [UIImage imageNamed:@"icon_stop_com.png" ] forState:UIControlStateNormal];
@@ -261,6 +288,7 @@
         return;
     }
     UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"相册", nil];
+    sheet.tag = 0;
     [sheet showInView:self.view];
 }
 
@@ -296,7 +324,7 @@
             [v removeFromSuperview];
         }
         mp3FilePath = @"";
-        [self showAlertDialog:@"需求发布成功!"];
+        [t.respinfo show];
         [self dismissWaitDialog];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_REQUIRE object:nil];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
@@ -401,24 +429,34 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     // 判断有摄像头，并且支持拍照功能
     // 初始化图片选择控制器
-    
-    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-  
-    if(buttonIndex == 2){
-        return ;
-    }else if(buttonIndex == 0){
-        [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
-        [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
-    }else{
-        [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
+    if(actionSheet.tag == 0){
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
         
+        if(buttonIndex == 2){
+            return ;
+        }else if(buttonIndex == 0){
+            [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
+            [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
+        }else{
+            [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
+            
+        }
+        
+        [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
+        [controller setDelegate:self];// 设置代理
+        [self.navigationController presentViewController:controller animated:YES completion:nil];
+    }else {
+        if(buttonIndex == 0){
+            washticketid = [checkticket valueForKey:@"washticketid"];
+            [self payment];
+        }else if (buttonIndex == 1) {
+            washticketid = @"";
+            [self payment];
+        }
     }
-    
-    [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
-    [controller setDelegate:self];// 设置代理
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
-    
 }
+
+
 
 - (void)addPhoto:(UIImage*)img
 {
@@ -691,49 +729,76 @@
 }
 
 - (IBAction)btnCheckOnTouch:(id)sender {
-    [self pay:@""];
+    appointmentDate = @"";
+    [self pay];
 }
 
-- (void)pay:(NSString*) date
+- (void)pay
 {
+    if(checkticket != nil){
+        UIActionSheet * action = [[UIActionSheet alloc]initWithTitle:[NSString stringWithFormat:@"您有一张%g元优惠劵,是否使用它下单?",[[checkticket valueForKey:@"washticketmoney"]floatValue]] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"下单" otherButtonTitles:@"不用", nil];
+        action.tag = 1;
+        [action showInView:self.view];
+    }else {
+        washticketid = @"";
+        [self payment];
+    }
+}
+- (void)payment
+{
+    
     [self showWaitDialog:@"正在下单" state:@"请稍后..."];
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"checkordercreate.action");
     
     [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertype"];
-    [post.postArgs  setValue:@"" forKey:@"ticketid"];
-    [post.postArgs  setValue:date forKey:@"reserverdatetime"];
+    [post.postArgs  setValue:washticketid == nil ? @"":washticketid forKey:@"ticketid"];
+    [post.postArgs  setValue:appointmentDate == nil ? @"" : appointmentDate forKey:@"reserverdatetime"];
     
     [post start:^(SHTask *t) {
-  
         [self dismissWaitDialog];
-        NSString *appScheme = @"car";
-        //[[t.result valueForKey:@"finalprice"] floatValue]
-        AlixPayOrder *order = [[AlixPayOrder alloc] init];
-        order.partner = PartnerID;
-        order.seller = SellerID;
-        order.tradeNO = [t.result valueForKey:@"orderid"] ; //订单ID（由商家自行制定）
-        order.productName = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; ; //商品标题
-        order.productDescription = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; //商品描述
-        order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
-        order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
-        
-        NSString* orderInfo = [order description];
-        NSString* signedStr = [self doRsa:orderInfo];
-        NSLog(@"%@",signedStr);
-        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                                 orderInfo, signedStr, @"RSA"];
-        [AlixLibService payOrder:orderString AndScheme:appScheme seletor: @selector(paymentResult:)
-                          target:self];
+        checkorderid = [t.result valueForKey:@"orderid"] ;
+        finalprice = [[t.result valueForKey:@"finalprice"] floatValue];
+        if(finalprice ==0 ){
+            [t.respinfo show];
+        }else {
+            UIAlertView * a = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"确认支付［%g]元.",finalprice ] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"支付", nil];
+            a.tag = 1;
+            [a show];
+
+        }
         
     } taskWillTry:nil
   taskDidFailed:^(SHTask *t) {
       [t.respinfo show];
       [self dismissWaitDialog];
   }];
+}
 
-    
-    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag == 1){
+        if(buttonIndex == 1){
+            NSString *appScheme = @"car";
+            //[[t.result valueForKey:@"finalprice"] floatValue]
+            AlixPayOrder *order = [[AlixPayOrder alloc] init];
+            order.partner = PartnerID;
+            order.seller = SellerID;
+            order.tradeNO =checkorderid; //订单ID（由商家自行制定）
+            order.productName = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; ; //商品标题
+            order.productDescription = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; //商品描述
+            order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+            order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
+            
+            NSString* orderInfo = [order description];
+            NSString* signedStr = [self doRsa:orderInfo];
+            NSLog(@"%@",signedStr);
+            NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                                     orderInfo, signedStr, @"RSA"];
+            [AlixLibService payOrder:orderString AndScheme:appScheme seletor: @selector(paymentResult:)
+                              target:self];
+        }
+    }
 }
 
 -(NSString*)doRsa:(NSString*)orderInfo
@@ -784,8 +849,11 @@
 -(void)calendarViewController:(SHCalendarViewController *)controller dateEnsure:(NSDate *)date
 {
     [calendarcontroller close];
-    [self pay:[date descriptionWithLocale: [ [ NSLocale alloc ] initWithLocaleIdentifier : @"zh_CN" ]]];
+    appointmentDate = [date descriptionWithLocale: [ [ NSLocale alloc ] initWithLocaleIdentifier : @"zh_CN" ]];
+    [self pay];
 }
+
+
 - (IBAction)btnKeybord:(UIButton*)sender {
     if(self.txtField.hidden ){
         self.keybordView = self.viewRequest;
