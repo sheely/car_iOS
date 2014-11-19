@@ -25,7 +25,7 @@
 {
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"repairreportquery.action");
-    [post.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"reporttype"];
+    [post.postArgs setValue:[NSNumber numberWithInt:3] forKey:@"reporttype"];
     if([self.intent.args valueForKey:@"reportid"]){
         [post.postArgs setValue:[self.intent.args valueForKey:@"reportid"] forKey:@"reportid"];
     }

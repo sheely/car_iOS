@@ -16,7 +16,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"车辆保险到期预警";
+    self.title = @"到期提醒";
+    [self showWaitDialogForNetWork];
+    SHPostTaskM * post = [[SHPostTaskM alloc]init];
+    post.URL = URL_FOR(@"insurancereportquery.action");
+    [post.postArgs setValue:[NSNumber numberWithInt:2] forKey:@"reporttype"];
+    if([self.intent.args valueForKey:@"reportid"]){
+        [post.postArgs setValue:[self.intent.args valueForKey:@"reportid"] forKey:@"reportid"];
+    }
+    [post start:^(SHTask *t) {
+        self.labMin.text = [NSString stringWithFormat:@"¥%d",[[t.result valueForKey:@"minprice"] intValue]];
+        self.labMax.text = [NSString stringWithFormat:@"¥%d",[[t.result valueForKey:@"maxprice"] intValue]];
+        self.labDes.text = [t.result valueForKey:@"itemdesc"];
+        self.title = [t.result valueForKey:@"daoqiitem"];
+        [self dismissWaitDialog];
+        
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [t.respinfo show];
+        [self dismissWaitDialog];
+
+    }];
+
     // Do any additional setup after loading the view from its nib.
 }
 

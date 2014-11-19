@@ -10,5 +10,8 @@
 
 @interface SHInsuranceViewController : SHViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *labMax;
+@property (weak, nonatomic) IBOutlet UILabel *labMin;
+@property (weak, nonatomic) IBOutlet UILabel *labDes;
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @end

@@ -505,18 +505,21 @@ int order = 0;
 }
 
 - (IBAction)btnNodificationOnTouch:(id)sender {
-    [self showAlertDialog:@"演示数据，暂无该报告"];
-
+    
+    SHIntent * intent = [[SHIntent alloc]init:@"insurancereport" delegate:nil containner:self.navigationController];
+    NSArray * array = [mDic valueForKey:@"reports"];
+    for (int i = 0 ; i< array.count; i++) {
+        NSDictionary * dic = [array objectAtIndex:i];
+        if([[dic valueForKey:@"reporttype"]  integerValue] == 2){
+            [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
+            [[UIApplication sharedApplication]open:intent];
+            return;
+        }
+    }
+    [self showAlertDialog:@"暂无提醒项目"];
 }
 
 - (IBAction)btnCarStateOnTouch:(id)sender {
-    
-    
-    [self showAlertDialog:@"演示数据，暂无该报告"];
-
-}
-
-- (IBAction)btnRepairOnTouch:(id)sender {
     SHIntent * intent = [[SHIntent alloc]init:@"repair_report" delegate:nil containner:self.navigationController];
     NSArray * array = [mDic valueForKey:@"reports"];
     for (int i = 0 ; i< array.count; i++) {
@@ -527,7 +530,21 @@ int order = 0;
             return;
         }
     }
-    [self showAlertDialog:@"暂无车辆检测报告"];
+    [self showAlertDialog:@"暂无车辆状态变化报告"];
+}
+
+- (IBAction)btnRepairOnTouch:(id)sender {
+    SHIntent * intent = [[SHIntent alloc]init:@"repair_report" delegate:nil containner:self.navigationController];
+    NSArray * array = [mDic valueForKey:@"reports"];
+    for (int i = 0 ; i< array.count; i++) {
+        NSDictionary * dic = [array objectAtIndex:i];
+        if([[dic valueForKey:@"reporttype"]  integerValue] == 3){
+            [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
+            [[UIApplication sharedApplication]open:intent];
+            return;
+        }
+    }
+    [self showAlertDialog:@"暂无车辆维修报告"];
 }
 
 
