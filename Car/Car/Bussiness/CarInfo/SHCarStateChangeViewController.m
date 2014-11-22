@@ -1,36 +1,39 @@
 //
-//  SHRepairReportViewController.m
+//  SHCarStateChangeViewController.m
 //  Car
 //
-//  Created by sheely.paean.Nightshade on 11/18/14.
+//  Created by sheely.paean.Nightshade on 11/19/14.
 //  Copyright (c) 2014 sheely.paean.coretest. All rights reserved.
 //
 
-#import "SHRepairReportViewController.h"
+#import "SHCarStateChangeViewController.h"
 #import "SHRepairPortCell.h"
 
-@interface SHRepairReportViewController ()
+@interface SHCarStateChangeViewController ()
 
 @end
 
-@implementation SHRepairReportViewController
+@implementation SHCarStateChangeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"车辆维修报告";
+    self.title = @"车况变化报告";
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 - (void)loadNext
 {
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
-    post.URL = URL_FOR(@"repairreportquery.action");
-    [post.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"reporttype"];
+    post.URL = URL_FOR(@"chekuangbianhuareport.action");
     if([self.intent.args valueForKey:@"reportid"]){
-        [post.postArgs setValue:[self.intent.args valueForKey:@"reportid"] forKey:@"reportid"];
+        [post.postArgs setValue:[self.intent.args valueForKey:@"reportid"]forKey:@"reportid"];
     }
     [post start:^(SHTask *t) {
-        mList = [t.result valueForKey:@"repairentities"];
+        mList = [t.result valueForKey:@"kqbhentities"];
         mIsEnd = YES;
         [self.tableView reloadData];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
@@ -48,16 +51,11 @@
 {
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHRepairPortCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHRepairPortCell" owner:nil options:nil] objectAtIndex:0];
-    cell.labItem.text = [NSString stringWithFormat:@"维护项目:%@",[dic valueForKey:@"repairitem"]];
-    cell.labPrice.text = [NSString stringWithFormat:@"总价:%d(元)",[[dic valueForKey:@"summaryprice"] intValue]];
-    cell.labCount.text = [NSString stringWithFormat:@"数量:%d(%@)", [[dic valueForKey:@"repaircount"] intValue],[(NSString*)[dic valueForKey:@"repairunit"] length]  > 0 ? [dic valueForKey:@"repairunit"]:@"个"];
-    cell.labBrand.text = [NSString stringWithFormat:@"替换品牌:%@",[dic valueForKey:@"repairbrand"]];
+    cell.labItem.text = [NSString stringWithFormat:@"项目:%@",[dic valueForKey:@"item"]];
+    cell.labPrice.text =[NSString stringWithFormat:@"日期:%@",[dic valueForKey:@"date"]];
+    cell.labCount.text = [NSString stringWithFormat:@"新状态:%@", [dic valueForKey:@"curstate"]];
+    cell.labBrand.text = [NSString stringWithFormat:@"原状态:%@",[dic valueForKey:@"orstate"]];
     return cell;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

@@ -66,7 +66,9 @@ static SHChatListHelper * _instance;
         for (SHChatItem * item2 in mList) {
             if([item2.questionid isEqualToString:item.questionid]){
                 [mList removeObject:item2];
-                [mList insertObject:item atIndex:0];
+                item2.latestmessage = item.latestmessage;
+                item2.asktime = item.asktime;
+                [mList insertObject:item2 atIndex:0];
                 b = YES;
                 break;
             }

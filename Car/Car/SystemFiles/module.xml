@@ -182,6 +182,13 @@
     icon = "--"
     title = "线路"
     />
+    <module
+    name="car_state_changed_report"
+    target="SHCarStateChangeViewController"
+    type = "--"
+    icon = "--"
+    title = "车况变化报告"
+    />
 
 
 

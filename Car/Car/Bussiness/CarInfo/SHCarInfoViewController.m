@@ -59,17 +59,20 @@
             self.labState2.text = [[mListFourCategory objectAtIndex:1] valueForKey:@"healthstatus"];
             self.labState3.text = [[mListFourCategory objectAtIndex:2] valueForKey:@"healthstatus"];
             self.labState4.text = [[mListFourCategory objectAtIndex:3] valueForKey:@"healthstatus"];
-            self.viewNeedCheck.alpha = 0;
-            
-            [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                self.viewNeedCheck.alpha = 1;
-                self.viewNeedCheck.frame = [UIApplication sharedApplication].keyWindow.bounds;
-                [[UIApplication sharedApplication].keyWindow addSubview:self.viewNeedCheck];
-            } completion:^(BOOL finished) {
+            if([[[mDic valueForKey:@"activitedcar"] valueForKey:@"reportid"]isEqualToString:@"demo"]){
+                self.viewNeedCheck.alpha = 0;
                 
+                [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    self.viewNeedCheck.alpha = 1;
+                    self.viewNeedCheck.frame = [UIApplication sharedApplication].keyWindow.bounds;
+                    [[UIApplication sharedApplication].keyWindow addSubview:self.viewNeedCheck];
+                } completion:^(BOOL finished) {
+                    
+                }
+                 ];
+            }else{
+                [self.viewNeedCheck removeFromSuperview];
             }
-            ];
-            
         }
     } taskWillTry:nil
 taskDidFailed:^(SHTask *t) {
@@ -520,11 +523,11 @@ int order = 0;
 }
 
 - (IBAction)btnCarStateOnTouch:(id)sender {
-    SHIntent * intent = [[SHIntent alloc]init:@"repair_report" delegate:nil containner:self.navigationController];
+    SHIntent * intent = [[SHIntent alloc]init:@"car_state_changed_report" delegate:nil containner:self.navigationController];
     NSArray * array = [mDic valueForKey:@"reports"];
     for (int i = 0 ; i< array.count; i++) {
         NSDictionary * dic = [array objectAtIndex:i];
-        if([[dic valueForKey:@"reporttype"]  integerValue] == 1){
+        if([[dic valueForKey:@"reporttype"]  integerValue] == 3){
             [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
             [[UIApplication sharedApplication]open:intent];
             return;
@@ -538,7 +541,7 @@ int order = 0;
     NSArray * array = [mDic valueForKey:@"reports"];
     for (int i = 0 ; i< array.count; i++) {
         NSDictionary * dic = [array objectAtIndex:i];
-        if([[dic valueForKey:@"reporttype"]  integerValue] == 3){
+        if([[dic valueForKey:@"reporttype"]  integerValue] == 1){
             [intent.args setValue:[dic valueForKey:@"reportid"]  forKey:@"reportid"];
             [[UIApplication sharedApplication]open:intent];
             return;

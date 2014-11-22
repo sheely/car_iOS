@@ -18,6 +18,8 @@
 		1AA1352219F7F039003D983F /* SHSelectLocationAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1352119F7F039003D983F /* SHSelectLocationAnnotationView.xib */; };
 		1AA1352619F93576003D983F /* SHLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1352419F93576003D983F /* SHLocationViewController.m */; };
 		1AA1352719F93576003D983F /* SHLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1352519F93576003D983F /* SHLocationViewController.xib */; };
+		9E0EF5301A1C9A3600D945CF /* SHCarStateChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF52E1A1C9A3600D945CF /* SHCarStateChangeViewController.m */; };
+		9E0EF5311A1C9A3600D945CF /* SHCarStateChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EF52F1A1C9A3600D945CF /* SHCarStateChangeViewController.xib */; };
 		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
 		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
 		9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */; };
@@ -523,6 +525,9 @@
 		1AA1352319F93576003D983F /* SHLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLocationViewController.h; sourceTree = "<group>"; };
 		1AA1352419F93576003D983F /* SHLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLocationViewController.m; sourceTree = "<group>"; };
 		1AA1352519F93576003D983F /* SHLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLocationViewController.xib; sourceTree = "<group>"; };
+		9E0EF52D1A1C9A3600D945CF /* SHCarStateChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarStateChangeViewController.h; sourceTree = "<group>"; };
+		9E0EF52E1A1C9A3600D945CF /* SHCarStateChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarStateChangeViewController.m; sourceTree = "<group>"; };
+		9E0EF52F1A1C9A3600D945CF /* SHCarStateChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarStateChangeViewController.xib; sourceTree = "<group>"; };
 		9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoginViewController.h; sourceTree = "<group>"; };
 		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
 		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
@@ -1832,6 +1837,9 @@
 				9E6B7BFD1A1B48B6008F2F8B /* SHRepairPortCell.h */,
 				9E6B7BFE1A1B48B6008F2F8B /* SHRepairPortCell.m */,
 				9E6B7C001A1B48C0008F2F8B /* SHRepairPortCell.xib */,
+				9E0EF52D1A1C9A3600D945CF /* SHCarStateChangeViewController.h */,
+				9E0EF52E1A1C9A3600D945CF /* SHCarStateChangeViewController.m */,
+				9E0EF52F1A1C9A3600D945CF /* SHCarStateChangeViewController.xib */,
 			);
 			path = CarInfo;
 			sourceTree = "<group>";
@@ -3049,6 +3057,7 @@
 				9E3F62E119D47EA9008C8B7B /* ic_select_default.png in Resources */,
 				9ED550CA19D5EAE70046A4C1 /* set_status_warning@3x.png in Resources */,
 				9E1762F819E5B429008E3BD9 /* set_status_fault@2x.png in Resources */,
+				9E0EF5311A1C9A3600D945CF /* SHCarStateChangeViewController.xib in Resources */,
 				9EF62C4A19CF002400111E2F /* SHLoadingViewCell.xib in Resources */,
 				9E2177361A00F3710017F710 /* icon_oil@3x.png in Resources */,
 				9E82BBB019F2A4D7007301EA /* btn_keyboard.png in Resources */,
@@ -3217,6 +3226,7 @@
 				9EF62C7819CF002400111E2F /* UIView+convenience.m in Sources */,
 				9EF62C9119CF263B00111E2F /* SHRequirementViewController.m in Sources */,
 				9EF62C7A19CF002400111E2F /* Command.m in Sources */,
+				9E0EF5301A1C9A3600D945CF /* SHCarStateChangeViewController.m in Sources */,
 				1AA1352019F7EFFC003D983F /* SHSelectLocationAnnotationView.m in Sources */,
 				9EF62C8619CF002400111E2F /* SHAppDelegate.m in Sources */,
 				9ED77AFB1A17A9D4007CAD7E /* CJSONDeserializer.m in Sources */,
@@ -3502,6 +3512,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Car/frame",
@@ -3529,6 +3540,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -3538,6 +3550,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Car/frame",
@@ -3565,6 +3578,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

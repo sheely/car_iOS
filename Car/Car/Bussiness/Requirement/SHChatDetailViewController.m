@@ -176,12 +176,14 @@
     [dic setValue:destDateString forKey:@"leavemessagetime"];
     [dic setValue:[NSNumber numberWithInt:1] forKey:@"issendbyme"];
     [dic setValue:@"" forKey:@"senderheadicon"];
+    
+    
     SHChatItem * item = [[SHChatItem alloc]init] ;
-//    item.userid = friendId;
-//    item.content = [NSString stringWithFormat:@"⬆︎%@",[dic valueForKey:@"chatcontent"]];
-//    item.date = [dic valueForKey:@"sendtime"];
-//    item.headicon = headicon;
-//    item.username = friendname;
+    item.questionid = questionid;
+    item.latestmessage = [NSString stringWithFormat:@"⬆︎%@",[dic valueForKey:@"leavemessagecontent"]];
+    item.asktime = [dic valueForKey:@"leavemessagetime"];
+    //item.imgIcon = [dic valueForKey:@"senderheadicon"];
+    //item.username = friendname;
     item.isNew = NO;
     [[SHChatListHelper instance] addItem: item];
     [[SHChatListHelper instance] notice];
