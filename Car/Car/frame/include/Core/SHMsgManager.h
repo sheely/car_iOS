@@ -9,24 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "SHResMsgM.h"
 #import "SHMsgM.h"
+#import "SHNetReel.h"
 
-@interface SHMsgManager : NSObject<GCDAsyncSocketDelegate>
+@interface SHMsgManager : NSObject<GCDAsyncSocketDelegate,SHNetReelDelegate>
 {
-    GCDAsyncSocket * mSocket;
     NSMutableDictionary *mStorage;
     NSThread * mSenderThread;
     NSMutableArray *mSenderList;
     SHMsgM * msgHeart;
     int mHeartTime;//间隔时间
+    SHNetReel * _reel;
 }
-@property (assign,nonatomic) BOOL isWorking;
 
-@property (copy,nonatomic) NSString* ipAddress;
-
-@property (assign,nonatomic) int port;
-
-- (void)connect : (NSString*) address port:(int) port;
-
+@property (nonatomic,strong) SHNetReel * reel;
 + (SHMsgManager*)instance;
 
 - (void) addMsg : (SHMsg*) msg taskDidFinished :(void(^)(SHResMsgM *))taskfinished taskWillTry : (void(^)(SHResMsgM *))tasktry  taskDidFailed : (void(^)(SHResMsgM *))taskFailed;

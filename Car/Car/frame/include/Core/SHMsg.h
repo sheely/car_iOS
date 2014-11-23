@@ -10,7 +10,7 @@
 
 @interface SHMsg : NSObject
 
-@property (strong,nonatomic,readonly) NSString * guid   ;
+@property (strong,nonatomic) NSString * guid   ;
 
 //@property (strong,nonatomic) NSString * msgid;
 

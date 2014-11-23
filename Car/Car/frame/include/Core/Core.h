@@ -38,7 +38,7 @@
 #import "SHResMsgM.h"
 #import "SHLocationManager.h"
 #import "SHUserLocation.h"
-
+#import "SHHttpReel.h"
 //#import "wax.h"
 
 //日志记录

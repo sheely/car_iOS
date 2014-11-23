@@ -31,9 +31,24 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestChatList) name:NOTIFICATION_UPDATE_REQUIRE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSussessful:) name:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];
     [self requestChatList];
+    [self loginSussessful:nil];
 //    pagecontrol
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)loginSussessful:(NSNotification*)n
+{
+    if(SHEntironment.instance.loginName.length > 0){
+        {
+            SHHttpReel * reel = [[SHHttpReel alloc]init];
+            reel.URL = URL_FOR(@"eachnotify.action");
+            
+            SHMsgManager.instance.reel = reel;
+        }
+        
+    }
 }
 - (void)requestChatList
 {
