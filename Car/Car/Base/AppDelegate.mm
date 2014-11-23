@@ -40,9 +40,63 @@ BMKMapManager* _mapManager;
     
     [SHLocationManager.instance startUserLocationService];
 
+    
+    if (iOS8) {
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil]];      }
+    else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+
+    }
+    
+    //判断是否由远程消息通知触发应用程序启动
+    if (launchOptions) {
+        //获取应用程序消息通知标记数（即小红圈中的数字）
+        NSInteger badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+        if (badge>0) {
+            //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
+            badge--;
+            //清除标记。清除小红圈中数字，小红圈中数字为0，小红圈才会消除。
+            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+            NSDictionary *pushInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
+            
+            //获取推送详情
+            NSString *pushString = [NSString stringWithFormat:@"%@",[pushInfo  objectForKey:@"aps"]];
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"finish Loaunch" message:pushString delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    
+    
     return YES;
 }
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    NSLog(@"My token is:%@", token);
+    //这里应将device token发送到服务器端
+}
 
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSString *error_str = [NSString stringWithFormat: @"%@", error];
+    NSLog(@"Failed to get token, error:%@", error_str);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    for (id key in userInfo) {
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    }
+    /* eg.
+     key: aps, value: {
+     alert = "\U8fd9\U662f\U4e00\U6761\U6d4b\U8bd5\U4fe1\U606f";
+     badge = 1;
+     sound = default;
+     }
+     */
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"remote notification" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil];
+    [alert show];
+}
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     if([url description].length > 14 && [[[url description] substringToIndex:14] isEqualToString:@"car://safepay/"]){
@@ -53,7 +107,7 @@ BMKMapManager* _mapManager;
 
 - (void)refreshOrder
 {
-      [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_ORDER object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_ORDER object:nil];
 }
 
 - (void)onGetNetworkState:(int)iError

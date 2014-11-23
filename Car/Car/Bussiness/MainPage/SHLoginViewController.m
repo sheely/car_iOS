@@ -24,7 +24,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-
 - (void)loadSkin
 {
     [super loadSkin];
@@ -33,10 +32,12 @@
     self.btnCode.layer.masksToBounds = YES;
     self.btnSubmit.layer.masksToBounds = YES;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)btnSubmitOnTouch:(id)sender
 {
     SHEntironment.instance.loginName = self.txtLoginName.text;
@@ -58,7 +59,6 @@
 
         [t.respinfo show];
     }];
-   
 }
 
 /*
@@ -83,7 +83,7 @@
 - (void) timerUp:(NSTimer*)t
 {
     if(count == 0){
-        count = 5;
+        count = 60;
         self.btnCode.enabled = NO;
     }
     [self.btnCode setTitle:[NSString stringWithFormat:@"[%d]秒后可以重试",count] forState:UIControlStateNormal];

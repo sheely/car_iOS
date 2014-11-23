@@ -225,7 +225,6 @@
 		9ECD86A91A0F183900AD2977 /* SHPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD86A81A0F183900AD2977 /* SHPlayerView.xib */; };
 		9ECD86AF1A0F1ECF00AD2977 /* icon_play_com@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD86AE1A0F1ECF00AD2977 /* icon_play_com@2x.png */; };
 		9ECD86B11A0F303600AD2977 /* icon_stop_com@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD86B01A0F303600AD2977 /* icon_stop_com@2x.png */; };
-		9ECD86B31A0FEF0300AD2977 /* bg_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD86B21A0FEF0300AD2977 /* bg_tip.png */; };
 		9ECD86B51A11307B00AD2977 /* ic_hand_cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD86B41A11307B00AD2977 /* ic_hand_cursor.png */; };
 		9ECD86B71A1271EA00AD2977 /* bg_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD86B61A1271EA00AD2977 /* bg_check.png */; };
 		9ED5508B19D5D8740046A4C1 /* SHCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5508919D5D8740046A4C1 /* SHCarInfoViewController.m */; };
@@ -854,7 +853,6 @@
 		9ECD86A81A0F183900AD2977 /* SHPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHPlayerView.xib; sourceTree = "<group>"; };
 		9ECD86AE1A0F1ECF00AD2977 /* icon_play_com@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_play_com@2x.png"; sourceTree = "<group>"; };
 		9ECD86B01A0F303600AD2977 /* icon_stop_com@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_stop_com@2x.png"; sourceTree = "<group>"; };
-		9ECD86B21A0FEF0300AD2977 /* bg_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tip.png; sourceTree = "<group>"; };
 		9ECD86B41A11307B00AD2977 /* ic_hand_cursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hand_cursor.png; sourceTree = "<group>"; };
 		9ECD86B61A1271EA00AD2977 /* bg_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_check.png; sourceTree = "<group>"; };
 		9ED5508819D5D8740046A4C1 /* SHCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarInfoViewController.h; sourceTree = "<group>"; };
@@ -1856,7 +1854,6 @@
 			children = (
 				9ECD86B61A1271EA00AD2977 /* bg_check.png */,
 				9ECD86B41A11307B00AD2977 /* ic_hand_cursor.png */,
-				9ECD86B21A0FEF0300AD2977 /* bg_tip.png */,
 				9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */,
 				9E947E711A0A6C2600D076B8 /* icon_set_repair@3x.png */,
 				9E947E721A0A6C2600D076B8 /* icon_set_insurance@3x.png */,
@@ -3147,7 +3144,6 @@
 				9EF62C7419CF002400111E2F /* chart.html in Resources */,
 				9E62984A19F2DB4C0049F5FF /* icon_carwashing@2x.png in Resources */,
 				9E325DF41A054B3000A35554 /* bg_popup@3x.png in Resources */,
-				9ECD86B31A0FEF0300AD2977 /* bg_tip.png in Resources */,
 				9EDA7CDD1A0DE2F700738D29 /* SHChatUnitMySelfViewCell.xib in Resources */,
 				9E947E7C1A0A6C2600D076B8 /* icon_set_carstatus@2x.png in Resources */,
 				9EF62CB719D097DB00111E2F /* subicon_support.png in Resources */,
@@ -3478,7 +3474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3513,7 +3509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -3555,7 +3551,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7d557d16-40ce-4666-a000-116327a0782d";
 			};
 			name = Debug;
 		};
@@ -3594,7 +3590,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7d557d16-40ce-4666-a000-116327a0782d";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
