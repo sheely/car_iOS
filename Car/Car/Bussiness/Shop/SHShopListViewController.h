@@ -15,7 +15,9 @@
 #import "PartnerConfig.h"
 #import "DataSigner.h"
 #import "DataVerifier.h"
-@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,UITextFieldDelegate, BMKGeoCodeSearchDelegate>
+#import "SHCheckOrderView.h"
+
+@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,UITextFieldDelegate, BMKGeoCodeSearchDelegate,SHCheckOrderViewDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIView *viewRequest;
@@ -36,9 +38,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
 @property (weak, nonatomic) IBOutlet UIButton *btnTxt;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet SHCheckOrderView *viewCheckOrder;
 @property (nonatomic , retain) AVAudioPlayer *player;
 - (IBAction)btnCheckOnTouch:(id)sender;
 - (IBAction)btnAppointmentOnTouch:(id)sender;
+- (IBAction)btnSubmitOnTouch:(id)sender;
 
 - (IBAction)btnKeybord:(id)sender;
 - (IBAction)btnLocationOnTouch:(id)sender;

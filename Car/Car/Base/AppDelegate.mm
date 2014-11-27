@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "BNaviSoundManager.h"
 @implementation AppDelegate
+
+static NSString*  token = @"";
+
   CLLocationManager * locationManager;
 BMKMapManager* _mapManager;
 
@@ -71,11 +74,15 @@ BMKMapManager* _mapManager;
     return YES;
 }
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    token = [NSString stringWithFormat:@"%@", deviceToken];
     NSLog(@"My token is:%@", token);
     //这里应将device token发送到服务器端
 }
 
++ (NSString*)token
+{
+    return token;
+}
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSString *error_str = [NSString stringWithFormat: @"%@", error];
     NSLog(@"Failed to get token, error:%@", error_str);

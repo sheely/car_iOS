@@ -13,8 +13,9 @@
 #import "PartnerConfig.h"
 #import "DataSigner.h"
 #import "DataVerifier.h"
+#import "SHShopPhotoViewCell.h"
 
-@interface SHShopInfoViewController : SHTableViewController
+@interface SHShopInfoViewController : SHViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet SHImageView *imgHead;
 - (IBAction)btnContact:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *labName;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img3;
 @property (weak, nonatomic) IBOutlet UIImageView *img4;
 @property (weak, nonatomic) IBOutlet UIImageView *img5;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)btnLineOnTouch:(id)sender;
 @end

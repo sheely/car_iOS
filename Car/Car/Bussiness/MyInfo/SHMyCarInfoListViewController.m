@@ -102,12 +102,10 @@
     [p.postArgs setValue:[NSNumber numberWithInt:3] forKey:@"optype"];
     [p start:^(SHTask *t) {
         [self dismissWaitDialog];
-
         [self loadNext];
-        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"car_changed" object:nil];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
-
         [t.respinfo show];
     }];
 }

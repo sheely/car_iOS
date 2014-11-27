@@ -13,7 +13,7 @@
 {
     NSMutableArray * list ;
     NSMutableArray * sublist ;
-    
+    UITabBarItem *mItem;
     NSMutableDictionary * mDictionary ;
     
 }
@@ -91,10 +91,18 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    mItem = item;
+    //[self performSelector:@selector(tabChanged) afterNotification:@"notification_login_successful"];
+    [self tabChanged];
+}// called when a new view is selected by the user (but not programatically)
+
+- (void)tabChanged
+{
+    
     CGRect rect = self.view.bounds;
     rect.size.height -= 50;
     UINavigationController * controller  ;
-    if(item.tag >= list.count){
+    if(mItem.tag >= list.count){
         NSMutableArray*  kesublist = [[NSMutableArray alloc]init];
         
         for (int i = 0; i< sublist.count; i++) {
@@ -112,7 +120,7 @@
         
         
     }else{
-        SHModule * module = [list objectAtIndex:item.tag];
+        SHModule * module = [list objectAtIndex:mItem.tag];
         controller = [mDictionary objectForKey:module->target];
         if(controller == nil){
             
@@ -130,10 +138,11 @@
         controller.navigationBar.clipsToBounds = YES;
     }
     //mNavigationController.tabBarController.translucent = NO;
+    [curviewcontroller.view removeFromSuperview];
+    curviewcontroller = controller;
     controller.view.frame = rect;
     [self.view addSubview:controller.view];
-    
-}// called when a new view is selected by the user (but not programatically)
+}
 
 - (void)KxMenuItemOnTouch:(KxMenuItem*)item
 {

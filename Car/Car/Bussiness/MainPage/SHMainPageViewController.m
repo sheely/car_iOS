@@ -32,41 +32,73 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestChatList) name:NOTIFICATION_UPDATE_REQUIRE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSussessful:) name:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];
-    [self requestChatList];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageChanged:) name:@"newmessage" object:nil];
+    //[self requestChatList];
     [self loginSussessful:nil];
-//    pagecontrol
+    //    pagecontrol
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)messageChanged:(NSNotification*)n
+{
+    NSArray * array = [((SHResMsgM*)n.object).result valueForKey:@"ordernewmessage"];
+    for (NSDictionary * dic  in array) {
+        NSString * orderid = [dic valueForKey:@"orderid"];
+        NSArray * mList = [dic valueForKey:@"leavemessages"];
+        for (NSDictionary * dic2  in mList) {
+            SHChatItem * item = [[SHChatItem alloc]init];
+  
+            item.asktime = [dic2 valueForKey:@"leavemessagetime"];
+            item.latestmessage = [dic2 valueForKey:@"leavemessagecontent"];
+            if([[dic2 valueForKey:@"leavemessagetype"]integerValue ]== 1){
+                item.latestmessage = @"[图片]";
+            }else if ([[dic2 valueForKey:@"leavemessagetype" ]integerValue ] == 2){
+                item.latestmessage = @"[声音]";
+            }
+            item.questionid = orderid;
+            [SHChatListHelper.instance addItem:item];
+        }
+
+    }
+    [SHChatListHelper.instance notice];
+
 }
 
 - (void)loginSussessful:(NSNotification*)n
 {
     if(SHEntironment.instance.loginName.length > 0){
-        {
-            SHHttpReel * reel = [[SHHttpReel alloc]init];
-            reel.URL = URL_FOR(@"eachnotify.action");
-            
-            SHMsgManager.instance.reel = reel;
-        }
-        
+        SHHttpReel * reel = [[SHHttpReel alloc]init];
+        reel.URL = URL_FOR(@"eachnotify.action");
+        SHMsgManager.instance.reel = reel;
+        [self requestChatList];
     }
 }
+
 - (void)requestChatList
 {
     //[self showWaitDialogForNetWork];
     if(SHEntironment.instance.loginName.length > 0){
+        [SHChatListHelper.instance removeAll];
         SHPostTaskM * task = [[SHPostTaskM alloc]init];
         task.URL= URL_FOR(@"acceptquestionlist.action");
         [task.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"pageno"];
-        [task.postArgs setValue:[NSNumber numberWithInt:20] forKey:@"pagesize"];
+        [task.postArgs setValue:[NSNumber numberWithInt:400] forKey:@"pagesize"];
         [task start:^(SHTask *t) {
             NSArray * mList = [t.result valueForKey:@"questions"];
             for (NSDictionary * dic  in mList) {
                 SHChatItem * item = [[SHChatItem alloc]init];
-                item.problemdesc = [dic valueForKey:@"problemdesc"];
+                
+                NSString*desc = [dic valueForKey:@"problemdesc"];
+              
+                NSRange  r = [desc rangeOfString:@"("];
+                if(r.location  != NSIntegerMax){
+                     desc = [desc substringToIndex:r.location];
+                }
+                item.problemdesc =[ NSString stringWithFormat:@"%@(%@)",desc,[dic valueForKey:@"carcardno"]];
                 item.asktime = [dic valueForKey:@"asktime"];
                 item.uploadpicture = [dic valueForKey:@"uploadpicture"];
                 item.latestmessage = [dic valueForKey:@"latestmessage"];
-                item.problemdesc = [dic valueForKey:@"problemdesc"];
+                //item.problemdesc = [dic valueForKey:@"problemdesc"];
                 item.questionid = [dic valueForKey:@"questionid"];
                 [SHChatListHelper.instance addItem:item];
             }

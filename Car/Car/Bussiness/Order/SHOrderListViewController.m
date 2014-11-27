@@ -106,7 +106,7 @@
         order.productName = [NSString stringWithFormat:@"%@-%@",[dic_n valueForKey:@"shopname"],@"服务费"]; ; //商品标题
         order.productDescription = [NSString stringWithFormat:@"%@-%@",[dic_n valueForKey:@"shopname"],@"服务费"]; //商品描述
         order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
-        order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
+        order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
 
         NSString* orderInfo = [order description];
         NSString* signedStr = [self doRsa:orderInfo];

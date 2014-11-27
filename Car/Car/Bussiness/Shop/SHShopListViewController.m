@@ -35,6 +35,7 @@
     NSString * washticketid;
     float finalprice;
     NSString * checkorderid;
+    BOOL isFirst;
 }
 @end
 
@@ -44,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     type = -1;
+    isFirst = YES;
     self.tableView.frame = self.view.bounds;
     self.title = @"商户列表";
     self.mapView.delegate = self;
@@ -153,7 +155,7 @@
     _searcher.delegate = self;
     
     //发起反向地理编码检索
-       selectLocation = [[SHShopPointAnnotation alloc]init];
+    selectLocation = [[SHShopPointAnnotation alloc]init];
     selectLocation.coordinate = _mapView.centerCoordinate;//SHLocationManager.instance.userlocation.location.coordinate;
     selectLocation.title = @"当前点";
     selectLocation.subtitle = @"此Annotation可拖拽!";
@@ -426,35 +428,35 @@
         player.delegate = self;
     }
 }
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    // 判断有摄像头，并且支持拍照功能
-    // 初始化图片选择控制器
-    if(actionSheet.tag == 0){
-        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-        
-        if(buttonIndex == 2){
-            return ;
-        }else if(buttonIndex == 0){
-            [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
-            [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
-        }else{
-            [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
-            
-        }
-        
-        [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
-        [controller setDelegate:self];// 设置代理
-        [self.navigationController presentViewController:controller animated:YES completion:nil];
-    }else {
-        if(buttonIndex == 0){
-            washticketid = [checkticket valueForKey:@"washticketid"];
-            [self payment];
-        }else if (buttonIndex == 1) {
-            washticketid = @"";
-            [self payment];
-        }
-    }
-}
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    // 判断有摄像头，并且支持拍照功能
+//    // 初始化图片选择控制器
+//    if(actionSheet.tag == 0){
+//        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+//        
+//        if(buttonIndex == 2){
+//            return ;
+//        }else if(buttonIndex == 0){
+//            [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
+//            [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
+//        }else{
+//            [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
+//            
+//        }
+//        
+//        [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
+//        [controller setDelegate:self];// 设置代理
+//        [self.navigationController presentViewController:controller animated:YES completion:nil];
+//    }else {
+//        if(buttonIndex == 0){
+//            washticketid = [checkticket valueForKey:@"washticketid"];
+//            [self payment];
+//        }else if (buttonIndex == 1) {
+//            washticketid = @"";
+//            [self payment];
+//        }
+//    }
+//}
 
 
 
@@ -570,15 +572,13 @@
 }
 -(void)loadNext
 {
-    
-    
     SHPostTaskM * task = [[SHPostTaskM alloc]init];
     task.URL= URL_FOR(@"shopquery.action");
     [task.postArgs setValue:@"" forKey:@"keyname"];
     [task.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude]  forKey:@"lat"];
     [task.postArgs setValue:[NSNumber numberWithFloat: selectLocation.coordinate.longitude] forKey:@"lgt"];
     [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"pageno"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:20] forKey:@"pagesize"];
+    [task.postArgs setValue:[NSNumber numberWithFloat:15] forKey:@"pagesize"];
     [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishaswash"];
     [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishascheck"];
     [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasmaintainance"];
@@ -588,7 +588,9 @@
     [task start:^(SHTask *t) {
         mList = [t.result valueForKey:@"nearshops"];
         mIsEnd = YES;
-        
+//        CLLocationCoordinate2D far;
+//        CLLocationDistance distance = 0;
+//        BMKMapPoint point1 = BMKMapPointForCoordinate(selectLocation.coordinate);
         for (int i = 0 ;i <mList.count; i++) {
             NSDictionary * m  =  [mList objectAtIndex:i];
             SHShopPointAnnotation* pointAnnotation = [[SHShopPointAnnotation alloc]init];
@@ -599,10 +601,28 @@
             pointAnnotation.title = @"test";
             pointAnnotation.subtitle = @"此Annotation可拖拽!";
             pointAnnotation.tag = i;
+//            BMKMapPoint point2 = BMKMapPointForCoordinate(coor);
+//            CLLocationDistance distance_ = BMKMetersBetweenMapPoints(point1,point2);
+//            if(distance_ > distance){
+//                distance = distance_;
+//                far = coor;
+//            }
+//            
+            
             [_mapView addAnnotation:pointAnnotation];
             [mListAnimation addObject:pointAnnotation];
         }
+//        BMKCoordinateRegion region;
+//        if(mList.count > 1){
+//            region.center =selectLocation.coordinate;
+//            region.span = BMKCoordinateSpanMake((far.latitude - selectLocation.coordinate.latitude)*1.5, (far.longitude - selectLocation.coordinate.longitude)*1.5);
+//           // [_mapView setRegion:region animated:YES];
+//        }
+        if(isFirst){
+            isFirst = NO;
+            [_mapView setZoomLevel:12];
         
+        }
         [self.tableView reloadData];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [t.respinfo show];
@@ -666,12 +686,21 @@
 
 - (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [self reSet];
-    [self.tableView reloadData];
-    [_mapView removeAnnotation:selectLocation];
-    selectLocation.coordinate = _mapView.centerCoordinate;
-    [_mapView addAnnotation:selectLocation];
-    [self refreshAdress];
+    
+    BMKMapPoint point1 = BMKMapPointForCoordinate(selectLocation.coordinate);
+    BMKMapPoint point2 = BMKMapPointForCoordinate(mapView.centerCoordinate);
+    
+    CLLocationDistance distance_ = BMKMetersBetweenMapPoints(point1,point2);
+
+    if(distance_ > 10){
+        [self reSet];
+        [self.tableView reloadData];
+        [_mapView removeAnnotation:selectLocation];
+        selectLocation.coordinate = _mapView.centerCoordinate;
+        [_mapView addAnnotation:selectLocation];
+        [self refreshAdress];
+        
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView dequeueReusableStandardCellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -728,21 +757,34 @@
     [calendarcontroller show];
 }
 
+
 - (IBAction)btnCheckOnTouch:(id)sender {
     appointmentDate = @"";
     [self pay];
 }
 
+-(void)calendarViewController:(SHCalendarViewController *)controller dateEnsure:(NSDate *)date
+{
+    [calendarcontroller close];
+    appointmentDate = [date descriptionWithLocale: [ [ NSLocale alloc ] initWithLocaleIdentifier : @"zh_CN" ]];
+    [self pay];
+}
 - (void)pay
 {
-    if(checkticket != nil){
-        UIActionSheet * action = [[UIActionSheet alloc]initWithTitle:[NSString stringWithFormat:@"您有一张%g元优惠劵,是否使用它下单?",[[checkticket valueForKey:@"washticketmoney"]floatValue]] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"下单" otherButtonTitles:@"不用", nil];
-        action.tag = 1;
-        [action showInView:self.view];
-    }else {
+    self.viewCheckOrder.frame = self.view.bounds;
+    self.viewCheckOrder.checkticket = checkticket;
+    self.viewCheckOrder.delegate = self;
+    [self.view addSubview:self.viewCheckOrder];
+}
+
+-(void)checkorderviewOnSubmit:(SHCheckOrderView*)view
+{
+    if(view.btnCoupon.selected){
+        washticketid = [checkticket valueForKey:@"washticketid"];
+    }else{
         washticketid = @"";
-        [self payment];
     }
+    [self payment];
 }
 - (void)payment
 {
@@ -788,7 +830,7 @@
             order.productName = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; ; //商品标题
             order.productDescription = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; //商品描述
             order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
-            order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
+            order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
             
             NSString* orderInfo = [order description];
             NSString* signedStr = [self doRsa:orderInfo];
@@ -846,12 +888,7 @@
     
 }
 
--(void)calendarViewController:(SHCalendarViewController *)controller dateEnsure:(NSDate *)date
-{
-    [calendarcontroller close];
-    appointmentDate = [date descriptionWithLocale: [ [ NSLocale alloc ] initWithLocaleIdentifier : @"zh_CN" ]];
-    [self pay];
-}
+
 
 
 - (IBAction)btnKeybord:(UIButton*)sender {
@@ -883,13 +920,6 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     [self.btnPlay setImage: [UIImage imageNamed:@"icon_play_com.png" ] forState:UIControlStateNormal];
-}
-
-
-
-- (IBAction)btnLocationOnTouch:(id)sender {
-    [_mapView updateLocationData:[SHLocationManager instance].userlocation.source];
-    [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
 }
 
 - (IBAction)btnSearchLocationOnTouch:(id)sender

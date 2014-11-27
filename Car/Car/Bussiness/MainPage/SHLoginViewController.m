@@ -7,6 +7,7 @@
 //
 
 #import "SHLoginViewController.h"
+#import "AppDelegate.h"
 
 @interface SHLoginViewController ()
 {
@@ -45,7 +46,7 @@
     [self showWaitDialogForNetWork];
     SHPostTaskM * p = [[SHPostTaskM alloc]init];
     p.URL = URL_FOR(@"login.action");
-    [p.postArgs setValue:@"x" forKey:@"appuuid"];
+    [p.postArgs setValue:[AppDelegate token ] forKey:@"appuuid"];
     [p start:^(SHTask *t) {
         [self dismissWaitDialog];
          [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];

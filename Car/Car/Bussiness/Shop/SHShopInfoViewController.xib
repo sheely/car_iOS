@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -16,7 +16,7 @@
                 <outlet property="labAddress" destination="ulO-K6-X4V" id="0mG-fL-wF1"/>
                 <outlet property="labName" destination="DSp-YR-bmu" id="A8i-HL-633"/>
                 <outlet property="labScore" destination="tET-BO-s5f" id="lsS-dv-bF2"/>
-                <outlet property="tableView" destination="bDs-wN-mhO" id="yd1-Zd-6Sy"/>
+                <outlet property="tableView" destination="bDs-wN-mhO" id="AZS-Ay-bbT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -97,15 +97,6 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="210" sectionHeaderHeight="22" sectionFooterHeight="22" id="bDs-wN-mhO">
-                    <rect key="frame" x="0.0" y="128" width="320" height="440"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="zRt-lC-ENE"/>
-                        <outlet property="delegate" destination="-1" id="jSe-ek-zmi"/>
-                    </connections>
-                </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="ulO-K6-X4V">
                     <rect key="frame" x="79" y="54" width="231" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -129,6 +120,15 @@
                         <action selector="btnLineOnTouch:" destination="-1" eventType="touchUpInside" id="sgD-6X-0Cr"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="210" sectionHeaderHeight="22" sectionFooterHeight="22" id="bDs-wN-mhO">
+                    <rect key="frame" x="0.0" y="128" width="320" height="440"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="zRt-lC-ENE"/>
+                        <outlet property="delegate" destination="-1" id="jSe-ek-zmi"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

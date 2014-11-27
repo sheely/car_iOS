@@ -27,6 +27,30 @@
     return self;
 }
 
+
+
+- (void)messageChanged:(NSNotification*)n
+{
+
+    BOOL b = false;
+    NSArray * array = [((SHResMsgM*)n.object).result valueForKey:@"ordernewmessage"];
+
+    [self checkBottom];
+    for (NSDictionary * dic  in array) {
+        NSString * orderid = [dic valueForKey:@"orderid"];
+        if([orderid isEqualToString:questionid] == YES){
+            [mList addObjectsFromArray:[dic valueForKey:@"leavemessages"]];
+            b = YES;
+        }
+    }
+    if(b){
+        [self.tableView reloadData];
+        
+    }
+    [self checkBottom2];
+    
+}
+
 - (void)loadNext
 {
     [self showWaitDialogForNetWork];
@@ -66,27 +90,29 @@
     [super viewDidLoad];
 
     self.title = [NSString stringWithFormat:@"与\"%@\"聊天",@"专家"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(message:) name:NOTIFICATION_MESSAGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageChanged:) name:@"newmessage" object:nil];
+ 
+
     //[self loadNext];
     // Do any additional setup after loading the view from its nib.
 }
-- (void)message:(NSNotification * )n
-{
-//    friendId
-    BOOL b = false;
-    [self checkBottom];
-    for (NSDictionary * dic  in n.object) {
-        if([[dic valueForKey:@"senderuserid"]isEqualToString:questionid ] == YES){
-            [mList addObject:dic];
-            b = YES;
-        }
-    }
-    if(b){
-        [self.tableView reloadData];
-
-    }
-    [self checkBottom2];
-}
+//- (void)message:(NSNotification * )n
+//{
+////    friendId
+//    BOOL b = false;
+//    [self checkBottom];
+//    for (NSDictionary * dic  in n.object) {
+//        if([[dic valueForKey:@"senderuserid"]isEqualToString:questionid ] == YES){
+//            [mList addObject:dic];
+//            b = YES;
+//        }
+//    }
+//    if(b){
+//        [self.tableView reloadData];
+//
+//    }
+//    [self checkBottom2];
+//}
 
 - (void)dealloc
 {

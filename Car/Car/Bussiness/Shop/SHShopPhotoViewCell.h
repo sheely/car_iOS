@@ -10,4 +10,5 @@
 
 @interface SHShopPhotoViewCell : SHTableViewCell
 
+@property (weak, nonatomic) IBOutlet SHImageView *imgView;
 @end
