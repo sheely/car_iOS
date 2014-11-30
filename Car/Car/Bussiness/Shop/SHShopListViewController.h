@@ -42,7 +42,6 @@
 @property (nonatomic , retain) AVAudioPlayer *player;
 - (IBAction)btnCheckOnTouch:(id)sender;
 - (IBAction)btnAppointmentOnTouch:(id)sender;
-- (IBAction)btnSubmitOnTouch:(id)sender;
 
 - (IBAction)btnKeybord:(id)sender;
 - (IBAction)btnLocationOnTouch:(id)sender;

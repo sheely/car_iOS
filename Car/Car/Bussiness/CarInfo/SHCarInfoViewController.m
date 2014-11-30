@@ -70,7 +70,7 @@
             self.labState2.text = [[mListFourCategory objectAtIndex:1] valueForKey:@"healthstatus"];
             self.labState3.text = [[mListFourCategory objectAtIndex:2] valueForKey:@"healthstatus"];
             self.labState4.text = [[mListFourCategory objectAtIndex:3] valueForKey:@"healthstatus"];
-            if([[[mDic valueForKey:@"activitedcar"] valueForKey:@"reportid"]isEqualToString:@"demo"]){
+            if(isFirst && [[[mDic valueForKey:@"activitedcar"] valueForKey:@"reportid"]isEqualToString:@"demo"]){
                 self.viewNeedCheck.alpha = 0;
                 
                 [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -355,7 +355,7 @@ int order = 0;
     kxt.index = 0;
     KxMenuItem * kxt4 = [[KxMenuItem alloc]init];
     
-    kxt4.title = @"查看检测报告";
+    kxt4.title = @"检测报告";
     kxt4.target = self;
     kxt4.action = @selector(kxtOnTouch:);
     kxt4.tag = button.tag;
@@ -492,7 +492,7 @@ int order = 0;
         [self.viewNeedCheck removeFromSuperview];
     }];
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"一键检测" forKey:@"title"];
+    [intent.args setValue:@"上门检测" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
 }

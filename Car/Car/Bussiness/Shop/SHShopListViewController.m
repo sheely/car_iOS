@@ -44,6 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    mList = [[NSMutableArray alloc]init];
     type = -1;
     isFirst = YES;
     self.tableView.frame = self.view.bounds;
@@ -65,7 +66,7 @@
         SHPostTaskM * p  = [[SHPostTaskM alloc]init];
         p.URL= URL_FOR(@"mywashticketsquery.action");
         [p.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"tickettype"];
-        [p.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"isonlyexpired"];
+        [p.postArgs setValue:[NSNumber numberWithInt:1] forKey:@"isonlyexpired"];
         [p start:^(SHTask *t) {
             NSArray * array = [t.result valueForKey:@"mywashtickets"];
             if(array.count > 0 ){
@@ -577,17 +578,37 @@
     [task.postArgs setValue:@"" forKey:@"keyname"];
     [task.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude]  forKey:@"lat"];
     [task.postArgs setValue:[NSNumber numberWithFloat: selectLocation.coordinate.longitude] forKey:@"lgt"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"pageno"];
+    int index = mList.count/ 15;
+    [task.postArgs setValue:[NSNumber numberWithFloat:index + 1] forKey:@"pageno"];
     [task.postArgs setValue:[NSNumber numberWithFloat:15] forKey:@"pagesize"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishaswash"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishascheck"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasmaintainance"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishassellinsurance"];
-    [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasurgentrescure"];
+    if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
 
+    }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"check"]){
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
+    }else{
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasurgentrescure"];
+
+    }
+   
     [task start:^(SHTask *t) {
-        mList = [t.result valueForKey:@"nearshops"];
-        mIsEnd = YES;
+        NSArray * a = [t.result valueForKey:@"nearshops"];
+        if(a.count == 0 || a.count < 5){
+            mIsEnd = YES;
+        }
+        [mList addObjectsFromArray:a];
 //        CLLocationCoordinate2D far;
 //        CLLocationDistance distance = 0;
 //        BMKMapPoint point1 = BMKMapPointForCoordinate(selectLocation.coordinate);
@@ -620,11 +641,13 @@
 //        }
         if(isFirst){
             isFirst = NO;
-            [_mapView setZoomLevel:12];
+            [_mapView setZoomLevel:14];
         
         }
         [self.tableView reloadData];
+        [self dismissWaitDialog];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
         [t.respinfo show];
     }];
 }
@@ -694,6 +717,7 @@
 
     if(distance_ > 10){
         [self reSet];
+        [self showWaitDialogForNetWork];
         [self.tableView reloadData];
         [_mapView removeAnnotation:selectLocation];
         selectLocation.coordinate = _mapView.centerCoordinate;
@@ -713,7 +737,7 @@
     cell.labDistance.text = [NSString stringWithFormat:@"%@",[dic valueForKey:@"distancefromme"]];
     cell.labScore.text = [NSString stringWithFormat:@"%@分", [dic valueForKey:@"shopscore"]];
     cell.labPrice.text = [NSString stringWithFormat:@"普洗:%@元",[dic valueForKey:@"normalwashoriginalprice"]];
-    cell.labNewPrice.text = [NSString stringWithFormat:@"精洗:%@元",[dic valueForKey:@"normalwashdiscountprice"]];
+    cell.labNewPrice.text = [NSString stringWithFormat:@"优惠:%@元",[dic valueForKey:@"normalwashdiscountprice"]];
     
 
     cell.backgroundColor= [UIColor whiteColor];
@@ -730,6 +754,8 @@
     NSDictionary * dic = [mList objectAtIndex:indexPath.row];
     SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
     [i.args setValue:[dic valueForKey:@"shopid"] forKey:@"shopid"];
+    [i.args setValue: [self.intent.args valueForKey:@"type"] forKey:@"type"];
+   
     [[UIApplication sharedApplication]open:i];
 }
 - (void)btnAction:(UIButton*)sender
@@ -737,6 +763,7 @@
     NSDictionary * dic = [mList objectAtIndex:sender.tag];
     SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
     [i.args setValue:[dic valueForKey:@"shopid"] forKey:@"shopid"];
+    [i.args setValue: [self.intent.args valueForKey:@"type"] forKey:@"type"];
     [[UIApplication sharedApplication]open:i];}
 
 /*
@@ -796,6 +823,9 @@
     [post.postArgs  setValue:[NSNumber numberWithInt:0] forKey:@"checkordertype"];
     [post.postArgs  setValue:washticketid == nil ? @"":washticketid forKey:@"ticketid"];
     [post.postArgs  setValue:appointmentDate == nil ? @"" : appointmentDate forKey:@"reserverdatetime"];
+    [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude] forKey:@"lat"];
+    [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.longitude]forKey:@"lgt"];
+    [post.postArgs setValue:self.labLocation.text forKey:@"location"];
     
     [post start:^(SHTask *t) {
         [self dismissWaitDialog];
@@ -829,7 +859,13 @@
             order.tradeNO =checkorderid; //订单ID（由商家自行制定）
             order.productName = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; ; //商品标题
             order.productDescription = [NSString stringWithFormat:@"%@-%@",@"车辆检测",@"服务费"]; //商品描述
+#if DEBUG
             order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+            
+#else
+            order.amount = [NSString stringWithFormat:@"%.2f",finalprice]; //商品价格//discountafteronlinepay
+            
+#endif
             order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
             
             NSString* orderInfo = [order description];

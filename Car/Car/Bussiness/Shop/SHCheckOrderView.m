@@ -25,7 +25,7 @@
 - (void)setCheckticket:(NSDictionary *)checkticket_
 {
     _checkticket = checkticket_;
-    self.labCoupon.text = [NSString stringWithFormat:@"%d元优惠券",[[self.checkticket valueForKey:@"washticketmoney"] integerValue]];
+    self.labCoupon.text = [NSString stringWithFormat:@"%d元优惠券",[[self.checkticket valueForKey:@"washticketmoney"] intValue]];
     self.btnCoupon.selected = NO;
     [self.btnSubmit setTitle:[NSString stringWithFormat:@"现在下单, 在线支付立减100元"]forState:UIControlStateNormal];
     if(_checkticket){

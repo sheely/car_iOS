@@ -62,16 +62,6 @@
 
 }
 
-//- (void)registerForKeyboardNotifications
-//{
-//	[[NSNotificationCenter defaultCenter] addObserver:self
-//											 selector:@selector(keyboardDidShown:)
-//												 name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//											 selector:@selector(keyboardDidHidden:)
-//												 name:UIKeyboardWillHideNotification object:nil];
-//}
-
 - (void)keyboardWillShown:(NSNotification*)ns
 {
   

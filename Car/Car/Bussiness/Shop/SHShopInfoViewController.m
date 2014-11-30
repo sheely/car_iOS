@@ -13,6 +13,7 @@
 {
     NSDictionary * dic;
     NSString * orderId;
+    float price;
     BOOL isDetail;
 }
 @end
@@ -34,8 +35,13 @@
     [post.postArgs setValue:[self.intent.args valueForKey:@"shopid"] forKey:@"shopid"];
     [post start:^(SHTask *t) {
         dic = (NSDictionary*)t.result;
-        UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"大图" target:self action:@selector(flip:)];
-        self.navigationItem.rightBarButtonItem=flipButton;
+        if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
+              UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"详情" target:self action:@selector(flip:)];
+            self.navigationItem.rightBarButtonItem=flipButton;
+        }else{
+            isDetail = YES;
+        }
+      
         self.labName.text = [dic valueForKey:@"shopname"];
         self.labAddress.text = [dic valueForKey:@"shopaddress"];
         self.labScore.text = [NSString stringWithFormat:@"%@ 分",[[dic valueForKey:@"shopscore"] stringValue]];
@@ -129,7 +135,7 @@
         UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"服务" target:self action:@selector(flip:)];
         self.navigationItem.rightBarButtonItem=flipButton;
     }else{
-        UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"大图" target:self action:@selector(flip:)];
+        UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"详情" target:self action:@selector(flip:)];
         self.navigationItem.rightBarButtonItem=flipButton;
         
     }
@@ -169,6 +175,7 @@
     [post start:^(SHTask *t) {
         if([t.result valueForKey:@"orderid"]){
             orderId = [t.result valueForKey:@"orderid"];
+            price = [[t.result valueForKey:@"finalprice"] floatValue];
             [self showAlertDialog:[NSString stringWithFormat: @"请在与商家的交易结束付款。\n现在确认付款［%g］元?",[[t.result valueForKey:@"finalprice"] floatValue]] button:@"确定" otherButton:@"取消"];
         }
         
@@ -190,7 +197,14 @@
     order.tradeNO =  orderId ; //订单ID（由商家自行制定）
     order.productName = @"洗车"; //商品标题
     order.productDescription = [NSString stringWithFormat:@"%@-服务费",[dic valueForKey:@"shopname"]]; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
+    
+#if DEBUG
+    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+    
+#else
+    order.amount = [NSString stringWithFormat:@"%.2f",price]; //商品价格//discountafteronlinepay
+    
+#endif
     order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
     
     NSString* orderInfo = [order description];

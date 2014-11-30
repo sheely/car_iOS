@@ -261,7 +261,8 @@
 - (void)notificationHtml
 {
     SHIntent * intent  = [[SHIntent alloc ]init:@"webview" delegate:nil containner:self.navigationController];
-    [intent.args setValue:URL_FOR(@"guaguale/index.html") forKey:@"url"];
+    NSString * url=  [NSString stringWithFormat:@"guaguale/index.jsp?mobile=%@",SHEntironment.instance.loginName];
+    [intent.args setValue:URL_FOR(url) forKey:@"url"];
     [intent.args setValue:@"洗车卷抽奖" forKey:@"title"];
     [[UIApplication sharedApplication]open:intent];
 

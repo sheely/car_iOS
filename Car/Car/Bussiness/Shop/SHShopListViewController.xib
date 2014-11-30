@@ -190,7 +190,7 @@
                                     </connections>
                                 </button>
                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="6aM-di-jOi">
-                                    <rect key="frame" x="92.999999535325287" y="9" width="220" height="40"/>
+                                    <rect key="frame" x="93" y="9" width="219.99999953532529" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
