@@ -107,9 +107,9 @@
         order.productDescription = [NSString stringWithFormat:@"%@-%@",[dic_n valueForKey:@"shopname"],@"服务费"]; //商品描述
 #if DEBUG
         order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
-
 #else
-        order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+        order.amount = [NSString stringWithFormat:@"%.2f",[[dic_n valueForKey:@"discountafteronlinepay"] floatValue]
+]; //商品价格//discountafteronlinepay
 
 #endif
         order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
@@ -137,6 +137,10 @@
     cell.labTitle.text = [dic valueForKey:@"servicecategoryname"];
     cell.labCarId.text = [dic valueForKey:@"carno"];
     cell.labState.text = [dic valueForKey:@"orderstatus_cn"];
+//    if([[dic valueForKey:@"isneedpay"] integerValue] == 0 && [[dic valueForKey:@"ispayed"] integerValue]==1 ){
+        cell.labTimer.text = [dic valueForKey:@"createtime"];
+ //   }
+
     return cell;
 }
 

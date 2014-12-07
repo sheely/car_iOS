@@ -32,7 +32,7 @@ BMKMapManager* _mapManager;
     _mapManager = [[BMKMapManager alloc]init];
     BMKMapView * v = [[BMKMapView alloc]init];
 #if DEBUG
-    BOOL ret = [_mapManager start:@"2GNPcYG9Kqfi3Up0bPGyvftD" generalDelegate:(id<BMKGeneralDelegate>)self];
+    BOOL ret = [_mapManager start:@"RBhfcwkz7KQrImZCaERxI8ro" generalDelegate:(id<BMKGeneralDelegate>)self];
 #else
     BOOL ret = [_mapManager start:@"207KGwdrL9x8WDoHTFDeMqmS" generalDelegate:(id<BMKGeneralDelegate>)self];
 #endif
@@ -83,6 +83,10 @@ BMKMapManager* _mapManager;
 }
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     token = [NSString stringWithFormat:@"%@", deviceToken];
+#ifdef DEBUG
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"您有一个新的消息." message:token delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
+    [alert show];
+#endif
     NSLog(@"My token is:%@", token);
     if(SHEntironment.instance.loginName.length > 0){
         SHPostTaskM * post = [[SHPostTaskM alloc]init];
@@ -108,6 +112,7 @@ BMKMapManager* _mapManager;
     for (id key in userInfo) {
         NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
     }
+
     /* eg.
      key: aps, value: {
      alert = "\U8fd9\U662f\U4e00\U6761\U6d4b\U8bd5\U4fe1\U606f";

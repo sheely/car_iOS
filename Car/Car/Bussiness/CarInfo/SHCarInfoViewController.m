@@ -274,8 +274,8 @@ int order = 0;
                                        defaultContent:@"分享到我的车况信息"
                                                 image:[ShareSDK pngImageWithImage:[self screenShot]]
                                                 title:@"车况信息"
-                                                  url:@"http://www.sharesdk.cn"
-                                          description:@"这是一条测试信息"
+                                                  url:nil
+                                          description:@"我的爱车"
                                             mediaType:SSPublishContentMediaTypeNews];
     
     [ShareSDK showShareActionSheet:nil

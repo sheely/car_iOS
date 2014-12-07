@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商户信息";
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(request) name:NOTIFICATION_UPDATE_ORDER object:nil];
     [self request];
     // Do any additional setup after loading the view from its nib.
 }
@@ -178,8 +179,9 @@
             price = [[t.result valueForKey:@"finalprice"] floatValue];
             [self showAlertDialog:[NSString stringWithFormat: @"请在与商家的交易结束付款。\n现在确认付款［%g］元?",[[t.result valueForKey:@"finalprice"] floatValue]] button:@"确定" otherButton:@"取消"];
         }
-        
+
         [self dismissWaitDialog];
+        [self request];
 
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];

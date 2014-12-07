@@ -36,6 +36,7 @@
     float finalprice;
     NSString * checkorderid;
     BOOL isFirst;
+    NSString * keyword;
 }
 @end
 
@@ -46,6 +47,7 @@
     [super viewDidLoad];
     mList = [[NSMutableArray alloc]init];
     type = -1;
+    keyword = @"";
     isFirst = YES;
     self.tableView.frame = self.view.bounds;
     self.title = @"商户列表";
@@ -575,7 +577,7 @@
 {
     SHPostTaskM * task = [[SHPostTaskM alloc]init];
     task.URL= URL_FOR(@"shopquery.action");
-    [task.postArgs setValue:@"" forKey:@"keyname"];
+    [task.postArgs setValue:keyword forKey:@"keyname"];
     [task.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude]  forKey:@"lat"];
     [task.postArgs setValue:[NSNumber numberWithFloat: selectLocation.coordinate.longitude] forKey:@"lgt"];
     int index = mList.count/ 15;
@@ -833,7 +835,9 @@
         finalprice = [[t.result valueForKey:@"finalprice"] floatValue];
         if(finalprice ==0 ){
             [t.respinfo show];
+              [self.viewCheckOrder btnCloseOnTouch:nil];
         }else {
+            [self.viewCheckOrder btnCloseOnTouch:nil];
             UIAlertView * a = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"确认支付［%g]元.",finalprice ] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"支付", nil];
             a.tag = 1;
             [a show];
@@ -846,6 +850,25 @@
       [self dismissWaitDialog];
   }];
 }
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{                    // called when keyboard search button pressed
+    keyword = searchBar.text;
+    [searchBar resignFirstResponder];
+    [self reSet];
+    [self showWaitDialogForNetWork];
+    [self.tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+    keyword = @"";
+    [searchBar resignFirstResponder];
+    [self reSet];
+    [self showWaitDialogForNetWork];
+    [self.tableView reloadData];
+}
+
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

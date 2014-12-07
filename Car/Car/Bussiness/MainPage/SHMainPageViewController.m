@@ -30,7 +30,7 @@
         SHEntironment.instance.password = [dicuser valueForKey:@"password"];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestChatList) name:NOTIFICATION_UPDATE_REQUIRE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(require_update:) name:NOTIFICATION_UPDATE_REQUIRE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSussessful:) name:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageChanged:) name:@"newmessage" object:nil];
     //[self requestChatList];
@@ -73,7 +73,12 @@
         [self requestChatList];
     }
 }
+- (void)require_update:(NSNotification*)n
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_remain" object:@"order"];
 
+    [self requestChatList];
+}
 - (void)requestChatList
 {
     //[self showWaitDialogForNetWork];
@@ -227,7 +232,7 @@
 - (void)notificationCheck
 {
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"一键检测" forKey:@"title"];
+    [intent.args setValue:@"上门检测" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
 

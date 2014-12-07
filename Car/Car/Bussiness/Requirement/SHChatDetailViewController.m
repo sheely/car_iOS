@@ -176,12 +176,18 @@
     NSString *destDateString = [dateFormatter stringFromDate:[NSDate date]];
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
     [dic setValue:[NSNumber numberWithInt:0] forKey:@"leavemessagetype"];
-
+    
     [dic setValue:msg forKey:@"leavemessagecontent"];
     [dic setValue:destDateString forKey:@"leavemessagetime"];
     [dic setValue:[NSNumber numberWithInt:1] forKey:@"issendbyme"];
-    [dic setValue:@"" forKey:@"senderheadicon"];
     
+    NSDictionary * dicuser = [[NSUserDefaults standardUserDefaults] valueForKey:STORE_USER_INFO];
+    if([dicuser valueForKey:@"myheadicon"]){
+        [dic setValue:[dicuser valueForKey:@"myheadicon"] forKey:@"headurl"];
+    }else{
+        [dic setValue:@"" forKey:@"headurl"];
+    }
+
     
     SHChatItem * item = [[SHChatItem alloc]init] ;
     item.questionid = questionid;

@@ -33,9 +33,9 @@
 
 - (void)messageChanged:(NSNotification *)d
 {
-       NSArray * array = [((SHResMsgM*)d.object).result valueForKey:@"ordernewmessage"];
+    NSArray * array = [((SHResMsgM*)d.object).result valueForKey:@"ordernewmessage"];
     for (NSObject* b in array) {
-          [[NSNotificationCenter defaultCenter ] postNotificationName:@"notification_remain" object:@"order"];
+        [[NSNotificationCenter defaultCenter ] postNotificationName:@"notification_remain" object:@"order"];
     }
 }
 
@@ -49,13 +49,11 @@
 - (void)newreport:(NSNotification*)o
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_remain" object:@"car"];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_ORDER object:nil];
 }
 
 - (void)carprofilechange:(NSNotification*)o
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_remain" object:@"car"];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UPDATE_ORDER object:nil];
 }
 
 - (void)viewDidLoad
@@ -136,12 +134,13 @@
         if(order_num > 0){
             ((UITabBarItem*) [tabbar.items objectAtIndex:2]).badgeValue = [NSString stringWithFormat:@"%d",order_num];
         }
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:order_num] forKey:@"order_num"];
     }else if([sender.object isEqualToString:@"car"]){
         car_num++;
         if(car_num > 0){
             ((UITabBarItem*) [tabbar.items objectAtIndex:1]).badgeValue = [NSString stringWithFormat:@"%d",car_num];
         }
-
+[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:car_num] forKey:@"car_num"];
     }
 }
 
@@ -158,7 +157,18 @@
     if(item.tag == 0){
         [self tabChanged];
     }else{
-      [self performSelector:@selector(tabChanged) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
+        if(item.tag == 1){
+            car_num = 0;
+            ((UITabBarItem*) [tabbar.items objectAtIndex:1]).badgeValue = nil;
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:car_num] forKey:@"car_num"];
+        }
+        if(item.tag == 2){
+            order_num = 0;
+            ((UITabBarItem*) [tabbar.items objectAtIndex:2]).badgeValue = nil;
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:order_num] forKey:@"order_num"];
+        }
+        
+        [self performSelector:@selector(tabChanged) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
     }
 }// called when a new view is selected by the user (but not programatically)
 
@@ -208,6 +218,9 @@
     curviewcontroller = controller;
     controller.view.frame = rect;
     [self.view addSubview:controller.view];
+    
+    
+    
 }
 
 - (void)KxMenuItemOnTouch:(KxMenuItem*)item

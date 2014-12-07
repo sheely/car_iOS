@@ -17,7 +17,7 @@
 #import "DataVerifier.h"
 #import "SHCheckOrderView.h"
 
-@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,UITextFieldDelegate, BMKGeoCodeSearchDelegate,SHCheckOrderViewDelegate>
+@interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,UITextFieldDelegate, BMKGeoCodeSearchDelegate,SHCheckOrderViewDelegate,UISearchBarDelegate>
 {
 }
 @property (weak, nonatomic) IBOutlet UIView *viewRequest;
