@@ -18,6 +18,7 @@
     NSArray * mCurrentCategory;
     NSArray * mListFourCategory;
     NSDictionary * mDic;
+    BOOL isFirst;
 }
 @end
 
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车况档案";
+    isFirst = YES;
     [self.collectView registerNib: [UINib nibWithNibName:@"SHCarItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"car_item_collect"];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" target:self action:@selector(btnShare:)];
@@ -34,11 +36,20 @@
     if(dic){
         self.labBand.text = [NSString stringWithFormat:@"%@-%@",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
         self.labCarId.text =[NSString stringWithFormat:@"%@%@",[dic valueForKey:@"provincename"],[dic valueForKey:@"carcardno"]];
-         self.imgCarLogo.isAutoAdapter = YES;
+        self.imgCarLogo.isAutoAdapter = YES;
         [self.imgCarLogo setUrl:[dic valueForKey:@"carlogo"]];
     }
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(request) name:@"car_changed" object:nil];
+    // Do any additional setup after loading the view from its nib.
+}
 
-  
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self request];
+}
+
+- (void)request
+{
     [self showWaitDialogForNetWork];
     SHPostTaskM * p = [[SHPostTaskM alloc]init ];
     p.URL= URL_FOR(@"dashboard.action");
@@ -59,7 +70,7 @@
             self.labState2.text = [[mListFourCategory objectAtIndex:1] valueForKey:@"healthstatus"];
             self.labState3.text = [[mListFourCategory objectAtIndex:2] valueForKey:@"healthstatus"];
             self.labState4.text = [[mListFourCategory objectAtIndex:3] valueForKey:@"healthstatus"];
-            if([[[mDic valueForKey:@"activitedcar"] valueForKey:@"reportid"]isEqualToString:@"demo"]){
+            if(isFirst && [[[mDic valueForKey:@"activitedcar"] valueForKey:@"reportid"]isEqualToString:@"demo"]){
                 self.viewNeedCheck.alpha = 0;
                 
                 [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -80,7 +91,7 @@ taskDidFailed:^(SHTask *t) {
     [self dismissWaitDialog];
     
 }];
-    // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (void) demo
@@ -89,7 +100,7 @@ taskDidFailed:^(SHTask *t) {
     self.btnGesture.alpha = 0;
     [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.btnGesture.alpha = 1;
-
+        
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.btnGesture.alpha = 0;
@@ -153,7 +164,7 @@ taskDidFailed:^(SHTask *t) {
                                                 }];
                                             }];
                                         }];
-
+                                        
                                     }];
                                     
                                 }];
@@ -163,7 +174,7 @@ taskDidFailed:^(SHTask *t) {
                 }];
             }];
         }];
-
+        
     }];
     
 }
@@ -174,6 +185,11 @@ int order = 0;
 
 - (void)viewAnimation
 {
+    if(!isFirst){
+        return;
+    }
+    isFirst = NO;
+
     [UIView animateWithDuration:1 delay:0.4 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.viewOil.frame;
         frame.origin.x += 55;
@@ -189,7 +205,7 @@ int order = 0;
         self.viewPower.frame = frame;
         self.viewPower.alpha = 1;
     } completion:nil];
-     
+    
     
     [UIView animateWithDuration:1 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.viewSafety.frame;
@@ -206,7 +222,7 @@ int order = 0;
         self.viewCarControl.frame = frame;
         self.viewCarControl.alpha = 1;
     } completion:nil];
-
+    
 }
 
 - (void)drawdashboard
@@ -258,8 +274,8 @@ int order = 0;
                                        defaultContent:@"分享到我的车况信息"
                                                 image:[ShareSDK pngImageWithImage:[self screenShot]]
                                                 title:@"车况信息"
-                                                  url:@"http://www.sharesdk.cn"
-                                          description:@"这是一条测试信息"
+                                                  url:nil
+                                          description:@"我的爱车"
                                             mediaType:SSPublishContentMediaTypeNews];
     
     [ShareSDK showShareActionSheet:nil
@@ -287,14 +303,14 @@ int order = 0;
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return mCurrentCategory.count;
@@ -338,14 +354,14 @@ int order = 0;
     kxt.image = [UIImage imageNamed:@"set_status_normal"];
     kxt.index = 0;
     KxMenuItem * kxt4 = [[KxMenuItem alloc]init];
-
-    kxt4.title = @"查看检测报告";
+    
+    kxt4.title = @"检测报告";
     kxt4.target = self;
     kxt4.action = @selector(kxtOnTouch:);
     kxt4.tag = button.tag;
     kxt4.index = 1;
     kxt4.image = [UIImage imageNamed:@"lis_icon_report"];
-
+    
     [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt4]];
 }
 
@@ -365,7 +381,7 @@ int order = 0;
         [post.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"devicestatus"];
         [post start:^(SHTask *t) {
             [t.respinfo show];
-
+            
         } taskWillTry:nil taskDidFailed:^(SHTask *t) {
             [t.respinfo show];
         }];
@@ -407,16 +423,16 @@ int order = 0;
 //        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
 //        [i.args setValue:@"车况变化报告" forKey:@"title"];
 //        [i.args setValue:@"您手动将 [刹车片]状态由 \"不正常\"改变为\"完好\"\n您手动将 [反光镜]状态由 \"不正常\"改变为\"完好\"\n您手动将 [胎压]状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n您手动将 刹车片状态由 \"不正常\"改变为\"完好\"\n  2014- 10 -15" forKey:@"content"];
-//        
+//
 //        [[UIApplication sharedApplication]open:i];
 //    }else if (indexPath.row == 2 ){
 //        SHIntent * i = [[SHIntent alloc]init:@"contentcontainer" delegate:nil containner:self.navigationController];
 //        [i.args setValue:@"车况变化报告" forKey:@"title"];
 //        [i.args setValue:@"亲爱的客户，您的车辆已经保养维修完毕，本次保养维修，我们帮您\n更换机油滤清器“一个”，价格:“780元”\n更换刹车片“一个”，价格“1290元”\n谢谢您的使用,祝您驾车愉快." forKey:@"content"];
-//        
+//
 //        [[UIApplication sharedApplication]open:i];
 //    }
-//    
+//
 //}
 
 - (IBAction)btnOilOnTouch:(UIButton*)sender {
@@ -459,7 +475,7 @@ int order = 0;
             lastTouchButton = nil;
             f = YES;
         }];
-
+        
     }
 }
 - (IBAction)btnBackOnTouch:(id)sender {
@@ -476,7 +492,7 @@ int order = 0;
         [self.viewNeedCheck removeFromSuperview];
     }];
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"一键检测" forKey:@"title"];
+    [intent.args setValue:@"上门检测" forKey:@"title"];
     [intent.args setValue:@"check" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
 }
@@ -495,7 +511,7 @@ int order = 0;
         }
     }
     [self showAlertDialog:@"暂无车辆检测报告"];
-
+    
 }
 
 - (IBAction)btnContinueDemoOnTouch:(id)sender {

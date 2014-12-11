@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : SHAppDelegate <UIApplicationDelegate>
-
 @property (strong, nonatomic) UIWindow *window;
-
++ (NSString*)token;
 @end

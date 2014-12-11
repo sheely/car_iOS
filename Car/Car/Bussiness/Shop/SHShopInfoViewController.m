@@ -13,6 +13,8 @@
 {
     NSDictionary * dic;
     NSString * orderId;
+    float price;
+    BOOL isDetail;
 }
 @end
 
@@ -20,7 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"商户详情";
+    self.title = @"商户信息";
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(request) name:NOTIFICATION_UPDATE_ORDER object:nil];
     [self request];
     // Do any additional setup after loading the view from its nib.
 }
@@ -33,13 +36,19 @@
     [post.postArgs setValue:[self.intent.args valueForKey:@"shopid"] forKey:@"shopid"];
     [post start:^(SHTask *t) {
         dic = (NSDictionary*)t.result;
+        if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
+              UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"详情" target:self action:@selector(flip:)];
+            self.navigationItem.rightBarButtonItem=flipButton;
+        }else{
+            isDetail = YES;
+        }
+      
         self.labName.text = [dic valueForKey:@"shopname"];
         self.labAddress.text = [dic valueForKey:@"shopaddress"];
         self.labScore.text = [NSString stringWithFormat:@"%@ 分",[[dic valueForKey:@"shopscore"] stringValue]];
         [self.imgHead setUrl:[dic valueForKey:@"shoplogo"]];
         int score = [[dic valueForKey:@"shopscore"] integerValue];
         switch (score) {
-                
             case 5:
                 self.img5.image = [SHSkin.instance image:@"star_selected.png"];
             case 4:
@@ -55,13 +64,21 @@
             default:
                 break;
         }
-        
-        
         [self dismissWaitDialog];
         [self.tableView reloadData];
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
     }];
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(isDetail){
+        NSArray * array = [dic valueForKey:@"shoppics"];
+        return array.count;
+    }else{
+        return 1;
+    }
 }
 
 - (void)loadSkin
@@ -88,15 +105,51 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(isDetail){
+        return 220;
+    }
     return 240;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SHCleanViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCleanViewCell" owner:nil options:nil]objectAtIndex:0];
-    cell.dicInfo = dic;
-    [cell.btnSubmit addTarget:self action:@selector(btnSubmit:) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
+    if(isDetail){
+        NSArray * array = [dic valueForKey:@"shoppics"];
+        SHShopPhotoViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHShopPhotoViewCell" owner:nil options:nil] objectAtIndex:0];
+        [cell.imgView setUrl:[array objectAtIndex:indexPath.row]];
+        return cell;
+    }else{
+        SHCleanViewCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SHCleanViewCell" owner:nil options:nil]objectAtIndex:0];
+        cell.dicInfo = dic;
+        [cell.btnSubmit addTarget:self action:@selector(btnSubmit:) forControlEvents:UIControlEventTouchUpInside];
+          return cell;
+
+    }
+    return nil;
+}
+
+
+-(void)flip:(id)sender{
+    isDetail = !isDetail;
+    [self.tableView reloadData];
+    if(isDetail){
+        UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"服务" target:self action:@selector(flip:)];
+        self.navigationItem.rightBarButtonItem=flipButton;
+    }else{
+        UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]initWithTitle:@"详情" target:self action:@selector(flip:)];
+        self.navigationItem.rightBarButtonItem=flipButton;
+        
+    }
+
+    CGContextRef context=UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+       [UIView setAnimationDelegate:self];
+    [UIView commitAnimations];
+    
+    
 }
 
 - (void)btnSubmit:(UIButton *)b
@@ -120,16 +173,15 @@
         [post.postArgs setValue:@"" forKey:@"ticketid"];
 
     }
-    
-    
-    
     [post start:^(SHTask *t) {
         if([t.result valueForKey:@"orderid"]){
             orderId = [t.result valueForKey:@"orderid"];
+            price = [[t.result valueForKey:@"finalprice"] floatValue];
             [self showAlertDialog:[NSString stringWithFormat: @"请在与商家的交易结束付款。\n现在确认付款［%g］元?",[[t.result valueForKey:@"finalprice"] floatValue]] button:@"确定" otherButton:@"取消"];
         }
-        
+
         [self dismissWaitDialog];
+        [self request];
 
     } taskWillTry:nil taskDidFailed:^(SHTask *t) {
         [self dismissWaitDialog];
@@ -147,8 +199,15 @@
     order.tradeNO =  orderId ; //订单ID（由商家自行制定）
     order.productName = @"洗车"; //商品标题
     order.productDescription = [NSString stringWithFormat:@"%@-服务费",[dic valueForKey:@"shopname"]]; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
-    order.notifyURL =  @"http://112.124.22.156:8083/chebaobao/notify_url.jsp"; //回调URL
+    
+#if DEBUG
+    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
+    
+#else
+    order.amount = [NSString stringWithFormat:@"%.2f",price]; //商品价格//discountafteronlinepay
+    
+#endif
+    order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
     
     NSString* orderInfo = [order description];
     
@@ -200,23 +259,6 @@
 - (IBAction)btnContact:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%d",[[dic valueForKey:@"shopmobile"] integerValue]]]];
 
-}
-
-
-- (NSString *)generateTradeNO
-{
-    const int N = 15;
-    
-    NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *result = [[NSMutableString alloc] init] ;
-    srand(time(0));
-    for (int i = 0; i < N; i++)
-    {
-        unsigned index = rand() % [sourceString length];
-        NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
-        [result appendString:s];
-    }
-    return result;
 }
 
 -(NSString*)doRsa:(NSString*)orderInfo

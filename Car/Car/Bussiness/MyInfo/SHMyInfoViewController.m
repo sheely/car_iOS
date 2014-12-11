@@ -59,6 +59,8 @@
 {
     if(indexPath.section == 0 ||( indexPath.section == 2 && indexPath.row == 4)) {
         return 80;
+    }else if ((indexPath.section == 2 && indexPath.row == 0) || (indexPath.section == 2 && indexPath.row == 1)){
+        return 0;
     }
     return 44;
 }
@@ -194,13 +196,13 @@
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];
             cell.labTitle.text = @"五星好评";
             cell.backgroundColor = [UIColor whiteColor];
-
+            cell.hidden = YES;
             return cell;
         }else if (indexPath.row == 1){
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];
             cell.labTitle.text = @"检查更新";
             cell.backgroundColor = [UIColor whiteColor];
-
+            cell.hidden = YES;
             return cell;
         }else if (indexPath.row == 2){
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];

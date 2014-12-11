@@ -57,6 +57,7 @@
     SHCheckItemView * view = [[[NSBundle mainBundle]loadNibNamed:@"SHCheckItemView" owner:nil options:nil] objectAtIndex:0];
     view.labTitle.text = [dic valueForKey:@"devicename"];
     view.labContent.text = [dic valueForKey:@"expertanswer"];
+    view.labReason.text = [dic valueForKey:@"reason"];
     if([[dic valueForKey:@"uploadpicture"] length]>0){
         [view.imgPhoto setUrl:[dic valueForKey:@"uploadpicture"]];
     }

@@ -36,6 +36,14 @@
         self.viewSpecial.hidden = NO;
         self.labSpecialDiscount.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"specialwashdiscountprice"] floatValue]];
         self.labSpecialOriginal.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"specialwashoriginalprice"] floatValue]];
+    }else{
+        CGRect  frame = self.viewCoupon.frame;
+        frame.origin.y -= 48;
+        self.viewCoupon.frame = frame;
+        
+        frame = self.btnSubmit.frame;
+        frame.origin.y -= 48;
+        self.btnSubmit.frame = frame;
     }
     NSArray * array = [_dicInfo valueForKey:@"mywashtickets"];
     for (int i = 0; i<array.count; i++) {
@@ -45,9 +53,17 @@
             self.labCoupon.text = [NSString stringWithFormat:@"%g元优惠劵",[[dic valueForKey:@"washticketmoney"]floatValue ]];
                 gouponPrice = [[dic valueForKey:@"washticketmoney"]floatValue ];
             self.gouponId = [dic valueForKey:@"washticketid"];
-            break;
+            
+                       break;
         }
     }
+    if(self.viewCoupon.hidden){
+        CGRect  frame = self.btnSubmit.frame;
+        frame.origin.y -= 48;
+        self.btnSubmit.frame = frame;
+
+    }
+    
     self.labNormalDiscount.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"normalwashdiscountprice"] floatValue]];
     self.labNormalOriginal.text = [NSString stringWithFormat:@"%g元",[[_dicInfo valueForKey:@"normalwashoriginalprice"] floatValue]];
     [self caculater];

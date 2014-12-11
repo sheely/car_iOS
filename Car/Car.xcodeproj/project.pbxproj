@@ -280,6 +280,9 @@
 		9EDA7CDB1A0DE20400738D29 /* userphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EDA7CDA1A0DE20400738D29 /* userphoto.png */; };
 		9EDA7CDD1A0DE2F700738D29 /* SHChatUnitMySelfViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EDA7CDC1A0DE2F700738D29 /* SHChatUnitMySelfViewCell.xib */; };
 		9EDD0B201A211FA3000FD9E0 /* libCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD0B1F1A211FA3000FD9E0 /* libCore.a */; };
+		9EDD0B541A21F951000FD9E0 /* SHCheckOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD0B531A21F951000FD9E0 /* SHCheckOrderView.m */; };
+		9EDD0B571A238889000FD9E0 /* SHShopPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD0B561A238889000FD9E0 /* SHShopPhotoViewCell.m */; };
+		9EDD0B591A23889D000FD9E0 /* SHShopPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EDD0B581A23889D000FD9E0 /* SHShopPhotoViewCell.xib */; };
 		9EF627E119CEBA4900111E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF627E019CEBA4900111E2F /* main.m */; };
 		9EF627E719CEBA4900111E2F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF627E619CEBA4900111E2F /* ViewController.m */; };
 		9EF627EC19CEBA4900111E2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF627EB19CEBA4900111E2F /* Images.xcassets */; };
@@ -980,6 +983,11 @@
 		9EDD0B4F1A212062000FD9E0 /* SHUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHUserLocation.h; sourceTree = "<group>"; };
 		9EDD0B501A212062000FD9E0 /* SHVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHVersion.h; sourceTree = "<group>"; };
 		9EDD0B511A212062000FD9E0 /* wax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wax.h; sourceTree = "<group>"; };
+		9EDD0B521A21F951000FD9E0 /* SHCheckOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCheckOrderView.h; sourceTree = "<group>"; };
+		9EDD0B531A21F951000FD9E0 /* SHCheckOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCheckOrderView.m; sourceTree = "<group>"; };
+		9EDD0B551A238889000FD9E0 /* SHShopPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHShopPhotoViewCell.h; sourceTree = "<group>"; };
+		9EDD0B561A238889000FD9E0 /* SHShopPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHShopPhotoViewCell.m; sourceTree = "<group>"; };
+		9EDD0B581A23889D000FD9E0 /* SHShopPhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHShopPhotoViewCell.xib; sourceTree = "<group>"; };
 		9EF627DB19CEBA4900111E2F /* Car.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Car.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF627DF19CEBA4900111E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF627E019CEBA4900111E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1477,6 +1485,8 @@
 				9E3F62C519D30D24008C8B7B /* SHShopListViewController.h */,
 				9E3F62C619D30D24008C8B7B /* SHShopListViewController.m */,
 				9E3F62C719D30D24008C8B7B /* SHShopListViewController.xib */,
+				9EDD0B521A21F951000FD9E0 /* SHCheckOrderView.h */,
+				9EDD0B531A21F951000FD9E0 /* SHCheckOrderView.m */,
 				9E3F62CA19D31B34008C8B7B /* SHShopListCell.h */,
 				9E3F62CB19D31B34008C8B7B /* SHShopListCell.m */,
 				9E3F62CD19D31B48008C8B7B /* SHShopListCell.xib */,
@@ -1503,6 +1513,9 @@
 				9ED77AB41A175660007CAD7E /* SHLineViewController.h */,
 				9ED77AB51A175660007CAD7E /* SHLineViewController.mm */,
 				9ED77AB61A175660007CAD7E /* SHLineViewController.xib */,
+				9EDD0B551A238889000FD9E0 /* SHShopPhotoViewCell.h */,
+				9EDD0B561A238889000FD9E0 /* SHShopPhotoViewCell.m */,
+				9EDD0B581A23889D000FD9E0 /* SHShopPhotoViewCell.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -2908,7 +2921,7 @@
 				TargetAttributes = {
 					9EF627DA19CEBA4900111E2F = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = RJ35P28RXH;
+						DevelopmentTeam = 396HM64726;
 					};
 					9EF627F319CEBA4900111E2F = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -3103,6 +3116,7 @@
 				9E3D5A1B19E7925500141C9D /* SHProvinceViewController.xib in Resources */,
 				9EF627EC19CEBA4900111E2F /* Images.xcassets in Resources */,
 				9ED5509B19D5DA910046A4C1 /* dashboard_warning@3x.png in Resources */,
+				9EDD0B591A23889D000FD9E0 /* SHShopPhotoViewCell.xib in Resources */,
 				9ECD86B11A0F303600AD2977 /* icon_stop_com@2x.png in Resources */,
 				9EF62BF519CF002400111E2F /* DSLCalendar-previousMonth@2x.png in Resources */,
 				9ED77AEE1A17A9D4007CAD7E /* baiduNaviSDK.bundle in Resources */,
@@ -3232,6 +3246,7 @@
 				9EF62BE819CF002400111E2F /* NSDate+Addtion.m in Sources */,
 				9EF62C4B19CF002400111E2F /* SHNoneViewCell.m in Sources */,
 				9EF62C7919CF002400111E2F /* VRGCalendarView.m in Sources */,
+				9EDD0B541A21F951000FD9E0 /* SHCheckOrderView.m in Sources */,
 				9EF62BEC19CF002400111E2F /* DSLCalendarDayView.m in Sources */,
 				9EF62C7819CF002400111E2F /* UIView+convenience.m in Sources */,
 				9EF62C9119CF263B00111E2F /* SHRequirementViewController.m in Sources */,
@@ -3385,6 +3400,7 @@
 				9EF62C3519CF002400111E2F /* SDWebImageDownloaderOperation.m in Sources */,
 				9E3D5A1519E711DC00141C9D /* SHSubCategaryViewController.m in Sources */,
 				9EF62C2719CF002400111E2F /* MBProgressHUD.m in Sources */,
+				9EDD0B571A238889000FD9E0 /* SHShopPhotoViewCell.m in Sources */,
 				9EF62C3419CF002400111E2F /* SDWebImageDownloader.m in Sources */,
 				9E2EB8AF1A08A62C00770A42 /* SHChatListViewCell.m in Sources */,
 				9ED77AB71A175660007CAD7E /* SHLineViewController.mm in Sources */,

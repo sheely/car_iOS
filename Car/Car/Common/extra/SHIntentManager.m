@@ -22,6 +22,7 @@ static UINavigationController * __NAVIGATION__;
         [__NAVIGATION__.view removeFromSuperview];
         [__NAVIGATION__ popToRootViewControllerAnimated:NO];
         __NAVIGATION__ = nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"modal_cancel" object:nil ];
     }];
    
 }
