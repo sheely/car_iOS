@@ -3551,7 +3551,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d557d16-40ce-4666-a000-116327a0782d";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -3590,7 +3590,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d557d16-40ce-4666-a000-116327a0782d";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
