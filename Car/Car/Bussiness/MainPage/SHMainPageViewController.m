@@ -8,7 +8,7 @@
 
 #import "SHMainPageViewController.h"
 #import "SHChatListHelper.h"
-
+#import <SHCore/SHHttpReel.h>
 @interface SHMainPageViewController ()
 {
     NSTimer * timer;

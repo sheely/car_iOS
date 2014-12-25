@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "SHImageView.h"
-#import "Core.h"
 @class SHImageView;
 
 @protocol SHImageViewDelegate<NSObject>

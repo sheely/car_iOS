@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 sheely.paean.coretest. All rights reserved.
 //
 
-#import "BMKPointAnnotation.h"
 
 @interface SHShopPointAnnotation : BMKPointAnnotation
 @property (nonatomic,assign) int tag;
