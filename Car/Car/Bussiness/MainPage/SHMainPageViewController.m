@@ -193,7 +193,7 @@
 - (void)notificationInsurance
 {
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
-    [intent.args setValue:@"保险" forKey:@"title"];
+    [intent.args setValue:@"代办业务" forKey:@"title"];
     [intent.args setValue:@"insurance" forKey:@"type"];
     [[UIApplication sharedApplication]open:intent];
 }
@@ -205,7 +205,7 @@
 - (void)notificationMore{
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
     [intent.args setValue:@"consultation" forKey:@"type"];
-    [intent.args setValue:@"咨询" forKey:@"title"];
+    [intent.args setValue:@"专家解疑" forKey:@"title"];
     [[UIApplication sharedApplication]open:intent];
 }
 

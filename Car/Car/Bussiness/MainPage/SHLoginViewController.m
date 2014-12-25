@@ -41,6 +41,12 @@
 
 - (IBAction)btnSubmitOnTouch:(id)sender
 {
+    if(self.txtLoginName.text.length == 0 || self.txtPassword.text.length == 0){
+        
+        [self showAlertDialog:@"账号，验证码不能为空"];
+        return;
+    }
+    
     SHEntironment.instance.loginName = self.txtLoginName.text;
     SHEntironment.instance.password = self.txtPassword.text;
     [self showWaitDialogForNetWork];
@@ -121,5 +127,16 @@
         }];
         
     }
+}
+
+- (IBAction)radiobuttonChanged:(UISwitch*)sender {
+    self.btnSubmit.enabled = sender.on;
+    self.btnCode.enabled = sender.on;
+}
+
+- (IBAction)btnLoginPrivacyOnTouch:(id)sender {
+    
+    SHIntent * i = [[SHIntent alloc]init:@"loginprivacy" delegate:nil containner:self.navigationController];
+    [[UIApplication sharedApplication]open:i];
 }
 @end

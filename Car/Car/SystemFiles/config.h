@@ -12,7 +12,7 @@
 
 
 //测试站
-#define URL_HEADER @"http://115.29.210.204:8080/chebaobao/"
+#define URL_HEADER @"http://115.29.210.204:8080/chebaobao"
 
 //#define URL_HEADER @"http://192.168.1.141:8181/"
 //正式地址 发布地址

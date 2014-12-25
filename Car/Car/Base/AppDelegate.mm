@@ -32,7 +32,7 @@ BMKMapManager* _mapManager;
     _mapManager = [[BMKMapManager alloc]init];
     BMKMapView * v = [[BMKMapView alloc]init];
 #if DEBUG
-    BOOL ret = [_mapManager start:@"RBhfcwkz7KQrImZCaERxI8ro" generalDelegate:(id<BMKGeneralDelegate>)self];
+    BOOL ret = [_mapManager start:@"2GNPcYG9Kqfi3Up0bPGyvftD" generalDelegate:(id<BMKGeneralDelegate>)self];
 #else
     BOOL ret = [_mapManager start:@"207KGwdrL9x8WDoHTFDeMqmS" generalDelegate:(id<BMKGeneralDelegate>)self];
 #endif
@@ -59,25 +59,26 @@ BMKMapManager* _mapManager;
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
 
     }
-    
-    //判断是否由远程消息通知触发应用程序启动
-    if (launchOptions) {
-        //获取应用程序消息通知标记数（即小红圈中的数字）
-        NSInteger badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
-        if (badge>0) {
-            //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
-            badge--;
-            //清除标记。清除小红圈中数字，小红圈中数字为0，小红圈才会消除。
-            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
-            NSDictionary *pushInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
-            
-            //获取推送详情
-            NSString *pushString = [NSString stringWithFormat:@"%@",[pushInfo  objectForKey:@"aps"]];
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"finish Loaunch" message:pushString delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil];
-            [alert show];
-        }
-    }
-    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+//    //判断是否由远程消息通知触发应用程序启动
+//    if (launchOptions) {
+//        //获取应用程序消息通知标记数（即小红圈中的数字）
+//        NSInteger badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+//        if (badge>0) {
+//            //如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。
+//            badge--;
+//            //清除标记。清除小红圈中数字，小红圈中数字为0，小红圈才会消除。
+//            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+//            NSDictionary *pushInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
+//            
+//            //获取推送详情
+//            NSString *pushString = [NSString stringWithFormat:@"%@",[pushInfo  objectForKey:@"aps"]];
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"finish Loaunch" message:pushString delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil];
+//            [alert show];
+//        }
+//    }
+//    
     
     return YES;
 }

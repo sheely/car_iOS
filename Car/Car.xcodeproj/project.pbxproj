@@ -212,6 +212,8 @@
 		9E82BBAC19F0229C007301EA /* SHOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BBAA19F0229C007301EA /* SHOrderListViewController.xib */; };
 		9E82BBAE19F28C10007301EA /* img_request_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BBAD19F28C10007301EA /* img_request_bg.png */; };
 		9E82BBB019F2A4D7007301EA /* btn_keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E82BBAF19F2A4D7007301EA /* btn_keyboard.png */; };
+		9E8421F51A39ED8A009FACD9 /* SHServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8421F31A39ED8A009FACD9 /* SHServiceViewController.m */; };
+		9E8421F61A39ED8A009FACD9 /* SHServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E8421F41A39ED8A009FACD9 /* SHServiceViewController.xib */; };
 		9E947E781A0A6C2600D076B8 /* icon_set_report@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */; };
 		9E947E791A0A6C2600D076B8 /* icon_set_repair@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E711A0A6C2600D076B8 /* icon_set_repair@3x.png */; };
 		9E947E7A1A0A6C2600D076B8 /* icon_set_insurance@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E947E721A0A6C2600D076B8 /* icon_set_insurance@3x.png */; };
@@ -842,6 +844,9 @@
 		9E82BBAA19F0229C007301EA /* SHOrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHOrderListViewController.xib; sourceTree = "<group>"; };
 		9E82BBAD19F28C10007301EA /* img_request_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_request_bg.png; sourceTree = "<group>"; };
 		9E82BBAF19F2A4D7007301EA /* btn_keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_keyboard.png; sourceTree = "<group>"; };
+		9E8421F21A39ED8A009FACD9 /* SHServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHServiceViewController.h; sourceTree = "<group>"; };
+		9E8421F31A39ED8A009FACD9 /* SHServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHServiceViewController.m; sourceTree = "<group>"; };
+		9E8421F41A39ED8A009FACD9 /* SHServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHServiceViewController.xib; sourceTree = "<group>"; };
 		9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_report@3x.png"; sourceTree = "<group>"; };
 		9E947E711A0A6C2600D076B8 /* icon_set_repair@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_repair@3x.png"; sourceTree = "<group>"; };
 		9E947E721A0A6C2600D076B8 /* icon_set_insurance@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_set_insurance@3x.png"; sourceTree = "<group>"; };
@@ -2868,6 +2873,9 @@
 				9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */,
 				9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */,
 				9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */,
+				9E8421F21A39ED8A009FACD9 /* SHServiceViewController.h */,
+				9E8421F31A39ED8A009FACD9 /* SHServiceViewController.m */,
+				9E8421F41A39ED8A009FACD9 /* SHServiceViewController.xib */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -2921,7 +2929,7 @@
 				TargetAttributes = {
 					9EF627DA19CEBA4900111E2F = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 396HM64726;
+						DevelopmentTeam = RJ35P28RXH;
 					};
 					9EF627F319CEBA4900111E2F = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -2981,6 +2989,7 @@
 				9EF62C2619CF002400111E2F /* MBProgressHUD.bundle in Resources */,
 				9EF62C1F19CF002400111E2F /* button_current_bg.png in Resources */,
 				9E3F62C319D1DA65008C8B7B /* ic_sound@3x.png in Resources */,
+				9E8421F61A39ED8A009FACD9 /* SHServiceViewController.xib in Resources */,
 				9E21772019FFCE070017F710 /* SHCategoryView.xib in Resources */,
 				9EF62BF319CF002400111E2F /* DSLCalendar-nextMonth@2x.png in Resources */,
 				9EF62C0319CF002400111E2F /* blueArrow.png in Resources */,
@@ -3419,6 +3428,7 @@
 				9E21771419FEB4190017F710 /* NSObject+SBJSON.m in Sources */,
 				9EF62C2B19CF002400111E2F /* MJPhotoLoadingView.m in Sources */,
 				9EF62C1919CF002400111E2F /* MMProgressHUDWindow.m in Sources */,
+				9E8421F51A39ED8A009FACD9 /* SHServiceViewController.m in Sources */,
 				9E3D5A0419E6A4EB00141C9D /* SHEditCarinfoViewViewController.m in Sources */,
 				9ED77AF71A17A9D4007CAD7E /* NSCharacterSet_Extensions.m in Sources */,
 				9ED77AFE1A17A9D4007CAD7E /* CSerializedJSONData.m in Sources */,
@@ -3535,6 +3545,7 @@
 		9EF627FF19CEBA4900111E2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3565,15 +3576,19 @@
 					"$(PROJECT_DIR)/Car/frame/baiduNaviSDK/TTS",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Core-bfkdayqfzvfnglfnzbvsdeubegwu/Build/Products/Release-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos8.1;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
 		9EF6280019CEBA4900111E2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3604,10 +3619,12 @@
 					"$(PROJECT_DIR)/Car/frame/baiduNaviSDK/TTS",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Core-bfkdayqfzvfnglfnzbvsdeubegwu/Build/Products/Release-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				SDKROOT = iphoneos8.1;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};

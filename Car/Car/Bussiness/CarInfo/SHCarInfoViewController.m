@@ -274,7 +274,7 @@ int order = 0;
                                        defaultContent:@"分享到我的车况信息"
                                                 image:[ShareSDK pngImageWithImage:[self screenShot]]
                                                 title:@"车况信息"
-                                                  url:nil
+                                                  url:@""
                                           description:@"我的爱车"
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -346,13 +346,6 @@ int order = 0;
 - (void)btnItemOnTouch:(UIButton*)button
 {
     //KxMenu * kx = [[KxMenu alloc]init];
-    KxMenuItem * kxt = [[KxMenuItem alloc]init];
-    kxt.title = @"变更:正常";
-    kxt.target = self;
-    kxt.action = @selector(kxtOnTouch:);
-    kxt.tag = button.tag;
-    kxt.image = [UIImage imageNamed:@"set_status_normal"];
-    kxt.index = 0;
     KxMenuItem * kxt4 = [[KxMenuItem alloc]init];
     
     kxt4.title = @"检测报告";
@@ -362,8 +355,21 @@ int order = 0;
     kxt4.index = 1;
     kxt4.image = [UIImage imageNamed:@"lis_icon_report"];
     
-    [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt4]];
-}
+    if(![[[mDic valueForKey:@"activitedcar"] valueForKey:@"reportid"]isEqualToString:@"demo"]){
+        KxMenuItem * kxt = [[KxMenuItem alloc]init];
+        kxt.title = @"变更:正常";
+        kxt.target = self;
+        kxt.action = @selector(kxtOnTouch:);
+        kxt.tag = button.tag;
+        kxt.image = [UIImage imageNamed:@"set_status_normal"];
+        kxt.index = 0;
+        [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt,kxt4]];
+
+    }else{
+        [KxMenu showMenuInView:self.view fromRect:[button convertRect:button.frame toView:self.view] menuItems:@[kxt4]];
+
+    }
+   }
 
 - (void)kxtOnTouch:(KxMenuItem*)item
 {
@@ -381,6 +387,7 @@ int order = 0;
         [post.postArgs setValue:[NSNumber numberWithInt:0] forKey:@"devicestatus"];
         [post start:^(SHTask *t) {
             [t.respinfo show];
+            [self request];
             
         } taskWillTry:nil taskDidFailed:^(SHTask *t) {
             [t.respinfo show];

@@ -227,6 +227,11 @@
     
 }
 
+- (void)btnLocationOnTouch:(UIButton*)b
+{
+    [_mapView updateLocationData:(BMKUserLocation*)[SHLocationManager instance].userlocation.source];
+    [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];}
+
 - (void)loadSkin
 {
     [super loadSkin];

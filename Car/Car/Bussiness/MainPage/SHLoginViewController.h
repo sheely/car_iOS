@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 - (IBAction)btnCodeOnTouch:(id)sender;
+- (IBAction)radiobuttonChanged:(id)sender;
+- (IBAction)btnLoginPrivacyOnTouch:(id)sender;
 
 @end
