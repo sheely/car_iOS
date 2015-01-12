@@ -14,12 +14,25 @@
 
 @implementation SHEditCarinfoViewViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_editcar"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_editcar"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     if([self.intent.args valueForKey:@"carinfo"] == nil){
         self.title = @"添加车辆";
         self.carinfo = [[NSMutableDictionary alloc]init];
+        self.btnDelete.hidden = YES;
     }else {
         self.title = @"修改车辆";
         self.carinfo = [self.intent.args valueForKey:@"carinfo"];
@@ -43,6 +56,8 @@
     [super loadSkin];
     self.btnSubmit.layer.masksToBounds = YES;
     self.btnSubmit.layer.cornerRadius = 5;
+    self.btnDelete.layer.masksToBounds = YES;
+    self.btnDelete.layer.cornerRadius = 5;
 }
 
 /*
@@ -115,6 +130,29 @@
 
 - (IBAction)btnSubmitOnTouch:(id)sender
 {
+    if([[self.carinfo valueForKey:@"carcategoryid"] length] == 0){
+        
+        [self showAlertDialog:@"请选择车型"];
+        return;
+    }else if([[self.carinfo valueForKey:@"carseriesid"] length] == 0){
+        
+        [self showAlertDialog:@"请选择车系"];
+        return;
+    }else if([[self.carinfo valueForKey:@"provinceid"] length] == 0){
+        
+        [self showAlertDialog:@"请选择省份"];
+        return;
+    }else if([[self.carinfo valueForKey:@"alphabetname"] length] == 0){
+        
+        [self showAlertDialog:@"请选择城市代码"];
+        return;
+    }else if([self.txtField.text length] == 0){
+        
+        [self showAlertDialog:@"请输入车牌号码"];
+        return;
+    }
+    
+    
     SHPostTaskM * p = [[SHPostTaskM alloc]init];
     [self showWaitDialogForNetWork];
     p.URL = URL_FOR(@"mycarmaintanance.action");
@@ -149,5 +187,39 @@
 }
 // called when 'return' key pressed. return NO to ignore.
 
+
+- (IBAction)btnDeleteOnTouch:(id)sender {
+//    [self showAlertDialog: [NSString stringWithFormat:@"确认删除您的[%@]牌汽车？",[self.carinfo  valueForKey:@"carcategoryname"]]];
+//    
+    [self showAlertDialog:[NSString stringWithFormat:@"确认删除您的[%@]牌汽车？",[self.carinfo  valueForKey:@"carcategoryname"]] otherButton:@"取消"];
+}
+
+- (void)alertViewEnSureOnClick
+{
+    SHPostTaskM * p = [[SHPostTaskM alloc]init];
+    [self showWaitDialogForNetWork];
+    p.URL = URL_FOR(@"mycarmaintanance.action");
+    [p.postArgs setValuesForKeysWithDictionary:self.carinfo];
+    if([[self.carinfo valueForKey:@"carid"] length] > 0){
+        [p.postArgs setValue:[NSNumber numberWithInt:2] forKey:@"optype"];
+        [p.postArgs setValue:[self.carinfo valueForKey:@"carid"] forKey:@"carid"];
+    }
+    [p.postArgs setValue:self.txtField.text forKey:@"carcardno"];
+    
+    [p start:^(SHTask *t) {
+        [self dismissWaitDialog];
+        if([self.delegate respondsToSelector:@selector(editcarinfosubmit:)]){
+            [(id<SHEditCarinfoViewViewControllerDelegate> )self.delegate editcarinfosubmit:self ];
+        }
+        [t.respinfo show];
+        
+    } taskWillTry:nil taskDidFailed:^(SHTask *t) {
+        [self dismissWaitDialog];
+        
+        [t.respinfo show];
+    }];
+    
+
+}
 
 @end

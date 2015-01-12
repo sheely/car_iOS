@@ -15,6 +15,19 @@
 
 @implementation SHViewCheckReportViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_checkdetail"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_checkdetail"];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车辆检测报告";

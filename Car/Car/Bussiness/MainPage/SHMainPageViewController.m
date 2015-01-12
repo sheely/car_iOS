@@ -14,11 +14,17 @@
     NSTimer * timer;
     int index;
     int direct;
+    BOOL isGuild;
 }
 @end
 
 @implementation SHMainPageViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_mainpage"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车宝宝";
@@ -29,7 +35,9 @@
         SHEntironment.instance.loginName = [dicuser valueForKey:@"username"];
         SHEntironment.instance.password = [dicuser valueForKey:@"password"];
     }
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configChanged:) name:CORE_NOTIFICATION_CONFIG_STATUS_CHANGED object:nil];
+    [[SHConfigManager instance] setURL:URL_FOR( @"getconfig.action")];
+    [[SHConfigManager instance] refresh];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(require_update:) name:NOTIFICATION_UPDATE_REQUIRE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSussessful:) name:NOTIFICATION_LOGIN_SUCCESSFUL object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageChanged:) name:@"newmessage" object:nil];
@@ -37,6 +45,12 @@
     [self loginSussessful:nil];
     //    pagecontrol
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)configChanged:(NSObject*)b
+
+{
+    [[SHConfigManager instance] show];
 }
 
 - (void)messageChanged:(NSNotification*)n
@@ -142,8 +156,21 @@
         labBrand.text = [NSString stringWithFormat:@"%@(%@)",[dic valueForKey:@"carcategoryname"],[dic valueForKey:@"carseriesname"]];
         labCardNo.text =[NSString stringWithFormat:@"%@%@ %@",[dic valueForKey:@"provincename"],[dic valueForKey:@"alphabetname"],[dic valueForKey:@"carcardno"]];
         [imgBrand setUrl:[dic valueForKey:@"carlogo"]];
+        
+    }else{
+        if(!isGuild){
+            isGuild = YES;
+        viewguild.alpha = 0;
+        [[UIApplication sharedApplication].keyWindow addSubview:viewguild];
+        
+        [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            viewguild.alpha = 1;
+        } completion:^(BOOL finished) {
+        }];
+        }
     }
-   
+    [MobClick beginLogPageView:@"view_mainpage"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -211,24 +238,32 @@
 
 - (IBAction)btnCleanOnTouch:(id)sender {
      [self performSelector:@selector(notificationCleanCar) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
-  }
+}
 
 - (void)notificationCleanCar
 {
-    if([SHLocationManager.instance userlocation]){
+    if([SHLocationManager.instance userlocation] && [SHLocationManager.instance userlocation].location){
         SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
         [intent.args setValue:@"洗车" forKey:@"title"];
         [intent.args setValue:@"clean" forKey:@"type"];
         
         [[UIApplication sharedApplication]open:intent];
     }else{
-        [self showAlertDialog:@"仍在定位，请稍后再试"];
+        if ([CLLocationManager locationServicesEnabled] &&
+            [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ){
+            [self showAlertDialog:@"系统仍在定位，请稍后再试.."];
+        }
+        else{
+            [self showAlertDialog:@"亲爱的用户，我们需要您的位置信息搜索最近的商户，请您在\n[设置]->[隐私]->[定位服务]找到[养车宝宝]，并选择授权.感谢您的支持"];
+        }
+        
     }
 }
 
 - (IBAction)btnCheckOnTouch:(id)sender {
      [self performSelector:@selector(notificationCheck) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
-   }
+}
+
 - (void)notificationCheck
 {
     SHIntent * intent = [[SHIntent alloc]init:@"shoplist" delegate:self containner:self.navigationController];
@@ -238,15 +273,17 @@
 
 }
 
-
 - (IBAction)btnCarManageOnTouch:(id)sender
 {
     [self performSelector:@selector(notificationMyCar) afterNotification:NOTIFICATION_LOGIN_SUCCESSFUL];
 }
 
-- (IBAction)btnTabOnTouch:(id)sender
-{
- //   [self showAlertDialog:@""];
+- (IBAction)btnCLoseGuildOnTouch:(id)sender {
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        viewguild.alpha = 0;
+    } completion:^(BOOL finished) {
+        [viewguild removeFromSuperview];
+    }];
 }
 
 - (IBAction)btn3OnTouch:(id)sender {
@@ -272,6 +309,7 @@
     [[UIApplication sharedApplication]open:intent];
 
 }
+
 - (void)notificationMyCar
 {
     SHIntent * intent = [[SHIntent alloc]init:@"mycarlist" delegate:self containner:self.navigationController];

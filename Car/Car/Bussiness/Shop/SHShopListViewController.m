@@ -42,7 +42,16 @@
 
 @implementation SHShopListViewController
 @synthesize player;
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
+        [MobClick endLogPageView:@"view_clean"];
+    }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"check"]){
+        [MobClick endLogPageView:@"view_checkcar"];
+    }
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     mList = [[NSMutableArray alloc]init];
@@ -60,6 +69,8 @@
         self.viewMapCollect.hidden = YES;
         self.viewCheck.hidden = YES;
         self.viewRequest.hidden = YES;
+        [MobClick beginLogPageView:@"view_clean"];
+        
     }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"check"]){
         self.tableView.hidden = YES;
         self.viewCheck.hidden = NO;
@@ -76,22 +87,24 @@
             }
         }
      taskWillTry:nil
-   taskDidFailed:^(SHTask *t) {
+            taskDidFailed:^(SHTask *t) {
        [self dismissWaitDialog];
-   }];
+            }];
+        [MobClick beginLogPageView:@"view_checkcar"];
+
     }else if ([[self.intent.args valueForKey:@"type"] isEqualToString:@"consultation"]){
         self.tableView.hidden = YES;
         self.viewCheck.hidden = YES;
         self.imgBgView.hidden = NO;
         self.viewRequest.hidden = NO;
         type = 2;
-
+        
     }else {
         if([[self.intent.args valueForKey:@"type"]isEqualToString:@"repair"]){
             type = 1;
         }else if([[self.intent.args valueForKey:@"type"]isEqualToString:@"support"]){
             type = 0;
-
+            
         }
         else if([[self.intent.args valueForKey:@"type"]isEqualToString:@"insurance"]){
             type = 4;
@@ -101,7 +114,7 @@
         self.viewCheck.hidden = YES;
         self.viewRequest.hidden = NO;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage: [UIImage imageNamed:@"icon_list"] target:self action:@selector(checkListMap)];
-
+        
     }
     SHPostTaskM * post = [[SHPostTaskM alloc]init];
     post.URL = URL_FOR(@"maintainanceinit.action");
@@ -152,7 +165,7 @@
     _mapView.showsUserLocation = YES;//显示定位图层
     [_mapView updateLocationData:(BMKUserLocation*)[SHLocationManager instance].userlocation.source];
     [_mapView setCenterCoordinate:[SHLocationManager instance].userlocation.location.coordinate animated:YES];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocation:) name:CORE_NOTIFICATION_LOCATION_UPDATE_USERLOCATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocation:) name:CORE_NOTIFICATION_LOCATION_UPDATE_USERLOCATION object:nil];
     mListPhoto = [[NSMutableArray alloc]init];
     _searcher =[[BMKGeoCodeSearch alloc]init];
     _searcher.delegate = self;
@@ -185,7 +198,7 @@
                                                             BMKReverseGeoCodeOption alloc]init];
     reverseGeoCodeSearchOption.reverseGeoPoint = pt;
     [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
-
+    
 }
 
 -(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:
@@ -254,7 +267,7 @@
     self.btnTxt.layer.borderColor = [UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1].CGColor;
     self.btnTxt.layer.borderWidth = 0.5;
     self.btnTxt.layer.cornerRadius = 5;
-
+    
     self.keybordView = nil;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField              // called when 'return' key pressed. return NO to ignore.
@@ -319,10 +332,10 @@
         [post.postArgs setValue:[[NSArray alloc]init] forKey:@"uploadedpicture"];
     }
     if(mp3FilePath.length > 0){
-    [post.postArgs setValue:[SHBase64 encode:[NSData dataWithContentsOfFile:mp3FilePath]] forKey:@"sound"];
+        [post.postArgs setValue:[SHBase64 encode:[NSData dataWithContentsOfFile:mp3FilePath]] forKey:@"sound"];
     }else{
         [post.postArgs setValue:[SHBase64 encode:[[NSData alloc] init]] forKey:@"sound"];
-
+        
     }
     [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.latitude] forKey:@"lat"];
     [post.postArgs setValue:[NSNumber numberWithFloat:selectLocation.coordinate.longitude]forKey:@"lgt"];
@@ -360,15 +373,15 @@
 -(void) recordStart
 {
     [voice startRecordWithPath:[NSString stringWithFormat:@"%@/Documents/MySound.caf", NSHomeDirectory()]];
-
+    
 }
 -(void) recordEnd
 {
     [voice stopRecordWithCompletionBlock:^{
         
         if (((int)voice.recordTime) > 1) {
-//                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"\nrecord finish ! \npath:%@ \nduration:%f",voice.recordPath,voice.recordTime] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//                        [alert show];
+            //                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"\nrecord finish ! \npath:%@ \nduration:%f",voice.recordPath,voice.recordTime] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            //                        [alert show];
             [self audio_PCMtoMP3];
             [self showEnSureView];
         }else{
@@ -383,7 +396,7 @@
     
     cafFilePath = voice.recordPath;
     mp3FilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/downloadFile.mp3"];
-
+    
     NSFileManager* fileManager=[NSFileManager defaultManager];
     if([fileManager removeItemAtPath:mp3FilePath error:nil]){
         NSLog(@"删除");
@@ -436,35 +449,36 @@
         player.delegate = self;
     }
 }
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    // 判断有摄像头，并且支持拍照功能
-//    // 初始化图片选择控制器
-//    if(actionSheet.tag == 0){
-//        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-//        
-//        if(buttonIndex == 2){
-//            return ;
-//        }else if(buttonIndex == 0){
-//            [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
-//            [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
-//        }else{
-//            [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
-//            
-//        }
-//        
-//        [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
-//        [controller setDelegate:self];// 设置代理
-//        [self.navigationController presentViewController:controller animated:YES completion:nil];
-//    }else {
-//        if(buttonIndex == 0){
-//            washticketid = [checkticket valueForKey:@"washticketid"];
-//            [self payment];
-//        }else if (buttonIndex == 1) {
-//            washticketid = @"";
-//            [self payment];
-//        }
-//    }
-//}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // 判断有摄像头，并且支持拍照功能
+    // 初始化图片选择控制器
+    if(actionSheet.tag == 0){
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        
+        if(buttonIndex == 2){
+            return ;
+        }else if(buttonIndex == 0){
+            [controller setSourceType:UIImagePickerControllerSourceTypeCamera];// 设置类型
+            [controller setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
+        }else{
+            [controller setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];// 设置类型
+            
+        }
+        
+        [controller setAllowsEditing:YES];// 设置是否可以管理已经存在的图片或者视频
+        [controller setDelegate:self];// 设置代理
+        [self.navigationController presentViewController:controller animated:YES completion:nil];
+    }
+    //    else {
+    //        if(buttonIndex == 0){
+    //            washticketid = [checkticket valueForKey:@"washticketid"];
+    //            [self payment];
+    //        }else if (buttonIndex == 1) {
+    //            washticketid = @"";
+    //            [self payment];
+    //        }
+    //    }
+}
 
 
 
@@ -594,31 +608,55 @@
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
-
+        
     }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"check"]){
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
         [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishascheck"];
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
         [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
-    }else{
-        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishaswash"];
-        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishascheck"];
-        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasmaintainance"];
-        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishassellinsurance"];
+    }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"support"]){//救援
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
         [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasurgentrescure"];
-
+    }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"insurance"]){//代办业务
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
+    }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"consultation"]){//专家解答
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
+    }else if([[self.intent.args valueForKey:@"type"] isEqualToString:@"repair"]){//维修保养
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:1] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
+    }else{
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishaswash"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishascheck"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasmaintainance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishassellinsurance"];
+        [task.postArgs setValue:[NSNumber numberWithFloat:0] forKey:@"ishasurgentrescure"];
+        
     }
-   
+    
     [task start:^(SHTask *t) {
         NSArray * a = [t.result valueForKey:@"nearshops"];
         if(a.count == 0 || a.count < 5){
             mIsEnd = YES;
         }
         [mList addObjectsFromArray:a];
-//        CLLocationCoordinate2D far;
-//        CLLocationDistance distance = 0;
-//        BMKMapPoint point1 = BMKMapPointForCoordinate(selectLocation.coordinate);
+        //        CLLocationCoordinate2D far;
+        //        CLLocationDistance distance = 0;
+        //        BMKMapPoint point1 = BMKMapPointForCoordinate(selectLocation.coordinate);
         for (int i = 0 ;i <mList.count; i++) {
             NSDictionary * m  =  [mList objectAtIndex:i];
             SHShopPointAnnotation* pointAnnotation = [[SHShopPointAnnotation alloc]init];
@@ -629,27 +667,27 @@
             pointAnnotation.title = @"test";
             pointAnnotation.subtitle = @"此Annotation可拖拽!";
             pointAnnotation.tag = i;
-//            BMKMapPoint point2 = BMKMapPointForCoordinate(coor);
-//            CLLocationDistance distance_ = BMKMetersBetweenMapPoints(point1,point2);
-//            if(distance_ > distance){
-//                distance = distance_;
-//                far = coor;
-//            }
-//            
+            //            BMKMapPoint point2 = BMKMapPointForCoordinate(coor);
+            //            CLLocationDistance distance_ = BMKMetersBetweenMapPoints(point1,point2);
+            //            if(distance_ > distance){
+            //                distance = distance_;
+            //                far = coor;
+            //            }
+            //
             
             [_mapView addAnnotation:pointAnnotation];
             [mListAnimation addObject:pointAnnotation];
         }
-//        BMKCoordinateRegion region;
-//        if(mList.count > 1){
-//            region.center =selectLocation.coordinate;
-//            region.span = BMKCoordinateSpanMake((far.latitude - selectLocation.coordinate.latitude)*1.5, (far.longitude - selectLocation.coordinate.longitude)*1.5);
-//           // [_mapView setRegion:region animated:YES];
-//        }
+        //        BMKCoordinateRegion region;
+        //        if(mList.count > 1){
+        //            region.center =selectLocation.coordinate;
+        //            region.span = BMKCoordinateSpanMake((far.latitude - selectLocation.coordinate.latitude)*1.5, (far.longitude - selectLocation.coordinate.longitude)*1.5);
+        //           // [_mapView setRegion:region animated:YES];
+        //        }
         if(isFirst){
             isFirst = NO;
             [_mapView setZoomLevel:14];
-        
+            
         }
         [self.tableView reloadData];
         [self dismissWaitDialog];
@@ -667,7 +705,7 @@
         newAnnotation.annotation = annotation;
         //newAnnotation.centerOffset = CGPointMake(1000, -1000);
         ((BMKPinAnnotationView*)newAnnotation).animatesDrop = NO;
-
+        
         return newAnnotation;
         
     }else{
@@ -699,7 +737,7 @@
                 break;
         }
         //newAnnotation.reuseIdentifier = AnnotationViewID;
-//        NSString *AnnotationViewID = @"renameMark";
+        //        NSString *AnnotationViewID = @"renameMark";
         //BMKPinAnnotationView *  newAnnotation =    [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
         //newAnnotation.centerOffset = CGPointMake(1000, -100);
         
@@ -710,7 +748,7 @@
         // 设置可拖拽
         //((BMKPinAnnotationView*)newAnnotation).draggable = YES;
         return newAnnotation;
-
+        
     }
 }
 
@@ -721,7 +759,7 @@
     BMKMapPoint point2 = BMKMapPointForCoordinate(mapView.centerCoordinate);
     
     CLLocationDistance distance_ = BMKMetersBetweenMapPoints(point1,point2);
-
+    
     if(distance_ > 10){
         [self reSet];
         [self showWaitDialogForNetWork];
@@ -746,9 +784,9 @@
     cell.labPrice.text = [NSString stringWithFormat:@"普洗:%@元",[dic valueForKey:@"normalwashoriginalprice"]];
     cell.labNewPrice.text = [NSString stringWithFormat:@"优惠:%@元",[dic valueForKey:@"normalwashdiscountprice"]];
     
-
+    
     cell.backgroundColor= [UIColor whiteColor];
-
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath
@@ -762,7 +800,7 @@
     SHIntent * i =  [[SHIntent alloc]init:@"shopinfo" delegate:nil containner:self.navigationController];
     [i.args setValue:[dic valueForKey:@"shopid"] forKey:@"shopid"];
     [i.args setValue: [self.intent.args valueForKey:@"type"] forKey:@"type"];
-   
+    
     [[UIApplication sharedApplication]open:i];
 }
 - (void)btnAction:(UIButton*)sender
@@ -774,14 +812,14 @@
     [[UIApplication sharedApplication]open:i];}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 - (IBAction)btnAppointmentOnTouch:(id)sender
 
 {
@@ -840,13 +878,13 @@
         finalprice = [[t.result valueForKey:@"finalprice"] floatValue];
         if(finalprice ==0 ){
             [t.respinfo show];
-              [self.viewCheckOrder btnCloseOnTouch:nil];
+            [self.viewCheckOrder btnCloseOnTouch:nil];
         }else {
             [self.viewCheckOrder btnCloseOnTouch:nil];
             UIAlertView * a = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"确认支付［%g]元.",finalprice ] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"支付", nil];
             a.tag = 1;
             [a show];
-
+            
         }
         
     } taskWillTry:nil
@@ -964,18 +1002,18 @@
         [self.txtField becomeFirstResponder];
         [UIView animateWithDuration:0.5 animations:^{
             [sender setImage:[UIImage imageNamed:@"btn_mic.png"] forState:UIControlStateNormal];
-
-              self.txtField.alpha = 1;
+            
+            self.txtField.alpha = 1;
         } completion:nil];
     }else{
-      
+        
         [self.txtField resignFirstResponder];
-
+        
         [UIView animateWithDuration:0.5 animations:^{
             self.txtField.alpha = 0;
             [sender setImage:[UIImage imageNamed:@"btn_keyboard.png"] forState:UIControlStateNormal];
         } completion:^(BOOL finished){self.txtField.hidden = YES;finished = YES;  self.keybordView = nil;}];
-
+        
     }
     
     

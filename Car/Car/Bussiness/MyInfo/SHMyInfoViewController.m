@@ -17,7 +17,17 @@
 @end
 
 @implementation SHMyInfoViewController
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_myinfo"];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_myinfo"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的信息";
@@ -186,7 +196,7 @@
             return cell;
         }else {
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];
-            cell.labTitle.text = @"我的优惠卷";
+            cell.labTitle.text = @"我的优惠券";
             cell.backgroundColor = [UIColor whiteColor];
 
             return cell;

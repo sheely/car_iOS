@@ -60,6 +60,6 @@
     </objects>
     <resources>
         <image name="check_alt.png" width="64" height="64"/>
-        <image name="ic_default_car.png" width="128" height="128"/>
+        <image name="ic_default_car.png" width="420" height="357"/>
     </resources>
 </document>

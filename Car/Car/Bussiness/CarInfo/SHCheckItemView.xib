@@ -81,7 +81,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="set_icon_battery.png" width="32" height="32"/>
+        <image name="set_icon_battery.png" width="128" height="128"/>
         <image name="set_status_warning.png" width="20" height="20"/>
     </resources>
 </document>

@@ -14,6 +14,18 @@
 
 @implementation SHMyCarInfoListViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_mycar"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_mycar"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的车辆";
@@ -22,8 +34,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:nil title:@"添加" target:self action:@selector(btnAdd:)];
     // Do any additional setup after loading the view from its nib.
 }
-
-
 
 - (void)btnAdd:(NSObject*)b
 {
@@ -48,9 +58,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)editcarinfosubmit:(NSObject*)c
+- (void)editcarinfosubmit:(SHViewController*)c
 {
     [self loadNext];
+    if(c){
+        [c.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 - (float)tableView:(UITableView *)tableView heightForGeneralRowAtIndexPath:(NSIndexPath *)indexPath
 {

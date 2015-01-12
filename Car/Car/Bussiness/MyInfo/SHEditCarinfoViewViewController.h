@@ -23,11 +23,13 @@
 - (IBAction)btnProvinceOnTouch:(id)sender;
 - (IBAction)btnLettersOnTouch:(id)sender;
 - (IBAction)btnSubmitOnTouch:(id)sender;
+- (IBAction)btnDeleteOnTouch:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
 
 @property (strong,nonatomic) NSMutableDictionary* carinfo;
 @property (weak, nonatomic) IBOutlet UIButton *btnSubCategary;
-
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
 @property (weak, nonatomic) IBOutlet UIButton *btnCategary;
 @property (weak, nonatomic) IBOutlet UIButton *btnProvince;

@@ -24,6 +24,20 @@
 
 @implementation SHCarInfoViewController
 
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_carcondition"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_carcondition"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车况档案";
@@ -274,7 +288,7 @@ int order = 0;
                                        defaultContent:@"分享到我的车况信息"
                                                 image:[ShareSDK pngImageWithImage:[self screenShot]]
                                                 title:@"车况信息"
-                                                  url:@""
+                                                  url:@"http://115.29.210.204:8080/chebaobao/statichtml/download.html"
                                           description:@"我的爱车"
                                             mediaType:SSPublishContentMediaTypeNews];
     

@@ -73,6 +73,8 @@
 		9E2EB8BB1A08A9BD00770A42 /* SHChatUnitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EB8B91A08A9BD00770A42 /* SHChatUnitViewCell.m */; };
 		9E2EB8BC1A08A9BD00770A42 /* SHChatUnitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E2EB8BA1A08A9BD00770A42 /* SHChatUnitViewCell.xib */; };
 		9E2EB8BF1A08AACC00770A42 /* SHChatListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EB8BE1A08AACC00770A42 /* SHChatListHelper.m */; };
+		9E30EAF01A6249A700C71AC1 /* ic_focus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E30EAEF1A6249A700C71AC1 /* ic_focus.png */; };
+		9E30EAF51A626ED700C71AC1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E30EAF21A626ED700C71AC1 /* libMobClickLibrary.a */; };
 		9E325DEA1A04DFB100A35554 /* banner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE71A04DFB100A35554 /* banner1.png */; };
 		9E325DEB1A04DFB100A35554 /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE81A04DFB100A35554 /* banner2.png */; };
 		9E325DEC1A04DFB100A35554 /* banner3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E325DE91A04DFB100A35554 /* banner3.png */; };
@@ -609,6 +611,10 @@
 		9E2EB8BA1A08A9BD00770A42 /* SHChatUnitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHChatUnitViewCell.xib; sourceTree = "<group>"; };
 		9E2EB8BD1A08AACC00770A42 /* SHChatListHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHChatListHelper.h; sourceTree = "<group>"; };
 		9E2EB8BE1A08AACC00770A42 /* SHChatListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHChatListHelper.m; sourceTree = "<group>"; };
+		9E30EAEF1A6249A700C71AC1 /* ic_focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_focus.png; sourceTree = "<group>"; };
+		9E30EAF21A626ED700C71AC1 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		9E30EAF31A626ED700C71AC1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		9E30EAF41A626ED700C71AC1 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		9E325DE71A04DFB100A35554 /* banner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner1.png; sourceTree = "<group>"; };
 		9E325DE81A04DFB100A35554 /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
 		9E325DE91A04DFB100A35554 /* banner3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner3.png; sourceTree = "<group>"; };
@@ -1247,6 +1253,7 @@
 				9E82BB7719EA9230007301EA /* libSinaWeiboSDK.a in Frameworks */,
 				9ED77AF01A17A9D4007CAD7E /* libBaiduMobStatForSDK.a in Frameworks */,
 				9E3660E61A4C7959000722A7 /* SHLocation.framework in Frameworks */,
+				9E30EAF51A626ED700C71AC1 /* libMobClickLibrary.a in Frameworks */,
 				9E82BB7019EA9230007301EA /* WeChatConnection.framework in Frameworks */,
 				9EF62A3A19CEFB3600111E2F /* UIKit.framework in Frameworks */,
 				9E82BB7B19EA9230007301EA /* ShareSDK.framework in Frameworks */,
@@ -1376,6 +1383,16 @@
 				9E3F62AC19D1B794008C8B7B /* ic_point.png */,
 			);
 			name = Res;
+			sourceTree = "<group>";
+		};
+		9E30EAF11A626ED700C71AC1 /* UMAnalytics_Sdk_3.1.9 */ = {
+			isa = PBXGroup;
+			children = (
+				9E30EAF21A626ED700C71AC1 /* libMobClickLibrary.a */,
+				9E30EAF31A626ED700C71AC1 /* MobClick.h */,
+				9E30EAF41A626ED700C71AC1 /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.1.9;
 			sourceTree = "<group>";
 		};
 		9E3F62C419D30D13008C8B7B /* Shop */ = {
@@ -1954,6 +1971,7 @@
 		9EF6294619CEF92A00111E2F /* frame */ = {
 			isa = PBXGroup;
 			children = (
+				9E30EAF11A626ED700C71AC1 /* UMAnalytics_Sdk_3.1.9 */,
 				9E3660E51A4C7959000722A7 /* SHLocation.framework */,
 				9E3660E31A4C715A000722A7 /* SHCore.framework */,
 				9ED77B061A17ABC9007CAD7E /* CoreMotion.framework */,
@@ -2633,6 +2651,7 @@
 		9EF62CC819D09EA600111E2F /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				9E30EAEF1A6249A700C71AC1 /* ic_focus.png */,
 				9EF62CCE19D09ED200111E2F /* SHMainPageViewController.h */,
 				9EF62CCF19D09ED200111E2F /* SHMainPageViewController.m */,
 				9EF62CD019D09ED200111E2F /* SHMainPageViewController.xib */,
@@ -2695,7 +2714,7 @@
 				TargetAttributes = {
 					9EF627DA19CEBA4900111E2F = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = RJ35P28RXH;
+						DevelopmentTeam = 396HM64726;
 					};
 					9EF627F319CEBA4900111E2F = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -2792,6 +2811,7 @@
 				9E3F62B719D1CC85008C8B7B /* btnbg@3x.png in Resources */,
 				9E82BB9A19ED63FC007301EA /* SHCheckItemView.xib in Resources */,
 				9EF62C5819CF002400111E2F /* SHTableViewTitleImageCell.xib in Resources */,
+				9E30EAF01A6249A700C71AC1 /* ic_focus.png in Resources */,
 				9EF62BFA19CF002400111E2F /* DSLCalendarDaySelection-middle.png in Resources */,
 				9EF62C0219CF002400111E2F /* blackArrow@2x.png in Resources */,
 				9ED550A419D5DF8A0046A4C1 /* set_bg@3x.png in Resources */,
@@ -3341,6 +3361,7 @@
 					"$(PROJECT_DIR)/Car/frame/baiduNaviSDK/Statistic",
 					"$(PROJECT_DIR)/Car/frame/baiduNaviSDK/TTS",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Core-bfkdayqfzvfnglfnzbvsdeubegwu/Build/Products/Release-iphoneos",
+					"$(PROJECT_DIR)/Car/frame/UMAnalytics_Sdk_3.1.9",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -3384,6 +3405,7 @@
 					"$(PROJECT_DIR)/Car/frame/baiduNaviSDK/Statistic",
 					"$(PROJECT_DIR)/Car/frame/baiduNaviSDK/TTS",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Core-bfkdayqfzvfnglfnzbvsdeubegwu/Build/Products/Release-iphoneos",
+					"$(PROJECT_DIR)/Car/frame/UMAnalytics_Sdk_3.1.9",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";

@@ -9,16 +9,11 @@
 #import "SHAppDelegate.h"
 #import <SHCore/Core.h>
 
-
 //测试站
 #define URL_HEADER @"http://115.29.210.204:8080/chebaobao"
 
-//#define URL_HEADER @"http://192.168.1.141:8181/"
 //正式地址 发布地址
-//#define URL_HEADER @ "http://mobile.9191offer.com"
-
-//正式地址 发布地址
-#define BATA_HEADER @ "http://192.168.10.109:8181"
+#define BATA_HEADER @ "http://112.124.22.156:8083/chebaobao"
 
 #define URL_BATA @ "http://192.168.1.200/api"
 

@@ -15,6 +15,8 @@
     [super loadSkin];
     self.imgHead.layer.cornerRadius = 5;
     self.imgHead.layer.masksToBounds = YES;
+    self.labEdit.frame = CGRectMake(0,0, 50, 38);
+    [self.imgHead addSubview:self.labEdit];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
