@@ -20,6 +20,18 @@
 
 @implementation SHShopInfoViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_shopinfo"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_shopinfo"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商户信息";
@@ -202,12 +214,14 @@
     
 #if DEBUG
     order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格//discountafteronlinepay
-    
+    order.notifyURL =  [NSString stringWithFormat:@"%@/%@",BATA_HEADER,@"notify_url.jsp"];
+
 #else
     order.amount = [NSString stringWithFormat:@"%.2f",price]; //商品价格//discountafteronlinepay
-    
-#endif
     order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
+
+#endif
+    
     
     NSString* orderInfo = [order description];
     
@@ -257,8 +271,9 @@
     
 }
 - (IBAction)btnContact:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%d",[[dic valueForKey:@"shopmobile"] integerValue]]]];
-
+    NSString *telUrl = [NSString stringWithFormat:@"telprompt:%@",[dic valueForKey:@"shopmobile"]];
+    NSURL *url = [[NSURL alloc] initWithString:telUrl];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 -(NSString*)doRsa:(NSString*)orderInfo

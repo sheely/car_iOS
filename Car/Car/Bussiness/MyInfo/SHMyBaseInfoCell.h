@@ -10,6 +10,7 @@
 
 @interface SHMyBaseInfoCell : SHTableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *labEdit;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldName;
 @property (weak, nonatomic) IBOutlet UILabel *labPhone;
 @property (weak, nonatomic) IBOutlet SHImageView *imgHead;

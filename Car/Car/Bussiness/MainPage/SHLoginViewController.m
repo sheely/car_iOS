@@ -41,6 +41,12 @@
 
 - (IBAction)btnSubmitOnTouch:(id)sender
 {
+    if(self.txtLoginName.text.length == 0 || self.txtPassword.text.length == 0){
+        
+        [self showAlertDialog:@"账号，验证码不能为空"];
+        return;
+    }
+    
     SHEntironment.instance.loginName = self.txtLoginName.text;
     SHEntironment.instance.password = self.txtPassword.text;
     [self showWaitDialogForNetWork];
@@ -103,6 +109,9 @@
 }
 
 - (IBAction)btnCodeOnTouch:(id)sender {
+     self.btnCode.enabled = NO;
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(timerUp:) userInfo:nil repeats:YES];
     if(self.txtLoginName.text.length == 0){
         [self showAlertDialog:@"手机号码不可为空"];
     }else{
@@ -112,8 +121,7 @@
         p.URL = URL_FOR(@"smssend.action");
         [p start:^(SHTask *t) {
             [self showAlertDialog:@"验证码已发送"];
-            [timer invalidate];
-            timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(timerUp:) userInfo:nil repeats:YES];
+           
         } taskWillTry:^(SHTask *t) {
             ;
         } taskDidFailed:^(SHTask *t) {
@@ -121,5 +129,16 @@
         }];
         
     }
+}
+
+- (IBAction)radiobuttonChanged:(UISwitch*)sender {
+    self.btnSubmit.enabled = sender.on;
+    self.btnCode.enabled = sender.on;
+}
+
+- (IBAction)btnLoginPrivacyOnTouch:(id)sender {
+    
+    SHIntent * i = [[SHIntent alloc]init:@"loginprivacy" delegate:nil containner:self.navigationController];
+    [[UIApplication sharedApplication]open:i];
 }
 @end

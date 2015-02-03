@@ -7,7 +7,6 @@
 //
 
 #import "SHNavigationShowViewController.h"
-#import "SHSkin.h"
 
 @interface SHNavigationShowViewController ()
 

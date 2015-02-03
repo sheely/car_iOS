@@ -1,0 +1,6 @@
+framework module SHLocation {
+  umbrella header "SHLocation.h"
+
+  export *
+  module * { export * }
+}

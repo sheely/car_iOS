@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHEditCarinfoViewViewController">
             <connections>
                 <outlet property="btnCategary" destination="X4G-Q7-Doo" id="v79-wH-OLZ"/>
+                <outlet property="btnDelete" destination="JAs-Nt-awi" id="jSj-5v-AJv"/>
                 <outlet property="btnLetters" destination="60J-Ai-UWd" id="O0K-sp-mHg"/>
                 <outlet property="btnProvince" destination="7qS-XH-C3f" id="djX-3y-0lA"/>
                 <outlet property="btnSubCategary" destination="4a6-gj-i65" id="3bI-11-MQ4"/>
@@ -137,6 +138,18 @@
                     </state>
                     <connections>
                         <action selector="btnSubmitOnTouch:" destination="-1" eventType="touchUpInside" id="WpV-Uz-buC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JAs-Nt-awi">
+                    <rect key="frame" x="10" y="299" width="300" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.97254908080000002" green="0.30980393290000002" blue="0.21568629149999999" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="删除">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnDeleteOnTouch:" destination="-1" eventType="touchUpInside" id="szU-WE-0Tm"/>
                     </connections>
                 </button>
             </subviews>

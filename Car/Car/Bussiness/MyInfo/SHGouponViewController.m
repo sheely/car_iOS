@@ -14,6 +14,18 @@
 
 @implementation SHGouponViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_myticket"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_myticket"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的优惠券";

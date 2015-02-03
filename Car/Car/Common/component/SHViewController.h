@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SHSkin.h"
-#import "SHIntent.h"
 
 @interface SHViewController : UIViewController<ISHSkin>
 {

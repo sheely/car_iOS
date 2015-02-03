@@ -17,7 +17,17 @@
 @end
 
 @implementation SHMyInfoViewController
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_myinfo"];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"view_myinfo"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的信息";
@@ -59,7 +69,8 @@
 {
     if(indexPath.section == 0 ||( indexPath.section == 2 && indexPath.row == 4)) {
         return 80;
-    }else if ((indexPath.section == 2 && indexPath.row == 0) || (indexPath.section == 2 && indexPath.row == 1)){
+    }
+    else if ((indexPath.section == 2 && indexPath.row == 0) ){
         return 0;
     }
     return 44;
@@ -185,7 +196,7 @@
             return cell;
         }else {
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];
-            cell.labTitle.text = @"我的优惠卷";
+            cell.labTitle.text = @"我的优惠券";
             cell.backgroundColor = [UIColor whiteColor];
 
             return cell;
@@ -200,9 +211,9 @@
             return cell;
         }else if (indexPath.row == 1){
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];
-            cell.labTitle.text = @"检查更新";
+            cell.labTitle.text = @"版本信息";
             cell.backgroundColor = [UIColor whiteColor];
-            cell.hidden = YES;
+            //cell.hidden = YES;
             return cell;
         }else if (indexPath.row == 2){
             SHTableViewGeneralCell * cell =  [tableView dequeueReusableGeneralCell];
@@ -249,7 +260,9 @@
             [[UIApplication sharedApplication]open:intent];
         }
     }else if (indexPath.section == 2){
-        if(indexPath.row == 2){
+        if(indexPath.row == 1){
+            [self showAlertDialog:[NSString stringWithFormat:@"当前版本:%@",[[SHEntironment.instance version] description]]];
+        }else if(indexPath.row == 2){
             SHIntent * intent = [[SHIntent alloc]init:@"titlecontent" delegate:self containner:self.navigationController];
             [intent.args setValue:@"关于我们" forKey:@"title"];
             [intent.args setValue:[dic valueForKey:@"aboutus"] forKey:@"content"];

@@ -17,6 +17,14 @@
 
 @implementation SHServiceCenterViewController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"view_requirelist"];
+    [MobClick endLogPageView:@"view_orderlist"];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"受理中心";
@@ -26,6 +34,8 @@
     mrequestlistviewcontroller.view.frame = self.view.bounds;
     mrequestlistviewcontroller.nav = self.navigationController;
     [self.view addSubview:mrequestlistviewcontroller.view];
+    [MobClick beginLogPageView:@"view_requirelist"];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -37,7 +47,9 @@
         if(morderlistviewcontroller == nil){
             morderlistviewcontroller = [[SHOrderListViewController alloc]init];
             morderlistviewcontroller.view.frame = self.view.bounds;
+            [MobClick beginLogPageView:@"view_orderlist"];
         }
+        
         [self.view addSubview:morderlistviewcontroller.view];
     }
 }

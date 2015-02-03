@@ -12,6 +12,7 @@
 - (void)categarySubmit:(NSDictionary *)d;
 
 @end
-@interface SHCarCategaryViewController : SHTableViewController
+@interface SHCarCategaryViewController : SHViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

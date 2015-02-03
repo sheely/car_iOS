@@ -7,7 +7,6 @@
 //
 
 #import "SHViewController.h"
-#import "BMKMapView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AlixLibService.h"
 #import "AlixPayOrder.h"

@@ -7,7 +7,6 @@
 //
 
 #import "UIViewAddtion.h"
-#import "SHSkin.h"
 #import "SHTableViewCell.h"
 #import "SHViewController.h"
 #import "UIBarButtonItemAddtion.h"

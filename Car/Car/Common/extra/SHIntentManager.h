@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SHIntent.h"
 
 @interface SHIntentManager : NSObject
 //启动器

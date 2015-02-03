@@ -71,7 +71,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UpD-7W-yfz" customClass="SHImageView">
-                        <rect key="frame" x="8" y="10" width="63" height="62"/>
+                        <rect key="frame" x="8" y="10" width="63" height="63"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>

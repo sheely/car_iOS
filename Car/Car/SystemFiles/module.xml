@@ -189,7 +189,13 @@
     icon = "--"
     title = "车况变化报告"
     />
-
+    <module
+    name="loginprivacy"
+    target="SHServiceViewController"
+    type = "--"
+    icon = "--"
+    title = "服务报告"
+    />
 
 
 </root>

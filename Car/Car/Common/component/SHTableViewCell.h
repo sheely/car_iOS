@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MMProgressHUD.h"
-#import "Core.h"
-
 @interface SHTableViewCell : UITableViewCell<ISHSkin>
 
 - (void) alternate :(NSIndexPath*) indexpath;
