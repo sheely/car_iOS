@@ -7,12 +7,10 @@
 //
 
 #import "SHViewController.h"
-#import "AlixLibService.h"
-#import "AlixPayOrder.h"
-#import "AlixPayResult.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "Order.h"
 #import "PartnerConfig.h"
-#import "DataSigner.h"
-#import "DataVerifier.h"
+
 #import "SHShopPhotoViewCell.h"
 
 @interface SHShopInfoViewController : SHViewController<UITableViewDataSource,UITableViewDelegate>

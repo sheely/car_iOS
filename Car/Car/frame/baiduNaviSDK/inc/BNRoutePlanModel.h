@@ -15,8 +15,8 @@
  */
 typedef enum
 {
-    BNCoordinate_OriginalGPS = 0,//原始的经纬度坐标
-    BNCoordinate_BaiduMapSDK = 1,//从百度地图中获取的sdk
+    BNCoordinate_OriginalGPS = 0,/**< 原始的经纬度坐标 */
+    BNCoordinate_BaiduMapSDK = 1,/**< 从百度地图中获取的sdk */
 }BNCoordinate_Type;
 
 /**

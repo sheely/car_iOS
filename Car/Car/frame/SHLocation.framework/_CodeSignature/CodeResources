@@ -4,257 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/BMKActionPaopaoView.h</key>
-		<data>
-		lfgCBMdonTFB4pAkH6rcsFBqLgQ=
-		</data>
-		<key>Headers/BMKAnnotation.h</key>
-		<data>
-		uFAr+Z15OBmF2V1WJpKgyUgutks=
-		</data>
-		<key>Headers/BMKAnnotationView.h</key>
-		<data>
-		Y9tFcC0qpCtmua6taxkmxM4O89o=
-		</data>
-		<key>Headers/BMKArcline.h</key>
-		<data>
-		Mv87Y7WtyLarpT1FPU09n4fp2ps=
-		</data>
-		<key>Headers/BMKArclineView.h</key>
-		<data>
-		uas3LkOGqZped5nU8i6Sp8kYGrA=
-		</data>
-		<key>Headers/BMKBaseComponent.h</key>
-		<data>
-		kQz7iPpBphqpPs7eblQtTUJFAOU=
-		</data>
-		<key>Headers/BMKBusLineSearch.h</key>
-		<data>
-		pcTadwf6vFxfQL9amIhBhLoHyio=
-		</data>
-		<key>Headers/BMKBusLineSearchOption.h</key>
-		<data>
-		u7QXFKEcsDK0YOUVqLJp5j341qg=
-		</data>
-		<key>Headers/BMKCircle.h</key>
-		<data>
-		3kLBEHvWTcjuyva+bqvxAQyxJ1U=
-		</data>
-		<key>Headers/BMKCircleView.h</key>
-		<data>
-		jR/8VldfRXMYurzKJ2KuV64K3kU=
-		</data>
-		<key>Headers/BMKCloudPOIList.h</key>
-		<data>
-		VnOAILvWiqyRR3K5zK5zFV8jnSg=
-		</data>
-		<key>Headers/BMKCloudSearch.h</key>
-		<data>
-		t6t2MJppWDwYlT9Uz2X/zQyIFtM=
-		</data>
-		<key>Headers/BMKCloudSearchComponent.h</key>
-		<data>
-		itRFYI2MzpPeC8Ikz6ZanFXiesQ=
-		</data>
-		<key>Headers/BMKCloudSearchInfo.h</key>
-		<data>
-		E/zgsfwXK7PWAFbjTWMHUJaEfwE=
-		</data>
-		<key>Headers/BMKGeneralDelegate.h</key>
-		<data>
-		isIoGe1hx4KIA24MNU+6lPmJ/rs=
-		</data>
-		<key>Headers/BMKGeocodeSearch.h</key>
-		<data>
-		ljluVcgzqs1Q7o3ytiK++2JIYaY=
-		</data>
-		<key>Headers/BMKGeocodeSearchOption.h</key>
-		<data>
-		b72uL2zX8oWg9JuvksxphWVaZAI=
-		</data>
-		<key>Headers/BMKGeocodeType.h</key>
-		<data>
-		f8WCRSXjQ6qTOow5YiCm1nU6bi8=
-		</data>
-		<key>Headers/BMKGeometry.h</key>
-		<data>
-		Ixjr8ZTVowMLUg81SSh2AgCvekw=
-		</data>
-		<key>Headers/BMKGradient.h</key>
-		<data>
-		6w8F39Q+mjJuZ8jCMuDbveacGCU=
-		</data>
-		<key>Headers/BMKGroundOverlay.h</key>
-		<data>
-		sBG9g4wMfjeGLECc1KwPK94pZao=
-		</data>
-		<key>Headers/BMKGroundOverlayView.h</key>
-		<data>
-		bVcljjSylr6vfqT85gYFJTtBR80=
-		</data>
-		<key>Headers/BMKHeatMap.h</key>
-		<data>
-		Q85IyresiWo5z7wFsAHrIPY0ph8=
-		</data>
-		<key>Headers/BMKLocationComponent.h</key>
-		<data>
-		6Fu8UQzxLKNwfyiJxP0MxjANdto=
-		</data>
-		<key>Headers/BMKLocationService.h</key>
-		<data>
-		cHo/NQs4V3Q9g+9HS+hBeHJoG0w=
-		</data>
-		<key>Headers/BMKLocationViewDisplayParam.h</key>
-		<data>
-		hSZ1vzpxYrnVsjCVq+erHnbgypI=
-		</data>
-		<key>Headers/BMKMapComponent.h</key>
-		<data>
-		33aQKpqcEW+AOnvQ4VvbptR363g=
-		</data>
-		<key>Headers/BMKMapManager.h</key>
-		<data>
-		/4fWTn6LssQkNqtzh4gQXACuzPc=
-		</data>
-		<key>Headers/BMKMapStatus.h</key>
-		<data>
-		IUT7Z4yv52XceO1K1vbQSoNp8Gk=
-		</data>
-		<key>Headers/BMKMapView.h</key>
-		<data>
-		RGuEk4z1kd6F6oF6sT+vVsMEvMA=
-		</data>
-		<key>Headers/BMKMultiPoint.h</key>
-		<data>
-		TDLgr9Dk2dvjilXXcqKqOVmg6w4=
-		</data>
-		<key>Headers/BMKNavigation.h</key>
-		<data>
-		Orncp16bhidBEhUJgFKeW8uhsBM=
-		</data>
-		<key>Headers/BMKOfflineMap.h</key>
-		<data>
-		Z615w9Juhp3eQ1Sk0AiO702AXR4=
-		</data>
-		<key>Headers/BMKOfflineMapType.h</key>
-		<data>
-		DeZ3UYYTCRL1eBLFrq+CM/2SpCY=
-		</data>
-		<key>Headers/BMKOverlay.h</key>
-		<data>
-		EKxPFL1Zt+56U4LE3hnxRcxkITQ=
-		</data>
-		<key>Headers/BMKOverlayGLBasicView.h</key>
-		<data>
-		8+dD9VtcJO9Bw3qVQwlKdUSt6M4=
-		</data>
-		<key>Headers/BMKOverlayPathView.h</key>
-		<data>
-		/22pqV15nX4v9oKzrNe7kq8gYT4=
-		</data>
-		<key>Headers/BMKOverlayView.h</key>
-		<data>
-		DTz0+valV9qJ+QZncZLwTAw/bck=
-		</data>
-		<key>Headers/BMKPinAnnotationView.h</key>
-		<data>
-		53i3/3c9GzwxFBRSUdIrTiIPr6o=
-		</data>
-		<key>Headers/BMKPoiSearch.h</key>
-		<data>
-		8L9SgLT1OWbGQ73bwVO9JNWLf4U=
-		</data>
-		<key>Headers/BMKPoiSearchOption.h</key>
-		<data>
-		aWa2SHf0upIQ6BQxFqpPbRN0NkY=
-		</data>
-		<key>Headers/BMKPoiSearchType.h</key>
-		<data>
-		bA5yLtRGbyWnS5D1oVUqgvALo00=
-		</data>
-		<key>Headers/BMKPointAnnotation.h</key>
-		<data>
-		qVyyBncbZhXMxuyLYfxFav+nmnw=
-		</data>
-		<key>Headers/BMKPolygon.h</key>
-		<data>
-		LE3vJ2AfZl1/tL17erLVHubkEcE=
-		</data>
-		<key>Headers/BMKPolygonView.h</key>
-		<data>
-		vPP7lRm8B1SJFmezWkDg9teI4J4=
-		</data>
-		<key>Headers/BMKPolyline.h</key>
-		<data>
-		q2UY7v+Sr4JPCDGFFkocA50xsr8=
-		</data>
-		<key>Headers/BMKPolylineView.h</key>
-		<data>
-		3qAv0NKgfy1qkP6ZLxPqD571dgs=
-		</data>
-		<key>Headers/BMKRouteSearch.h</key>
-		<data>
-		FxP5RMgOOr9U+BTlvtVLQl5JSLQ=
-		</data>
-		<key>Headers/BMKRouteSearchOption.h</key>
-		<data>
-		EfFq4mhL6dF3LjNHB83G19z0ZUk=
-		</data>
-		<key>Headers/BMKRouteSearchType.h</key>
-		<data>
-		DGMHQVM2/yox/xLFnQ4EZ4NhQCA=
-		</data>
-		<key>Headers/BMKSearchComponent.h</key>
-		<data>
-		1Q4Tol30gW4AYIw8dZ2e1GKhy8w=
-		</data>
-		<key>Headers/BMKShape.h</key>
-		<data>
-		mH5LRUp3ifZCHON8WPzUwRU9fzU=
-		</data>
-		<key>Headers/BMKShareURLSearch.h</key>
-		<data>
-		3whTr+AGbEHZBNUYWMv9MPd4A/4=
-		</data>
-		<key>Headers/BMKShareUrlSearchOption.h</key>
-		<data>
-		5TZ9+P4uEHf4YZnmijoNLojz5d8=
-		</data>
-		<key>Headers/BMKSuggestionSearch.h</key>
-		<data>
-		+XOYEo4QNNAn8TrLWVJfIcRvvfk=
-		</data>
-		<key>Headers/BMKSuggestionSearchOption.h</key>
-		<data>
-		2Tt9aRg67JhKIzvAs6R0SFRjE00=
-		</data>
-		<key>Headers/BMKTypes.h</key>
-		<data>
-		XHqLfGofnIgsd2AvxQXvez02zqM=
-		</data>
-		<key>Headers/BMKUserLocation.h</key>
-		<data>
-		7/sDOfDbBw3DPtCxaAgjgvg0Ing=
-		</data>
-		<key>Headers/BMKUtilsComponent.h</key>
-		<data>
-		0UECwlSwWcQTFVx2L0aibDkR0Yg=
-		</data>
-		<key>Headers/BMKVersion.h</key>
-		<data>
-		bie/MjBmTkHmjIAEeXs5xfeZrXY=
-		</data>
-		<key>Headers/BMapKit.h</key>
-		<data>
-		ZgB5yyzCIkZqHnpAjjC2UYXHIWk=
-		</data>
 		<key>Headers/SHLocation.h</key>
 		<data>
 		8Tb5+uaNDiHZkKNcc3D7U4HBtJs=
 		</data>
 		<key>Headers/SHLocationManager.h</key>
 		<data>
-		7QGcPVKxo1uhk9ABv25SlL7VzRw=
+		9gAcuNTpfrrTk2hlms+RZ3r4kvI=
 		</data>
 		<key>Headers/SHUserLocation.h</key>
 		<data>
@@ -280,6 +36,14 @@
 		<data>
 		OLZcdUQFgfQ92zLvF0gOXIfwFT8=
 		</data>
+		<key>mapapi.bundle/files/DVHotMap.cfg</key>
+		<data>
+		LQmgSNG41VbYnU1yOUfp4jS15Zs=
+		</data>
+		<key>mapapi.bundle/files/DVHotMap_Retina.cfg</key>
+		<data>
+		LQmgSNG41VbYnU1yOUfp4jS15Zs=
+		</data>
 		<key>mapapi.bundle/files/DVHotcity.cfg</key>
 		<data>
 		pYRdHEvIe4tHhbRW127cuDCe2k4=
@@ -492,6 +256,10 @@
 		<data>
 		wDSoag3m8clFcH1ifG8EN/TPZIE=
 		</data>
+		<key>mapapi.bundle/images/lineDashTexture.png</key>
+		<data>
+		+/nYUlVgUpTAXggl82nRmgpS0Bw=
+		</data>
 		<key>mapapi.bundle/images/pin_green.png</key>
 		<data>
 		UL9uWLn+7S1VMTsViZfgZkOroZk=
@@ -516,10 +284,6 @@
 		<data>
 		n4WavfCIPpHS2rxztmkQjn4obng=
 		</data>
-		<key>mapapi.bundle/images/red.png</key>
-		<data>
-		LlBa7cAFTiHGty+o44oIvo+om7g=
-		</data>
 		<key>mapapi.bundle/images/test.png</key>
 		<data>
 		JoXOCbkWi4H9pVhas+M7JrC8NPI=
@@ -527,257 +291,13 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/BMKActionPaopaoView.h</key>
-		<data>
-		lfgCBMdonTFB4pAkH6rcsFBqLgQ=
-		</data>
-		<key>Headers/BMKAnnotation.h</key>
-		<data>
-		uFAr+Z15OBmF2V1WJpKgyUgutks=
-		</data>
-		<key>Headers/BMKAnnotationView.h</key>
-		<data>
-		Y9tFcC0qpCtmua6taxkmxM4O89o=
-		</data>
-		<key>Headers/BMKArcline.h</key>
-		<data>
-		Mv87Y7WtyLarpT1FPU09n4fp2ps=
-		</data>
-		<key>Headers/BMKArclineView.h</key>
-		<data>
-		uas3LkOGqZped5nU8i6Sp8kYGrA=
-		</data>
-		<key>Headers/BMKBaseComponent.h</key>
-		<data>
-		kQz7iPpBphqpPs7eblQtTUJFAOU=
-		</data>
-		<key>Headers/BMKBusLineSearch.h</key>
-		<data>
-		pcTadwf6vFxfQL9amIhBhLoHyio=
-		</data>
-		<key>Headers/BMKBusLineSearchOption.h</key>
-		<data>
-		u7QXFKEcsDK0YOUVqLJp5j341qg=
-		</data>
-		<key>Headers/BMKCircle.h</key>
-		<data>
-		3kLBEHvWTcjuyva+bqvxAQyxJ1U=
-		</data>
-		<key>Headers/BMKCircleView.h</key>
-		<data>
-		jR/8VldfRXMYurzKJ2KuV64K3kU=
-		</data>
-		<key>Headers/BMKCloudPOIList.h</key>
-		<data>
-		VnOAILvWiqyRR3K5zK5zFV8jnSg=
-		</data>
-		<key>Headers/BMKCloudSearch.h</key>
-		<data>
-		t6t2MJppWDwYlT9Uz2X/zQyIFtM=
-		</data>
-		<key>Headers/BMKCloudSearchComponent.h</key>
-		<data>
-		itRFYI2MzpPeC8Ikz6ZanFXiesQ=
-		</data>
-		<key>Headers/BMKCloudSearchInfo.h</key>
-		<data>
-		E/zgsfwXK7PWAFbjTWMHUJaEfwE=
-		</data>
-		<key>Headers/BMKGeneralDelegate.h</key>
-		<data>
-		isIoGe1hx4KIA24MNU+6lPmJ/rs=
-		</data>
-		<key>Headers/BMKGeocodeSearch.h</key>
-		<data>
-		ljluVcgzqs1Q7o3ytiK++2JIYaY=
-		</data>
-		<key>Headers/BMKGeocodeSearchOption.h</key>
-		<data>
-		b72uL2zX8oWg9JuvksxphWVaZAI=
-		</data>
-		<key>Headers/BMKGeocodeType.h</key>
-		<data>
-		f8WCRSXjQ6qTOow5YiCm1nU6bi8=
-		</data>
-		<key>Headers/BMKGeometry.h</key>
-		<data>
-		Ixjr8ZTVowMLUg81SSh2AgCvekw=
-		</data>
-		<key>Headers/BMKGradient.h</key>
-		<data>
-		6w8F39Q+mjJuZ8jCMuDbveacGCU=
-		</data>
-		<key>Headers/BMKGroundOverlay.h</key>
-		<data>
-		sBG9g4wMfjeGLECc1KwPK94pZao=
-		</data>
-		<key>Headers/BMKGroundOverlayView.h</key>
-		<data>
-		bVcljjSylr6vfqT85gYFJTtBR80=
-		</data>
-		<key>Headers/BMKHeatMap.h</key>
-		<data>
-		Q85IyresiWo5z7wFsAHrIPY0ph8=
-		</data>
-		<key>Headers/BMKLocationComponent.h</key>
-		<data>
-		6Fu8UQzxLKNwfyiJxP0MxjANdto=
-		</data>
-		<key>Headers/BMKLocationService.h</key>
-		<data>
-		cHo/NQs4V3Q9g+9HS+hBeHJoG0w=
-		</data>
-		<key>Headers/BMKLocationViewDisplayParam.h</key>
-		<data>
-		hSZ1vzpxYrnVsjCVq+erHnbgypI=
-		</data>
-		<key>Headers/BMKMapComponent.h</key>
-		<data>
-		33aQKpqcEW+AOnvQ4VvbptR363g=
-		</data>
-		<key>Headers/BMKMapManager.h</key>
-		<data>
-		/4fWTn6LssQkNqtzh4gQXACuzPc=
-		</data>
-		<key>Headers/BMKMapStatus.h</key>
-		<data>
-		IUT7Z4yv52XceO1K1vbQSoNp8Gk=
-		</data>
-		<key>Headers/BMKMapView.h</key>
-		<data>
-		RGuEk4z1kd6F6oF6sT+vVsMEvMA=
-		</data>
-		<key>Headers/BMKMultiPoint.h</key>
-		<data>
-		TDLgr9Dk2dvjilXXcqKqOVmg6w4=
-		</data>
-		<key>Headers/BMKNavigation.h</key>
-		<data>
-		Orncp16bhidBEhUJgFKeW8uhsBM=
-		</data>
-		<key>Headers/BMKOfflineMap.h</key>
-		<data>
-		Z615w9Juhp3eQ1Sk0AiO702AXR4=
-		</data>
-		<key>Headers/BMKOfflineMapType.h</key>
-		<data>
-		DeZ3UYYTCRL1eBLFrq+CM/2SpCY=
-		</data>
-		<key>Headers/BMKOverlay.h</key>
-		<data>
-		EKxPFL1Zt+56U4LE3hnxRcxkITQ=
-		</data>
-		<key>Headers/BMKOverlayGLBasicView.h</key>
-		<data>
-		8+dD9VtcJO9Bw3qVQwlKdUSt6M4=
-		</data>
-		<key>Headers/BMKOverlayPathView.h</key>
-		<data>
-		/22pqV15nX4v9oKzrNe7kq8gYT4=
-		</data>
-		<key>Headers/BMKOverlayView.h</key>
-		<data>
-		DTz0+valV9qJ+QZncZLwTAw/bck=
-		</data>
-		<key>Headers/BMKPinAnnotationView.h</key>
-		<data>
-		53i3/3c9GzwxFBRSUdIrTiIPr6o=
-		</data>
-		<key>Headers/BMKPoiSearch.h</key>
-		<data>
-		8L9SgLT1OWbGQ73bwVO9JNWLf4U=
-		</data>
-		<key>Headers/BMKPoiSearchOption.h</key>
-		<data>
-		aWa2SHf0upIQ6BQxFqpPbRN0NkY=
-		</data>
-		<key>Headers/BMKPoiSearchType.h</key>
-		<data>
-		bA5yLtRGbyWnS5D1oVUqgvALo00=
-		</data>
-		<key>Headers/BMKPointAnnotation.h</key>
-		<data>
-		qVyyBncbZhXMxuyLYfxFav+nmnw=
-		</data>
-		<key>Headers/BMKPolygon.h</key>
-		<data>
-		LE3vJ2AfZl1/tL17erLVHubkEcE=
-		</data>
-		<key>Headers/BMKPolygonView.h</key>
-		<data>
-		vPP7lRm8B1SJFmezWkDg9teI4J4=
-		</data>
-		<key>Headers/BMKPolyline.h</key>
-		<data>
-		q2UY7v+Sr4JPCDGFFkocA50xsr8=
-		</data>
-		<key>Headers/BMKPolylineView.h</key>
-		<data>
-		3qAv0NKgfy1qkP6ZLxPqD571dgs=
-		</data>
-		<key>Headers/BMKRouteSearch.h</key>
-		<data>
-		FxP5RMgOOr9U+BTlvtVLQl5JSLQ=
-		</data>
-		<key>Headers/BMKRouteSearchOption.h</key>
-		<data>
-		EfFq4mhL6dF3LjNHB83G19z0ZUk=
-		</data>
-		<key>Headers/BMKRouteSearchType.h</key>
-		<data>
-		DGMHQVM2/yox/xLFnQ4EZ4NhQCA=
-		</data>
-		<key>Headers/BMKSearchComponent.h</key>
-		<data>
-		1Q4Tol30gW4AYIw8dZ2e1GKhy8w=
-		</data>
-		<key>Headers/BMKShape.h</key>
-		<data>
-		mH5LRUp3ifZCHON8WPzUwRU9fzU=
-		</data>
-		<key>Headers/BMKShareURLSearch.h</key>
-		<data>
-		3whTr+AGbEHZBNUYWMv9MPd4A/4=
-		</data>
-		<key>Headers/BMKShareUrlSearchOption.h</key>
-		<data>
-		5TZ9+P4uEHf4YZnmijoNLojz5d8=
-		</data>
-		<key>Headers/BMKSuggestionSearch.h</key>
-		<data>
-		+XOYEo4QNNAn8TrLWVJfIcRvvfk=
-		</data>
-		<key>Headers/BMKSuggestionSearchOption.h</key>
-		<data>
-		2Tt9aRg67JhKIzvAs6R0SFRjE00=
-		</data>
-		<key>Headers/BMKTypes.h</key>
-		<data>
-		XHqLfGofnIgsd2AvxQXvez02zqM=
-		</data>
-		<key>Headers/BMKUserLocation.h</key>
-		<data>
-		7/sDOfDbBw3DPtCxaAgjgvg0Ing=
-		</data>
-		<key>Headers/BMKUtilsComponent.h</key>
-		<data>
-		0UECwlSwWcQTFVx2L0aibDkR0Yg=
-		</data>
-		<key>Headers/BMKVersion.h</key>
-		<data>
-		bie/MjBmTkHmjIAEeXs5xfeZrXY=
-		</data>
-		<key>Headers/BMapKit.h</key>
-		<data>
-		ZgB5yyzCIkZqHnpAjjC2UYXHIWk=
-		</data>
 		<key>Headers/SHLocation.h</key>
 		<data>
 		8Tb5+uaNDiHZkKNcc3D7U4HBtJs=
 		</data>
 		<key>Headers/SHLocationManager.h</key>
 		<data>
-		7QGcPVKxo1uhk9ABv25SlL7VzRw=
+		9gAcuNTpfrrTk2hlms+RZ3r4kvI=
 		</data>
 		<key>Headers/SHUserLocation.h</key>
 		<data>
@@ -799,6 +319,14 @@
 		<data>
 		OLZcdUQFgfQ92zLvF0gOXIfwFT8=
 		</data>
+		<key>mapapi.bundle/files/DVHotMap.cfg</key>
+		<data>
+		LQmgSNG41VbYnU1yOUfp4jS15Zs=
+		</data>
+		<key>mapapi.bundle/files/DVHotMap_Retina.cfg</key>
+		<data>
+		LQmgSNG41VbYnU1yOUfp4jS15Zs=
+		</data>
 		<key>mapapi.bundle/files/DVHotcity.cfg</key>
 		<data>
 		pYRdHEvIe4tHhbRW127cuDCe2k4=
@@ -1011,6 +539,10 @@
 		<data>
 		wDSoag3m8clFcH1ifG8EN/TPZIE=
 		</data>
+		<key>mapapi.bundle/images/lineDashTexture.png</key>
+		<data>
+		+/nYUlVgUpTAXggl82nRmgpS0Bw=
+		</data>
 		<key>mapapi.bundle/images/pin_green.png</key>
 		<data>
 		UL9uWLn+7S1VMTsViZfgZkOroZk=
@@ -1034,10 +566,6 @@
 		<key>mapapi.bundle/images/pin_red@2x.png</key>
 		<data>
 		n4WavfCIPpHS2rxztmkQjn4obng=
-		</data>
-		<key>mapapi.bundle/images/red.png</key>
-		<data>
-		LlBa7cAFTiHGty+o44oIvo+om7g=
 		</data>
 		<key>mapapi.bundle/images/test.png</key>
 		<data>

@@ -31,10 +31,10 @@
  *  @param userInfo  用户需要传入的参数
  */
 -(void)startNaviRoutePlan:(BNRoutePlanMode)eMode
-            naviNodes:(NSArray*)naviNodes
-                 time:(BNaviCalcRouteTime*)naviTime
-             delegete:(id<BNNaviRoutePlanDelegate>)delegate
-             userInfo:(NSDictionary*)userInfo;
+                naviNodes:(NSArray*)naviNodes
+                     time:(BNaviCalcRouteTime*)naviTime
+                 delegete:(id<BNNaviRoutePlanDelegate>)delegate
+                 userInfo:(NSDictionary*)userInfo;
 
 
 /**

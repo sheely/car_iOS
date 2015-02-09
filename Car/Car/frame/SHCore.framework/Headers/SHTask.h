@@ -10,7 +10,7 @@
 #import "SHObject.h"
 #import "Respinfo.h"
 
-typedef enum 
+typedef enum
 {
     CacheTypeNone,
     CacheTypeKey,

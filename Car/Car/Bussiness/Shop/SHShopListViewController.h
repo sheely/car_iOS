@@ -8,12 +8,9 @@
 
 #import "SHViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "AlixLibService.h"
-#import "AlixPayOrder.h"
-#import "AlixPayResult.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "Order.h"
 #import "PartnerConfig.h"
-#import "DataSigner.h"
-#import "DataVerifier.h"
 #import "SHCheckOrderView.h"
 
 @interface SHShopListViewController : SHTableViewController<BMKMapViewDelegate,UIActionSheetDelegate,UITextFieldDelegate, BMKGeoCodeSearchDelegate,SHCheckOrderViewDelegate,UISearchBarDelegate>

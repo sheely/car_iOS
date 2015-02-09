@@ -10,6 +10,12 @@
 #import "BMapKit.h"
 #import "SHUserLocation.h"
 
+
+typedef enum  {
+    SHLocationFollowTypeContinue = 0,
+    SHLocationFollowTypeTiming = 1
+}SHLocationFollowType;
+
 @interface SHLocationManager : NSObject<BMKLocationServiceDelegate>
 
 {
@@ -17,7 +23,10 @@
     BMKLocationService *_bmkservice;
 }
 
+@property (assign,nonatomic) float timing;
 @property (strong,nonatomic) SHUserLocation* userlocation;
+@property (assign,nonatomic) SHLocationFollowType  followType;
+
 
 - (void)startUserLocationService;
 

@@ -9,6 +9,8 @@
 #import "SHOrderListViewController.h"
 #import "SHOrderHeaderView.h"
 #import "SHOrderItemCell.h"
+#import "Order.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface SHOrderListViewController ()
 {
@@ -99,7 +101,7 @@
         NSDictionary * dic = [mList objectAtIndex:((SHOrderItemCell*)b.superview.superview).index.section];
         NSDictionary * dic_n = [[dic valueForKey:@"baojialist"] objectAtIndex:((SHOrderItemCell*)b.superview.superview).index.row ];
         NSString *appScheme = @"car";
-        AlixPayOrder *order = [[AlixPayOrder alloc] init];
+        Order *order = [[Order alloc] init];
         order.partner = PartnerID;
         order.seller = SellerID;
         order.tradeNO = [dic valueForKey:@"orderid"]; //订单ID（由商家自行制定）
@@ -113,14 +115,20 @@
 
 #endif
         order.notifyURL =  URL_FOR( @"notify_url.jsp"); //回调URL
-
+        order.service = @"mobile.securitypay.pay";
+        order.paymentType = @"1";
+        order.inputCharset = @"utf-8";
+        order.itBPay = @"30m";
+        order.showUrl = @"m.alipay.com";
         NSString* orderInfo = [order description];
         NSString* signedStr = [self doRsa:orderInfo];
         NSLog(@"%@",signedStr);
         NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
                                  orderInfo, signedStr, @"RSA"];
-        [AlixLibService payOrder:orderString AndScheme:appScheme seletor: @selector(paymentResult:)
-                          target:self];
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+
 
     }
 }
@@ -157,41 +165,41 @@
     return signedString;
 }
 
--(void)paymentResult:(NSString *)resultd
-{
-    //结果处理
-#if ! __has_feature(objc_arc)
-    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
-#else
-    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
-#endif
-    if (result){
-        if (result.statusCode == 9000){
-            /*
-             *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-             */
-            
-            //交易成功
-            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
-            id<DataVerifier> verifier;
-            verifier = CreateRSADataVerifier(key);
-            
-            if ([verifier verifyString:result.resultString withSign:result.signString]){
-                //验证签名成功，交易结果无篡改
-                [self showAlertDialog:@"支付成功."];
-                [self request];
-            }
-        }
-        else{
-            //交易失败
-            [self showAlertDialog:@"交易失败."];
-        }
-    }
-    else{
-        //失败
-        [self showAlertDialog:@"交易失败."];
-        
-    }
-    
-}
+//-(void)paymentResult:(NSString *)resultd
+//{
+//    //结果处理
+//#if ! __has_feature(objc_arc)
+//    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
+//#else
+//    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+//#endif
+//    if (result){
+//        if (result.statusCode == 9000){
+//            /*
+//             *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+//             */
+//            
+//            //交易成功
+//            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
+//            id<DataVerifier> verifier;
+//            verifier = CreateRSADataVerifier(key);
+//            
+//            if ([verifier verifyString:result.resultString withSign:result.signString]){
+//                //验证签名成功，交易结果无篡改
+//                [self showAlertDialog:@"支付成功."];
+//                [self request];
+//            }
+//        }
+//        else{
+//            //交易失败
+//            [self showAlertDialog:@"交易失败."];
+//        }
+//    }
+//    else{
+//        //失败
+//        [self showAlertDialog:@"交易失败."];
+//        
+//    }
+//    
+//}
 @end

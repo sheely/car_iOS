@@ -13,7 +13,8 @@
 #define URL_HEADER @"http://115.29.210.204:8080/chebaobao"
 
 //正式地址 发布地址
-#define BATA_HEADER @ "http://112.124.22.156:8083/chebaobao"
+//#define BATA_HEADER @ "http://112.124.22.156:8083/chebaobao"
+#define BATA_HEADER @"http://115.29.210.204:8080/chebaobao"
 
 #define URL_BATA @ "http://192.168.1.200/api"
 

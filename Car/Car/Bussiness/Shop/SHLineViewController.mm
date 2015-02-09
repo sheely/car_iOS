@@ -136,9 +136,7 @@
         endNode.pos.eType = BNCoordinate_BaiduMapSDK;
         [nodesArray addObject:endNode];
         
-        [BNCoreServices_RoutePlan startNaviRoutePlan:BNRoutePlanMode_Recommend naviNodes:nodesArray time:nil delegete:self userInfo:nil];
-        
-        
+       [BNCoreServices_RoutePlan  startNaviRoutePlan: BNRoutePlanMode_Recommend naviNodes:nodesArray time:nil delegete:self    userInfo:nil];
     
 
 }
@@ -150,6 +148,7 @@
     
     //路径规划成功，开始导航
     [BNCoreServices_UI showNaviUI:BN_NaviTypeReal delegete:self isNeedLandscape:YES];
+    
 }
 
 //算路失败回调

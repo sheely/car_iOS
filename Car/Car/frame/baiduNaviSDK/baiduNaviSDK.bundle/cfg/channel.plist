@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>ChannelID</key>
-	<string>BaiduTravel</string>
+	<string>Appstore</string>
 	<key>SDKVersion</key>
-	<string>1.0.0</string>
+	<string>2.0.0</string>
 </dict>
 </plist>

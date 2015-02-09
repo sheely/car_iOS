@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "BNaviSoundManager.h"
+#import <sys/xattr.h>
+
 @implementation AppDelegate
 
 static NSString*  token = @"";
@@ -18,14 +19,12 @@ BMKMapManager* _mapManager;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self addNotBackUp];
+    
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     [ShareSDK registerApp:@"api20"];
     if(iOS8){
-        
         locationManager =[[CLLocationManager alloc] init];
-        
-        //  [locationManager requestAlwaysAuthorization];//用这个方法，plist中需要NSLocationAlwaysUsageDescription
-        
         [locationManager requestAlwaysAuthorization];//用这个方法，plist里要加字段NSLocationWhenInUseUsageDescription
     }
     
@@ -47,8 +46,14 @@ BMKMapManager* _mapManager;
 #else
     [BNCoreServices_Instance initServices:@"207KGwdrL9x8WDoHTFDeMqmS"];
 #endif
+    [BNCoreServices_Instance startServicesAsyn:^{
+        
+    } fail:^{
+        
+    }];
+
     //开启引擎，传入默认的TTS类
-    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
+//    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
     
     [SHLocationManager.instance startUserLocationService];
 
@@ -68,6 +73,39 @@ BMKMapManager* _mapManager;
     
     return YES;
 }
+
+
+-(void)addNotBackUp{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSURL *url = [NSURL URLWithString:documentsDirectory];
+    
+    [self addSkipBackupAttributeToItemAtURL:url];
+    
+    paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    documentsDirectory = [paths objectAtIndex:0];
+    url = [NSURL URLWithString:documentsDirectory];
+    [self addSkipBackupAttributeToItemAtURL:url];
+
+    
+    
+}
+//设置云同步
+-(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL{
+    
+    const char* filePath = [[URL path] fileSystemRepresentation];
+    
+    const char* attrName = "com.apple.MobileBackup";
+    
+    u_int8_t attrValue = 1;
+    
+    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+    
+    return result == 0;
+}
+
+
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     token = [NSString stringWithFormat:@"%@", deviceToken];
 #ifdef DEBUG
@@ -126,7 +164,8 @@ BMKMapManager* _mapManager;
             [alert show];
         }
 
-        [self performSelector:@selector(refreshOrder)withObject:nil afterDelay:5];
+        //[self performSelector:@selector(refreshOrder)withObject:nil afterDelay:1];
+        [self performSelector:@selector(refreshOrder)withObject:nil afterDelay:3];
     }
     return YES;
 }
