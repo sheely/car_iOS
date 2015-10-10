@@ -30,12 +30,17 @@
 
 @implementation LCVoice
 
+//- (BOOL)respondsToSelector:(SEL) s
+//{
+//    return [super respondsToSelector:(SEL)s];
+//}
+
 -(void) dealloc{
     
     if (self.recorder.isRecording) {
         [self.recorder stop];
     }
-    
+    [self resetTimer];
     self.recorder = nil;
     self.recordPath = nil;
     

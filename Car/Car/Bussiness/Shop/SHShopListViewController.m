@@ -16,10 +16,10 @@
 #import "lame.h"
 #import "SHCategoryView.h"
 #import "DataSigner.h"
+static LCVoice * voice ;
 
 @interface SHShopListViewController ()<UIActionSheetDelegate,UIAlertViewDelegate>
 {
-    LCVoice * voice ;
     NSMutableArray * mListPhoto;
     BMKGeoCodeSearch * _searcher;
     SHShopPointAnnotation* selectLocation;
@@ -62,7 +62,10 @@
     self.tableView.frame = self.view.bounds;
     self.title = @"商户列表";
     self.mapView.delegate = self;
-    voice = [[LCVoice alloc]init];
+    if(voice == nil){
+        voice = [[LCVoice alloc]init];
+
+    }
     //[self startFollowing:nil];
     if([[self.intent.args valueForKey:@"type"] isEqualToString:@"clean"]){
         self.tableView.hidden = NO;

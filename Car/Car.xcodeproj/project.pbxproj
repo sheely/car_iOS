@@ -20,6 +20,8 @@
 		1AA1352719F93576003D983F /* SHLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1352519F93576003D983F /* SHLocationViewController.xib */; };
 		9E0EF5301A1C9A3600D945CF /* SHCarStateChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0EF52E1A1C9A3600D945CF /* SHCarStateChangeViewController.m */; };
 		9E0EF5311A1C9A3600D945CF /* SHCarStateChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EF52F1A1C9A3600D945CF /* SHCarStateChangeViewController.xib */; };
+		9E0EFB3B1A8906FA001373F9 /* set_status_what@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EFB391A8906FA001373F9 /* set_status_what@2x.png */; };
+		9E0EFB3C1A8906FA001373F9 /* set_status_what@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EFB3A1A8906FA001373F9 /* set_status_what@3x.png */; };
 		9E1762E919E1C391008E3BD9 /* SHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */; };
 		9E1762EA19E1C391008E3BD9 /* SHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */; };
 		9E1762EE19E458D9008E3BD9 /* SHSHopPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1762ED19E458D9008E3BD9 /* SHSHopPointAnnotation.m */; };
@@ -532,6 +534,8 @@
 		9E0EF52D1A1C9A3600D945CF /* SHCarStateChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCarStateChangeViewController.h; sourceTree = "<group>"; };
 		9E0EF52E1A1C9A3600D945CF /* SHCarStateChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCarStateChangeViewController.m; sourceTree = "<group>"; };
 		9E0EF52F1A1C9A3600D945CF /* SHCarStateChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCarStateChangeViewController.xib; sourceTree = "<group>"; };
+		9E0EFB391A8906FA001373F9 /* set_status_what@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_status_what@2x.png"; sourceTree = "<group>"; };
+		9E0EFB3A1A8906FA001373F9 /* set_status_what@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_status_what@3x.png"; sourceTree = "<group>"; };
 		9E1762E619E1C391008E3BD9 /* SHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoginViewController.h; sourceTree = "<group>"; };
 		9E1762E719E1C391008E3BD9 /* SHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoginViewController.m; sourceTree = "<group>"; };
 		9E1762E819E1C391008E3BD9 /* SHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoginViewController.xib; sourceTree = "<group>"; };
@@ -1914,6 +1918,8 @@
 		9ED5508D19D5DA5E0046A4C1 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				9E0EFB391A8906FA001373F9 /* set_status_what@2x.png */,
+				9E0EFB3A1A8906FA001373F9 /* set_status_what@3x.png */,
 				9ECD86B61A1271EA00AD2977 /* bg_check.png */,
 				9ECD86B41A11307B00AD2977 /* ic_hand_cursor.png */,
 				9E947E701A0A6C2600D076B8 /* icon_set_report@3x.png */,
@@ -2949,6 +2955,7 @@
 				9EF62C4719CF002400111E2F /* ic_re_error.png in Resources */,
 				9E82BBAC19F0229C007301EA /* SHOrderListViewController.xib in Resources */,
 				9EF62C4019CF002400111E2F /* timeline_image_loading@2x.png in Resources */,
+				9E0EFB3C1A8906FA001373F9 /* set_status_what@3x.png in Resources */,
 				9E82BB8619EAE51E007301EA /* splash.png in Resources */,
 				9ED77AB81A175660007CAD7E /* SHLineViewController.xib in Resources */,
 				9EF62C4819CF002400111E2F /* ic_re_error@2x.png in Resources */,
@@ -3104,6 +3111,7 @@
 				9EF62CAF19D097DB00111E2F /* navi_order.png in Resources */,
 				9EF62C0819CF002400111E2F /* whiteArrow@2x.png in Resources */,
 				9E82BB8E19EAEBC2007301EA /* ic_delete.png in Resources */,
+				9E0EFB3B1A8906FA001373F9 /* set_status_what@2x.png in Resources */,
 				9EF62C5B19CF002400111E2F /* SHTableViewUnReadNumberCell.xib in Resources */,
 				9E3D5A3519EA3CD000141C9D /* mic_talk_358x358@2x.png in Resources */,
 				9E3F62F719D4878A008C8B7B /* SHQuitCell.xib in Resources */,
@@ -3485,7 +3493,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "683451a0-be83-4b99-ae31-80af717ce359";
 				SDKROOT = iphoneos8.1;
 				VALID_ARCHS = armv7;
 			};
@@ -3537,7 +3545,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "683451a0-be83-4b99-ae31-80af717ce359";
 				SDKROOT = iphoneos8.1;
 				VALID_ARCHS = armv7;
 			};

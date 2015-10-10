@@ -350,6 +350,9 @@ int order = 0;
     }else  if([[dic valueForKey:@"devicestatus"]integerValue] == 2){
         cell.imgState.image =  [UIImage imageNamed:@"set_status_warning"];
         
+    }else  if([[dic valueForKey:@"devicestatus"]integerValue] == 3){
+        cell.imgState.image =  [UIImage imageNamed:@"set_status_what"];
+        
     }
     cell.btnItem.tag = indexPath.row;
     [cell.btnItem addTarget:self action:@selector(btnItemOnTouch:) forControlEvents:UIControlEventTouchUpInside];
